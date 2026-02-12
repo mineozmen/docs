@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Gateway Server - Command APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+  
+paths:
+
+  /api/command/:
+  
+    post:
+      summary: Send command to runner(s)
+      description: Sends a command provided in request body to the default command service and topic.
+      requestBody:
+        description: Command body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /api/command/{path}:
+  
+    post:
+      summary: Send command to runner(s) thru path
+      description: Sends a command provided in request body to the [path] command topic. 
+      parameters:
+       - $ref: '#/components/parameters/pathParam'
+      requestBody:
+        description: Command body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+components:
+
+  parameters:
+    pathParam:
+      name: path
+      in: path
+      description: "Path for issuing commands"
+      required: true
+      schema:
+        type: string
+        example: command_backup
+        
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

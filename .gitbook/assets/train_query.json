@@ -1,0 +1,96 @@
+{
+  "id": "train_query",
+  "data": {
+    "path": "/train_query",
+    "domain": "training",
+    "name": "Query",
+    "version": 0,
+    "status": "A",
+    "steps": [
+      {
+        "id": 2,
+        "type": "START",
+        "failOnFail": false,
+        "links": [
+          {
+            "id": 7,
+            "toStepID": 6,
+            "stream": "local",
+            "visualAttributes": {
+              "attrs": {
+                "line": {
+                  "stroke": "#D3D6DF"
+                }
+              }
+            }
+          }
+        ],
+        "visualAttributes": {
+          "position": {
+            "x": 30,
+            "y": 50
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": "FINISH",
+        "failOnFail": false,
+        "links": [],
+        "visualAttributes": {
+          "position": {
+            "x": 280,
+            "y": 50
+          }
+        }
+      },
+      {
+        "id": 6,
+        "name": "Search Dummy Names",
+        "type": "EVENT",
+        "failOnFail": false,
+        "links": [
+          {
+            "id": 8,
+            "toStepID": 3,
+            "visualAttributes": {
+              "attrs": {
+                "line": {
+                  "stroke": "#D3D6DF"
+                }
+              }
+            }
+          }
+        ],
+        "visualAttributes": {
+          "position": {
+            "x": 128,
+            "y": 48
+          },
+          "attrs": {
+            "body": {
+              "stroke": "#7224F1",
+              "fill": "#E9E8FC"
+            }
+          }
+        },
+        "eventMeta": {
+          "handler": "query",
+          "action": "GetQuery",
+          "version": 0,
+          "domain": "master",
+          "inputElement": "parameters",
+          "outputElement": "$.list",
+          "parameters": {
+            "queryId": "dummy_search"
+          }
+        },
+        "inject": false
+      }
+    ],
+    "failOnFail": true,
+    "allowedOn": [
+      "saga_train"
+    ]
+  }
+}

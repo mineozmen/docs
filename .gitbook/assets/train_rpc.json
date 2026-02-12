@@ -1,0 +1,306 @@
+{
+  "id": "train_rpc",
+  "data": {
+    "name": "Training RPC",
+    "status": "A",
+    "domain": "training",
+    "members": [
+      {
+        "elementType": "HANDLER",
+        "elementId": "handler-read-0001",
+        "type": "OPERATION",
+        "alias": "read",
+        "visualAttributes": {
+          "position": {
+            "x": 32,
+            "y": 48
+          }
+        }
+      },
+      {
+        "elementType": "HANDLER",
+        "elementId": "handler-write-0001",
+        "type": "OPERATION",
+        "alias": "write",
+        "visualAttributes": {
+          "position": {
+            "x": 32,
+            "y": 176
+          }
+        }
+      },
+      {
+        "elementType": "STATE",
+        "elementId": "state-dummy_write-0001",
+        "type": "OPERATION",
+        "alias": "dummy",
+        "visualAttributes": {
+          "position": {
+            "x": 304,
+            "y": 48
+          }
+        }
+      },
+      {
+        "elementType": "SYSTEM",
+        "elementId": "system-mongo_master-0001",
+        "type": "OPERATION",
+        "alias": "mongo_master",
+        "visualAttributes": {
+          "position": {
+            "x": 592,
+            "y": 48
+          }
+        }
+      },
+      {
+        "elementType": "HANDLER",
+        "elementId": "handler-query-0001",
+        "type": "OPERATION",
+        "alias": "query",
+        "visualAttributes": {
+          "position": {
+            "x": 32,
+            "y": 304
+          }
+        }
+      },
+      {
+        "elementType": "QUERY",
+        "elementId": "query-master-0001",
+        "type": "OPERATION",
+        "alias": "master",
+        "visualAttributes": {
+          "position": {
+            "x": 848,
+            "y": 32
+          }
+        }
+      },
+      {
+        "elementType": "HANDLER",
+        "elementId": "handler-rest-0001",
+        "type": "OPERATION",
+        "alias": "rest",
+        "extraMappings": {
+          "roleInputs": [
+            {
+              "role": "event",
+              "inputs": [
+                "datausa_rest",
+                "generic_rest",
+                "action_rest"
+              ]
+            }
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 32,
+            "y": 464
+          }
+        }
+      },
+      {
+        "elementType": "SYSTEM",
+        "elementId": "system-datausa-0001",
+        "type": "OPERATION",
+        "alias": "datausa",
+        "description": "System configuration for datausa rest services",
+        "visualAttributes": {
+          "position": {
+            "x": 304,
+            "y": 464
+          }
+        }
+      },
+      {
+        "elementType": "STREAM",
+        "type": "OPERATION",
+        "alias": "datausa_rest",
+        "extraMappings": {
+          "metadata": [
+            {
+              "name": "action",
+              "value": "CallRest"
+            },
+            {
+              "name": "domain",
+              "value": "datausa"
+            },
+            {
+              "name": "inputElement",
+              "value": "parameters"
+            },
+            {
+              "name": "outputElement",
+              "value": "$.output"
+            },
+            {
+              "name": "parameters.url",
+              "value": "/api/data"
+            },
+            {
+              "name": "parameters.method",
+              "value": "GET"
+            },
+            {
+              "name": "parameters.contentType",
+              "value": "query"
+            }
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 304,
+            "y": 608
+          }
+        }
+      },
+      {
+        "elementType": "ACTION",
+        "elementId": "action-CallRestUSA-0001",
+        "type": "MAPPING",
+        "alias": "CallRestUSA",
+        "visualAttributes": {
+          "position": {
+            "x": 48,
+            "y": 640
+          }
+        }
+      },
+      {
+        "elementType": "STREAM",
+        "type": "MAPPING",
+        "alias": "generic_rest",
+        "extraMappings": {
+          "metadata": [
+            {
+              "name": "parameters.inject",
+              "value": "true",
+              "override": true
+            },
+            {
+              "name": "action",
+              "value": "CallRest",
+              "override": true
+            },
+            {
+              "name": "domain",
+              "value": "datausa",
+              "override": true
+            },
+            {
+              "name": "inputElement",
+              "value": "parameters",
+              "override": true
+            },
+            {
+              "name": "outputElement",
+              "value": "$.output",
+              "override": true
+            },
+            {
+              "name": "parameters.url",
+              "value": "%%url%%",
+              "override": true
+            },
+            {
+              "name": "parameters.method",
+              "value": "%%method%%",
+              "override": true
+            },
+            {
+              "name": "parameters.contentType",
+              "value": "%%contentType%%",
+              "override": true
+            },
+            {
+              "name": "parameters.inputPattern",
+              "value": "body",
+              "override": true
+            }
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 304,
+            "y": 752
+          }
+        }
+      },
+      {
+        "elementType": "STREAM",
+        "type": "MAPPING",
+        "alias": "action_rest",
+        "visualAttributes": {
+          "position": {
+            "x": 304,
+            "y": 896
+          }
+        }
+      },
+      {
+        "elementType": "HANDLER",
+        "elementId": "handler-saga-0001",
+        "type": "OPERATION",
+        "alias": "saga",
+        "extraMappings": {
+          "roleInputs": [
+            {
+              "role": "event",
+              "inputs": [
+                "saga_train"
+              ]
+            }
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 32,
+            "y": 1056
+          }
+        }
+      },
+      {
+        "elementType": "STREAM",
+        "type": "OPERATION",
+        "alias": "saga_train",
+        "description": "Not linked to an element as it is an http stream",
+        "extraMappings": {
+          "metadata": [
+            {
+              "name": "action",
+              "value": "StartSaga",
+              "override": true
+            }
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 304,
+            "y": 1040
+          }
+        }
+      }
+    ],
+    "settings": [
+      {
+        "name": "defaultStream",
+        "value": "saga_train"
+      },
+      {
+        "name": "rebuildMs",
+        "description": "Check for updates & rebuild every 30 secs",
+        "value": "30000"
+      }
+    ],
+    "baseRunners": [
+      "base_command-0001",
+      "base_spring-0001",
+      "base_saga_simple-0001",
+      "base_query_simple-0001",
+      "base_variable_simple-0001"
+    ]
+  }
+}

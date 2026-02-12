@@ -1,0 +1,61 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Store - Content Operations
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/request/store_customer/GetPageContents:
+    get:
+      summary: Get dynamic page contents
+      operationId: GETGetPageContents
+      tags:
+        - content
+      parameters:
+        - brandidParam:
+          name: pageid
+          in: query
+          description: ID of the page to get
+          required: true
+          schema:
+            type: string
+            example: "index"
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    page:
+                        title: Page data
+                        type: object
+                        properties:
+                          meta:
+                            title: Page metadata
+                            type: object
+                          contents:
+                            title: Page content list
+                            type: array
+                            items: 
+                              type: object
+                              properties:
+                                section:
+                                    title: Section to display on
+                                    type: string
+                                component:
+                                    title: Component to use
+                                    type: string
+                                variant:
+                                    title: Component variant to use
+                                    type: string
+                                contentParameters:
+                                    title: Parameters to pass to component
+                                    type: object

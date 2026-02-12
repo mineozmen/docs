@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Gateway Server - Auth APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+  
+paths:
+
+  /api/auth/register/{channel}/{type}:
+  
+    post:
+      summary: New user registration
+      description: Receives a registration payload as body, which can include user details (such as name, surname). If [thru] is true, registers a new user with the authentication server. Otherwise resolves provided access token to register an existing user record with the back-end services. In both scenarios, register endpoint is called on [type] execution channel.
+      parameters:
+        - $ref: '#/components/parameters/channelParam'
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/thruParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+                    
+  /api/auth/login/{channel}/{type}:
+  
+    post:
+      summary: Existing user login
+      description: Logs a user into the system, returning gateway tokens. If [thru] is true, logs in the user with the authentication server first. Otherwise resolves provided access token to login an existing user record with the back-end services. In both scenarios, login endpoint is called on [type] execution channel. If [cookie] is true, tokens are returned as cookie values. If [remember] is true, refresh token expire in longer duration.
+      parameters:
+        - $ref: '#/components/parameters/channelParam'
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/thruParam'
+        - $ref: '#/components/parameters/cookieParam'
+        - $ref: '#/components/parameters/rememberParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/auth/refresh/{channel}/{type}:
+  
+    post:
+      summary: User tokens refresh
+      description: Refreshes gateway tokens using refresh tokens, also calling refresh endpoint on [type] execution channel. If [cookie] is true, tokens are returned as cookie values.
+      parameters:
+        - $ref: '#/components/parameters/channelParam'
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/cookieParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/auth/logout/{channel}/{type}:
+  
+    post:
+      summary: Existing user logout
+      description: Logs out users from the system, clearing gateway tokens. If [thru] is true, logs out the user from the authentication server as well. If [cookie] is true, cleared tokens are returned as cookie values.
+      parameters:
+        - $ref: '#/components/parameters/channelParam'
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/thruParam'
+        - $ref: '#/components/parameters/cookieParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/auth/delete/{channel}/{type}:
+  
+    post:
+      summary: Existing user removal
+      description: Deletes a user from the system. If [thru] is true, deletes the user from the authentication server as well. In both scenarios, delete endpoint is called on [type] execution channel. If [cookie] is true, cleared tokens are returned as cookie values.
+      parameters:
+        - $ref: '#/components/parameters/channelParam'
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/thruParam'
+        - $ref: '#/components/parameters/cookieParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+components:
+
+  parameters:
+    typeParam:
+      name: type
+      in: path
+      description: "Type of authentication to use"
+      required: true
+      schema:
+        type: string
+        example: customer
+    channelParam:
+      name: channel
+      in: path
+      description: "Gateway channel for authentication"
+      required: true
+      schema:
+        type: string
+        example: crud
+    thruParam:
+      name: thru
+      in: query
+      description: "Whether request should be passed on to authentication servers too"
+      required: false
+      schema:
+        type: string
+        default: false
+        example: true
+    cookieParam:
+      name: cookie
+      in: query
+      description: "Whether tokens should be returned in cookies"
+      required: false
+      schema:
+        type: string
+        default: false
+        example: true
+    rememberParam:
+      name: remember
+      in: query
+      description: "Whether tokens should have longer expirations"
+      required: false
+      schema:
+        type: string
+        default: false
+        example: true
+        
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

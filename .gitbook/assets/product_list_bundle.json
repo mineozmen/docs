@@ -1,0 +1,198 @@
+{
+  "id": "product_list_bundle",
+  "data": {
+    "name": "Product Listing (Admin)",
+    "description": "Product UI table lister query",
+    "type": "BUNDLE",
+    "status": "A",
+    "platform": "MONGODB",
+    "from": "product",
+    "joins": [
+      {
+        "type": "LEFT",
+        "from": "category_main",
+        "as": "categoryList",
+        "condition": {
+          "id": "21754625938333",
+          "category": "SIMPLE",
+          "command": "data.main.categories",
+          "operator": "EQ",
+          "value": "_id"
+        }
+      }
+    ],
+    "where": {
+      "id": "21754625938341",
+      "category": "COMPLEX",
+      "name": "TODO: Add collection, complete%, min price, max price, SORT",
+      "conditions": [
+        {
+          "id": "21754625938336",
+          "category": "COMPLEX",
+          "name": "Search keyword",
+          "conditions": [
+            {
+              "id": "21754625938333",
+              "category": "SIMPLE",
+              "command": "_id",
+              "operator": "EQ",
+              "value": "%%search%%"
+            },
+            {
+              "id": "21754625938341",
+              "category": "SIMPLE",
+              "command": "data.main.name.enUS",
+              "operator": "CONTAINS",
+              "value": "%%search%%"
+            },
+            {
+              "id": "21754625938335",
+              "category": "SIMPLE",
+              "command": "data.main.description.enUS",
+              "operator": "CONTAINS",
+              "value": "%%search%%"
+            }
+          ],
+          "operator": "OR"
+        },
+        {
+          "id": "21754625938335",
+          "category": "SIMPLE",
+          "command": "_id",
+          "operator": "IN",
+          "value": "%%listids%%"
+        },
+        {
+          "id": "21754625938332",
+          "category": "SIMPLE",
+          "command": "data.main.status",
+          "operator": "IN",
+          "value": "%%statuses%%"
+        },
+        {
+          "id": "21754625938342",
+          "category": "SIMPLE",
+          "command": "data.main.brand",
+          "operator": "IN",
+          "value": "%%brandids%%"
+        },
+        {
+          "id": "21754625938333",
+          "category": "SIMPLE",
+          "command": "data.main.collections",
+          "operator": "IN",
+          "value": "%%collectionids%%"
+        },
+        {
+          "id": "21754625938339",
+          "category": "SIMPLE",
+          "command": "data.main.tags.enUS",
+          "operator": "CONTAINS",
+          "value": "%%tag%%"
+        },
+        {
+          "id": "21754625938343",
+          "category": "SIMPLE",
+          "command": "createTime",
+          "operator": "GTE",
+          "value": "%%mincreate%%"
+        },
+        {
+          "id": "21754625938342",
+          "category": "SIMPLE",
+          "command": "createTime",
+          "operator": "LTE",
+          "value": "%%maxcreate%%"
+        },
+        {
+          "id": "21754625938334",
+          "category": "SIMPLE",
+          "command": "updateTime",
+          "operator": "GTE",
+          "value": "%%minupdate%%"
+        },
+        {
+          "id": "21754625938342",
+          "category": "SIMPLE",
+          "command": "updateTime",
+          "operator": "LTE",
+          "value": "%%maxupdate%%"
+        },
+        {
+          "id": "21754626422745",
+          "category": "SIMPLE",
+          "command": "data.internal.red_label",
+          "operator": "EQ",
+          "value": "%%red_label%%"
+        },
+        {
+          "id": "21862515434660",
+          "category": "SIMPLE",
+          "command": "data.internal.seller",
+          "operator": "EQ",
+          "value": "%%sellerid%%"
+        }
+      ],
+      "operator": "AND"
+    },
+    "orderBy": [
+      {
+        "name": "%%adminorderby%%",
+        "ascending": "%%ascending%%"
+      }
+    ],
+    "skip": "%%skip%%",
+    "limit": "%%limit%%",
+    "fields": [
+      {
+        "target": "id",
+        "expression": "_id"
+      },
+      {
+        "target": "created",
+        "expression": "createTime"
+      },
+      {
+        "target": "updated",
+        "expression": "updateTime"
+      },
+      {
+        "target": "status",
+        "expression": "data.main.status"
+      },
+      {
+        "target": "name",
+        "expression": "data.main.name.enUS"
+      },
+      {
+        "target": "image",
+        "expression": "{$slice:['$data.main.images',1]}"
+      },
+      {
+        "target": "categories",
+        "expression": "categoryList.data.name.enUS"
+      },
+      {
+        "target": "complete",
+        "expression": "{$ifNull: [\"$complete\", 0]}",
+        "description": "TODO: update with calculation"
+      }
+    ],
+    "bundles": [
+      {
+        "name": "Product Count",
+        "type": "AGGREGATION",
+        "status": "A",
+        "platform": "Generic",
+        "as": "total",
+        "fields": [
+          {
+            "target": "count",
+            "expression": "_id",
+            "type": "COUNT"
+          }
+        ]
+      }
+    ]
+  }
+}

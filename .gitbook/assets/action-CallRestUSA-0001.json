@@ -1,0 +1,42 @@
+{
+  "id": "action-CallRestUSA-0001",
+  "data": {
+    "type": "ACTION",
+    "name": "Call Rest (USA)",
+    "status": "A",
+    "settings": [
+      {
+        "name": "handler",
+        "value": "rest"
+      },
+      {
+        "name": "meta.domain.override",
+        "value": "datausa"
+      },
+      {
+        "name": "meta.action.override",
+        "value": "CallRest"
+      },
+      {
+        "name": "meta.inputElement.default",
+        "value": "parameters"
+      },
+      {
+        "name": "meta.outputElement.default",
+        "value": "$.output"
+      },
+      {
+        "name": "meta.parameters.url.default",
+        "value": "/api/data"
+      },
+      {
+        "name": "meta.parameters.method.default",
+        "value": "GET"
+      },
+      {
+        "name": "meta.parameters.contentType.default",
+        "value": "query"
+      }
+    ]
+  }
+}

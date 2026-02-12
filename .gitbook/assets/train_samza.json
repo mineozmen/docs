@@ -1,0 +1,40 @@
+{
+  "id": "train_samza",
+  "data": {
+    "name": "Training Samza",
+    "status": "A",
+    "task": "Backend/API/CD/Deploy Generic",
+    "description": "Core training services with Samza runners",
+    "runners": [
+      {
+        "name": "train_samza",
+        "class": "com.rierino.runner.samza.SyncSamzaEventRunner",
+        "element": "train_samza",
+        "deploymentVersion": "1"
+      },
+      {
+        "name": "train_samza_dummy",
+        "class": "com.rierino.runner.samza.SyncSamzaEventRunner",
+        "element": "train_samza_dummy",
+        "deploymentVersion": "1"
+      }
+    ],
+    "parameters": {
+      "namespace": "admin-backend",
+      "pool": "admin-node-pool",
+      "template": "samza",
+      "rierinoVersion": "0.3.0",
+      "logLevel": "DEBUG",
+      "initCpuRequest": "100m",
+      "cpuRequest": "100m",
+      "initMemoryRequest": "64Mi",
+      "memoryRequest": "64Mi"
+    },
+    "contents": [
+      {
+        "content": "//For CEP processing\nimplementation (group:'com.rierino.custom', name: 'siddhi', version:\"${rierinoVersion}\") { changing = true }",
+        "section": "build.gradle:dependencies"
+      }
+    ]
+  }
+}

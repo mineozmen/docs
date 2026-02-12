@@ -1,0 +1,293 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Authentication Server - APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+
+paths:
+
+  /auth/{type}/register:
+  
+    post:
+      summary: Register new user
+      description: Registers a new user of [type], where user details are provided in a request metadata body. User id is added to the metadata in response.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /auth/{type}/login:
+  
+    post:
+      summary: Login an existing user
+      description: Logs in a user of [type], where login details are provided in a request metadata body. If [cookie] is true, generated tokens are returned as cookie values. If [resolve] is true, token contents are resolved and added to the metadata in response.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/cookieParam'
+        - $ref: '#/components/parameters/resolveParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /auth/{type}/validate:
+  
+    post:
+      summary: Validate a token
+      description: Validates token provided in request metadata body for a user of [type].
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /auth/{type}/resolve:
+  
+    post:
+      summary: Resolve a token
+      description: Resolves token provided in request metadata body for a user of [type] and returns results in metadata in response.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /auth/{type}/refresh:
+  
+    post:
+      summary: Refreshes user tokens
+      description: Refreshes tokens for a user of [type], where refresh token is provided in a request metadata body. If [cookie] is true, generated tokens are returned as cookie values. If [resolve] is true, token contents are resolved and added to the metadata in response.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/cookieParam'
+        - $ref: '#/components/parameters/resolveParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /auth/{type}/logout:
+  
+    post:
+      summary: Log out a user
+      description: Logs out a user of [type] using tokens provided in request metadata body. If [cookie] is true, token cookie values are also removed.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/cookieParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /auth/{type}/delete:
+  
+    post:
+      summary: Delete a user
+      description: Deletes a user of [type] from the system, using tokens provided in request metadata body.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Request metadata
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /auth/{type}/custom/{action}:
+  
+    post:
+      summary: Custom action
+      description: Executes a custom [action] for [type]. Implementation details are specific to the authenticator class.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+        - $ref: '#/components/parameters/actionParam'
+      requestBody:
+        description: Action body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /auth/{type}/forward:
+  
+    post:
+      summary: Forward content
+      description: Forward a complete request body for [type]. Implementation details are specific to the authenticator class.
+      parameters:
+        - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Message body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+components:
+
+  parameters:
+    typeParam:
+      name: type
+      in: path
+      description: "Type of authentication to use"
+      required: true
+      schema:
+        type: string
+        example: customer
+    cookieParam:
+      name: cookie
+      in: query
+      description: "Whether tokens should be returned in cookies"
+      required: false
+      schema:
+        type: string
+        default: false
+        example: true
+    resolveParam:
+      name: resolve
+      in: query
+      description: "Whether tokens should be resolved in response"
+      required: false
+      schema:
+        type: string
+        default: false
+        example: true
+    actionParam:
+      name: action
+      in: query
+      description: "Custom action for the authentication server"
+      required: true
+      schema:
+        type: string
+        example: forgotPasswordEmail
+        
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

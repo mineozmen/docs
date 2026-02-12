@@ -1,0 +1,404 @@
+openapi: 3.0.2
+info:
+  title: CRUD Structure
+  description: Standard CRUD APIs
+  version: "1.0.0"
+servers:
+  - url: http://localhost/api
+    description: Staging Server
+tags:
+  - name: Manifest RPC
+    description: Manifest operations APIs
+paths:
+  /{runner}/{state}:
+    get:
+      tags:
+        - Read
+      summary: List records
+      description: |
+        Lists all records for a given state manager, with the following action mappings:
+        - With no ids and filters parameters: action=GetAll, outputElement=list, state=[state], stream=[state]r
+        - With ids parameters: action=GetList, payload={list:[{id:id1},...]}, inputElement=list, state=[state], stream=[state]r
+        - With filters parameters: payload=[filters], state=[state], stream=[state]c
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+        - in: query
+          name: skip
+          schema:
+            type: string
+            title: Records to skip
+            example: '0'
+        - in: query
+          name: limit
+          schema:
+            type: string
+            title: Records to return
+            example: '10'
+        - in: query
+          name: fields
+          schema:
+            type: string
+            title: Comma separated list of fields to return
+            example: 'data.name,data.description'
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+            title: Field to order by and sort direction
+            example: 'id asc'
+        - in: query
+          name: ids
+          schema:
+            type: string
+            title: Comma separated list of ids
+            example: '123,234'
+        - in: query
+          name: filters
+          schema:
+            type: object
+            example: {"data.status.EQ": "A", "data.name.CONTAINS": "test"}
+            additionalProperties:
+              type: string
+          explode: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    description: List of aggregates
+                    type: array
+                    items:
+                      type: object
+    post:
+      tags:
+        - Write
+      summary: Creates a record without given ID
+      description: |
+        Creates a single record for a given state manager, with the following action mappings: action=Create, payload={[body]}, state=[state], stream=[state]w
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+      requestBody:
+        description: Full contents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Created aggregate
+                type: object
+
+  /{runner}/{state}/{id}:
+    get:
+      tags:
+        - Read
+      summary: Read a record
+      description: |
+        Reads a single record for a given state manager, with the following action mappings: action=Get, payload={id:[id]}, state=[state], stream=[state]r
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            title: Aggregate id
+            example: '123'
+        - in: query
+          name: fields
+          schema:
+            type: string
+            title: Comma separated list of fields to return
+            example: 'data.name,data.description'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Found aggregate
+                type: object
+    delete:
+      tags:
+        - Write
+      summary: Delete a record
+      description: |
+        Deletes a single record for a given state manager, with the following action mappings: action=Delete, payload={id:[id]}, state=[state], stream=[state]w
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            title: Aggregate id
+            example: '123'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Deleted aggregate
+                type: object
+    patch:
+      tags:
+        - Write
+      summary: Patch a record
+      description: |
+        Patches a single record for a given state manager, with the following action mappings: action=Update, payload={[body], id:[id]}, state=[state], stream=[state]w
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            title: Aggregate id
+            example: '123'
+      requestBody:
+        description: Partial patch contents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: '123'
+                data:
+                  type: object
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Patched aggregate
+                type: object
+    put:
+      tags:
+        - Write
+      summary: Overwrite a record
+      description: |
+        Overwrites a single record for a given state manager, with the following action mappings: action=Set, payload={[body], id:[id]}, state=[state], stream=[state]w
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            title: Aggregate id
+            example: '123'
+      requestBody:
+        description: Full overwrite contents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: '123'
+                data:
+                  type: object
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Overwritten aggregate
+                type: object
+    post:
+      tags:
+        - Write
+      summary: Creates a record with given ID
+      description: |
+        Creates a single record for a given state manager, with the following action mappings: action=Create, payload={[body], id:[id]}, state=[state], stream=[state]w
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            title: Aggregate id
+            example: '123'
+      requestBody:
+        description: Full contents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: '123'
+                data:
+                  type: object
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Created aggregate
+                type: object
+
+
+  /{runner}/{state}/@:
+    post:
+      tags:
+        - Write
+      summary: Perform write actions
+      description: |
+        Executes multiple write actions at once using the following mappings: action=[action], inputElement=[inputElement], outputElement=[outputElement], meta=[meta]
+      parameters:
+        - in: path
+          name: runner
+          required: true
+          schema:
+            type: string
+            title: Runner alias
+            example: crud
+        - in: path
+          name: state
+          required: true
+          schema:
+            type: string
+            title: State alias
+            example: product
+      requestBody:
+        description: Action contents
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  example: 'Create'
+                inputElement:
+                  type: string
+                outputElement:
+                  type: string
+                meta:
+                  type: object
+                  description: Event meta parameters for the action requested
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: Action results
+                type: object

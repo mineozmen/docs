@@ -1,0 +1,18 @@
+{
+  "id": "handler-script-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Script",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.ScriptLoadedEventHandler"
+      },
+      {
+        "name": "parameter.code.state",
+        "value": "handler_code"
+      }
+    ]
+  }
+}

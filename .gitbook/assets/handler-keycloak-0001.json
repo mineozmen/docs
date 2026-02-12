@@ -1,0 +1,19 @@
+{
+  "id": "handler-keycloak-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Keycloak Auth",
+    "description": "Keycloak authentication event handler",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.auth.keycloak.KeycloakEventHandler"
+      },
+      {
+        "name": "parameter.system",
+        "value": "keycloak"
+      }
+    ]
+  }
+}

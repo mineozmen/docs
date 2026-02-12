@@ -1,0 +1,357 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Gateway - Store Basket Operations
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/request/store_basket/GetBasket_C:
+    get:
+      summary: Get customer basket data
+      operationId: getBasket_C
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+
+
+  /api/request/store_basket/GetRatedBasket_C:
+    get:
+      summary: Get rated customer basket data
+      operationId: getRatedBasket_C
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ratedBasket'
+
+  /api/request/store_basket/AddToBasket_C:
+    post:
+      summary: Add item to customer basket
+      operationId: addToBasket_C
+      tags:
+        - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+
+  /api/request/store_basket/SetInBasket_C:
+    post:
+      summary: Update item in customer basket
+      operationId: setInBasket_C
+      tags:
+        - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+
+  /api/request/store_basket/RemoveFromBasket_C:
+    post:
+      summary: Remove item from customer basket
+      operationId: removeFromBasket_C
+      tags:
+        - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+          
+  /api/request/store_basket/DeleteBasket_C:
+    post:
+      summary: Delete customer basket
+      operationId: deleteBasket_C
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          
+  /api/request/store_basket/MergeBasket_C:
+    get:
+      summary: Merge guest basket into customer basket
+      operationId: mergeBasket_C
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+          
+  /api/request/store_basket/GetBasket:
+    get:
+      summary: Get guest basket data
+      operationId: getBasket
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+
+
+  /api/request/store_basket/GetRatedBasket:
+    get:
+      summary: Get rated guest basket data
+      operationId: getRatedBasket
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ratedBasket'
+
+  /api/request/store_basket/AddToBasket:
+    post:
+      summary: Add item to guest basket
+      operationId: addToBasket
+      tags:
+        - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+
+  /api/request/store_basket/SetInBasket:
+    post:
+      summary: Update item in guest basket
+      operationId: setInBasket
+      tags:
+        - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+
+  /api/request/store_basket/RemoveFromBasket:
+    post:
+      summary: Remove item from guest basket
+      operationId: removeFromBasket
+      tags:
+        - basket
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/item'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/basket'
+          
+  /api/request/store_basket/DeleteBasket:
+    post:
+      summary: Delete guest basket
+      operationId: deleteBasket
+      tags:
+        - basket
+      responses:
+        '200':
+          description: OK
+          
+components:
+  schemas:
+    item:
+      type: object
+      properties:
+        id:
+          title: Unique basket line id
+          type: string
+        variantId:
+          title: Product variant id
+          type: string
+        quantity:
+          title: Quantity to add/update
+          type: number
+          example: 1.1
+        old_quantity:
+          title: Quantity before add/update
+          type: number
+          example: 1.0
+    basket:
+      title: Basket id
+      type: object
+      properties:
+        id:
+            title: Basket id
+            type: string
+        data:
+            title: Basket data
+            type: object
+            properties:
+                items:
+                    title: Basket items
+                    type: array
+                    items:
+                        title: Basket item
+                        type: object
+                        properties:
+                            id:
+                                title: Item id
+                                type: string
+                            variantId:
+                                title: Product variant id
+                                type: string
+                            quantity:
+                                title: Item quantity
+                                type: number
+    ratedBasket:
+      type: object
+      properties:
+          id:
+            title: Basket id
+            type: string
+          rated:
+            title: Basket contents with pricing
+            type: object
+            properties:
+                currency:
+                    title: Pricing currency
+                    type: string
+                prices:
+                    title: Basket price details
+                    type: object
+                    properties:
+                        subtotal:
+                            title: Sum of item subtotals
+                            type: number
+                        discounted:
+                            title: Sum of item discounteds
+                            type: number
+                        discount:
+                            title: subtotal-discounted
+                            type: number
+                        delivery:
+                            title: Delivery fees
+                            type: number
+                        tax:
+                            title: Tax amount
+                            type: number
+                        appliedPromotions:
+                            title: Basket level promotions
+                            type: array
+                        total:
+                            title: Basket level final price
+                            type: number
+                items:
+                    title: Basket item
+                    type: object
+                    properties:
+                        id:
+                            title: Item id
+                            type: string
+                        productId:
+                            title: Product id
+                            type: string
+                        variantId:
+                            title: Product variant id
+                            type: string
+                        quantity:
+                            title: Item quantity
+                            type: number
+                        productData:
+                            title: Product details
+                            type: object
+                        priceData:
+                            title: Unit price details
+                            type: object
+                        prices:
+                            title: Item price details
+                            type: object
+                            properties:
+                                subtotal:
+                                    title: Base price x quantity
+                                    type: number
+                                discounted:
+                                    title: Discounted price x quantity
+                                    type: number
+                                discount:
+                                    title: subtotal-discounted
+                                    type: number
+                                appliedPromotions:
+                                    title: Line level promotions
+                                    type: array
+                                total:
+                                    title: Line level final price
+                                    type: number
+
+

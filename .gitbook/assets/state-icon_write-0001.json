@@ -1,0 +1,35 @@
+{
+  "id": "state-icon_write-0001",
+  "data": {
+    "type": "STATE",
+    "name": "Icon (Write)",
+    "description": "Single source of truth for admin ui icons",
+    "status": "A",
+    "settings": [
+      {
+        "name": "manager",
+        "value": "com.rierino.state.manager.MongoStateManager"
+      },
+      {
+        "name": "system",
+        "value": "mongo_devops"
+      },
+      {
+        "name": "collection",
+        "value": "icon"
+      },
+      {
+        "name": "journalCollection",
+        "value": "icon_draft_journal"
+      },
+      {
+        "name": "keepDeleted",
+        "value": "true"
+      },
+      {
+        "name": "ignorePartition",
+        "value": "true"
+      }
+    ]
+  }
+}

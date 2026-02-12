@@ -1,0 +1,43 @@
+{
+  "id": "state-saga_write-0001",
+  "data": {
+    "type": "STATE",
+    "name": "Saga (Write)",
+    "description": "Single source of truth for saga",
+    "status": "A",
+    "settings": [
+      {
+        "name": "manager",
+        "value": "com.rierino.state.manager.MongoStateManager"
+      },
+      {
+        "name": "data",
+        "value": "com.rierino.core.saga.Saga"
+      },
+      {
+        "name": "manipulator",
+        "value": "com.rierino.state.manipulator.ReflectiveManipulator"
+      },
+      {
+        "name": "system",
+        "value": "mongo_devops"
+      },
+      {
+        "name": "collection",
+        "value": "saga"
+      },
+      {
+        "name": "journalCollection",
+        "value": "saga_draft_journal"
+      },
+      {
+        "name": "keepDeleted",
+        "value": "true"
+      },
+      {
+        "name": "ignorePartition",
+        "value": "true"
+      }
+    ]
+  }
+}

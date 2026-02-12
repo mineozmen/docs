@@ -1,0 +1,33 @@
+{
+  "id": "handler-saga-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Saga",
+    "description": "Saga orchestrator",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.saga.SagaEventHandler"
+      },
+      {
+        "name": "parameter.event.timeout",
+        "description": "milliseconds to timeout a saga step",
+        "value": "5000"
+      },
+      {
+        "name": "parameter.saga.state",
+        "description": "State keeping saga aggregates (should map to saga_local or saga_cached)",
+        "value": "saga"
+      },
+      {
+        "name": "parameter.saga.stream",
+        "value": "saga"
+      },
+      {
+        "name": "parameter.response.stream",
+        "value": "response"
+      }
+    ]
+  }
+}

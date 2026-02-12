@@ -1,0 +1,31 @@
+{
+  "id": "system-deployer_default-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "Deployer Default",
+    "description": "Default Deployer REST API",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "rest"
+      },
+      {
+        "name": "trust",
+        "value": "true"
+      },
+      {
+        "name": "url",
+        "value": "${{rierino.system.deployer.url}}"
+      },
+      {
+        "name": "auth.method",
+        "value": "bearer"
+      },
+      {
+        "name": "auth.token",
+        "value": "#{{rierinoKV.system.deployer.main.token}}"
+      }
+    ]
+  }
+}

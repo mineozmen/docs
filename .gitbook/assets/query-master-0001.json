@@ -1,0 +1,18 @@
+{
+  "id": "query-master-0001",
+  "data": {
+    "type": "QUERY",
+    "name": "Master",
+    "status": "A",
+    "settings": [
+      {
+        "name": "system",
+        "value": "mongo_master"
+      },
+      {
+        "name": "manager",
+        "value": "com.rierino.query.manager.MongoQueryManager"
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "handler-tensor-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Tensorflow",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.tensor.TensorScoreEventHandler"
+      },
+      {
+        "name": "parameter.action.lock",
+        "value": "OPTIMISTIC"
+      },
+      {
+        "name": "parameter.model.state",
+        "value": "model"
+      },
+      {
+        "name": "parameter.model.store.system",
+        "value": "hdfs_model"
+      }
+    ]
+  }
+}

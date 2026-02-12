@@ -1,0 +1,47 @@
+{
+  "id": "system-translatev3-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "Translate V3 Default",
+    "description": "Default Google Translate V3 REST API",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "rest"
+      },
+      {
+        "name": "url",
+        "value": "https://translation.googleapis.com/v3"
+      },
+      {
+        "name": "trust",
+        "value": "true"
+      },
+      {
+        "name": "auth.method",
+        "value": "jwt"
+      },
+      {
+        "name": "auth.issuer",
+        "value": "#{{rierinoKV.system.googleapis.sa.client_email}}"
+      },
+      {
+        "name": "auth.subject",
+        "value": "#{{rierinoKV.system.googleapis.sa.client_email}}"
+      },
+      {
+        "name": "auth.audience",
+        "value": "https://translation.googleapis.com/"
+      },
+      {
+        "name": "auth.privateKey",
+        "value": "#{{rierinoKV.system.googleapis.sa.private_key}}"
+      },
+      {
+        "name": "auth.header.kid",
+        "value": "#{{rierinoKV.system.googleapis.sa.private_key_id}}"
+      }
+    ]
+  }
+}

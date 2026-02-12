@@ -1,0 +1,120 @@
+{
+  "id": "cdc_batch-0001",
+  "data": {
+    "name": "Batch (CDC)",
+    "status": "A",
+    "description": "CDC processor for batch write state",
+    "domain": "hajj",
+    "inputStreams": [
+      "batch"
+    ],
+    "outputStreams": [],
+    "members": [
+      {
+        "elementType": "SYSTEM",
+        "elementId": "system-mongo_master_cdc-0001",
+        "type": "STRUCTURE",
+        "alias": "mongo_master_cdc",
+        "overrides": [],
+        "visualAttributes": {
+          "position": {
+            "x": 48,
+            "y": 48
+          }
+        }
+      },
+      {
+        "elementType": "ROLE",
+        "type": "MAPPING",
+        "alias": "startRole",
+        "extraMappings": {
+          "inputs": [
+            "batch"
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 672,
+            "y": 32
+          }
+        }
+      },
+      {
+        "elementType": "STATE",
+        "elementId": "state-cdc_offset-0001",
+        "type": "OPERATION",
+        "alias": "cdc_offset",
+        "overrides": [],
+        "visualAttributes": {
+          "position": {
+            "x": 320,
+            "y": 240
+          }
+        }
+      },
+      {
+        "elementType": "SYSTEM",
+        "elementId": "system-mongo_master-0001",
+        "type": "OPERATION",
+        "alias": "mongo_master",
+        "visualAttributes": {
+          "position": {
+            "x": 48,
+            "y": 240
+          }
+        }
+      },
+      {
+        "elementType": "STREAM",
+        "elementId": "stream-cdc_batch-0001",
+        "type": "OPERATION",
+        "alias": "batch",
+        "visualAttributes": {
+          "position": {
+            "x": 336,
+            "y": 32
+          }
+        }
+      },
+      {
+        "elementType": "HANDLER",
+        "elementId": "handler-saga-0001",
+        "type": "OPERATION",
+        "alias": "saga",
+        "extraMappings": {
+          "roleInputs": [
+            {
+              "role": "startRole",
+              "inputs": [
+                "batch"
+              ]
+            }
+          ]
+        },
+        "visualAttributes": {
+          "position": {
+            "x": 656,
+            "y": 240
+          }
+        }
+      }
+    ],
+    "settings": [
+      {
+        "name": "rebuildMs",
+        "value": "30000"
+      },
+      {
+        "name": "commitMs",
+        "value": "60000"
+      }
+    ],
+    "baseRunners": [
+      "base_command-0001",
+      "base_spring-0001",
+      "base_saga_simple-0001",
+      "base_query_simple-0001",
+      "base_variable_simple-0001"
+    ]
+  }
+}

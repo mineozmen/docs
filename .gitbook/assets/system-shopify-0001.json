@@ -1,0 +1,23 @@
+{
+  "id": "system-shopify-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "Shopify Default",
+    "description": "Default Shopify REST API",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "rest"
+      },
+      {
+        "name": "url",
+        "value": "${{rierino.system.shopify.url}}"
+      },
+      {
+        "name": "header.X-Shopify-Access-Token",
+        "value": "#{{rierinoKV.system.shopify.main.token}}"
+      }
+    ]
+  }
+}

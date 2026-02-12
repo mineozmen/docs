@@ -1,0 +1,215 @@
+{
+  "id": "product_variant_feed_es",
+  "data": {
+    "name": "ES Feed - Product Variant",
+    "type": "PIPELINE",
+    "status": "A",
+    "platform": "MONGODB",
+    "from": "product_variant",
+    "steps": [
+      {
+        "type": "condition",
+        "name": "Filter by Variant Id",
+        "content": {
+          "category": "SIMPLE",
+          "command": "_id",
+          "operator": "EQ",
+          "value": "\"%%id%%\""
+        },
+        "inject": true
+      },
+      {
+        "type": "custom",
+        "name": "Lookup Product",
+        "content": {
+          "mongo": {
+            "\"$lookup\"": {
+              "localField": "data.productId",
+              "from": "product",
+              "foreignField": "_id",
+              "as": "product"
+            }
+          }
+        },
+        "inject": false
+      },
+      {
+        "type": "custom",
+        "name": "Lookup Other Variants",
+        "content": {
+          "mongo": {
+            "\"$lookup\"": {
+              "localField": "data.productId",
+              "from": "product_variant",
+              "foreignField": "data.productId",
+              "as": "self"
+            }
+          }
+        },
+        "inject": false
+      },
+      {
+        "type": "custom",
+        "name": "Unwind Variants",
+        "content": {
+          "mongo": {
+            "\"$unwind\"": "$self"
+          }
+        },
+        "inject": false
+      },
+      {
+        "type": "custom",
+        "name": "Lookup Variant Stock",
+        "content": {
+          "mongo": {
+            "\"$lookup\"": {
+              "localField": "self._id",
+              "from": "product_variant_stock",
+              "foreignField": "_id",
+              "as": "stock"
+            }
+          }
+        },
+        "inject": false
+      },
+      {
+        "type": "custom",
+        "name": "Project Attributes",
+        "content": {
+          "mongo": {
+            "\"$project\"": {
+              "productId": {
+                "\"$first\"": "$product._id"
+              },
+              "self": {
+                "id": "$self._id",
+                "deleted": "$self.deleted",
+                "attributeValueIds": {
+                  "\"$concatArrays\"": [
+                    {
+                      "\"$first\"": "$product.data.main.attributes"
+                    },
+                    "$self.data.attributes"
+                  ]
+                },
+                "stock": {
+                  "\"$first\"": "$stock.data.level"
+                }
+              }
+            }
+          }
+        },
+        "inject": false
+      },
+      {
+        "type": "custom",
+        "name": "Group by Product Id",
+        "content": {
+          "mongo": {
+            "\"$group\"": {
+              "_id": "$productId",
+              "full_text_in_stock": {
+                "\"$push\"": {
+                  "\"$cond\"": [
+                    {
+                      "\"$gt\"": [
+                        "$self.stock",
+                        0
+                      ]
+                    },
+                    "$self.sku",
+                    {}
+                  ]
+                }
+              },
+              "variantSynonyms_in_stock": {
+                "\"$push\"": {
+                  "\"$cond\"": [
+                    {
+                      "\"$gt\"": [
+                        "$self.stock",
+                        0
+                      ]
+                    },
+                    {
+                      "\"$map\"": {
+                        "input": "$self.attributeValueIds",
+                        "as": "attribute",
+                        "in": {
+                          "\"$concat\"": [
+                            "av_",
+                            "$$attribute"
+                          ]
+                        }
+                      }
+                    },
+                    []
+                  ]
+                }
+              },
+              "variants": {
+                "\"$push\"": "$self"
+              }
+            }
+          }
+        },
+        "inject": false
+      },
+      {
+        "type": "custom",
+        "name": "Project Final Data",
+        "content": {
+          "mongo": {
+            "\"$project\"": {
+              "data": {
+                "variants": "$variants",
+                "full_text_in_stock.enUS": {
+                  "\"$reduce\"": {
+                    "input": {
+                      "\"$setUnion\"": {
+                        "\"$reduce\"": {
+                          "input": "$full_text_in_stock.enUS",
+                          "initialValue": [],
+                          "in": {
+                            "\"$concatArrays\"": [
+                              "$$value",
+                              "$$this"
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    "initialValue": "",
+                    "in": {
+                      "\"$concat\"": [
+                        "$$this",
+                        " ",
+                        "$$value"
+                      ]
+                    }
+                  }
+                },
+                "variantSynonyms_in_stock": {
+                  "\"$setUnion\"": {
+                    "\"$reduce\"": {
+                      "input": "$variantSynonyms_in_stock",
+                      "initialValue": [],
+                      "in": {
+                        "\"$concatArrays\"": [
+                          "$$value",
+                          "$$this"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "inject": false
+      }
+    ]
+  }
+}

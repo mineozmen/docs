@@ -1,0 +1,35 @@
+{
+  "id": "handler-auth_admin-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Auth Admin",
+    "description": "State based authentication for admin users",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.auth.StateAuthEventHandler"
+      },
+      {
+        "name": "parameter.auth.state",
+        "value": "admin_auth"
+      },
+      {
+        "name": "parameter.auth.secret",
+        "value": "#{{rierinoKV.shared.auth.secret}}"
+      },
+      {
+        "name": "parameter.apikey.state",
+        "value": "admin_key"
+      },
+      {
+        "name": "parameter.apikey.secret",
+        "value": "#{{rierinoKV.shared.auth.keysecret}}"
+      },
+      {
+        "name": "parameter.registration.enabled",
+        "value": "true"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "handler-query-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Query",
+    "description": "Reader from query managers",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.QueryEventHandler"
+      },
+      {
+        "name": "parameter.query.state",
+        "value": "query"
+      }
+    ]
+  }
+}

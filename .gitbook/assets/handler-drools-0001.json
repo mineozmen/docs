@@ -1,0 +1,22 @@
+{
+  "id": "handler-drools-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Drools",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.drools.DroolsProcessEventHandler"
+      },
+      {
+        "name": "parameter.action.lock",
+        "value": "OPTIMISTIC"
+      },
+      {
+        "name": "parameter.config.state",
+        "value": "ruledomain"
+      }
+    ]
+  }
+}

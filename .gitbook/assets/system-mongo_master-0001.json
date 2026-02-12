@@ -1,0 +1,23 @@
+{
+  "id": "system-mongo_master-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "Mongo Master",
+    "description": "Mongo database for master data",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "mongo"
+      },
+      {
+        "name": "uri",
+        "value": "${{rierino.system.mongodb.main.uri}}"
+      },
+      {
+        "name": "database",
+        "value": "master"
+      }
+    ]
+  }
+}

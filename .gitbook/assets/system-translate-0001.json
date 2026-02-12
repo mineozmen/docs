@@ -1,0 +1,35 @@
+{
+  "id": "system-translate-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "Translate Default",
+    "description": "Default Google Translate REST API",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "rest"
+      },
+      {
+        "name": "url",
+        "value": "https://translation.googleapis.com/language/translate/v2"
+      },
+      {
+        "name": "trust",
+        "value": "true"
+      },
+      {
+        "name": "auth.method",
+        "value": "input"
+      },
+      {
+        "name": "auth.element",
+        "value": "key"
+      },
+      {
+        "name": "auth.key",
+        "value": "#{{rierinoKV.system.translate.main.key}}"
+      }
+    ]
+  }
+}

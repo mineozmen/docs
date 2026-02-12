@@ -1,0 +1,751 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Commerce Platform - Custom APIs
+  license:
+    name: Commercial
+
+servers:
+- url: https://gateway_server
+  description: API gateway server
+  
+paths:
+
+  /api/request/rpc/Deploy:
+  
+    post:
+      summary: Deploy a specific runner group
+      description: Trigger Jenkins task to deploy a set of runners defined in a deployment record.
+      tags:
+        - devops
+      requestBody:
+        description: Deployment details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deployment'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/Undeploy:
+  
+    post:
+      summary: Undeploy a specific runner group
+      description: Trigger Jenkins task to undeploy a set of runners defined in a deployment record.
+      tags:
+        - devops
+      requestBody:
+        description: Deployment details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deployment'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/GetCommandResults:
+  
+    get:
+      summary: Return results of command request(s)
+      description: Retrieve responses from runners to a specific command request or most recent commands in history.
+      tags:
+        - devops
+      parameters:
+        - name: requestid
+          in: query
+          description: Id of command request
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Max number of results
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    title: Results
+                    type: array
+                    items:
+                        title: Result
+                        type: object
+                        properties:
+                            requestTime:
+                                title: Request time (epoch)
+                                type: number
+                            requestId:
+                                title: Id of request triggering command
+                                type: string
+                            action:
+                                title: Command action requested
+                                type: string
+                            scope_type:
+                                title: Requested command execution level / type (e.g. RUNNER)
+                                type: string
+                            scope_runner:
+                                title: Name of target runner for execution
+                                type: string
+                            scope_runnerId:
+                                title: Id of target runner for execution
+                                type: string
+                            ack:
+                                title: Whether command receipt should be acknowledged
+                                type: string
+                            comment:
+                                title: Comment passed on with the command
+                                type: string
+                            requestmetaJson:
+                                title: Json string including request metadata details
+                                type: string
+                            parametersJson:
+                                title: Json string including  command parameters
+                                type: string
+                            status:
+                                title: Command response status
+                                type: string
+                            type:
+                                title: Command execution level / type (e.g. RUNNER)
+                                type: string
+                            runner:
+                                title: Name of runner that executed the command
+                                type: string
+                            runnerId:
+                                title: Id of runner that executed the command
+                                type: string
+                            deployment:
+                                title: Runner deployment version that executed the command
+                                type: string
+                            partition:
+                                title: Runner partition that executed the command
+                                type: string
+                            resultJson:
+                                title: Json string including command result details
+                                type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/GetProcessesForUser:
+  
+    get:
+      summary: Return list and status of user processes
+      description: Retrieve results of processes (e.g. import/export) registered against current user.
+      tags:
+        - devops
+      parameters:
+        - name: skip
+          in: query
+          description: Number of results to skip
+          required: false
+          schema:
+            type: number
+        - name: limit
+          in: query
+          description: Max number of results
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    list:
+                        title: Process list
+                        type: array
+                        items:
+                            title: Process data
+                            type: object
+                            properties:
+                                id:
+                                    title: Process run id
+                                    type: string
+                                createTime:
+                                    title: Process start time
+                                    type: number
+                                updateTime:
+                                    title: Process last update time
+                                    type: number
+                                data:
+                                    title: Process details
+                                    type: object
+                                    properties:
+                                        definition:
+                                            title: Process description
+                                            type: object
+                                        request:
+                                            title: Process request details (for rerun)
+                                            type: object
+                                        meta:
+                                            title: Process status metadata
+                                            type: object
+                                        info:
+                                            title: Detailed process messages
+                                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/RunModel:
+  
+    post:
+      summary: Trigger training of a specific model
+      description: Trigger Airflow dag to execute a Python ML/AI process defined in a model record.
+      tags:
+        - datascience
+      requestBody:
+        description: Model details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                modelId:
+                    type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dag_run'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/GetModelRuns:
+  
+    get:
+      summary: Get training history of a specific model
+      description: Retrieve Airflow dag run history for a Python ML/AI process defined in a model record.
+      tags:
+        - datascience
+      parameters:
+        - name: modelId
+          in: query
+          description: Id of model
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                    dag_runs:
+                        title: DAG run list
+                        type: array
+                        items:
+                            title: DAG run
+                            type: object
+                            properties:
+                                dag_run_id:
+                                    title: Unique id of the DAG run instance
+                                    type: string
+                                state:
+                                    title: Current state of the DAG run
+                                    type: string
+                                start_date:
+                                    title: DAG run start date time
+                                    type: string
+                                end_date:
+                                    title: DAG run end date time
+                                    type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/AddToCollection:
+    post:
+      summary: Add a list of products to a collection
+      description: Update collections data for given list of product ids adding given collection id.
+      tags:
+        - marketing
+      requestBody:
+        description: Model details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                    title: Product ids to add to collection
+                    type: array
+                    items:
+                        title: Product id to add
+                        type: string
+                data:
+                    title: Collection data for products
+                    type: object
+                    properties:
+                        main:
+                            type: object
+                            properties:
+                                collections:
+                                    title: Collection id wrapper array
+                                    type: array
+                                    items:
+                                        title: Collection id to add
+                                        type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/RemoveFromCollection:
+    post:
+      summary: Removes a list of products from a collection
+      description: Update collections data for given list of product ids removing given collection id.
+      tags:
+        - marketing
+      requestBody:
+        description: Model details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                    title: Product ids to remove from collection
+                    type: array
+                    items:
+                        title: Product id to remove
+                        type: string
+                data:
+                    title: Collection data for products
+                    type: object
+                    properties:
+                        main:
+                            type: object
+                            properties:
+                                collections:
+                                    title: Collection id wrapper array
+                                    type: array
+                                    items:
+                                        title: Collection id to remove
+                                        type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/ExportProducts:
+    post:
+      summary: Export product search results
+      description: Export products matching query parameters to a given file in csv or JSON format.
+      tags:
+        - product
+      requestBody:
+        description: Export details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileName:
+                    title: File name to export to
+                    type: string
+                format:
+                    title: File format (json or csv)
+                    type: string
+                filters:
+                    title: List of filters for data selection
+                    type: object
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dag_run'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+          
+  /api/request/rpc/ImportProducts:
+    post:
+      summary: Import product list
+      description: Import products from a given file in csv or JSON format.
+      tags:
+        - product
+      requestBody:
+        description: Import details
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fileName:
+                    title: File name to import from
+                    type: string
+                format:
+                    title: File format (json or csv)
+                    type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dag_run'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+                    
+  /api/request/rpc/GetProductsForAdmin:
+    get:
+      summary: Get a list of products
+      description: Retrieve summary list of products matching given query parameters.
+      tags:
+        - product
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of products
+                        type: array
+                        items:
+                            title: Product
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+                    
+  /api/request/rpc/GetPricesForAdmin:
+    get:
+      summary: Get a list of prices
+      description: Retrieve summary list of product prices matching given query parameters.
+      tags:
+        - product
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of product prices
+                        type: array
+                        items:
+                            title: Product price
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+          
+  /api/request/rpc/GetProductVariantsForAdmin:
+    get:
+      summary: Get a list of product variants
+      description: Retrieve summary list of variants for a given product id.
+      tags:
+        - product
+      parameters:
+        - name: productid
+          in: query
+          description: Id of product
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of product variants
+                        type: array
+                        items:
+                            title: Product variant
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+          
+  /api/request/rpc/GetCategories:
+    get:
+      summary: Get a list of product categories
+      description: Retrieve list of main product categories for a given parent id.
+      tags:
+        - taxonomy
+      parameters:
+        - name: parentid
+          in: query
+          description: Id of parent
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of main categories
+                        type: array
+                        items:
+                            title: Main category
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/GetInternalCategories:
+    get:
+      summary: Get a list of internal product categories
+      description: Retrieve list of internal product categories for a given parent id.
+      tags:
+        - taxonomy
+      parameters:
+        - name: parentid
+          in: query
+          description: Id of parent
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of internal categories
+                        type: array
+                        items:
+                            title: Internal category
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/rpc/GetCategoryProductAttributeValues:
+    get:
+      summary: Get attribute values applicable for product
+      description: Retrieve list of attribute values that can be applied for a product in given category id.
+      tags:
+        - taxonomy
+      parameters:
+        - name: categoryids[]
+          in: query
+          description: Comma separated list of category ids
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of attribute values
+                        type: array
+                        items:
+                            title: Attribute value
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+
+  /api/request/rpc/GetProductVariantAttributeValues:
+    get:
+      summary: Get attribute values applicable for variant
+      description: Retrieve list of attribute values that can be applied for a variant of given product id.
+      tags:
+        - taxonomy
+      parameters:
+        - name: productid
+          in: query
+          description: Product id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "OK"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: List of attribute values
+                        type: array
+                        items:
+                            title: Attribute value
+                            type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+          
+components:
+
+  parameters:
+  
+  schemas:
+    deployment:
+        title: Runner Deployment
+        type: object
+        properties:
+          deploymentId:
+              title: Deployment Id
+              description: The unique identifier for a deployment
+              type: string
+    dag_run:
+        title: DAG Run
+        type: object
+        properties:
+            dag:
+                title: DAG details
+                type: object
+                properties:
+                    dag_id:
+                        title: Id of DAG that will run
+                        type: string
+                    dag_run_id:
+                        title: Unique id of the DAG run instance
+                        type: string
+                    state:
+                        title: Current state of the DAG run
+                        type: string
+  
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

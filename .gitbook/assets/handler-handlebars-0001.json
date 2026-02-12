@@ -1,0 +1,18 @@
+{
+  "id": "handler-handlebars-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Template - Handlebars",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.TemplateEventHandler"
+      },
+      {
+        "name": "parameter.helper",
+        "value": "com.rierino.handler.util.helper.HandlebarsTemplateHelper"
+      }
+    ]
+  }
+}

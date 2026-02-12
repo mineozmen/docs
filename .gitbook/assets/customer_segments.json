@@ -1,0 +1,27 @@
+{
+  "id": "customer_segments",
+  "data": {
+    "name": "Customer Segments",
+    "type": "SIMPLE",
+    "status": "A",
+    "platform": "MONGODB",
+    "from": "customer_profile",
+    "where": {
+      "id": "22029617227880",
+      "category": "SIMPLE",
+      "command": "_id",
+      "operator": "EQ",
+      "value": "%%customerId%%"
+    },
+    "fields": [
+      {
+        "target": "id",
+        "expression": "_id"
+      },
+      {
+        "target": "lifestage",
+        "expression": "data.segments.lifestage"
+      }
+    ]
+  }
+}

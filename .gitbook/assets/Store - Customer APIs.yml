@@ -1,0 +1,218 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Gateway - Store Customer Operations
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/request/store_customer/GetCustomer:
+    get:
+      summary: Get customer data
+      operationId: getCustomer
+      tags:
+        - customer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer:
+                    title: Customer record
+                    type: object
+
+  /api/request/store_customer/SetCustomer:
+    post:
+      summary: Set customer data
+      operationId: setCustomer
+      tags:
+        - customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer:
+                    title: Customer record
+                    type: object
+                    properties:
+                        data:
+                            title: Customer data
+                            type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customer:
+                    title: Customer record
+                    type: object
+
+
+  /api/request/store_customer/GetSessionDNA:
+    get:
+      summary: Get session data
+      operationId: getSessionDNA
+      tags:
+        - session
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dna:
+                    title: Session dna
+                    type: object
+
+
+  /api/request/store_customer/RunCustomerJourneys:
+    get:
+      summary: Run customer journeys
+      operationId: runCustomerJourneys
+      tags:
+        - journey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer:
+                    title: Customer journey data
+                    type: object
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  journey:
+                    title: Journey result
+                    type: object
+
+
+  /api/request/store_customer/AddToWishList:
+    post:
+      summary: Add product to customer wish list
+      operationId: addToWishList
+      tags:
+        - wishlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productid:
+                    title: Id of product to add
+                    type: string
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wishlist:
+                    $ref: '#/components/schemas/wishlist'
+ 
+  /api/request/store_customer/RemoveFromWishList:
+    post:
+      summary: Remove product from customer wish list
+      operationId: removeFromWishList
+      tags:
+        - wishlist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                productid:
+                    title: Id of product to remove
+                    type: string
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wishlist:
+                    $ref: '#/components/schemas/wishlist'                   
+
+  /api/request/store_customer/GetWishList:
+    get:
+      summary: Get details of customer wish list
+      operationId: getWishList
+      tags:
+        - wishlist
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wishlist:
+                    $ref: '#/components/schemas/wishlistdetail'   
+                            
+      
+components:
+  
+  schemas:
+    wishlist:
+        title: Wish list record
+        type: object
+        properties:
+            data:
+                title: Wish list data
+                type: object
+                properties:
+                    products:
+                        title: Products in wish list
+                        type: array
+                        items:
+                            title: Product in wish list
+                            type: object
+                            properties:
+                                id:
+                                    title: Product id
+                                    type: string
+    wishlistdetail:
+        title: Wish list details
+        type: object
+        properties:
+            products:
+                title: Wish list products
+                type: array
+                items:
+                    title: Wish list product
+                    type: object
+                    properties:
+                        id:
+                            title: Product id
+                            type: string
+                        data:
+                            title: Product data
+                            type: object

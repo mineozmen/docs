@@ -1,0 +1,22 @@
+{
+  "id": "handler-task-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Task",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.TaskEventHandler"
+      },
+      {
+        "name": "parameter.task.action",
+        "value": "update"
+      },
+      {
+        "name": "parameter.timerMs",
+        "value": "-1"
+      }
+    ]
+  }
+}

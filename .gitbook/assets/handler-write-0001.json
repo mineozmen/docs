@@ -1,0 +1,15 @@
+{
+  "id": "handler-write-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Write",
+    "description": "Generic writer to states",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.WriteEventHandler"
+      }
+    ]
+  }
+}

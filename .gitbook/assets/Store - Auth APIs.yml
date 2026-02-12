@@ -1,0 +1,158 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Gateway - Store Authentication
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/auth/register/store_customer:
+    parameters:
+      - $ref: '#/components/parameters/originParam'
+    post:
+      summary: Register new customer
+      operationId: customerRegister
+      tags:
+        - auth
+      security:
+        - basicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {"name":"Test", "surname":"User"}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Registered customer data
+
+  /api/auth/login/store_customer:
+    parameters:
+      - $ref: '#/components/parameters/originParam'
+      - $ref: '#/components/parameters/cookie'
+      - $ref: '#/components/parameters/remember'
+    post:
+      summary: Login customer
+      operationId: customerLogin
+      tags:
+        - auth
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Set-Cookie:
+              schema:
+                description: Authentication token cookies (when cookie parameter is true)
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gateway_token:
+                    type: string
+
+  /api/auth/refresh/store_customer:
+    parameters:
+      - $ref: '#/components/parameters/originParam'
+      - $ref: '#/components/parameters/cookie'
+    post:
+      summary: Refresh customer token
+      operationId: customerRefresh
+      tags:
+        - auth
+      security:
+        - refreshToken: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Set-Cookie:
+              schema:
+                description: Authentication token cookies (when cookie parameter is true)
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  gateway_token:
+                    type: string
+
+  /api/auth/logout/store_customer:
+    parameters:
+      - $ref: '#/components/parameters/originParam'
+      - $ref: '#/components/parameters/cookie'
+    post:
+      summary: Close customer session
+      operationId: customerLogout
+      tags:
+        - auth
+      security:
+        - authToken: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Set-Cookie:
+              schema:
+                description: Cleared authentication token cookies (when cookie parameter is true)
+                type: string
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    authToken:
+      type: apiKey
+      in: header
+      name: Rierino-Auth.gateway_token
+    refreshToken:
+      type: apiKey
+      in: header
+      name: Rierino-Auth.refresh_token
+    authCookie:
+      type: apiKey
+      in: cookie
+      name: Rierino-Auth.gateway_token
+    refreshCookie:
+      type: apiKey
+      in: cookie
+      name: Rierino-Auth.refresh_token
+  parameters:
+    cookie:
+      name: cookie
+      in: query
+      required: false
+      description: Whether to store token in cookie
+      schema:
+        type: boolean
+      example: false
+    remember:
+      name: remember
+      in: query
+      required: false
+      description: Whether to provide long expiration token
+      schema:
+        type: boolean
+      example: false
+    originParam:
+      description: Base64 encoded origin JSON specification
+      in: header
+      name: 'Rierino-Origin'
+      schema:
+        type: string
+      required: false

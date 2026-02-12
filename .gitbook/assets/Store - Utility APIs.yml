@@ -1,0 +1,43 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Store - Product Operations
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/request/store_product/Ping:
+    get:
+      summary: Ping store saga
+      operationId: GETPing
+      tags:
+        - test
+      responses:
+        '200':
+          description: OK
+
+  /api/request/store_product/GetEnvironment:
+    get:
+      summary: Get environment variables
+      operationId: GETGetEnvironment
+      tags:
+        - test
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    locale:
+                        title: Locale details
+                        type: object
+                    path:
+                        title: Path details
+                        type: object

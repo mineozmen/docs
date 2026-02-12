@@ -1,0 +1,171 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Session Server - APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+
+paths:
+
+  /session/{type}:
+  
+    post:
+      summary: Get/create session
+      description: Gets or creates a session id for the origin of [type] given in request body.
+      parameters:
+       - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Origin details
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /session/{type}/extend:
+  
+    post:
+      summary: Extend sessions for origins
+      description: Extends sessions for all origin keys of [type] given in request body.
+      parameters:
+       - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Origin keys
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /session/{type}/extend/{originKey}:
+  
+    post:
+      summary: Extend session for origin
+      description: Extends session for the given [originKey] of [type].
+      parameters:
+       - $ref: '#/components/parameters/typeParam'
+       - $ref: '#/components/parameters/originKeyParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /session/{type}/stitch:
+  
+    post:
+      summary: Stitch to session
+      description: Stitches session for the given origin of [type], which includes oldId and oldType parameters to stitch an old user session to a new user.
+      parameters:
+       - $ref: '#/components/parameters/typeParam'
+      requestBody:
+        description: Origin details
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  
+  /session/{type}/expire/{originKey}/{sessionId}:
+  
+    post:
+      summary: Expire session for origin
+      description: Expires session for the given [originKey] of [type], with an option to explicitly specific [sessionId] to expire for validation.
+      parameters:
+       - $ref: '#/components/parameters/typeParam'
+       - $ref: '#/components/parameters/originKeyParam'
+       - $ref: '#/components/parameters/sessionIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+components:
+
+  parameters:
+    typeParam:
+      name: type
+      in: path
+      description: "Session type"
+      required: true
+      schema:
+        type: string
+        example: customer_session
+    originKeyParam:
+      name: originKey
+      in: path
+      description: "Unique origin identifier for session owner"
+      required: true
+      schema:
+        type: string
+        example: customer-123
+    sessionIdParam:
+      name: sessionId
+      in: path
+      description: "Id of the session to operate on"
+      required: true
+      schema:
+        type: string
+        example: 10001
+        
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

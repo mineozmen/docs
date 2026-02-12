@@ -1,0 +1,19 @@
+{
+  "id": "stream-saga-0001",
+  "data": {
+    "type": "STREAM",
+    "name": "Saga",
+    "description": "Saga step event results",
+    "status": "A",
+    "settings": [
+      {
+        "name": "system",
+        "value": "kafka_default"
+      },
+      {
+        "name": "meta.action.override",
+        "value": "StepSaga"
+      }
+    ]
+  }
+}

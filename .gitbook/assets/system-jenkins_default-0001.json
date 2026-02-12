@@ -1,0 +1,35 @@
+{
+  "id": "system-jenkins_default-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "Jenkins Default",
+    "description": "Default Jenkins REST API",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "rest"
+      },
+      {
+        "name": "trust",
+        "value": "true"
+      },
+      {
+        "name": "url",
+        "value": "${{rierino.system.jenkins.main.url}}"
+      },
+      {
+        "name": "auth.method",
+        "value": "basic"
+      },
+      {
+        "name": "auth.username",
+        "value": "#{{rierinoKV.system.jenkins.main.username}}"
+      },
+      {
+        "name": "auth.password",
+        "value": "#{{rierinoKV.system.jenkins.main.password}}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "FastTextArea",
+  "data": {
+    "name": "Fast - Text Area",
+    "status": "A",
+    "type": "Editor",
+    "category": "Value",
+    "remote": true,
+    "tag": "fast-text-area",
+    "propMap": {
+      "data": "value",
+      "onChange": "onInput",
+      "onChangeEval": "target.value"
+    },
+    "parameters": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "handler-siddhi-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Siddhi",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.siddhi.JsonSiddhiEventHandler"
+      },
+      {
+        "name": "parameter.action.lock",
+        "value": "OPTIMISTIC"
+      },
+      {
+        "name": "parameter.dataflow.state",
+        "value": "dataflow"
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "system-ebayseller_default-0001",
+  "data": {
+    "type": "SYSTEM",
+    "name": "eBay Seller Default",
+    "description": "Default ebay.com/sell REST API",
+    "status": "A",
+    "settings": [
+      {
+        "name": "type",
+        "value": "rest"
+      },
+      {
+        "name": "trust",
+        "value": "true"
+      },
+      {
+        "name": "url",
+        "value": "https://api.sandbox.ebay.com/sell"
+      },
+      {
+        "name": "auth.method",
+        "value": "scribe"
+      },
+      {
+        "name": "auth.provider.url",
+        "value": "https://api.sandbox.ebay.com/identity/v1/oauth2/token"
+      },
+      {
+        "name": "auth.token.grant",
+        "value": "refreshToken"
+      },
+      {
+        "name": "auth.key",
+        "value": "#{{rierinoKV.system.ebay.main.key}}"
+      },
+      {
+        "name": "auth.secret",
+        "value": "#{{rierinoKV.system.ebay.main.secret}}"
+      }
+    ]
+  }
+}

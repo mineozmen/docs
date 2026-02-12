@@ -1,0 +1,807 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Store - Product Operations
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/request/store_product/GetBrand:
+    get:
+      summary: Get a brand
+      operationId: GETGetBrand
+      tags:
+        - brand
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/brandidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    brand:
+                      $ref: "#/components/schemas/brand"
+
+  /api/request/store_product/GetCategory:
+    get:
+      summary: Get a category
+      operationId: GETGetCategory
+      tags:
+        - category
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/categoryidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    category:
+                      $ref: "#/components/schemas/category"
+
+  /api/request/store_product/GetCollection:
+    get:
+      summary: Get a collection
+      operationId: GETGetCollection
+      tags:
+        - collection
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/collectionidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    collection:
+                      $ref: "#/components/schemas/collection"
+
+  /api/request/store_product/GetProduct:
+    get:
+      summary: Get a product
+      operationId: GETGetProduct
+      tags:
+        - product
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/productidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    product:
+                      $ref: "#/components/schemas/product"
+
+  /api/request/store_product/GetProduct_C:
+    get:
+      summary: Get a customized product
+      operationId: GETGetProduct_C
+      tags:
+        - product
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/productidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    product:
+                      $ref: "#/components/schemas/product"
+
+  /api/request/store_product/SearchProducts:
+    get:
+      summary: Searches products
+      operationId: GETSearchProducts
+      tags:
+        - search
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+
+  /api/request/store_product/SearchProducts_C:
+    get:
+      summary: Searches customized products
+      operationId: GETSearchProducts_C
+      tags:
+        - search
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+
+  /api/request/store_product/SearchBrandProducts:
+    get:
+      summary: Searches brand products
+      operationId: GETSearchBrandProducts
+      tags:
+        - search
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+
+  /api/request/store_product/SearchBrandProducts_C:
+    get:
+      summary: Searches customized brand products
+      operationId: GETSearchBrandProducts_C
+      tags:
+        - search
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+          
+  /api/request/store_product/SearchCategoryProducts:
+    get:
+      summary: Searches category products
+      operationId: GETSearchCategoryProducts
+      tags:
+        - search
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+
+  /api/request/store_product/SearchCategoryProducts_C:
+    get:
+      summary: Searches customized category products
+      operationId: GETSearchCategoryProducts_C
+      tags:
+        - search
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+          
+  /api/request/store_product/SearchCollectionProducts:
+    get:
+      summary: Searches collection products
+      operationId: GETSearchCollectionProducts
+      tags:
+        - search
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+
+  /api/request/store_product/SearchCollectionProducts_C:
+    get:
+      summary: Searches customized collection products
+      operationId: GETSearchCollectionProducts_C
+      tags:
+        - search
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/searchResultsOK'
+          
+  /api/request/store_product/SearchFacets:
+    get:
+      summary: Searches facets
+      operationId: GETSearchFacets
+      tags:
+        - search
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+        - $ref: '#/components/parameters/attribute1idParam'
+        - $ref: '#/components/parameters/attribute2idParam'
+        - $ref: '#/components/parameters/attribute3idParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    facets:
+                      type: array
+                      description: Most frequent facet values for requested facets
+                      items:
+                        type: object
+                        properties:
+                          prices:
+                            $ref: "#/components/schemas/facetPrices"
+                          brands:
+                            $ref: "#/components/schemas/facetItems"
+                          categories:
+                            $ref: "#/components/schemas/facetItems"
+                          attribute_1:
+                            $ref: "#/components/schemas/facetItems"
+                          attribute_2:
+                            $ref: "#/components/schemas/facetItems"
+                          attribute_3:
+                            $ref: "#/components/schemas/facetItems"
+          
+  /api/request/store_product/SearchFacets_C:
+    get:
+      summary: Searches customized facets
+      operationId: GETSearchFacets_C
+      tags:
+        - search
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/attribute1sParam'
+        - $ref: '#/components/parameters/attribute2sParam'
+        - $ref: '#/components/parameters/attribute3sParam'
+        - $ref: '#/components/parameters/categoryidsParam'
+        - $ref: '#/components/parameters/brandidsParam'
+        - $ref: '#/components/parameters/minpriceParam'
+        - $ref: '#/components/parameters/maxpriceParam'
+        - $ref: '#/components/parameters/orderbyParam'
+        - $ref: '#/components/parameters/ascendingParam'
+        - $ref: '#/components/parameters/autofilterParam'
+        - $ref: '#/components/parameters/attribute1idParam'
+        - $ref: '#/components/parameters/attribute2idParam'
+        - $ref: '#/components/parameters/attribute3idParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    facets:
+                      type: array
+                      description: Most frequent facet values for requested facets
+                      items:
+                        type: object
+                        properties:
+                          prices:
+                            $ref: "#/components/schemas/facetPrices"
+                          brands:
+                            $ref: "#/components/schemas/facetItems"
+                          categories:
+                            $ref: "#/components/schemas/facetItems"
+                          attribute_1:
+                            $ref: "#/components/schemas/facetItems"
+                          attribute_2:
+                            $ref: "#/components/schemas/facetItems"
+                          attribute_3:
+                            $ref: "#/components/schemas/facetItems"
+
+  /api/request/store_product/GetProductRecommendations:
+    get:
+      summary: Get product recommendations
+      operationId: GETGetProductRecommendations
+      tags:
+        - recommendation
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/productidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    products:
+                      $ref: "#/components/schemas/productList"
+
+  /api/request/store_product/GetProductRecommendations_C:
+    get:
+      summary: Get customized product recommendations
+      operationId: GETGetProductRecommendations_C
+      tags:
+        - recommendation
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/productidParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    products:
+                      $ref: "#/components/schemas/productList"
+
+  /api/request/store_product/GetBasketRecommendations:
+    get:
+      summary: Get basket recommendations
+      operationId: GETGetBasketRecommendations
+      tags:
+        - recommendation
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/productidsParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    products:
+                      $ref: "#/components/schemas/productList"
+                  
+  /api/request/store_product/GetBasketRecommendations_C:
+    get:
+      summary: Get customized basket recommendations
+      operationId: GETGetBasketRecommendations_C
+      tags:
+        - recommendation
+        - customized
+      parameters:
+        - $ref: '#/components/parameters/languageParam'
+        - $ref: '#/components/parameters/currencyParam'
+        - $ref: '#/components/parameters/productidsParam'
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    products:
+                      $ref: "#/components/schemas/productList"
+
+
+components:
+  parameters:
+    productidParam:
+      name: productid
+      in: query
+      description: ID of the product to get
+      required: true
+      schema:
+        type: string
+        example: f_15360092
+    productidsParam:
+      name: productids
+      in: query
+      description: IDs of the products
+      required: true
+      schema:
+        type: array
+        items:
+          type: string
+        example: ["f_15360092"]
+    languageParam:
+      name: language
+      in: query
+      description: Language for returned details
+      required: false
+      schema:
+        type: string
+        example: enUS
+    currencyParam:
+      name: currency
+      in: query
+      description: Currency for returned details
+      required: false
+      schema:
+        type: string
+        example: USD
+    searchParam:
+      name: search
+      in: query
+      description: Text to search
+      required: true
+      schema:
+        type: string
+        example: Nike
+    attribute1sParam:
+      name: attribute1s
+      in: query
+      description: First set of attribute values to search
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ["10001"]
+    attribute2sParam:
+      name: attribute2s
+      in: query
+      description: Second set of attribute values to search
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ["10001"]
+    attribute3sParam:
+      name: attribute3s
+      in: query
+      description: Third set of attribute values to search
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ["10001"]
+    minpriceParam:
+      name: minprice
+      in: query
+      description: Minimum price
+      required: false
+      schema:
+        type: number
+        example: 0
+    maxpriceParam:
+      name: maxprice
+      in: query
+      description: Maximum price
+      required: false
+      schema:
+        type: number
+        example: 1000
+    categoryidParam:
+      name: categoryid
+      in: query
+      description: ID of the category to get
+      required: true
+      schema:
+        type: string
+        example: "97"
+    categoryidsParam:
+      name: categoryids
+      in: query
+      description: List of category ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ["70"]
+    brandidParam:
+      name: brandid
+      in: query
+      description: ID of the brand to get
+      required: true
+      schema:
+        type: string
+        example: "70"
+    brandidsParam:
+      name: brandids
+      in: query
+      description: List of brand ids
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example: ["70"]
+    autofilterParam:
+      name: autofilter
+      in: query
+      description: Autofilter search
+      required: true
+      schema:
+        type: boolean
+        example: true
+    orderbyParam:
+      name: orderby
+      in: query
+      description: Order by field
+      required: true
+      schema:
+        type: string
+        example: relevance
+    ascendingParam:
+      name: ascending
+      in: query
+      description: Order by is ascending
+      required: false
+      schema:
+        type: boolean
+        example: false
+    attribute1idParam:
+      name: attribute1id
+      in: query
+      description: First set of attribute values to return
+      required: false
+      schema:
+        type: string
+        example: "1"
+    attribute2idParam:
+      name: attribute2id
+      in: query
+      description: First set of attribute values to return
+      required: false
+      schema:
+        type: string
+        example: "2"
+    attribute3idParam:
+      name: attribute3id
+      in: query
+      description: First set of attribute values to return
+      required: false
+      schema:
+        type: string
+        example: "3"
+    collectionidParam:
+      name: collectionid
+      in: query
+      description: Id of the collection to view
+      required: true
+      schema:
+        type: string
+        example: "1"
+
+
+  responses:
+    searchResultsOK:
+      description: OK
+      content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                total:
+                  type: object
+                  properties:
+                    count:
+                        title: Total products in results
+                        type: number
+                stats:
+                  type: array
+                  title: List of most frequent attributes in search results 
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        title: Attribute id
+                        type: string
+                      count:
+                        title: Products with attribute in results
+                        type: number
+                products:
+                  $ref: "#/components/schemas/productList"
+
+  schemas:
+    parameters:
+      type: object
+      description: Parameters of this API call
+    genericResult:
+      type: object
+    facetPrices:
+      type: object
+      properties:
+        min:
+          type: number
+          description: Minimum price in search results
+        max:
+          type: number
+          description: Maximum price in search results
+    facetItems:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+          count:
+            type: number
+          name:
+            type: string
+    productList:
+      type: array
+      items:
+        title: Product
+        type: object
+        properties:
+          id:
+            title: Product id
+            type: string
+          data:
+            title: Product data
+            type: object
+    product:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          title: Product data
+          type: object
+    brand:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            images:
+              type: array
+              items:
+                type: string             
+    category:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            images:
+              type: array
+              items:
+                type: string
+    collection:
+      type: object
+      properties:
+        id:
+          type: string
+        data:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            images:
+              type: array
+              items:
+                type: string

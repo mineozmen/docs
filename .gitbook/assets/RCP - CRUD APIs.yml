@@ -1,0 +1,247 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Commerce Platform - CRUD APIs
+  license:
+    name: Commercial
+
+servers:
+- url: https://gateway_server
+  description: API gateway server
+  
+paths:
+
+  /api/request/crud/{entity}:
+  
+    get:
+      summary: Get list of all records for [entity]
+      description: CRUD request to get list of all records from the [entity] state.
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericListOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+    post:
+      summary: Create a new [entity] with auto-generated id
+      description: CRUD request to create a new record on [entity] state with back-end generated id.
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+      requestBody:
+        description: Entity record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entity'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSingleOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/request/crud/{entity}/{id}:
+  
+    get:
+      summary: Get record of [entity] with [id]
+      description: CRUD request to get all details of the entry with [id] id in [entity] state.
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSingleOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+    post:
+      summary: Create a new [entity] with given [id]
+      description: CRUD request to create a new record on [entity] state with user provided [id].
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+        - $ref: '#/components/parameters/idParam'
+      requestBody:
+        description: Entity record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entity'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSingleOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+          
+    put:
+      summary: Set or insert an [entity] with given [id]
+      description: CRUD request to upsert a record on [entity] state with user provided [id].
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+        - $ref: '#/components/parameters/idParam'
+      requestBody:
+        description: Entity record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entity'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSingleOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+      
+    patch:
+      summary: Partially update an [entity] with given [id]
+      description: CRUD request to update a record's some fields on [entity] state with user provided [id].
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+        - $ref: '#/components/parameters/idParam'
+      requestBody:
+        description: Entity record
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entity'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericSingleOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+      
+    delete:
+      summary: Delete an [entity] with given [id]
+      description: CRUD request to delete a record on [entity] state with user provided [id].
+      parameters:
+        - $ref: '#/components/parameters/entityParam'
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+                    
+components:
+
+  parameters:
+    entityParam:
+      name: entity
+      in: path
+      description: "Name of entity"
+      required: true
+      schema:
+        type: string
+        example: product
+    idParam:
+      name: id
+      in: path
+      description: "Record id"
+      required: true
+      schema:
+        type: string
+        example: p_12345
+  
+  schemas:
+    entity:
+      title: Entity record
+      description: A generic record definition
+      type: object
+      properties:
+        id:
+          title: ID
+          description: The unique identifier for a record
+          type: string
+          readOnly: true
+        data:
+          title: Record Information
+          description: Properties of the record
+          type: object
+        customData:
+          title: Customizations
+          description: Customized data list for the record
+          type: array
+          items:
+            title: Customization
+            description: Customized data entry
+            type: object
+            properties:
+              customBy:
+                title: Custom By
+                description: Customization applied
+                type: number
+              data:
+                title: Custom Data
+                description: Custom record data
+                type: object
+  
+  responses:
+    GenericOK:
+      description: "OK"
+    GenericSingleOK:
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/entity'
+    GenericListOK:
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+                list:
+                    title: Record List
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/entity'
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

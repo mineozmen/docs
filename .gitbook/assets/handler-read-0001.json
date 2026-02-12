@@ -1,0 +1,15 @@
+{
+  "id": "handler-read-0001",
+  "data": {
+    "type": "HANDLER",
+    "name": "Read",
+    "description": "Generic reader from states",
+    "status": "A",
+    "settings": [
+      {
+        "name": "class",
+        "value": "com.rierino.handler.ReadEventHandler"
+      }
+    ]
+  }
+}

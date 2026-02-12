@@ -1,0 +1,115 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Gateway Server - Message APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+
+paths:
+
+  /api/send/{service}/{topic}/{key}:
+  
+    post:
+      summary: Send message to topic
+      description: Sends a message provided in request body to [topic] on [service]. If [key] is specified, it is used as the message key on target topic, as well as in calculating the partition id. 
+      parameters:
+       - $ref: '#/components/parameters/serviceParam'
+       - $ref: '#/components/parameters/topicParam'
+       - $ref: '#/components/parameters/keyParam'
+      requestBody:
+        description: Message body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /api/send/{service}/{topic}/mod/{mod}/{key}:
+  
+    post:
+      summary: Send message to topic
+      description: Sends a message provided in request body to [topic] on [service] on partition [key] modulo [mod].
+      parameters:
+       - $ref: '#/components/parameters/serviceParam'
+       - $ref: '#/components/parameters/topicParam'
+       - $ref: '#/components/parameters/keyParam'
+       - $ref: '#/components/parameters/modParam'
+      requestBody:
+        description: Message body
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+components:
+
+  parameters:
+    serviceParam:
+      name: service
+      in: path
+      description: "Kafka service name to send message"
+      required: true
+      schema:
+        type: string
+        example: kafka_default
+    topicParam:
+      name: topic
+      in: path
+      description: "Kafka topic name to send message"
+      required: true
+      schema:
+        type: string
+        example: trigger
+    keyParam:
+      name: key
+      in: path
+      description: "Message key for sending message"
+      required: true
+      schema:
+        type: string
+        example: 10001
+    modParam:
+      name: mod
+      in: path
+      description: "Module for finding topic partition"
+      required: true
+      schema:
+        type: string
+        example: 10
+        
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

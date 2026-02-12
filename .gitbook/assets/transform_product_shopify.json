@@ -1,0 +1,11 @@
+{
+  "id": "transform_product_shopify",
+  "data": {
+    "name": "Transform - Product to Shopify",
+    "status": "A",
+    "engine": "groovy",
+    "domain": "pim",
+    "description": "Transformation of product data for Shopify integration in PIM",
+    "code": "package scripts;\n\nimport com.rierino.core.util.JsonUtil;\nimport com.fasterxml.jackson.databind.JsonNode;\nimport com.fasterxml.jackson.databind.node.ObjectNode;\nimport com.fasterxml.jackson.databind.node.ArrayNode;\n\ndef transform(JsonNode event){\n    \n    def mapper = JsonUtil.mapper;\n    \n    ObjectNode payload = event.get(\"payload\");\n    \n    return event;\n}"
+  }
+}

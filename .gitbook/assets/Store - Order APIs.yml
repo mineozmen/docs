@@ -1,0 +1,82 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Rierino Store - Order Operations
+  license:
+    name: Commercial
+servers:
+  - url: https://localhost:1233
+    description: Local server
+  - url: https://runner-1.us-west4-a.c.development-295912.internal:1233
+    description: Remote server
+paths:
+
+  /api/request/store_basket/GetPaymentURL_C:
+    get:
+      summary: Rate current customer basket and return payment url
+      operationId: GETGetPaymentUrl_C
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    url:
+                        title: URL of payment processing page for the basket
+                        type: string
+
+  /api/request/store_basket/UpdatePaymentStatus:
+    post:
+      summary: Refresh payment status for a specific payment request
+      operationId: POSTUpdatePaymentStatus
+      tags:
+        - order
+      requestBody:
+        description: Entity record
+        content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    paymentid:
+                        title: Id of the payment instance received from payment processing
+                        type: string
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    payment:
+                        title: Payment details
+                        type: object
+                    order:
+                        title: Order details
+                        type: object
+
+  /api/request/store_basket/GetOrders_C:
+    get:
+      summary: Get historical orders of the customer
+      operationId: GETGetOrders_C
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    list:
+                        title: Order list
+                        type: array
+                        items:
+                            title: Order
+                            type: object

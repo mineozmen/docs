@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Gateway Server - Control APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+  
+paths:
+
+  /api/control:
+  
+    post:
+      summary: Issue gateway command
+      description: Receives [command], [component] (such as system, channel, service, token) and [id] parameters in body to execute REFRESH or SHOW commands.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command:
+                  type: string
+                  example: REFRESH
+                component:
+                  type: string
+                  example: system
+                id:
+                  type: string
+                  example: kafka_default
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+  /api/control/{component}/{id}:
+  
+    get:
+      summary: Show gateway component configuration
+      description: Issues SHOW command for [component] and [id], returning its current settings. If [id] is *, all component values are listed for the [component].
+      parameters:
+        - $ref: '#/components/parameters/componentParam'
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+    post:
+      summary: Reload gateway component configuration
+      description: Issues REFRESH command for [component] and [id] and returns its new settings.
+      parameters:
+        - $ref: '#/components/parameters/componentParam'
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+components:
+  parameters:
+    componentParam:
+      name: component
+      in: path
+      description: "Gateway component type to apply command on"
+      required: true
+      type: string
+      example: system
+    idParam:
+      name: id
+      in: path
+      description: "Gateway component id to apply command on"
+      required: true
+      type: string
+      example: kafka_default
+
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."

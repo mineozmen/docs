@@ -1,0 +1,246 @@
+{
+  "id": "product_detail_query",
+  "data": {
+    "name": "Product Detail",
+    "type": "SIMPLE",
+    "status": "A",
+    "platform": "MONGODB",
+    "from": "product",
+    "joins": [
+      {
+        "type": "LEFT",
+        "from": "product_price_discounted",
+        "as": "price",
+        "condition": {
+          "id": "22055488801231",
+          "category": "SIMPLE",
+          "command": "_id",
+          "operator": "EQ",
+          "value": "_id"
+        }
+      },
+      {
+        "type": "LEFT",
+        "from": "product_variant",
+        "as": "variants",
+        "parameters": {
+          "let": {
+            "product_id": "$_id"
+          },
+          "pipeline": [
+            {
+              "\"$match\"": {
+                "\"$expr\"": {
+                  "\"$and\"": [
+                    {
+                      "\"$eq\"": [
+                        "$deleted",
+                        false
+                      ]
+                    },
+                    {
+                      "\"$eq\"": [
+                        "$data.productId",
+                        "$$product_id"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "\"$lookup\"": {
+                "from": "product_variant_stock",
+                "localField": "_id",
+                "foreignField": "_id",
+                "as": "variant_stock"
+              }
+            },
+            {
+              "\"$lookup\"": {
+                "from": "attribute_value",
+                "let": {
+                  "attribute_value_id": "$data.attributes"
+                },
+                "pipeline": [
+                  {
+                    "\"$match\"": {
+                      "\"$expr\"": {
+                        "\"$in\"": [
+                          "$_id",
+                          "$$attribute_value_id"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "\"$lookup\"": {
+                      "from": "attribute",
+                      "localField": "data.attributeId",
+                      "foreignField": "_id",
+                      "as": "attributes"
+                    }
+                  }
+                ],
+                "as": "attributeValues"
+              }
+            },
+            {
+              "\"$project\"": {
+                "id": "$_id",
+                "attributes": {
+                  "\"$map\"": {
+                    "input": "$attributeValues",
+                    "in": {
+                      "id": "$$this._id",
+                      "attributeId": "$$this.data.attributeId",
+                      "attributeName": {
+                        "\"$first\"": "$$this.attributes.data.name.%%language%%"
+                      },
+                      "name": "$$this.data.name.%%language%%",
+                      "order": "$$this.data.order"
+                    }
+                  }
+                },
+                "stock": {
+                  "\"$first\"": "$variant_stock.data.level"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "LEFT",
+        "from": "brand",
+        "as": "brand",
+        "condition": {
+          "id": "22055488801241",
+          "category": "SIMPLE",
+          "command": "data.main.brand",
+          "operator": "EQ",
+          "value": "_id"
+        }
+      },
+      {
+        "type": "LEFT",
+        "from": "category_main",
+        "as": "category",
+        "condition": {
+          "id": "22055488801233",
+          "category": "SIMPLE",
+          "command": "data.main.categories",
+          "operator": "EQ",
+          "value": "_id"
+        }
+      },
+      {
+        "type": "LEFT",
+        "from": "attribute_value",
+        "as": "attributeValues",
+        "parameters": {
+          "let": {
+            "attribute_value_id": "$data.main.attributes"
+          },
+          "pipeline": [
+            {
+              "\"$match\"": {
+                "\"$expr\"": {
+                  "\"$in\"": [
+                    "$_id",
+                    "$$attribute_value_id"
+                  ]
+                }
+              }
+            },
+            {
+              "\"$lookup\"": {
+                "from": "attribute",
+                "localField": "data.attributeId",
+                "foreignField": "_id",
+                "as": "attributes"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "where": {
+      "id": "22055488801240",
+      "category": "COMPLEX",
+      "conditions": [
+        {
+          "id": "22055488801239",
+          "category": "SIMPLE",
+          "command": "deleted",
+          "operator": "EQ",
+          "value": "false"
+        },
+        {
+          "id": "22055488801239",
+          "category": "SIMPLE",
+          "command": "_id",
+          "operator": "EQ",
+          "value": "%%productid%%"
+        }
+      ],
+      "operator": "AND"
+    },
+    "limit": "%%limit%%",
+    "fields": [
+      {
+        "target": "id",
+        "expression": "_id"
+      },
+      {
+        "target": "data.name",
+        "expression": "data.main.name.%%language%%"
+      },
+      {
+        "target": "data.description",
+        "expression": "data.main.description.%%language%%"
+      },
+      {
+        "target": "data.detailDescription",
+        "expression": "data.main.detailDescription.%%language%%"
+      },
+      {
+        "target": "data.tags",
+        "expression": "data.main.tags.%%language%%"
+      },
+      {
+        "target": "data.images",
+        "expression": "data.main.images"
+      },
+      {
+        "target": "data.brand",
+        "expression": "{$first:\"$brand.data.main.name\"}"
+      },
+      {
+        "target": "data.category",
+        "expression": "{$first:\"$category.data.name.%%language%%\"}"
+      },
+      {
+        "target": "data.basePrice",
+        "expression": "{$first:\"$price.data.basePrice.%%currency%%\"}"
+      },
+      {
+        "target": "data.salePrice",
+        "expression": "{$first:\"$price.data.salePrice.%%currency%%\"}"
+      },
+      {
+        "target": "data.discountedPrice",
+        "expression": "{$first:\"$price.data.discountedPrice.%%currency%%\"}"
+      },
+      {
+        "target": "data.attributes",
+        "expression": "{$map: {\n\"input\": \"$attributeValues\",\n\"in\": {\n\"id\":\"$$this._id\",\n\"attributeId\":\"$$this.data.attributeId\",\n\"attributeName\": {$first:\"$$this.attributes.data.name.%%language%%\"},\n\"name\":\"$$this.data.name.%%language%%\",\n\"order\":\"$$this.data.order\"\n}\n}}"
+      },
+      {
+        "target": "data.variants",
+        "expression": "variants"
+      }
+    ],
+    "skip": "%%skip%%"
+  }
+}

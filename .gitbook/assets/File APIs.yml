@@ -1,0 +1,148 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Rierino - Gateway Server - File APIs
+  license:
+    name: Commercial
+
+servers:
+- url: localhost:1234
+  description: Local test server
+  
+paths:
+
+  /api/file/{service}:
+  
+    get:
+      summary: Get list of files
+      description: Returns list of files in [service] file system under path assigned to current user id or "anonymous".
+      parameters:
+        - $ref: '#/components/parameters/serviceParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+    post:
+      summary: Upload unnamed file
+      description: Uploads a new file with globally unique name in [service] file system under path assigned to current user id or "anonymous". 
+      parameters:
+        - $ref: '#/components/parameters/serviceParam'
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+  
+  /api/file/{service}/{filePath}:
+  
+    get:
+      summary: Downloads a selected file
+      description: Downloads file from [filePath] in [service] file system under path assigned to current user id or "anonymous", as application/octet-stream. 
+      parameters:
+        - $ref: '#/components/parameters/serviceParam'
+        - $ref: '#/components/parameters/filePathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+    post:
+      summary: Upload named file
+      description: Uploads a new file with on [filePath] in [service] file system under path assigned to current user id or "anonymous". 
+      parameters:
+        - $ref: '#/components/parameters/serviceParam'
+        - $ref: '#/components/parameters/filePathParam'
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+    delete:
+      summary: Deletes a selected file
+      description: Deletes file from [filePath] in [service] file system under path assigned to current user id or "anonymous". 
+      parameters:
+        - $ref: '#/components/parameters/serviceParam'
+        - $ref: '#/components/parameters/filePathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/GenericOK'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+        '501':
+          $ref: '#/components/responses/NotImplemented'
+
+components:
+
+  parameters:
+    serviceParam:
+      name: service
+      in: path
+      description: "File system to use for operations"
+      required: true
+      schema:
+        type: string
+        example: default_hdfs
+    filePathParam:
+      name: filePath
+      in: path
+      description: "Relative path to selected file"
+      required: true
+      schema:
+        type: string
+        example: test/sample.json
+        
+  responses:
+    GenericOK:
+      description: "OK"
+    Unauthorized:
+      description: "Authorization information is missing or invalid."
+    Forbidden:
+      description: "User does not have the required role for access."
+    InternalError:
+      description: "Server failed to process request due to internal errors."
+    NotImplemented:
+      description: "Feature is not implemented by the server."
