@@ -7,7 +7,7 @@ icon: sitemap
 
 # Architecture
 
-Key components included in a full deployment are as follows:
+Key components included in a full deployment are:
 
 <figure><img src="../.gitbook/assets/image (111).png" alt=""><figcaption><p>Platform Architecture</p></figcaption></figure>
 
@@ -15,25 +15,33 @@ Key components included in a full deployment are as follows:
 
 ### External UIs & Systems
 
-As a headless platform, Rierino allows integration with any customer facing channel (e.g. web, app, social, video, virtual) and technology through its set of APIs. Removing dependency between the platform and the front-end gives creative freedom for branded and customized user experiences, while allowing microservice developers to focus on performance and cost optimization.
+Rierino is headless. It integrates with any customer-facing channel through APIs. This includes web, apps, social, video, and virtual channels.
+
+This decoupling gives you freedom on UX and tech choices. It also keeps backend teams focused on performance and cost.
 
 ### Admin UI
 
-Rierino is shipped with a highly customizable Next.js front-end for the internal users, referred to as the Admin UI. While, similar to the customer facing channels, it is possible to integrate Rierino back-end with any UI for administration through its set of admin APIs, Rierino already provides a flexible Admin UI for easier and faster deployment.
+Rierino ships with a highly customizable Next.js front-end for internal users. This is the **Admin UI**.
 
-The Admin UI can be customized by configuring Apps, UIs, Sources and Options as defined in [user interface](../design/user-interface/) section. It also has an embedded [data visualization](../data-science/data-visualizations.md) component, which can service BI dashboards, ML models and data quality insights directly within the interface where users manage products, prices, etc.
+You can still integrate any custom admin UI through admin APIs. The built-in Admin UI is the fastest path to a production-ready setup.
+
+Customize the Admin UI using Apps, UIs, Sources, and Options. See the [user interface](../design/user-interface/) section.
+
+The Admin UI also includes embedded [data visualization](../data-science/data-visualizations.md). Use it for BI dashboards, ML outputs, and data-quality insights. Keep insights close to the screens where users work.
 
 ## Hyper-Scalable Back-end
 
 ### API Gateways
 
-Rierino deployments include a gateway layer, which includes request routing, authentication and session management capabilities. While it is possible to use an external API gateway such as Kong, Rierino already provides a flexible layer for easier and faster deployment.
+Rierino deployments include a gateway layer. It covers request routing, authentication, and session management.
 
-This layer consists of a dedicated Spring Webflux deployment for Gateway Server which communicates with runner(s) responsible for authentication and session management activities.
+You can use an external gateway (for example, Kong). Rierino’s built-in gateway layer is often simpler to deploy and customize.
 
-All authentication and session management actions are managed as API flows, making them 100% customizable, allowing integration of existing security systems and policies.
+This layer typically uses a dedicated Spring Webflux deployment for Gateway Server. It communicates with runner(s) for authentication and session management.
 
-The gateway layer can be customized by configuring Systems, Channels, Services and Tokens as defined in [Gateway & Security](../devops/gateway-and-security/) section.&#x20;
+Authentication and session management are implemented as API flows. This keeps them fully customizable. It also makes it easier to integrate existing security systems and policies.
+
+Customize the gateway layer using Systems, Channels, Services, and Tokens. See [Gateway & Security](../devops/gateway-and-security/).
 
 {% hint style="info" %}
 While it is possible to deploy a single gateway layer for all types of users and requests, it is recommended to have dedicated instances for different user types (e.g. internal users, sellers, buyers) to allow customized network security and performance management configurations for each.
@@ -41,31 +49,39 @@ While it is possible to deploy a single gateway layer for all types of users and
 
 ### Micro-Composable Services
 
-Micro-composable service runners sit at the heart of Rierino platform, and can be designed, deployed and controlled through the admin UI. Each service runner consists of a specific set of [elements ](../devops/microservices/elements/)which define the data sources it can access, list of functions it can execute and message channels it can use, providing ability to build specialized micro-services.
+Micro-composable service runners sit at the heart of Rierino. You can design, deploy, and control them through the Admin UI.
+
+Each runner is composed from a set of [elements](../devops/microservices/elements/). Elements define:
+
+* Which data sources a runner can access
+* Which functions it can execute
+* Which message channels it can use
+
+This makes it easy to build specialized micro-services.
 
 While it is possible to develop and deploy service runners using any language or platform, Rierino is shipped with 3 main types of Java based runners:
 
-* **Spring Runners:** Using Spring Webflux framework to deploy reactive web runners
-* **Samza Runners:** Using Apache Samza library to deploy message based runners&#x20;
-* **Camel Runners:** Using Apache Camel library to deploy runners capable of custom integrations
+* **Spring Runners:** Use Spring Webflux to deploy reactive web runners.
+* **Samza Runners:** Use Apache Samza to deploy message-based runners.
+* **Camel Runners:** Use Apache Camel to deploy runners for custom integrations.
 
 ### Batch Tasks
 
-Rierino is shipped with a set of Python libraries for most common analytics & batch tasks, such as data integration, customer segmentation, recommendation models, data quality assessment, data import or export.
+Rierino ships with Python libraries for common analytics and batch tasks. Use cases include data integration, segmentation, recommendation models, and data quality. It also supports import and export workloads.
 
-These batch tasks are typically deployed and triggered by a scheduler (e.g. Airflow), ensuring traceability and resilience of each task.
+Batch tasks are usually deployed and triggered by a scheduler (for example, Airflow). This improves traceability and operational resilience.
 
-In addition to these tasks, Rierino is shipped with a set of devops features, to simplify deployment and maintenance of runners, which can be also managed through external CI/CD platforms.&#x20;
+Rierino also includes DevOps features for runner deployment and maintenance. You can integrate these with external CI/CD platforms.
 
 ### 3rd Party Platforms
 
-Rierino provides ability to integrate with 3rd party solutions (such as payments, OMS, WMS) through both REST API and data based integration approaches.
+Rierino integrates with 3rd party solutions like payments, OMS, and WMS. It supports both REST API integration and data-based integration approaches.
 
 ## Plug & Play Storage
 
 ### Data Stores
 
-Rierino supports use of various data systems with varying latency and proximity. Each of these systems are replaceable with minimal effort (such as developing an adapter if necessary).&#x20;
+Rierino supports multiple data systems with different latency and proximity. Each system is replaceable with minimal effort. In some cases you may only need a new adapter.
 
 * **Cache:** Local and shared caching options for lowest latency operations
 * **Operational:** NoSQL & SQL data stores used as master or read/write stores
@@ -75,4 +91,4 @@ Rierino supports use of various data systems with varying latency and proximity.
 
 ### File Systems
 
-In addition to structured/semi-structured data systems, Rierino supports use of file systems such as FTP, HDFS, S3 for storing assets such as trained ML models, digital assets and documents.
+In addition to structured and semi-structured data stores, Rierino supports file systems. Common options include FTP, HDFS, and S3. Use them for assets like trained ML models, digital assets, and documents.

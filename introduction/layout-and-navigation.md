@@ -11,19 +11,46 @@ icon: picture-in-picture
 
 ## 1) Navigation Bar
 
-A vertical navigation bar provides access to global home page, different apps, screens within selected app, AI agents and user menu. While it is possible to hide this bar using "noNav" parameter in app screens, it is usually displayed as the main navigation feature across the platform.
+The navigation bar is the main way to move around the Admin UI. It provides access to the global home page, apps, screens, AI agents, and the user menu.
 
-Top logo icon on this navigation bar, which can be customized from icon UI, allows users to go back to a global home page, which typically lists all accessible apps as well as favorites for the user.
+You can hide it on specific screens using the `noNav` parameter. Most deployments keep it visible for consistent navigation.
 
-Below this logo is the app icon, which activates the menu for switching between different apps, routing user to the landing page for that specific app.
+### Typical navigation flow
+
+Most users follow this pattern:
+
+1. Go to the global home page.
+2. Switch to the right app.
+3. Pick a screen from the screen icons.
+4. Use the lister to find a record.
+5. Use the editor to view or change details.
+
+### Global home
+
+The top logo icon takes users back to the global home page. This logo can be customized from the icon UI.
+
+The global home page usually lists:
+
+* All accessible apps
+* User favorites and pinned entries (if configured)
+
+### App switcher
+
+Below the logo is the app icon. It opens the app switch menu. Selecting an app routes the user to that app’s landing page.
 
 <figure><img src="../.gitbook/assets/image (160).png" alt="" width="375"><figcaption><p>App Switch</p></figcaption></figure>
 
-Under the app switch is a list of icons representing individual screens that are included within the current app, each typically displaying a records lister and an object editor for data entry and business operations.
+### Screen shortcuts
 
-Just above the bottom icon is an AI icon ✨ which allows users to connect to different AI agents to execute tasks or receive support.
+Under the app switcher is a list of icons. Each icon represents a screen in the current app. Most screens combine a records lister and an object editor.
 
-At the bottom is the user menu, which displays current user information and allows:
+### AI agents
+
+Just above the bottom is the AI icon ✨. It lets users connect to AI agents for help and task execution.
+
+### User menu
+
+At the bottom is the user menu. It shows the current user. It also provides quick access to common settings:
 
 * Changing the language of admin UI
 * Changing the theme / style of admin UI
@@ -36,11 +63,39 @@ At the bottom is the user menu, which displays current user information and allo
 
 ## 2) Records Lister
 
-Most screens include listing of technical or business data records, such as products, customers or tasks to be completed. In these screens, either a collapsible menu lister or a full page lister (such as table or a map) is presented.
+Most screens include a list of records. These can be technical records or business records. Common examples include products, customers, and tasks to be completed.
+
+Two common layouts are used:
+
+* A **collapsible menu lister** for quick navigation and smaller datasets.
+* A **full-page lister** (for example, a table or a map) for larger views and richer filtering.
+
+### What the lister is responsible for
+
+In practice, the lister is the “finding and selecting” layer. It typically handles:
+
+* Searching and filtering
+* Sorting and paging
+* Selecting one record to edit, or a set of records to act on
+* Showing compact context before opening an editor
 
 ## 3) Object Editor
 
-For viewing details of records on a lister or creating new records, typically an object editor is used, which can be displayed inline as part of the page or as a pop-up dialog.
+The object editor is used to view and edit a selected record. It is also used to create new records.
+
+Editors can be shown:
+
+* Inline on the page, next to the lister
+* As a pop-up dialog, to keep the user focused on one task
+
+### What the editor is responsible for
+
+The editor is the “detail and action” layer. It typically handles:
+
+* Displaying the full record and related fields
+* Validating user input before saving
+* Triggering actions (for example, through menus and buttons)
+* Supporting multi-step tasks where users need guided data entry
 
 Object editors support the following shortcuts:
 
