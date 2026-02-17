@@ -13,6 +13,8 @@ With Rierino, it is possible to design different admin UI apps for different bus
 * **Translation:** Contains translations for all common and business domain specific labels&#x20;
 * **Icon:** Contains all SVG icon definitions used across the platform
 
+{% embed url="https://www.youtube.com/watch?v=qWVzLsIXTmA" %}
+
 In addition to these elements, design application also includes "component" screen for defining list of editors and filters available within the platform, which is typically not modified unless new custom editors are developed.
 
 While it is possible to extend the scope of apps and user screens with new component and page development for highly specialized business requirements, Rierino is shipped with elements which address most business needs.

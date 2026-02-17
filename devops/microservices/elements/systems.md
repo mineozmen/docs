@@ -48,7 +48,7 @@ Includes settings required for connecting with an http server for standard REST 
 | responseHeaders       | Json path to return header details received in response (in {\[name]:\[]} format)                                        | headers                                           | -                             |
 | connector             | Rest conector to use (default for multi part body support, apache for native PATCH calls without method header override) | apache                                            | default                       |
 
-
+{% embed url="https://www.youtube.com/watch?v=4KXbjt1qylk" %}
 
 {% file src="../../../.gitbook/assets/system-shopify-0001.json" %}
 Example Rest System Definition (Can be Imported on Element Screen)

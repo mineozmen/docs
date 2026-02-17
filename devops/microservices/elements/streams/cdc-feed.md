@@ -8,6 +8,8 @@ description: >-
 
 Includes settings required for change data capture flows of a specific data table from [CDC systems](../systems.md#cdc). Typically, name of this stream matches the source table name.
 
+{% embed url="https://www.youtube.com/watch?v=MCvRGhUhijg" %}
+
 While Samza runner CDC configurations are mainly done at system level, Spring runners allow the following configurations on each CDC stream:
 
 | Setting                  | Definition                                                          | Example     | Default |

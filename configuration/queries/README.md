@@ -11,6 +11,8 @@ icon: magnifying-glass
 
 Opening the **Query** screen from **Configuration** app menu or navigation bar, you will come across a visual query editor, allowing design of new queries.
 
+{% embed url="https://www.youtube.com/watch?v=ZcPnXyv9nqI" %}
+
 Queries are mainly used by [Query Managers](../../devops/microservices/elements/query-managers/) in extracting specific data from different platforms.
 
 Following attributes are used for all query types:
