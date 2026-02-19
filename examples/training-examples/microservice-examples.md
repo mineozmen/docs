@@ -10,11 +10,11 @@ description: These examples can be viewed from Runner and Deployment screens in 
 
 Train CRUD is a basic HTTP CRUD microservice. It exposes standard `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` operations on a single MongoDB collection named `dummy` in the `master` database. It is the fastest way to see “data in / data out” behavior across gateway → runner → state manager.
 
-It supports the generic CRUD operation set and parameters described in [CRUD event runner](../../../devops/microservices/runners/deploying-runners/spring-runners.md#crud-event-runner). Use that reference when you want to understand supported query params, request bodies, and how partial updates work.
+It supports the generic CRUD operation set and parameters described in [CRUD event runner](../../devops/microservices/runners/deploying-runners/spring-runners.md#crud-event-runner). Use that reference when you want to understand supported query params, request bodies, and how partial updates work.
 
 This runner is mapped to the `CRUD Train` gateway system and the `Train CRUD` gateway channel. You can reach it at `[{API_SERVER}]/api/request/train_crud/[PATH]`.
 
-<figure><img src="../../../.gitbook/assets/image (141).png" alt=""><figcaption><p>CRUD Runner</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (141).png" alt=""><figcaption><p>CRUD Runner</p></figcaption></figure>
 
 A typical CRUD runner has three core handlers:
 
@@ -34,11 +34,11 @@ To learn how to extend this CRUD runner, please watch the following video:
 
 ### Train RPC
 
-Train RPC is a general-purpose RPC runner that executes sagas. It also ships with a broad set of handlers for “do some work and return a response”. Most training sagas are executed through this runner, including the ones listed under [API Flow Examples](../api-flow-examples/).
+Train RPC is a general-purpose RPC runner that executes sagas. It also ships with a broad set of handlers for “do some work and return a response”. Most training sagas are executed through this runner, including the ones listed under [API Flow Examples](api-flow-examples.md).
 
 This runner is mapped to the `RPC Train` gateway system and the `Train RPC` gateway channel. You can reach it at `[{API_SERVER}]/api/request/train_rpc/[PATH]`.
 
-<figure><img src="../../../.gitbook/assets/image (140).png" alt=""><figcaption><p>RPC Runner</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (140).png" alt=""><figcaption><p>RPC Runner</p></figcaption></figure>
 
 A minimal RPC runner needs two things:
 
@@ -65,7 +65,7 @@ Train CDC is a change-data-capture runner. It listens to changes on the `dummy` 
 
 This runner is not called through the API gateway. Its “requests” are CDC records emitted by the underlying database stream.
 
-<figure><img src="../../../.gitbook/assets/image (76).png" alt=""><figcaption><p>CDC Runner</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (76).png" alt=""><figcaption><p>CDC Runner</p></figcaption></figure>
 
 A CDC runner usually includes:
 
@@ -84,7 +84,7 @@ To learn how to extend this CDC runner, please watch the following video:
 
 Training Core is the deployment that bundles the training runners together. It is configured for the `admin-backend` namespace. This deployment is meant for learning, demos, and local validation. It gives you a complete working baseline without building your own runners first.
 
-<figure><img src="../../../.gitbook/assets/image (77).png" alt=""><figcaption><p>Deployment Runner List</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (77).png" alt=""><figcaption><p>Deployment Runner List</p></figcaption></figure>
 
 {% hint style="info" %}
 Training Core is typically installed automatically with the Core platform. You usually do not need to deploy it manually.

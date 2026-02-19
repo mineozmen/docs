@@ -4,7 +4,7 @@ description: Create a minimal UI and source mapping for the /test CRUD endpoint.
 
 # Exercise: Test UI
 
-This exercise creates a tiny admin UI for the `test` collection. It assumes you already created the backend CRUD endpoint in [Exercise: Test State](../microservice-examples/exercise-test-state.md).
+This exercise creates a tiny admin UI for the `test` collection. It assumes you already created the backend CRUD endpoint in [Exercise: Test State](exercise-test-state.md).
 
 ### Before you start
 
@@ -24,13 +24,13 @@ This exercise creates a tiny admin UI for the `test` collection. It assumes you 
 {% step %}
 ### Create a new UI
 
-Open the [UI](../../../design/user-interface/uis/) screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
+Open the [UI](../../design/user-interface/uis/) screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/design/common/ui`.
 
 Click **Create New**.
 
-<figure><img src="../../../.gitbook/assets/image (51).png" alt=""><figcaption><p>UI Editor</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (51).png" alt=""><figcaption><p>UI Editor</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -42,7 +42,7 @@ Fill in name and status. Set the ID and name field mappings as shown.
 
 Enable **Customizable ID**. This allows creating new records with custom IDs.
 
-<figure><img src="../../../.gitbook/assets/image (52).png" alt=""><figcaption><p>Test UI Configuration</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption><p>Test UI Configuration</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -54,7 +54,7 @@ Select the **Menu** lister. Set a title.
 
 This lister type is simple. It works well for small datasets.
 
-<figure><img src="../../../.gitbook/assets/image (53).png" alt=""><figcaption><p>Test Lister Configuration</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (53).png" alt=""><figcaption><p>Test Lister Configuration</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -64,15 +64,15 @@ Open the **Tabs** tab.
 
 Add a tab named `Definition`. Add a grid inside it.
 
-<figure><img src="../../../.gitbook/assets/image (54).png" alt=""><figcaption><p>Test Tab &#x26; Grid</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (54).png" alt=""><figcaption><p>Test Tab &#x26; Grid</p></figcaption></figure>
 
 Click **Add** and create the `name` editor shown below.
 
-<figure><img src="../../../.gitbook/assets/image (55).png" alt=""><figcaption><p>Name Editor</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (55).png" alt=""><figcaption><p>Name Editor</p></figcaption></figure>
 
 Click **Apply**. Then click **Save**.
 
-<figure><img src="../../../.gitbook/assets/image (57).png" alt=""><figcaption><p>Created Test UI</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (57).png" alt=""><figcaption><p>Created Test UI</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -84,7 +84,7 @@ Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/des
 
 Click **Create New**.
 
-<figure><img src="../../../.gitbook/assets/image (58).png" alt=""><figcaption><p>Test Source</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (58).png" alt=""><figcaption><p>Test Source</p></figcaption></figure>
 
 Configure the source to target the `train_crud/test` endpoint. This is what connects your UI actions to CRUD calls.
 
@@ -96,13 +96,13 @@ Fastest path is duplicating the existing `dummy` source. Then change any `dummy`
 {% step %}
 ### Add it to the Training app menu
 
-Open the [App](../../../design/user-interface/apps.md) screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
+Open the [App](../../design/user-interface/apps.md) screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/design/common/app`.
 
 Select the existing **Training** app. Add a menu entry for the new `test` UI.
 
-<figure><img src="../../../.gitbook/assets/image (59).png" alt=""><figcaption><p>Test Menu</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (59).png" alt=""><figcaption><p>Test Menu</p></figcaption></figure>
 {% endstep %}
 
 {% step %}

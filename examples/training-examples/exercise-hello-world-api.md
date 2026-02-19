@@ -22,11 +22,11 @@ This exercise creates a tiny saga and exposes it as an API endpoint. You will ru
 {% step %}
 ### Open the Saga screen
 
-Open the [Saga](../../../devops/api-flows/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Saga](../../devops/api-flows/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/saga`.
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Open.png" alt=""><figcaption><p>Saga Screen</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Open.png" alt=""><figcaption><p>Saga Screen</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -36,7 +36,7 @@ Click **CREATE NEW** in the left menu area. This clears the editor and opens a b
 
 You’ll define the saga metadata first. Then you’ll design the step graph.
 
-<figure><img src="../../../.gitbook/assets/Create_Button.png" alt=""><figcaption><p>Create New Button</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Create_Button.png" alt=""><figcaption><p>Create New Button</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -46,7 +46,7 @@ Click the pencil next to **ID:** and set a unique identifier.
 
 For this exercise, use: `hello_world-0001`.
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_ID.png" alt=""><figcaption><p>Saga ID Assignment</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_ID.png" alt=""><figcaption><p>Saga ID Assignment</p></figcaption></figure>
 
 <details>
 
@@ -66,11 +66,11 @@ If you assign IDs manually, prefer alphanumerics plus `-` and `_`. For high-volu
 
 Click the **Definition** icon (circled edit icon) to open saga metadata.
 
-<figure><img src="../../../.gitbook/assets/Definition_Button.png" alt=""><figcaption><p>Definition Button</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Definition_Button.png" alt=""><figcaption><p>Definition Button</p></figcaption></figure>
 
 Fill in these fields:
 
-<figure><img src="../../../.gitbook/assets/image (37).png" alt=""><figcaption><p>Hello World Saga</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption><p>Hello World Saga</p></figcaption></figure>
 
 * **Saga Name:** `Hello World`
 * **Saga Domain (optional):** `util`
@@ -93,23 +93,23 @@ This means requests to `/HelloWorld` routed through `train_rpc` will execute thi
 
 Drag a **Start** step from the stencil.
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Start_Step.png" alt=""><figcaption><p>Saga Stencil</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Start_Step.png" alt=""><figcaption><p>Saga Stencil</p></figcaption></figure>
 
 Drag a **Transform** step and a **Success** step.
 
 Your canvas should look like this:
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_All_Steps.png" alt=""><figcaption><p>Saga Steps</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_All_Steps.png" alt=""><figcaption><p>Saga Steps</p></figcaption></figure>
 
 Connect `Start` → `Transform`.
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Link.png" alt=""><figcaption><p>Saga Link</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Link.png" alt=""><figcaption><p>Saga Link</p></figcaption></figure>
 
 Connect `Transform` → `Success`.
 
 Your graph should look like this:
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Links.png" alt=""><figcaption><p>Saga Links</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Links.png" alt=""><figcaption><p>Saga Links</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -117,13 +117,13 @@ Your graph should look like this:
 
 The flow runs now, but it does not yet return `"Hello World"`. You’ll add a static value to the payload.
 
-Select the [Transform](../../../devops/api-flows/configuring-saga-steps/transform-step/) step. Click its pencil icon to edit.
+Select the [Transform](../../devops/api-flows/configuring-saga-steps/transform-step/) step. Click its pencil icon to edit.
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Transform_Icon.png" alt=""><figcaption><p>Transform Step Icons</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Transform_Icon.png" alt=""><figcaption><p>Transform Step Icons</p></figcaption></figure>
 
 Set these values:
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Transform_Define.png" alt=""><figcaption><p>Transform Definition Screen</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Transform_Define.png" alt=""><figcaption><p>Transform Definition Screen</p></figcaption></figure>
 
 * **Step Name:** `Say Hello World`
 * **Step Description (optional):** `This step adds a static "Hello World" message.`
@@ -144,7 +144,7 @@ This makes it safer to evolve flows over time. You can change behavior without r
 
 The step label should update on the canvas:
 
-<figure><img src="../../../.gitbook/assets/Hello_World_Saga_Transform_Set.png" alt=""><figcaption><p>Defined Transform Step</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Hello_World_Saga_Transform_Set.png" alt=""><figcaption><p>Defined Transform Step</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -152,7 +152,7 @@ The step label should update on the canvas:
 
 Click **SAVE** in the top-right corner.
 
-<figure><img src="../../../.gitbook/assets/Save_Button.png" alt=""><figcaption><p>Save Button</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Save_Button.png" alt=""><figcaption><p>Save Button</p></figcaption></figure>
 
 Wait for the runner to pick up changes. In most training setups this is quick. If your environment has a reload interval, give it \~10–30 seconds.
 

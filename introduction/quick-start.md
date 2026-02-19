@@ -45,11 +45,11 @@ If you prefer a guided path, complete the [self-paced interactive training](http
 
 Once you are comfortable with the basics, use the examples below to build confidence. They are also a good way to validate that your deployment is working end to end.
 
-* Reviewing [Training Runners](../examples/training-examples/microservice-examples/)
-* Reviewing [Training APIs](../examples/training-examples/api-flow-examples/)
-* Creating a [Hello World API](../examples/training-examples/api-flow-examples/exercise-hello-world-api.md)
-* Creating a [new CRUD endpoint](../examples/training-examples/microservice-examples/exercise-test-state.md)
-* Building a complete [To-do List App](../examples/exercise-to-do-list/)
+* Reviewing [Training Runners](../examples/training-examples/microservice-examples.md)
+* Reviewing [Training APIs](../examples/training-examples/api-flow-examples.md)
+* Creating a [Hello World API](../examples/training-examples/exercise-hello-world-api.md)
+* Creating a [new CRUD endpoint](../examples/training-examples/exercise-test-state.md)
+* Building a complete [To-do List App](../examples/in-depth-exercise/)
 
 ### Videos
 

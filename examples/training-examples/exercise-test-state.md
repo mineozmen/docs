@@ -21,11 +21,11 @@ This exercise extends the existing **Train CRUD** runner with a new state. The r
 {% step %}
 ### Open the Runner screen
 
-Open the [Runner](../../../devops/microservices/runners/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Runner](../../devops/microservices/runners/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/runner`.
 
-<figure><img src="../../../.gitbook/assets/image (60).png" alt=""><figcaption><p>Runner UI</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (60).png" alt=""><figcaption><p>Runner UI</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -33,7 +33,7 @@ Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/dev
 
 In the left runner list, filter and select **Train CRUD**.
 
-<figure><img src="../../../.gitbook/assets/image (61).png" alt=""><figcaption><p>Train CRUD Runner</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (61).png" alt=""><figcaption><p>Train CRUD Runner</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -43,7 +43,7 @@ Drag a **State** element (table icon) from the stencil onto the runner diagram.
 
 Select the new element. Click the pencil icon to edit it.
 
-<figure><img src="../../../.gitbook/assets/image (62).png" alt=""><figcaption><p>New State Manager</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (62).png" alt=""><figcaption><p>New State Manager</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -76,7 +76,7 @@ Expected result:
 * HTTP `200 OK`
 * Body: `{list: []}` (the collection starts empty)
 
-Full list of supported CRUD operations and parameters is in [CRUD event runner](../../../devops/microservices/runners/deploying-runners/spring-runners.md#crud-event-runner).
+Full list of supported CRUD operations and parameters is in [CRUD event runner](../../devops/microservices/runners/deploying-runners/spring-runners.md#crud-event-runner).
 {% endstep %}
 {% endstepper %}
 
