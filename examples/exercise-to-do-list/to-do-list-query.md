@@ -42,7 +42,7 @@ Save your query.
 
 ## Create a Saga
 
-In order to expose this query to end users, we'll follow steps similar to [Hello World Saga](../training-examples/exercise-hello-world-api.md) example.
+In order to expose this query to end users, we'll follow steps similar to [Hello World Saga](../training-examples/api-flow-examples/exercise-hello-world-api.md) example.
 
 {% hint style="info" %}
 We are not utilizing the new runner created in previous sections, since we defined it as a CRUD type runner, which is allowed to process only standard CRUD operations. As an alternative, you could also create a new runner for RPC type requests.

@@ -12,12 +12,12 @@
 ## Examples
 
 * [Training Examples](examples/training-examples/README.md)
-  * [API Flow Examples](examples/training-examples/api-flow-examples.md)
-  * [Microservice Examples](examples/training-examples/microservice-examples.md)
-  * [UI Example](examples/training-examples/ui-example.md)
-  * [Exercise: Hello World API](examples/training-examples/exercise-hello-world-api.md)
-  * [Exercise: Test State](examples/training-examples/exercise-test-state.md)
-  * [Exercise: Test UI](examples/training-examples/exercise-test-ui.md)
+  * [API Flow Examples](examples/training-examples/api-flow-examples/README.md)
+    * [Exercise: Hello World API](examples/training-examples/api-flow-examples/exercise-hello-world-api.md)
+  * [Microservice Examples](examples/training-examples/microservice-examples/README.md)
+    * [Exercise: Test State](examples/training-examples/microservice-examples/exercise-test-state.md)
+  * [UI Example](examples/training-examples/ui-example/README.md)
+    * [Exercise: Test UI](examples/training-examples/ui-example/exercise-test-ui.md)
 * [Exercise: To-do List](examples/exercise-to-do-list/README.md)
   * [To-do List Runner](examples/exercise-to-do-list/to-do-list-runner.md)
   * [To-do List Gateway](examples/exercise-to-do-list/to-do-list-gateway.md)
