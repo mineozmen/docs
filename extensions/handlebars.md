@@ -19,123 +19,327 @@ These functions are available for Handlebars widgets and menus.
 
 ## Functions
 
-### not(boolean)
+All helpers below are available on both server-side and client-side rendering.
 
-Returns opposite of the given boolean value.
+### Logic & comparison
 
-### eq(any, any)
+#### Negate boolean
 
-Returns true if the provided two values (e.g. number, string) are equal to each other.
+**Signature:** `not(value: boolean) -> boolean`\
+**Parameters:**
 
-### neq(any, any)
+* `value` (boolean, required): Input boolean.
 
-Returns true if the provided two values (e.g. number, string) are not equal to each other.
+Returns the opposite of `value`.
 
-### gt(any, any)
+#### Equals
 
-Returns true if the first provided value is greater than the second.
+**Signature:** `eq(left: any, right: any) -> boolean`\
+**Parameters:**
 
-### gte(any, any)
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
 
-Returns true if the first provided value is greater than or equal to the second.
+Returns `true` when `left` equals `right`.
 
-### lt(any, any)
+#### Not equals
 
-Returns true if the first provided value is less than the second.
+**Signature:** `neq(left: any, right: any) -> boolean`\
+**Parameters:**
 
-### lte(any, any)
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
 
-Returns true if the first provided value is less than or equal to the second.
+Returns `true` when `left` does not equal `right`.
 
-### and(...boolean)
+#### Greater than
 
-Returns true if all of the provided values are true.
+**Signature:** `gt(left: any, right: any) -> boolean`\
+**Parameters:**
 
-### or(...boolean)
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
 
-Returns true if any of the provided values is true.
+Returns `true` when `left > right`.
 
-### cond(boolean, any, any)
+#### Greater than or equal
 
-If a given condition value is true, returns the first given parameter, otherwise returns the second given parameter.
+**Signature:** `gte(left: any, right: any) -> boolean`\
+**Parameters:**
 
-### max(array)
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
 
-Returns the maximum value in provided array.
+Returns `true` when `left >= right`.
 
-### min(array)
+#### Less than
 
-Returns the minimum value in provided array.
+**Signature:** `lt(left: any, right: any) -> boolean`\
+**Parameters:**
 
-### range(number)
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
 
-Creates an array with elements ranging from 0 to provided value-1.
+Returns `true` when `left < right`.
 
-### slice(array, number=0, number=array.length)
+#### Less than or equal
 
-Returns array elements from start to end index.
+**Signature:** `lte(left: any, right: any) -> boolean`\
+**Parameters:**
 
-### size(array)
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
 
-Returns the number of elements in an array.
+Returns `true` when `left <= right`.
 
-### len(string)
+#### Logical AND
 
-Returns the length of a given string.
+**Signature:** `and(...values: boolean) -> boolean`\
+**Parameters:**
 
-### arr(...any)
+* `values` (boolean, required): One or more boolean values.
 
-Converts provided list of values to an array.
+Returns `true` when all `values` are `true`.
 
-### coalesce(...any)
+#### Logical OR
 
-[Returns ](#user-content-fn-1)[^1]the first non-null element in an array.
+**Signature:** `or(...values: boolean) -> boolean`\
+**Parameters:**
 
-### lines(string)
+* `values` (boolean, required): One or more boolean values.
 
-[Converts ](#user-content-fn-2)[^2]lines of string into an array of string.
+Returns `true` when any value in `values` is `true`.
 
-### math(number, string, number)
+#### Conditional value
 
-Calculates given operation (+,-,/,\*,%) between two given numbers.
+**Signature:** `cond(test: boolean, ifTrue: any, ifFalse: any) -> any`\
+**Parameters:**
 
-[Converts ](#user-content-fn-3)[^3]a given json object into string.
+* `test` (boolean, required): Condition to evaluate.
+* `ifTrue` (any, required): Value to return when `test` is `true`.
+* `ifFalse` (any, required): Value to return when `test` is `false`.
 
-### toJson(string)
+Returns `ifTrue` or `ifFalse` based on `test`.
 
-Converts a given string into json object.
+### Arrays
 
-### md(string)
+#### Max value
 
-[Converts ](#user-content-fn-4)[^4]provided markdown text into HTML string.
+**Signature:** `max(values: array) -> any`\
+**Parameters:**
 
-### eval(object, string)
+* `values` (array, required): Input array.
 
-[Evaluates ](#user-content-fn-5)[^5]a JMESPath expression string on a given object.
+Returns the maximum value in `values`.
 
-### dateToString(number, string="en-US", string="MM-dd-yyyy")
+#### Min value
 
-[Converts ](#user-content-fn-6)[^6]given epoch milliseconds into date with given locale and pattern strings.
+**Signature:** `min(values: array) -> any`\
+**Parameters:**
 
-### stringToDate(string, string="en-US", string="MM-dd-yyyy")
+* `values` (array, required): Input array.
 
-Converts given date string in given locale and pattern into epoch milliseconds.
+Returns the minimum value in `values`.
 
-### dataLookup(string, string | string\[])
+#### Range
 
-[Looks up](#user-content-fn-7)[^7] and returns record(s) from a given source, using a given id or ids. If "\*" is given as the id, all records in the source are returned. If a string array is provided as the ids, their list is returned as an array. Otherwise, a single record for the provided id is returned.&#x20;
+**Signature:** `range(end: number) -> array`\
+**Parameters:**
 
-For client side, the source given must match a source record from design application.
+* `end` (number, required): Exclusive end.
 
-For server side, the source given must match a state name on current runner.
+Creates an array with elements ranging from `0` to `end - 1`.
+
+#### Slice array
+
+**Signature:** `slice(list: array, start: number=0, end: number=null) -> array`\
+**Parameters:**
+
+* `list` (array, required): Input array.
+* `start` (number, default: `0`): Start index (0-based).
+* `end` (number, default: `null`): End index (exclusive). When `null`, slices to end of array.
+
+Returns a sub-array from `start` to `end`.
+
+#### Array size
+
+**Signature:** `size(list: array) -> number`\
+**Parameters:**
+
+* `list` (array, required): Input array.
+
+Returns the number of elements in `list`.
+
+#### Build array
+
+**Signature:** `arr(...values: any) -> array`\
+**Parameters:**
+
+* `values` (any, required): One or more values.
+
+Converts `values` into an array.
+
+#### First non-null value
+
+**Signature:** `coalesce(...values: any) -> any`\
+**Parameters:**
+
+* `values` (any, required): One or more values.
+
+Returns the first non-null value in `values`.
+
+### Strings & text
+
+#### String length
+
+**Signature:** `len(value: string) -> number`\
+**Parameters:**
+
+* `value` (string, required): Input string.
+
+Returns the length of `value`.
+
+#### Split lines
+
+**Signature:** `lines(text: string) -> array`\
+**Parameters:**
+
+* `text` (string, required): Input string.
+
+Splits `text` by line breaks and returns an array of strings.
+
+### Math
+
+#### Math operation
+
+**Signature:** `math(left: number, op: string, right: number) -> number`\
+**Parameters:**
+
+* `left` (number, required): Left operand.
+* `op` (string, required): Operation (`+`, `-`, `/`, `*`, `%`).
+* `right` (number, required): Right operand.
+
+Applies `op` between `left` and `right`.
+
+### JSON
+
+#### JSON stringify
+
+**Signature:** `fromJson(value: any) -> string`\
+**Parameters:**
+
+* `value` (any, required): Object/array/value to stringify.
+
+Converts `value` into a JSON string.
+
+#### JSON parse
+
+**Signature:** `toJson(value: string) -> any`\
+**Parameters:**
+
+* `value` (string, required): JSON string.
+
+Parses `value` into a JSON object/array/value.
+
+### Markdown
+
+#### Render markdown
+
+**Signature:** `md(text: string) -> string`\
+**Parameters:**
+
+* `text` (string, required): Markdown input.
+
+Converts markdown to an HTML string.
+
+### JMESPath
+
+#### Evaluate expression
+
+**Signature:** `eval(input: object, expr: string) -> any`\
+**Parameters:**
+
+* `input` (object, required): Input object to evaluate against.
+* `expr` (string, required): JMESPath expression.
+
+Evaluates `expr` against `input`.
+
+### Date & time
+
+#### Format epoch milliseconds
+
+**Signature:** `dateToString(epochMs: number, locale: string="en-US", pattern: string="MM-dd-yyyy") -> string`\
+**Parameters:**
+
+* `epochMs` (number, required): Epoch milliseconds.
+* `locale` (string, default: `"en-US"`): Locale string.
+* `pattern` (string, default: `"MM-dd-yyyy"`): Date format pattern.
+
+Formats `epochMs` using `locale` and `pattern`.
+
+#### Parse date string
+
+**Signature:** `stringToDate(value: string, locale: string="en-US", pattern: string="MM-dd-yyyy") -> number`\
+**Parameters:**
+
+* `value` (string, required): Date string.
+* `locale` (string, default: `"en-US"`): Locale string.
+* `pattern` (string, default: `"MM-dd-yyyy"`): Date format pattern.
+
+Parses `value` into epoch milliseconds.
+
+### Data access
+
+#### Lookup records by id
+
+**Signature:** `dataLookup(source: string, ids: string | string[]) -> any`\
+**Parameters:**
+
+* `source` (string, required): Lookup source.
+* `ids` (string | string\[], required): ID, list of IDs, or `"*"` for all.
+
+Looks up and returns record(s) from `source` using `ids`.
+
+* When `ids` is `"*"`, returns all records.
+* When `ids` is an array, returns an array of records.
+* Otherwise, returns a single record.
+
+For client-side use, `source` must match a source record from the design application.
+
+For server-side use, `source` must match a state name on the current runner.
 
 {% hint style="warning" %}
-As this helper gives access to all states on a runner without checking access rights, it is recommended to limit its use to runners that do not have access to sensitive states such as customer data for server-side use cases.
+This helper can read all runner states without checking access rights.
+
+Limit usage to runners without sensitive states (e.g. customer data).
 {% endhint %}
 
-### setVar(string, any)
+### Variables
 
-Creates a contectual variable with given name and value, typically used for storing and reusing calculated values without "with" expressions.
+#### Set contextual variable
+
+**Signature:** `setVar(name: string, value: any) -> any`\
+**Parameters:**
+
+* `name` (string, required): Variable name.
+* `value` (any, required): Value to assign.
+
+Creates a contextual variable with the given name and value.
+
+Use it to reuse calculated values without `with` expressions.
+
+{% hint style="info" %}
+Legacy naming and version notes:
+
+* Before `0.5.0`, some client-side helpers were exposed with `rierino*` names:
+  * `coalesce` → `rierinoCoalesce`
+  * `lines` → `rierinoLines`
+  * `fromJson` → `rierinoJson`
+  * `md` → `rierinoMarkdown`
+  * `eval` → `rierinoEval`
+  * `dateToString` → `rierinoDate`
+* `dataLookup` is available since `0.5.2`.
+{% endhint %}
 
 ## Client-Side Actions
 
@@ -155,12 +359,12 @@ Value of the input DOM element which has "data-change-path" attribute is used fo
 Used across different widget and lister types, following data tags allow triggering built-in events from handlebars templates:
 
 * **data-event**: Name of the event to trigger (e.g. "new", "delete")
-* **data-params**: Json formatted parameters to pass to the event (e.g. '{"value": 123}')&#x20;
+* **data-params**: Json formatted parameters to pass to the event (e.g. '{"value": 123}')
 * **data-id** (optional): Identifier which allows passing additional values along with data-params (e.g. "ABC"). When defined, additional DOM elements are tagged with the same data-id value as well as the following attributes:
   * **data-path**: Json path to add additional data to
   * **data-type** (or type): Type of value to pass from the DOM element ("number", "json" options in addition to default text)
 
-List of events that can be used with "data-event" depends on the type of component rendering handlebars template, with the following shared and component specific events available:&#x20;
+List of events that can be used with "data-event" depends on the type of component rendering handlebars template, with the following shared and component specific events available:
 
 #### Shared Events
 
@@ -191,7 +395,7 @@ Inherits most of HandlebarsLister events, with the following additional events:
 
 Handlebars components support [draggable](https://html.spec.whatwg.org/multipage/dnd.html#the-draggable-attribute) attribute, which is enriched with following custom data attributes for built-in dnd interactions:
 
-* **data-drag-value**: Defines the Json value to drag to a drop target (e.g. '{"id": "123"}')&#x20;
+* **data-drag-value**: Defines the Json value to drag to a drop target (e.g. '{"id": "123"}')
 * **data-drop-event**: Defines the event to trigger when an item is dropped in the zone (e.g. "dnd")
 * **data-drop-value**: Defines the the Json value to pass to data-drop-event (e.g. '{"beforeId": "111}')
 * **data-drop-params**: Defines the main event parameters to pass to data-drop-event
@@ -205,17 +409,3 @@ An example minimal template to use drag & drop behavior on a DependentHandlebars
   <div draggable data-drag-value='{"id": "{{id}}"}'>DRAG THIS</div>
 {{/each}}
 ```
-
-[^1]: Client-side naming as "rierinoCoalesce" before version 0.5.0.
-
-[^2]: Client-side naming as "rierinoLines" before version 0.5.0.
-
-[^3]: Client-side naming as "rierinoJson" before version 0.5.0.
-
-[^4]: Client-side naming as "rierinoMarkdown" before version 0.5.0.
-
-[^5]: Client-side naming as "rierinoEval" before version 0.5.0.
-
-[^6]: Client-side naming as "rierinoDate" before version 0.5.0.
-
-[^7]: since 0.5.2
