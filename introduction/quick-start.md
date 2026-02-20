@@ -27,6 +27,38 @@ For installing Rierino yourself, follow the [Installation](https://app.gitbook.c
 
 The standard configuration uses **MongoDB** as the main data store. This is a good default for most training and initial development.
 
+## Rierino Development Apps
+
+Most development work in Rierino happens across four apps. Each app “owns” a slice of the platform, so you can iterate without mixing concerns.
+
+### Devops
+
+Use **Devops** to build and operate backend execution. This is where you define and deploy **runners** (microservices), design **sagas** (API flows), configure **gateway routing/security**, and manage deployments.
+
+Start here when you are building APIs, orchestrations, or anything that needs to run in production. See [Devops Overview](../devops/overview.md).
+
+### Configuration
+
+Use **Configuration** to store “logic as data”. This is where you define reusable **queries**, **business rules**, and **dynamic handlers**, which can then be executed by runners and sagas at runtime.
+
+Start here when you want behavior to be editable without redeploying services. See [Configuration Overview](../configuration/overview.md).
+
+### Design (Admin UI)
+
+Use **Design** to build the admin UI. This is where you define **apps**, **UIs**, **listers/widgets**, and the **Source** mappings that connect screens to backend APIs. You also manage UI resources like options, translations, icons, and styles.
+
+Start here when you want a screen for listing and editing data or operating flows. See [Design Overview](../design/overview.md).
+
+### Data Science
+
+Use **Data Science** to configure ML and GenAI assets that can be invoked from real-time APIs or batch processes. This includes ML models, GenAI models, MCP servers, CEP flows, visualizations, and customizations.
+
+Start here when your use case needs inference, agents, personalization, or stream processing. See [Data Science Overview](../data-science/overview.md).
+
+### How they fit together (typical workflow)
+
+Most teams iterate in a loop: define runtime services in **Devops**, keep reusable logic in **Configuration**, expose operations through **Design** screens, and add intelligence through **Data Science** assets when needed. The boundaries are intentional, but the components are designed to compose cleanly.
+
 ## Initial Reading
 
 To start using Rierino right away, use the training microservices shipped with the standard installation. They let you explore the platform without building anything from scratch.

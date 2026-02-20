@@ -166,14 +166,14 @@
     * [Response Formats](devops/gateway-and-security/apis/response-formats.md)
   * [Dynamic TLS & mTLS](devops/gateway-and-security/dynamic-tls-and-mtls.md)
   * [Rate Limiting](devops/gateway-and-security/rate-limiting.md)
-* [Administration](devops/administration/README.md)
-  * [Managing Deployments](devops/administration/managing-deployments.md)
-  * [Sending Commands](devops/administration/sending-commands.md)
-  * [Streaming Messages](devops/administration/streaming-messages.md)
 * [Branching & Migration](devops/branching-and-migration/README.md)
   * [Managing Branches](devops/branching-and-migration/managing-branches.md)
   * [Migrating Changes](devops/branching-and-migration/migrating-changes.md)
   * [Rolling Back Changes](devops/branching-and-migration/rolling-back-changes.md)
+* [Administration](devops/administration/README.md)
+  * [Managing Deployments](devops/administration/managing-deployments.md)
+  * [Sending Commands](devops/administration/sending-commands.md)
+  * [Streaming Messages](devops/administration/streaming-messages.md)
 * [Batch Tasks](devops/batch-tasks/README.md)
   * [Python Processes](devops/batch-tasks/python-processes.md)
   * [Python Iterators](devops/batch-tasks/python-iterators.md)
@@ -250,7 +250,6 @@
 * [Complex Event Processing](data-science/complex-event-processing/README.md)
   * [Siddhi Data Flows](data-science/complex-event-processing/siddhi-data-flows.md)
 * [Data Visualizations](data-science/data-visualizations.md)
-* [Customizations](data-science/customizations.md)
 
 ## EXTENSIONS
 

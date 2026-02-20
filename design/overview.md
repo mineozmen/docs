@@ -7,12 +7,14 @@ icon: circle-info
 
 # Overview
 
-Design app provides access to key features for designing, deploying and controlling all admin user interface building blocks.
+The Design app is where you build and evolve the admin experience. It covers the full loop from screen layout, to API wiring, to data shape, so you can ship UI changes fast without coupling them to backend code releases.
 
-![Design Navigator](../.gitbook/assets/Navigator_Design.png)
+<figure><img src="../.gitbook/assets/image (166).png" alt=""><figcaption><p>Design App</p></figcaption></figure>
 
-These capabilities are grouped under 3 main categories:
+Design capabilities fall into three main areas:
 
-* **User Interface:** Key capabilities for visualizing and editing data
-* **API Mapping:** Key capabilities for linking user interface to backend APIs
-* **Data Schema:** Key capabilities for structuring data
+* **User Interface:** Design apps, screens, navigation, and interaction patterns for admins.
+* **API Mapping:** Connect UIs to backend endpoints via Sources and environment settings.
+* **Data Schema:** Define and govern the structure of records used across UIs and APIs.
+
+In practice, you usually touch all three. You define a UI (listers, editors, widgets), point it to a Source (list/get/create/update/delete endpoints), and align the fields with a Schema so validation and defaults stay consistent across screens. That separation keeps screens reusable and makes it easier to change API routes or data models without rebuilding everything from scratch.

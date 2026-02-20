@@ -7,22 +7,22 @@ icon: circle-info
 
 # Overview
 
-DevOps app provides access to key features for designing, deploying and controlling all service building blocks.
+The Devops app is where you design, deploy, and operate the platform’s core building blocks. It brings the runtime pieces (runners and deployments) together with orchestration (sagas) and the edge layer (gateway and security), so you can ship changes quickly and still keep control.
 
-![Devops Navigator](../.gitbook/assets/Navigator_Devops.png)
+<figure><img src="../.gitbook/assets/image (165).png" alt=""><figcaption><p>Devops App</p></figcaption></figure>
 
-These capabilities can be grouped under 4 main categories:
+Devops capabilities fall into four main areas:
 
-* **API Flows:** Sagas used for implementing [API flows](api-flows/)
-* **Microservices:** Elements, runners and deployments for building and using [microservices](microservices/)
-* **Gateway & Security:** Key capabilities for configuring [API gateways](gateway-and-security/)
-* **Administration:** Key capabilities for controlling deployed services
+* **Runtime:** Sagas, actions, runners and elements used for implementing [API flows](api-flows/) and building [microservices](microservices/)
+* **Gateway:** Key capabilities for configuring [API gateways](gateway-and-security/), including authentication customizations
+* **Rollout:** Key capabilities for creating & merging [branches](branching-and-migration/), migrating to test & production environments and deployments
+* **Control & Admin:** Key capabilities for [controlling](administration/) deployed services and users
 
-Relations between the main building blocks managed through this application are as follows:
+These building blocks are tightly connected. A typical request starts at the gateway, gets routed to one or more runners, and is often orchestrated through a saga. Supporting configuration, such as queries or model definitions, is usually stored in state managers so it can be updated without redeploying code.
 
 <figure><img src="../.gitbook/assets/image (143).png" alt=""><figcaption><p>Relations between Blocks</p></figcaption></figure>
 
-* Gateway configurations allow mapping of API channels (i.e. URL paths) to backend microservices.
-* Backend microservices are packaged and installed as deployments, which include one or more runners, each of which include a set of elements that define their capabilities and access rights (e.g. functions that can be executed, systems that can be accessed).
-* Microservices are orchestrated through sagas, which are composed of a number of steps, making calls to specific elements on their respective runners.
-* Finally, additional information that is required for executing saga steps (such as query or ML model definitions) are kept in state managers, as configurations.&#x20;
+* **Gateway configuration** maps API channels (URL paths) to backend runners and services.
+* **Deployments** package and install microservices. Each deployment contains one or more **runners**, and each runner contains **elements** that define what it can do and what it is allowed to access (handlers, systems, states, streams, and so on).
+* **Sagas** orchestrate work across runners. A saga is a step graph that calls specific elements, potentially across multiple microservices, and returns a response or emits downstream events.
+* **Configuration data** required by steps (for example queries, rules, or ML model definitions) is stored in **state managers** as records. This keeps behavior editable at runtime and easier to migrate between environments.
