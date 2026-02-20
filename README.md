@@ -7,11 +7,7 @@ icon: circle-info
 
 # Overview
 
-Rierino is a low-code platform for building microservices and AI-driven backends.
-
-It is designed for scale, speed, and frequent change.
-
-### At a glance
+## At a glance
 
 * Build microservices with configuration-first building blocks.
 * Orchestrate services into APIs, async triggers, and workflows.

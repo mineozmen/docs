@@ -12,7 +12,7 @@ It is possible to extend the list and variety of value widgets, and Rierino is s
 
 ### Text Editor
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 TextEditor provides ability to enter free text data. This widget has the following special properties:
 
@@ -636,6 +636,143 @@ ColorEditor provides ability to pick colors and return their hex code using Sket
           "type": "object",
           "description": "Additional dom properties to pass on to SketchPicker component",
           "default": null
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### Slider Editor
+
+<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+SliderEditor provides ability to enter single and {min, max} range type numerical values with a slider. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property    | Definition                                         | Example  | Default    |
+| ----------- | -------------------------------------------------- | -------- | ---------- |
+| Orientation | Whether the slider should be displayed vertical    | vertical | horizontal |
+| Size        | Defines width of the slider                        | small    | base       |
+| Min         | Minimum value to allow                             | 1        | 0          |
+| Max         | Maximum value to allow                             | 10       | 100        |
+| Step        | Numerical increments on each step                  | 2        | 1          |
+| Is Range    | Whether slider requires 2 values or a single value | true     | false      |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SliderEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "orientation": {
+          "type": "string",
+          "description": "Whether the slider should be displayed vertical",
+          "default": "horizontal",
+          "examples": ["vertical"],
+          "enum": ["horizontal", "vertical"]
+        },
+        "size": {
+          "type": "string",
+          "description": "Defines width of the slider",
+          "default": "base",
+          "examples": ["small"]
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value to allow",
+          "default": 0,
+          "examples": [1]
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value to allow",
+          "default": 100,
+          "examples": [10]
+        },
+        "step": {
+          "type": "number",
+          "description": "Numerical increments on each step",
+          "default": 1,
+          "examples": [2]
+        },
+        "range": {
+          "type": "boolean",
+          "description": "Whether slider requires 2 values or a single value",
+          "default": false,
+          "examples": [true]
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### Rating Editor
+
+RatingEditor provides ability to select a numerical values with a rating indicator. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property    | Definition                                      | Example  | Default    |
+| ----------- | ----------------------------------------------- | -------- | ---------- |
+| Orientation | Whether the rating should be displayed vertical | vertical | horizontal |
+| Min         | Minimum value to allow                          | 1        | 0          |
+| Max         | Maximum value to allow                          | 10       | 100        |
+| Step        | Numerical increments on each star               | 2        | 1          |
+| Fractions   | Fractional increments allowed                   | 0.5      | -          |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RatingEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "orientation": {
+          "type": "string",
+          "description": "Whether the rating should be displayed vertical",
+          "default": "horizontal",
+          "examples": ["vertical"],
+          "enum": ["horizontal", "vertical"]
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value to allow",
+          "default": 0,
+          "examples": [1]
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value to allow",
+          "default": 100,
+          "examples": [10]
+        },
+        "step": {
+          "type": "number",
+          "description": "Numerical increments on each star",
+          "default": 1,
+          "examples": [2]
+        },
+        "fractions": {
+          "type": "number",
+          "description": "Fractional increments allowed",
+          "default": null,
+          "examples": [0.5]
         }
       }
     }
