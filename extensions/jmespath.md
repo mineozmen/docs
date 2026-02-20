@@ -38,291 +38,724 @@ Some functions are only available on batch, client or server side, which are mar
 **Unmarked:** Available on all.
 
 {% hint style="warning" %}
-Server-side JMESPath implementation returns null when the input node is null, regardless of the expression provided (including constant value expressions), due to Java JMESPath library implementation logic.&#x20;
+Server-side JMESPath implementation returns null when the input node is null, regardless of the expression provided (including constant value expressions), due to Java JMESPath library implementation logic.
 
 This applies to all areas where JMESPath is used (i.e. transform steps, event input and output patterns).
 {% endhint %}
 
 ## Functions
 
-### add\_all(array, array)
+### Arrays
 
-Merges contents of two arrays provided and returns them as a new array.
+#### Merge arrays
 
-### atob(string)
+**Signature:** `add_all(left: array, right: array) -> array`\
+**Parameters:**
 
-Decodes a given base64 string and returns it as a UTF-8 string.
+* `left` (array, required): First array.
+* `right` (array, required): Second array.
 
-### btoa(any)
+Merges `left` and `right` and returns a new array.
 
-Encodes a given value into a base64 string.
+#### Cartesian product
 
-### cartesian(array)
+**Signature:** `cartesian(lists: array) -> array`\
+**Parameters:**
 
-Creates the cartesian product of an array of arrays provided.
+* `lists` (array, required): Array of arrays.
 
-### compare(any, any) \[S, C]
+Creates the cartesian product of `lists`.
 
-Performs a comparison between the first and second parameters and returns 0 (if equal), -1 if (first < second) or 1 (if first > second) as the result.
+#### Distinct values
 
-### cond(boolean, any, any) \[S,C]
+**Availability:** \[S, C]\
+**Signature:** `distinct(values: array) -> array`\
+**Parameters:**
 
-If a given condition value is true, returns the first given parameter, otherwise returns the second given parameter.
+* `values` (array, required): Input array.
 
-### cron(string, string, string, number) \[S]
+Returns distinct values in `values`.
 
-A versatile function, processing given cron pattern, followed by an action, using the given time zone for a given epochMs time. Actions supported are as follows:
+#### Read array element by index
 
-* last: Returns epoch ms for the last time this cron pattern was applicable before given time.
-* next: Returns epoch ms for the next time this cron pattern willbe applicable after given time.
-* fromLast: Returns ms from last time this cron pattern was applicable before given time.
-* toNext: Returns ms to next time this cron pattern willbe applicable after given time.
-* match: Returns whether the pattern matches given time.
+**Availability:** \[S, C]\
+**Signature:** `element_at(list: array, index: number) -> any`\
+**Parameters:**
 
-If time zone is null or "SYSTEM", server time zone is used for the pattern evaluation.&#x20;
+* `list` (array, required): Input array.
+* `index` (number, required): Index to read.
 
-### csv\_to\_json(string, object=null) \[S]
+Returns the element at `index`.
 
-Parses a given CSV text and converts into an array, using an optional second parameter for parsing options (from [Apache commons CSV format](https://commons.apache.org/proper/commons-csv/apidocs/org/apache/commons/csv/CSVFormat.html)).
+#### Group array
 
-### date\_to\_string(number, string="MM-dd-yyyy")
+**Availability:** \[S, C]\
+**Signature:** `group_by(list: array, field: string) -> array`\
+**Parameters:**
 
-Converts a date given in epoch milliseconds into a string using the given Java date format.
+* `list` (array, required): Input array.
+* `field` (string, required): Field to group by.
 
-### decode\_url(string) \[S, C]
+Groups entries and returns `[{ id: "", list: [] }]`.
 
-Decodes a string which is in encoded URL form.
+#### Add index to array entries
 
-### decrypt(string, string, string = "AES/ECB/PKCS5Padding", string = "AES") \[S]
+**Signature:** `index_array(list: array, field: string="index", start: number=0) -> array`\
+**Parameters:**
 
-Decrypts a given encrypted string using a given key string. Two optional parameters are used for specifying the algorithm and key algorithm.
+* `list` (array, required): Array of objects.
+* `field` (string, default: `"index"`): Field name to add.
+* `start` (number, default: `0`): Start index.
 
-{% hint style="warning" %}
-Please note that "AES/ECB/PKCS5Padding" is not the recommended algorithm for operations requiring high level of security and should be replaced with the preferred secure encryption algorithm.
-{% endhint %}
+Adds an index field to each entry in `list`.
 
-### deep\_merge(...object)
+#### Array intersection
 
-Deep merges all given (nested) objects. For shallow merges standard merge() function can be used instead.&#x20;
+**Availability:** \[S, C]\
+**Signature:** `intersect(left: array, right: array) -> array`\
+**Parameters:**
 
-### deep\_diff(any, any) \[S]
+* `left` (array, required): First array.
+* `right` (array, required): Second array.
 
-Compares given two records and returns the list of differences in a nested manner with "new" vs. "old" values where differences are identified.
+Returns the intersection of `left` and `right`.
 
-### distinct(array) \[S, C]
+#### Remove array entries
 
-Returns distinct list of values inside an array.
+**Signature:** `remove_all(list: array, toRemove: array) -> array`\
+**Parameters:**
 
-### divide(number, number)
+* `list` (array, required): Input array.
+* `toRemove` (array, required): Values to remove.
 
-Divides a given number by another given number. Returns null if the divisor is 0.
+Removes all entries of `toRemove` from `list`.
 
-### dynamic(any, string) \[S, C]
+#### Repeat object template
 
-Executes a dynamic jmespath expression given as string on a given parameter.
+**Signature:** `repeat(template: object, list: array, keyField: string) -> array`\
+**Parameters:**
 
-### dynamic\_repeat(any, array, string) \[S, C]
+* `template` (object, required): Base object to repeat.
+* `list` (array, required): Array of values or objects to merge in.
+* `keyField` (string, required): Field name to use when merging scalar entries.
 
-Executes a dynamic jmespath expression using each entry of a given array as "entry" and a given parameter as "input" to produce a new array.
+Repeats `template` for each entry of `list`.
 
-### dynamic\_filter(any, array, string) \[S, C]
+#### Chunk array
 
-Executes a dynamic jmespath expression that returns boolean for filtering a given array using each entry of that array as "entry" and a given parameter as "input".
+**Availability:** \[S]\
+**Signature:** `split_array(list: array, size: number) -> array`\
+**Parameters:**
 
-### element\_at(array, number) \[S, C]
+* `list` (array, required): Input array.
+* `size` (number, required): Max chunk size.
 
-Returns element of a given array at given index, supporting variable index access to arrays.
+Splits `list` into a list of arrays, each up to `size` entries.
 
-### encode\_url(string) \[S, C]
+#### Merge arrays by index
 
-Encodes a string into encoded URL form.
+**Signature:** `merge_index(left: array, right: array, leftField: string=null, rightField: string=null) -> array`\
+**Parameters:**
 
-### encrypt(string, string, string="AES/ECB/PKCS5Padding", string="AES") \[S]
+* `left` (array, required): First array.
+* `right` (array, required): Second array.
+* `leftField` (string, default: `null`): Field to nest `left` entry into.
+* `rightField` (string, default: `null`): Field to nest `right` entry into.
 
-Encrypts a given plain string using a given key string. Two optional parameters are used for specifying the algorithm and key algorithm.
+Merges two arrays by index.
 
-{% hint style="warning" %}
-Please note that "AES/ECB/PKCS5Padding" is not the recommended algorithm for operations requiring high level of security and should be replaced with the preferred secure encryption algorithm.
-{% endhint %}
+If `leftField` and `rightField` are set, entries are nested under those fields. Otherwise, fields are merged (spread) into a single entry.
 
-{% hint style="info" %}
-For encrypting/decrypting more complex contents, to\_json/from\_json functions can be used.
-{% endhint %}
+### Objects & paths
 
-### find\_paths(any, string) \[S]
+#### Deep merge objects
 
-Searches all Json paths for a given record that match a given regex expression string.
+**Signature:** `deep_merge(...objects: object) -> object`\
+**Parameters:**
 
-### from\_json(any) \[S, C]
+* `objects` (object, required): One or more objects.
 
-Converts a json object/array into string.
+Deep merges nested objects. Use `merge()` for shallow merges.
 
-### get\_element(object, string) \[S,C]
+#### Deep diff
 
-Returns element from a given json object using a given json path string.
+**Availability:** \[S]\
+**Signature:** `deep_diff(oldValue: any, newValue: any) -> array`\
+**Parameters:**
 
-### get\_env(string) \[S]
+* `oldValue` (any, required): Old record.
+* `newValue` (any, required): New record.
 
-Returns environment variable for given name, intended for server-side use cases only.
+Returns a nested list of differences with `"old"` vs `"new"` values.
 
-### group\_by(array, string) \[S, C]
+#### Key/value to object
 
-Groups entries of a given array by a given field and returns grouped results in  \[{id:"", list:\[]}] form.
+**Availability:** \[S, C]\
+**Signature:** `k_vtoo(key: string, value: any) -> object`\
+**Parameters:**
 
-### guid() \[S, C]
+* `key` (string, required): Key to use.
+* `value` (any, required): Value to assign.
 
-Creates and returns a glbally unique ID string.
+Converts `(key, value)` to an object.
 
-### hash(string, string, string="SHA-256", number=1) \[S]
+#### List to object
 
-Hashes given plain string using a given key string. Two optional parameters are used for specifying the algorithm and hash iteration count.
+**Signature:** `ltoo(pairs: array, keyField: string) -> object`\
+**Parameters:**
 
-### index\_array(array, string="field", number=0)
+* `pairs` (array, required): Array of key-value objects.
+* `keyField` (string, required): Field name holding the key.
 
-Adds an index field to all entries of a given array, using given string as field name and starting index value from given number.
+Converts a list of key-value pairs into an object.
 
-### intersect(array, array) \[S, C]
+#### Object to list
 
-Finds intersection of entries in given two arrays.
+**Signature:** `otol(obj: object, keyField: string, valueField: string) -> array`\
+**Parameters:**
 
-### json\_to\_csv(array, object=null) \[S]
+* `obj` (object, required): Input object.
+* `keyField` (string, required): Field name to use for keys.
+* `valueField` (string, required): Field name to use for values.
 
-Prints a given array as CSV text, using an optional second parameter for printing options (from [Apache commons CSV format](https://commons.apache.org/proper/commons-csv/apidocs/org/apache/commons/csv/CSVFormat.html)).
+Converts an object to a list of key-value pairs.
 
-### k\_vtoo(string, any) \[S, C]
+#### Read object element by path
 
-Converts a given key string and value entry to an object.
+**Availability:** \[S, C]\
+**Signature:** `get_element(obj: object, path: string) -> any`\
+**Parameters:**
 
-### lookup(array, array, string, boolean=false) \[S,B]
+* `obj` (object, required): Object to read from.
+* `path` (string, required): JSON path string.
 
-Joins two arrays with a key string field and returns them as a new array. If last parameter is true, a full join is performed instead of left join.
+Returns element at `path`.
 
-### lookup(string, string) \[C]
+#### Set object element by path
 
-Performs a lookup from a given [source](../design/api-mapping/) for a given id string.
+**Signature:** `set_element(obj: object, path: string, value: any) -> object`\
+**Parameters:**
 
-{% hint style="info" %}
-Client side lookup function is only available within evaluation providers (i.e. not available with Handlebars templates) due to specific nature of async access.
+* `obj` (object, required): Object to update.
+* `path` (string, required): JSON path to write.
+* `value` (any, required): Value to set.
 
-Not implemented on server side to avoid unintended access to sensitive states on a runner.
-{% endhint %}
+Adds/sets `value` at `path`.
 
-### ltoo(array, string)
+#### Remove object fields
 
-Converts a list of key-value pairs in a provided array into an object using key string field.
+**Availability:** \[S, C]\
+**Signature:** `remove_elements(obj: object, fields: array) -> object`\
+**Parameters:**
 
-### merge\_index(array, array, string=null, string=null)
+* `obj` (object, required): Object to modify.
+* `fields` (array, required): Array of field names (strings) to remove.
 
-Merges two given arrays on index of their entries. If field names are given as 3rd and 4th parameters, entry contents are nested under these fields, otherwise they are merged with spreaded fields.
+Removes all listed fields from `obj`.
 
-### minus(number)
+#### Remove null fields
 
-Returns negative of a given number.
+**Availability:** \[S, C]\
+**Signature:** `remove_nulls(obj: object, removeEmptyStrings: boolean=false) -> object`\
+**Parameters:**
 
-### mod(number, number)
+* `obj` (object, required): Object to clean.
+* `removeEmptyStrings` (boolean, default: `false`): Also remove empty string values.
 
-Returns modulo of a given number using another given number as base.
+Removes null fields from `obj`. Optionally removes empty strings too.
 
-### multiply(number, number)
+#### Find JSON paths by regex
 
-Multiplies two given numbers.
+**Availability:** \[S]\
+**Signature:** `find_paths(input: any, regex: string) -> array`\
+**Parameters:**
 
-### now()
+* `input` (any, required): Record to search.
+* `regex` (string, required): Regex to match against JSON paths.
+
+Searches all JSON paths in `input` and returns matching paths.
+
+#### Value type
+
+**Availability:** \[S, C]\
+**Signature:** `type(value: any) -> string`\
+**Parameters:**
+
+* `value` (any, required): Input value.
+
+Returns type of `value`: `OBJECT`, `ARRAY`, `NUMBER`, `STRING`, `BOOLEAN`, `NULL`.
+
+### Dynamic expressions
+
+#### Evaluate dynamic expression
+
+**Availability:** \[S, C]\
+**Signature:** `dynamic(input: any, expr: string) -> any`\
+**Parameters:**
+
+* `input` (any, required): Input object passed to the expression.
+* `expr` (string, required): JMESPath expression as a string.
+
+Evaluates `expr` against `input`.
+
+#### Map with dynamic expression
+
+**Availability:** \[S, C]\
+**Signature:** `dynamic_repeat(input: any, list: array, expr: string) -> array`\
+**Parameters:**
+
+* `input` (any, required): Passed as `input`.
+* `list` (array, required): Iteration list. Each entry is passed as `entry`.
+* `expr` (string, required): JMESPath expression string.
+
+Evaluates `expr` for each `{input, entry}` and returns the results as an array.
+
+#### Filter with dynamic expression
+
+**Availability:** \[S, C]\
+**Signature:** `dynamic_filter(input: any, list: array, expr: string) -> array`\
+**Parameters:**
+
+* `input` (any, required): Passed as `input`.
+* `list` (array, required): Array to filter. Each entry is passed as `entry`.
+* `expr` (string, required): Expression returning a boolean.
+
+Filters `list` using the boolean result of `expr` for each `{input, entry}`&#x20;
+
+### Strings & text
+
+#### Replace substring
+
+**Signature:** `replace(text: string, search: string, replacement: string) -> string`\
+**Parameters:**
+
+* `text` (string, required): Input string.
+* `search` (string, required): Substring to replace.
+* `replacement` (string, required): Replacement substring.
+
+Replaces occurrences of `search` with `replacement` in `text`.
+
+#### Split string
+
+**Signature:** `split(text: string, delimiter: string) -> array`\
+**Parameters:**
+
+* `text` (string, required): Input string.
+* `delimiter` (string, required): Delimiter.
+
+Splits `text` by `delimiter`.
+
+#### Substring
+
+**Signature:** `substr(text: string, start: number, end: number=null) -> string`\
+**Parameters:**
+
+* `text` (string, required): Input string.
+* `start` (number, required): Start index (0-based).
+* `end` (number, default: `null`): End index (exclusive). When `null`, returns to end.
+
+Returns a substring of `text`.
+
+#### Trim whitespace
+
+**Availability:** \[S, C]\
+**Signature:** `trim(value: string) -> string`\
+**Parameters:**
+
+* `value` (string, required): Input string.
+
+Returns trimmed `value`.
+
+#### Lowercase
+
+**Availability:** \[S, C]\
+**Signature:** `to_lower(value: string) -> string`\
+**Parameters:**
+
+* `value` (string, required): Input string.
+
+Lowercases `value`.
+
+#### Uppercase
+
+**Availability:** \[S, C]\
+**Signature:** `to_upper(value: string) -> string`\
+**Parameters:**
+
+* `value` (string, required): Input string.
+
+Uppercases `value`.
+
+#### Slugify
+
+**Signature:** `slug(text: string, transliterate: boolean=false) -> string`\
+**Parameters:**
+
+* `text` (string, required): Input string.
+* `transliterate` (boolean, default: `false`): Use transliteration when true.
+
+Converts `text` to a slug. It trims, lowercases, normalizes/transliterates, removes non-ASCII letters, replaces non-alphanumerics with `-`, and trims `-`.
+
+#### URL encode
+
+**Availability:** \[S, C]\
+**Signature:** `encode_url(value: string) -> string`\
+**Parameters:**
+
+* `value` (string, required): Plain text.
+
+URL-encodes `value`.
+
+#### URL decode
+
+**Availability:** \[S, C]\
+**Signature:** `decode_url(value: string) -> string`\
+**Parameters:**
+
+* `value` (string, required): URL-encoded text.
+
+Decodes URL-encoded text.
+
+#### Base64 encode
+
+**Signature:** `btoa(value: any) -> string`\
+**Parameters:**
+
+* `value` (any, required): Value to encode.
+
+Encodes `value` into a base64 string.
+
+#### Base64 decode
+
+**Signature:** `atob(value: string) -> string`\
+**Parameters:**
+
+* `value` (string, required): Base64-encoded string.
+
+Decodes `value` from base64 and returns UTF-8 text.
+
+#### Regex match
+
+**Availability:** \[C, B]\
+**Signature:** `regex(value: string, pattern: string) -> any`\
+**Parameters:**
+
+* `value` (string, required): Input string.
+* `pattern` (string, required): Regex pattern.
+
+Returns regex match result for `value`.
+
+### JSON & CSV
+
+#### JSON parse
+
+**Availability:** \[S, C]\
+**Signature:** `to_json(value: string) -> any`\
+**Parameters:**
+
+* `value` (string, required): JSON text.
+
+Parses JSON text into an object/array.
+
+#### JSON stringify
+
+**Availability:** \[S, C]\
+**Signature:** `from_json(value: any) -> string`\
+**Parameters:**
+
+* `value` (any, required): JSON object or array.
+
+Converts a JSON object/array into a string.
+
+#### Parse CSV
+
+**Availability:** \[S]\
+**Signature:** `csv_to_json(csv: string, options: object=null) -> array`\
+**Parameters:**
+
+* `csv` (string, required): CSV input text.
+* `options` (object, default: `null`): CSV parsing options. Uses [Apache Commons CSV `CSVFormat`](https://commons.apache.org/proper/commons-csv/apidocs/org/apache/commons/csv/CSVFormat.html).
+
+Parses CSV text into an array of records.
+
+#### Print CSV
+
+**Availability:** \[S]\
+**Signature:** `json_to_csv(records: array, options: object=null) -> string`\
+**Parameters:**
+
+* `records` (array, required): Array to print.
+* `options` (object, default: `null`): Printing options. Uses [Apache Commons CSV `CSVFormat`](https://commons.apache.org/proper/commons-csv/apidocs/org/apache/commons/csv/CSVFormat.html).
+
+Prints `records` as CSV text.
+
+### Date & time
+
+#### Current time
+
+**Signature:** `now() -> number`
 
 Returns current time in epoch milliseconds.
 
-### otol(object, string, string)
+#### Format date
 
-Converts an object to list of key-value pairs using a key string field and value string field.
+**Signature:** `date_to_string(epochMs: number, pattern: string="MM-dd-yyyy") -> string`\
+**Parameters:**
 
-### power(number, number)
+* `epochMs` (number, required): Epoch time in milliseconds.
+* `pattern` (string, default: `"MM-dd-yyyy"`): Java date format pattern.
 
-Returns power of a given number using another given number as base.
+Formats `epochMs` using `pattern`.
 
-### rand(number, number) \[S, C]
+#### Parse date
 
-Returns a random integer between given two numbers.
+**Signature:** `string_to_date(value: string, pattern: string="MM-dd-yyyy") -> number`\
+**Parameters:**
 
-### regex(string, string) \[C,B]
+* `value` (string, required): Date text.
+* `pattern` (string, default: `"MM-dd-yyyy"`): Java date format pattern.
 
-Returns matched contents of a string with a given regex expression string.
+Parses `value` into epoch milliseconds.
 
-### remove\_all(array, array)
+#### Cron time helper
 
-Removes all entries of the second array from the first array.
+**Availability:** \[S]\
+**Signature:** `cron(pattern: string, action: string, timeZone: string, epochMs: number) -> number | boolean`\
+**Parameters:**
 
-### remove\_elements(object, array) \[S, C]
+* `pattern` (string, required): Cron pattern.
+* `action` (string, required): One of `last`, `next`, `fromLast`, `toNext`, `match`.
+* `timeZone` (string, default: `"SYSTEM"`): Time zone ID. Use `"SYSTEM"` for server time zone.
+* `epochMs` (number, required): Epoch time in milliseconds.
 
-Removes all fields of a given object that are listed in a given string array.
+Processes `pattern` relative to `epochMs` using `timeZone`.
 
-### remove\_nulls(object, boolean=false) \[S, C]
+* `last`: epoch ms for last match before `epochMs`.
+* `next`: epoch ms for next match after `epochMs`.
+* `fromLast`: milliseconds since last match.
+* `toNext`: milliseconds until next match.
+* `match`: whether the pattern matches the given time.
 
-Removes fields with null values from a given object with option to remove empty strings as well.&#x20;
+### Crypto & hashing
 
-### repeat(object, array, string)
+#### Encrypt text
 
-Repeats a given object for each element of a given array with array elements merged as a key string field.
+**Availability:** \[S]\
+**Signature:** `encrypt(plainText: string, key: string, algorithm: string="AES/ECB/PKCS5Padding", keyAlgorithm: string="AES") -> string`\
+**Parameters:**
 
-### replace(string, string, string)
+* `plainText` (string, required): Plain text.
+* `key` (string, required): Encryption key.
+* `algorithm` (string, default: `"AES/ECB/PKCS5Padding"`): Cipher algorithm.
+* `keyAlgorithm` (string, default: `"AES"`): Key algorithm.
 
-Replaces occurences of the 2nd string with the 3rd string within the 1st string.
+Encrypts `plainText` using `key`.
 
-### salt\_key(number) \[S, C]
+{% hint style="warning" %}
+`AES/ECB/PKCS5Padding` is not recommended for high-security use cases. Use a stronger mode.
+{% endhint %}
 
-Creates a secure random key with given number of characters.
+{% hint style="info" %}
+For structured payloads, pair this with `to_json()` / `from_json()`.
+{% endhint %}
 
-### set\_element(object, string, any)
+#### Decrypt text
 
-Adds/sets the value of a given object at the given string path.
+**Availability:** \[S]\
+**Signature:** `decrypt(cipherText: string, key: string, algorithm: string="AES/ECB/PKCS5Padding", keyAlgorithm: string="AES") -> string`\
+**Parameters:**
 
-### slug(string, boolean=false)
+* `cipherText` (string, required): Encrypted text.
+* `key` (string, required): Encryption key.
+* `algorithm` (string, default: `"AES/ECB/PKCS5Padding"`): Cipher algorithm.
+* `keyAlgorithm` (string, default: `"AES"`): Key algorithm.
 
-Converts a given string into a slug, with option to use transliteration. Trims the string, converts to lower case, transliterates or normalizes, removes non-ascii letters, replaces non-alphanumeric characters with hyphen, removes leading & trailing hyphens.
+Decrypts `cipherText` using `key`.
 
-### split(string, string)
+{% hint style="warning" %}
+`AES/ECB/PKCS5Padding` is not recommended for high-security use cases. Use a stronger mode.
+{% endhint %}
 
-Splits a given string with a given delimiter string.
+#### Hash text
 
-### split\_array(array, number) \[S]
+**Availability:** \[S]\
+**Signature:** `hash(plainText: string, key: string, algorithm: string="SHA-256", iterations: number=1) -> string`\
+**Parameters:**
 
-Splits a given array into a list of arrays, each containing the given number of records at most.
+* `plainText` (string, required): Plain text to hash.
+* `key` (string, required): Key/salt string.
+* `algorithm` (string, default: `"SHA-256"`): Hash algorithm.
+* `iterations` (number, default: `1`): Iteration count.
 
-### string\_to\_date(string, string="MM-dd-yyyy")
+Hashes `plainText` using `key`.
 
-Converts a date given as a string in the given Java date format into epoch time in milliseconds.
+#### Validate hash
 
-### substr(string, number, number=null)
+**Availability:** \[S]\
+**Signature:** `validate_hash(plainText: string, hashedText: string, key: string, algorithm: string="SHA-256", iterations: number=1) -> boolean`\
+**Parameters:**
 
-Returns substring of a given string with a given start index and an optional end index.
+* `plainText` (string, required): Plain text to verify.
+* `hashedText` (string, required): Hashed string to compare against.
+* `key` (string, required): Key/salt string.
+* `algorithm` (string, default: `"SHA-256"`): Hash algorithm.
+* `iterations` (number, default: `1`): Iteration count.
 
-### to\_int(number) \[S, C]
+Validates `plainText` against `hashedText`.
 
-Returns the integer part of the number. Similar to floor function, but returns an int value instead of double.
+#### Generate random key
 
-### to\_json(string) \[S, C]
+**Availability:** \[S, C]\
+**Signature:** `salt_key(length: number) -> string`\
+**Parameters:**
 
-Converts a string into a json object/array.
+* `length` (number, required): Desired length.
 
-### to\_lower(string) \[S, C]
+Creates a secure random key string of `length` characters.
 
-Converts a string into lower case.
+### Lookup & joins
 
-### to\_upper(string) \[S, C]
+#### Lookup / join
 
-Converts a string into a upper case.
+**Signatures:**
 
-### trim(string) \[S, C]
+* **Availability:** \[S, B] `lookup(left: array, right: array, key: string, full: boolean=false) -> array`
+* **Availability:** \[C] `lookup(source: string, id: string) -> any`
 
-Returns trimmed version of a given string.
+**Join arrays** (\[S, B])\
+Joins `left` and `right` on field `key`.
 
-### type(any) \[S, C]
+* `full=false` performs a left join.
+* `full=true` performs a full join.
 
-Returns type of the input parameter (OBJECT, ARRAY, NUMBER, STRING, BOOLEAN or NULL).
+**Client-side source lookup** (\[C])\
+Looks up a record by `id` from a configured [source](../design/api-mapping/).
 
-### uuid() \[S, C]
+{% hint style="info" %}
+Client-side `lookup()` is only available in evaluation providers (not in Handlebars templates).
+
+It is not implemented server-side to avoid unintended access to sensitive states.
+{% endhint %}
+
+### Math & logic
+
+#### Compare values
+
+**Availability:** \[S, C]\
+**Signature:** `compare(left: any, right: any) -> number`\
+**Parameters:**
+
+* `left` (any, required): First value.
+* `right` (any, required): Second value.
+
+Returns `0` if equal, `-1` if `left < right`, `1` if `left > right`.
+
+#### Conditional value
+
+**Availability:** \[S, C]\
+**Signature:** `cond(test: boolean, ifTrue: any, ifFalse: any) -> any`\
+**Parameters:**
+
+* `test` (boolean, required): Condition to evaluate.
+* `ifTrue` (any, required): Value to return if `test` is true.
+* `ifFalse` (any, required): Value to return if `test` is false.
+
+Returns `ifTrue` or `ifFalse` based on `test`.
+
+#### Divide numbers
+
+**Signature:** `divide(dividend: number, divisor: number) -> number | null`\
+**Parameters:**
+
+* `dividend` (number, required): Numerator.
+* `divisor` (number, required): Denominator.
+
+Divides `dividend` by `divisor`. Returns `null` if `divisor` is `0`.
+
+#### Multiply numbers
+
+**Signature:** `multiply(left: number, right: number) -> number`\
+**Parameters:**
+
+* `left` (number, required): First factor.
+* `right` (number, required): Second factor.
+
+Returns `left * right`.
+
+#### Modulo
+
+**Signature:** `mod(value: number, base: number) -> number`\
+**Parameters:**
+
+* `value` (number, required): Input number.
+* `base` (number, required): Base.
+
+Returns `value % base`.
+
+#### Power
+
+**Signature:** `power(value: number, exponent: number) -> number`\
+**Parameters:**
+
+* `value` (number, required): Base.
+* `exponent` (number, required): Exponent.
+
+Returns `value ^ exponent`.
+
+#### Negate number
+
+**Signature:** `minus(value: number) -> number`\
+**Parameters:**
+
+* `value` (number, required): Input number.
+
+Returns `-value`.
+
+#### To integer
+
+**Availability:** \[S, C]\
+**Signature:** `to_int(value: number) -> number`\
+**Parameters:**
+
+* `value` (number, required): Input number.
+
+Returns the integer part of `value` (floor-like). Returns an int value.
+
+### IDs & randomness
+
+#### Generate GUID
+
+**Availability:** \[S, C]\
+**Signature:** `guid() -> string`
+
+Creates and returns a globally unique ID string.
+
+#### Generate UUID
+
+**Availability:** \[S, C]\
+**Signature:** `uuid() -> string`
 
 Creates a universally unique ID value.
 
-### validate\_hash(string, string, string, string="SHA-256", number=1) \[S]
+#### Random integer
 
-Compares given plain string with a hashed string, using a given key string. Two optional parameters are used for specifying the algorithm and hash iteration count.
+**Availability:** \[S, C]\
+**Signature:** `rand(min: number, max: number) -> number`\
+**Parameters:**
+
+* `min` (number, required): Minimum integer.
+* `max` (number, required): Maximum integer.
+
+Returns a random integer between `min` and `max`.
+
+### Environment
+
+#### Read environment variable
+
+**Availability:** \[S]\
+**Signature:** `get_env(name: string) -> string | null`\
+**Parameters:**
+
+* `name` (string, required): Environment variable name.
+
+Returns the environment variable value. Intended for server-side use only.
