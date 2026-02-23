@@ -12,6 +12,7 @@ With Rierino, it is possible to design different admin UI apps for different bus
 * **Option:** Each option represents the list and properties of options listed in drop-down widgets
 * **Translation:** Contains translations for all common and business domain specific labels&#x20;
 * **Icon:** Contains all SVG icon definitions used across the platform
+* **Style:** Allows configuration of custom CSS for styling and changing color theme
 
 {% embed url="https://www.youtube.com/watch?v=qWVzLsIXTmA" %}
 

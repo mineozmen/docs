@@ -1,45 +1,96 @@
 # Using the Saga Screen
 
-Opening the **Saga** screen from **Devops** app menu or navigation bar, you will come across a visual graph editor, allowing design of flows step by step.
+## At a glance
 
-Sagas are listed on the left side of this screen, grouped by their domain and path information. It is possible to assign multiple saga flows to the same path (i.e. URL endpoint), under the following conditions:
+* Left panel: list of sagas, grouped by **domain** and **path**.
+* Center canvas: drag-and-drop **step graph**.
+* Top bar: edit saga details, add steps, and tidy layout.
+* Save is “live”: changes propagate to runners in real time.
 
-* Either only 1 saga has active status - typically used when older or alternate versions are kept for reference or disaster recovery
-* More than 1 sagas are active, but they are allowed on different streams - typically used for allowing same endpoint with different flows between development, test and production environments
-* If more than 1 saga is set to active on the same stream, only the first record is used
+### Open the Saga screen
 
-The saga screen has similar functionalities as any other UI screen, such as save, delete, duplicate, item import and export actions and menus. Saga flow designed on this screen is stored in JSON format, the same as any other data source.
+Open **Devops → Saga**. You’ll land on a visual graph editor for building flows step by step.
 
-On top of this screen, you will notice that the saga ID is editable, this allows you to assign a meaningful unique ID to each saga for your reference. Since these IDs will be recorded within event logs, this approach makes them more manageable than assigning random or sequential IDs.
+The screen behaves like other Rierino screens. You get save, delete, duplicate, and import/export menus.
+
+### Pick the right saga (domain/path/stream)
+
+Sagas are listed on the left, grouped by domain and path. The system can store multiple saga records for the same URL path.
+
+<details>
+
+<summary>How multiple sagas on the same path are selected</summary>
+
+* If only one saga is **active**, it is used.
+* If more than one saga is active, but each is allowed on different **streams**, the runner picks the one matching the incoming stream.
+* If more than one saga is active on the **same** stream, only the first record is used.
+
+</details>
+
+### Use a meaningful saga ID
+
+The saga ID field is editable. Use a meaningful unique ID for easier log searches.
 
 <figure><img src="../../.gitbook/assets/image (113).png" alt=""><figcaption><p>Icon Bar</p></figcaption></figure>
 
-Below the ID field, you can find the icon bar, which allows construction of a saga flow as well as changing its layout.
+### Icon bar: edit, build, layout
 
-If you click on the edit icon on the left of this bar, you will see the pop-up editor for defining saga details.
+{% columns %}
+{% column %}
+#### Left: edit saga details
 
-At the center of the icon bar, you can see different types of saga steps, which you can and drop on to the grid to add new steps to the saga flow.
+Click the edit icon to open the saga definition popup. This is where you set path, allowed runners/streams, schema, caching, and more.
+{% endcolumn %}
 
-Each saga must have at least one **Start** step, and can have multiple **Fail** or **Success** steps if that makes your flow easier to follow. Between these steps, you can add any number of steps or conditional logic to build your API flow.
+{% column %}
+#### Middle: add steps
 
-If a saga has more than one Start steps, these steps would be triggered and followed in parallel using multiple threads. This feature provides a simplified approach for parallelization without the need for asynchronous flows or event streaming.
+Drag step types onto the canvas. Then connect them with links to define the execution order.
+{% endcolumn %}
+
+{% column %}
+#### Right: layout tools
+
+Use alignment and grid controls to keep the flow readable. You can also change the grid size and visibility.
+{% endcolumn %}
+{% endcolumns %}
+
+### Build a flow (recommended shape)
+
+Each saga needs at least one **Start** step. Use **Success** and **Fail** steps as exit points. Add Event / Transform / Condition steps in between.
+
+<details>
+
+<summary>Parallel starts (multiple Start steps)</summary>
+
+If a saga has more than one Start step, they run in parallel threads. This is available starting from version 1.8.0.
+
+Parallel branches do not auto-merge payloads. Use the Merge event handler if you need a combined payload.
+
+Keep parallel branches in the same runner when possible. Prefer synchronous links if distributing across runners.
+
+</details>
+
+### Save & deploy behavior (real-time)
+
+Creating or updating a saga updates the runtime in real time. This depends on change data capture not being disabled.
+
+<details>
+
+<summary>How saves affect in-flight requests</summary>
+
+* Requests already running on a different saga record (different ID) continue on the old flow. This is true even if you mark that other saga inactive.
+* Requests running on the currently active saga may pick up your new graph mid-flight. Big changes (like removing steps) can break these requests.
+
+If you need zero disruption, use a versioned or backup saga briefly. Switch traffic once you’re confident no requests are in-flight.
+
+</details>
 
 {% hint style="info" %}
-Multiple start steps are allowed starting from version 1.8.0 and they would be omitted in previous releases.
-
-Each parallel flow is executed independently, and would not merge their event payloads automatically even if they converge on same steps. If payloads have to be merged, Merge event handler should be used.
-
-If a saga is parallelized, it is recommended to keep all following steps executing within the same runner or distributed through synchronous links/communications.
+To copy multiple steps at once, keep pressing Ctrl while clicking **Copy** on a selected step. This builds a multi-step clipboard and works across sagas.
 {% endhint %}
 
-At the right side, you can see the icons for changing the layout of saga flow after you've added its steps, such as automatically aligning steps, hiding / displaying the grid as well as changing its size.
-
-Once you create a new saga or update an existing one, it is automatically updated on the respective runners - as long as the change data capture is not disabled. This update changes API flow for the saga's URL endpoint in real-time. This change can affect still ongoing requests to this URL endpoint (e.g. requests started just milliseconds before you save your saga) as follows:
-
-* If they are running on another saga record (i.e. with a different id), they continue and finish using that previous saga flow, regardless of whether their saga is set to inactive status or not, effectively having no impact on these requests
-* If you've updated the design of the currently active saga, they start using this new saga flow for completion. If you've done drastic changes on the saga flow, such as removing some steps, this can cause some of these requests to fail. In such cases, we recommend creating a new version of the saga or switching to a back-up saga flow for a few seconds to make sure there are no active requests on your saga.
-
-## Saga Data Schema
+## Saga Data Schema (reference)
 
 {% code expandable="true" %}
 ```json

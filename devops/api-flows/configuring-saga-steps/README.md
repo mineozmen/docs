@@ -8,3 +8,27 @@ Saga flows start with a single START node and can have one or more SUCCESS / FAI
 * **Fill:** Fill color of the step on saga graph
 * **Auto Fail:** Whether saga should automatically fail if this step fails
 * **Continue on Fail:** Whether saga step should continue on fail (to override in case saga itself is configured as Auto Fail)
+
+### Step types
+
+Saga graphs are built from a small set of step types. Each type has different configuration fields and runtime behavior.
+
+#### Control steps
+
+These steps define entry and exit points of the flow:
+
+* **Start:** Entry point for the saga execution.
+* **Success:** A successful exit point.
+* **Fail:** A failure exit point.
+
+#### Action and logic steps
+
+These steps do the work between Start and exit nodes:
+
+* [Event Step](event-step.md): calls an event handler action with parameters.
+* [Transform Step](transform-step/): transforms the current payload and passes the output forward.
+* [Condition Step](condition-step/): evaluates a condition and routes to different next steps.
+
+#### Connecting steps
+
+* [Step Link](step-link.md): defines how the flow moves from one step to the next. Use condition values to model branching and default (`*`) paths.
