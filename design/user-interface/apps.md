@@ -14,12 +14,12 @@ Apps are listed on the left side of this screen. The app screen has similar func
 
 On top of this screen, you will notice that the app ID is editable, this allows you to assign a meaningful unique ID to each app for your reference. Since these IDs will be used in url path for accessing the app, this approach makes them more manageable than assigning random or sequential IDs.
 
-The definition tab allows design of the app home page, with its image, title and description. Additionally, it is possible to select an API endpoint as the landing template path, which allows loading handlebars template to render a fully customized landing page for the app.
-
 Definition tab also includes custom configuration for accessing help documents related to this app:
 
 * **Help URL:** This is the URL to direct user to when help link is clicked. If the URL is partial (e.g. /design), it uses HELP\_URL environment variable as the base. Otherwise, the full URL provided is used.
 * **Help Space & Organization:** If HELP\_TOKEN environment variable, which is the API Token required for accessing GitBook search APIs, these fields allow restriction of search results to a specific GitBook space or organization. If HELP\_TOKEN is defined, clicking on the "?" icon opens a search dialog instead of automatically directing user to the help URL.
+
+A separate "Landing" tab allows configuration of app specific landing page template as well as rich contents such as home page title, image, overview, useful links and FAQs.
 
 The menus tab allows editing navigation and home page contents, by defining different UI screens which should be accessible from this app.
 

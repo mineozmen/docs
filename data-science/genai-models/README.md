@@ -35,7 +35,9 @@ Initial definition of a GenAI model includes 4 main tabs:
 * **Allowed For:** List of runners which can provide the AI agent
 * **Tags:** Descriptive tags for the model
 * **Status:** Whether this model should be deployed or not
-* **Instructions:** Instructions to send to agent for its initialization (such as main purpose and persona)&#x20;
+* **Instructions:** Instructions to send to agent for its initialization (such as main purpose and persona)
+* **Call Path:** URL path to use for calling this agent directly from admin UI
+* **Definition Path:** URL path to use for getting information about this agent directly from admin UI
 
 ### Model
 

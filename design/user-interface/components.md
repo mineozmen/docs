@@ -18,15 +18,23 @@ Components include the following types:
 * **Editor:** Used by UI editors for configuring [widgets](uis/widgets/) used
 * **Filter:** Used by table listers for configuring query filters
 
-## Extending Components
+## Creating Custom Components
 
-It is possible extend the list of existing components by adding external libraries and using web components.
+It is possible extend the list of existing components in different ways:
 
-### Adding External Libraries
+### Extended Editors
+
+For editors which are frequently configured with the same list of property values (such as base URL for media editors, or code editors with AI menus), it is possible to select a core widget to extend and assign the default properties.
+
+### Hosted Editors
+
+It is also possible to create new editors by creating custom React components, coding them directly inside the Component screen. These editors also allow using AI agents to generate the component code as per Rierino standards automatically.
+
+### External Libraries
 
 External library dependencies can be added as a comma separated list of js file URLs in SCRIPT\_URLS environment variable of the admin UI deployment.
 
-### Web Components
+#### Web Components
 
 New widgets can be added for use in UI editors by integrating existing web components or creating new ones.
 
@@ -34,7 +42,7 @@ New widgets can be added for use in UI editors by integrating existing web compo
 Web Components Introduction
 {% endembed %}
 
-#### Widgets
+**Widgets**
 
 You can add new widget  components by creating a new record in components screen with the following properties:
 
@@ -53,7 +61,7 @@ It is also possible to pass additional properties using component parameters (i.
 Example Web Component (can be imported on Component screen)
 {% endfile %}
 
-#### Listers
+**Listers**
 
 You can add new lister components by creating a new record in components screen with the following properties:
 
@@ -64,7 +72,7 @@ You can add new lister components by creating a new record in components screen 
 
 The web components also receive all properties available to listers (e.g. onSave, onNew events), which can be used with a custom component implementation.
 
-### Functions
+#### Functions
 
 You can add new actions by creating a new record in components screen with the following properties:
 
