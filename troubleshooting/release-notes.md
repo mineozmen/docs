@@ -5,6 +5,24 @@ icon: code-branch
 
 # Release Notes
 
+## 2.2.0 \[02/2026]
+
+### Server Sent Events
+
+SSE is now supported out-of-box without any custom development, allowing use of any API endpoint to be delivered as continuous events, with granular delay/stop control, enabling use cases such as MCP events, user notifications.
+
+### Home Page Enhancements
+
+All home pages (global, app specific and agent listing) are now completely customizable using Handlebars templates. Default home pages are also enriched, providing easy access to apps, screens, agents and more.
+
+### New UI Widgets
+
+3 new widgets are added to UI builder, providing alternative methods for selecting values - Sliders, Ratings and Radio Groups.
+
+### Extended Editors
+
+It is now possible to define pre-configured editors and use them across screens, decreasing repetition of configuration and data entry.
+
 ## 2.1.0 \[01/2026]
 
 ### Enriched AI Agent Governance

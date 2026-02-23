@@ -11,7 +11,7 @@ description: >-
 All channels share the following settings:
 
 * **Target:** Path segment(s) representing this channel (e.g. /api/crud).
-* **System:** Id of the gateway system that communicates for this channel.
+* **System:** Id of the gateway system that communicates for this channel. As an alternative, system parameters can be defined on the channel as well.
 * **Method:** Method for communicating through the gateway system (e.g. POST).
 * **Gateways:** List of gateway ids which are allowed to communicate with this system.
 
