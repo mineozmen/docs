@@ -34,26 +34,22 @@ To learn how to extend this CRUD runner, please watch the following video:
 
 ### Train RPC
 
-Train RPC is a general-purpose RPC runner that executes sagas. It also ships with a broad set of handlers for “do some work and return a response”. Most training sagas are executed through this runner, including the ones listed under [API Flow Examples](api-flow-examples.md).
+Train RPC is a general-purpose RPC runner that executes sagas. It also ships with a broad set of handlers for “do some work and return a response”, most of them inherited through its base runner configuration. Most training sagas are executed through this runner, including the ones listed under [API Flow Examples](api-flow-examples.md).
 
 This runner is mapped to the `RPC Train` gateway system and the `Train RPC` gateway channel. You can reach it at `[{API_SERVER}]/api/request/train_rpc/[PATH]`.
 
-<figure><img src="../../.gitbook/assets/image (140).png" alt=""><figcaption><p>RPC Runner</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (172).png" alt=""><figcaption><p>RPC Runner</p></figcaption></figure>
 
-A minimal RPC runner needs two things:
+This RPC runner inherits two base runners to provide it with the foundations:
 
-* An **input stream** (in training, `request_train`) to receive requests.
-* A **saga handler** to load and execute the selected saga flow.
+* **Base RPC:** Provides most frequently used handlers and their supporting state managers, for read, write, query, saga, action and simple rule operations.
+* **GenAI Base:** Provides configuration for AI agent use cases, including required handler and state managers.
 
-Everything else is optional. You add elements based on what the sagas are allowed to do. That keeps permissions explicit and makes runners easier to reason about.
+Individual elements are added on top of this inheritance to showcase different use cases:
 
-This training runner includes the following elements:
-
-* **Read + Write handlers** for basic state operations on the `dummy` collection in `master` (used by many sagas).
-* **Query handler** to execute stored queries against `master`.
-* **REST handler** to call an external system (`datausa`). It also includes predefined `Action` records for reusable call configs.
 * **Script / Handlebars template / OpenHFT handlers** for dynamic logic. Code is stored in `handler_code` on the `devops` database. It is cached in-memory for fast reloads.
-* **Rule handler** to evaluate training rules stored in `rule_training` on the `config` database. These are typically used directly, without a cache.
+* **Secret handler** to encrypt, decrypt and hash different types of payloads.
+* Sample **query and state managers** for testing read/write operations on `mongo_master` database.
 
 To learn how to extend this RPC runner, please watch the following video:
 

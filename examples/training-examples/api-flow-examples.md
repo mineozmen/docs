@@ -60,13 +60,13 @@ The query is accessible from the Query screen of the Configuration application. 
 
 This flow demonstrates an outbound HTTP call from a saga. It uses the REST handler together with a configured `System` definition. The saga builds a request, sends a GET call to the remote system, then forwards the response. Use it for simple integrations and for validating network access from runners.
 
-<figure><img src="../../.gitbook/assets/image (98).png" alt="" width="297"><figcaption><p>Rest Flow</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (170).png" alt="" width="375"><figcaption><p>Rest Flow</p></figcaption></figure>
 
 ## Saga: /train\_pattern
 
 This flow builds on `train_rest` by parameterizing request and response mapping. It uses patterns in event metadata to inject values into the outbound request. It can also extract and reshape fields from the remote response into a clean API output. Use it when you need lightweight mapping without custom code.
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Pattern Parameters</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (171).png" alt=""><figcaption><p>Pattern Parameters</p></figcaption></figure>
 
 ## Saga: /train\_secret
 
@@ -110,7 +110,7 @@ This flow evaluates a list of rules against the incoming payload. It returns the
 
 <figure><img src="../../.gitbook/assets/image (138).png" alt=""><figcaption><p>Simple Rule Flow</p></figcaption></figure>
 
-The rule list for calculation is configured using the rule records accessible in Train application.
+The rule list for calculation is configured using the rule records accessible in Configuration application.
 
 <figure><img src="../../.gitbook/assets/image (139).png" alt=""><figcaption><p>Rule Configuration</p></figcaption></figure>
 
