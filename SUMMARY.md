@@ -18,6 +18,7 @@
     * [Exercise: Test State](examples/training-examples/exercise-test-state.md)
   * [UI Example](examples/training-examples/ui-example.md)
     * [Exercise: Test UI](examples/training-examples/exercise-test-ui.md)
+  * [AI Agent Example](examples/training-examples/ai-agent-example.md)
 * [In-depth Exercise](examples/in-depth-exercise/README.md)
   * [To-do List Runner](examples/in-depth-exercise/to-do-list-runner.md)
   * [To-do List Gateway](examples/in-depth-exercise/to-do-list-gateway.md)

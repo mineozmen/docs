@@ -12,7 +12,7 @@ It is possible to extend the list and variety of value widgets, and Rierino is s
 
 ### Text Editor
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 TextEditor provides ability to enter free text data. This widget has the following special properties:
 
@@ -57,7 +57,7 @@ TextEditor provides ability to enter free text data. This widget has the followi
 
 ### Code Editor
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 CodeEditor provides ability to enter multi-line code with syntax highlighting and autocomplete in various languages (such as java, javascript, python) using Ace editor. This widget has the following special properties:
 
@@ -125,7 +125,7 @@ CodeEditor provides ability to enter multi-line code with syntax highlighting an
 
 ### Markdown Editor
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 MarkdownEditor provides ability to enter and preview contents using Markdown language, which is stored as text. This widget has the following special properties:
 
@@ -240,7 +240,7 @@ TextToArrayEditor provides ability to edit delimited test fields as array elemen
 
 ### Select Editor
 
-<figure><img src="../../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 SelectEditor provides ability to select from a predefined list of options (either by name or as an actual list). If options have "color" attributes defined, they are also displayed with the given color. This widget has the following special properties:
 
@@ -493,7 +493,7 @@ If none of the schema properties are provided, this editor assumes it is used wi
 
 ### Switch Editor
 
-<figure><img src="../../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 SwitchEditor provides ability to enter true/false values with a switch. This widget has the following special properties:
 
@@ -647,7 +647,7 @@ ColorEditor provides ability to pick colors and return their hex code using Sket
 
 ### Slider Editor
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (169).png" alt=""><figcaption></figcaption></figure>
 
 SliderEditor provides ability to enter single and {min, max} range type numerical values with a slider. This widget has the following special properties:
 

@@ -8,7 +8,7 @@ description: >-
 
 All API workflows can be accessed via DevOps → Saga in the admin UI. In that screen, you’ll find the flows listed below under the “training” group.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Training Sagas</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Training Sagas</p></figcaption></figure>
 
 ## Saga: /train\_ping
 
@@ -61,6 +61,8 @@ The query is accessible from the Query screen of the Configuration application. 
 This flow demonstrates an outbound HTTP call from a saga. It uses the REST handler together with a configured `System` definition. The saga builds a request, sends a GET call to the remote system, then forwards the response. Use it for simple integrations and for validating network access from runners.
 
 <figure><img src="../../.gitbook/assets/image (170).png" alt="" width="375"><figcaption><p>Rest Flow</p></figcaption></figure>
+
+This flow is also used in AI Agent example, and includes a simple input schema, which allows the AI agent to make calls to this flow in the correct data pattern. It also includes some optional instructions and mappings for the agent in AI tab.
 
 ## Saga: /train\_pattern
 
