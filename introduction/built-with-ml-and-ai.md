@@ -60,7 +60,7 @@ Use agents when users need a conversational interface. Use agents when the “ne
 
 {% embed url="https://www.youtube.com/watch?ab_channel=Rierino&v=jgKj4_019Ps" %}
 
-For more details [click here](../data-science/genai-models/).
+For more details [click here](../data-science/genai-models/), for details on training AI agent example [click here](../examples/training-examples/ai-agent-example.md).
 
 ## MCP Server & Middleware
 

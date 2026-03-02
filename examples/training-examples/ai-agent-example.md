@@ -75,6 +75,8 @@ Enable interface responses. Add the book listing UI.
 This example uses `HandlebarsDisplay`. That widget renders HTML from a template.
 
 <figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption><p>Training Agent UIs</p></figcaption></figure>
+
+{% embed url="https://www.youtube.com/watch?v=jMARJDxzk24" %}
 {% endstep %}
 
 {% step %}
