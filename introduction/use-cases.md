@@ -47,7 +47,7 @@ Start with a clean CRUD backbone and an admin UX:
 
 These show up when you need derived views and performance layers:
 
-* [Loading Strategies](../devops/microservices/elements/state-managers/loading-strategies.md) & [CDC Systems](../devops/microservices/elements/systems.md#cdc) for CQRS patterns. Use them for cache and read models.
+* [Loading Strategies](../devops/microservices/elements/state-managers/loading-strategies.md) & [CDC Systems](../devops/microservices/elements/systems/#cdc) for CQRS patterns. Use them for cache and read models.
 * [Generate Text/Html](../devops/microservices/elements/handlers/core-handlers/generate-text-html.md) handler for server-side rendering. Use it for templates and rich outputs.
 
 ## Decision Automation
@@ -98,7 +98,7 @@ These use cases need secure access and traceable task execution. They often requ
 
 These are common once processes include files and strict validation:
 
-* [File Systems](../devops/microservices/elements/systems.md#hdfs) and [Media Editors](../design/user-interface/uis/widgets/value-widgets.md#media-editor) for uploading, editing and displaying process documents and media.
+* [File Systems](../devops/microservices/elements/systems/#hdfs) and [Media Editors](../design/user-interface/uis/widgets/value-widgets.md#media-editor) for uploading, editing and displaying process documents and media.
 * [Validate Event](../devops/microservices/elements/handlers/flow-handlers/validate-event.md) handler and [Data Schema](../design/data-schema/) for validation of user inputs against content structure.
 * [Run Scripts](../devops/microservices/elements/handlers/custom-code-handlers/run-scripts.md) handler for implementing customized logic. Use it for edge cases.
 

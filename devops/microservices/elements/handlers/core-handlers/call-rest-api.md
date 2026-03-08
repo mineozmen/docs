@@ -9,7 +9,7 @@ description: >-
 
 ## Handler Parameters
 
-This handler requires no parameters. Instead, target [rest system](../../systems.md#rest) referred to by name using 'domain' field defines the base URL and credentials for all calls. This [handler is](#user-content-fn-1)[^1] [cacheable](../#handler-caching).
+This handler requires no parameters. Instead, target [rest system](../../systems/#rest) referred to by name using 'domain' field defines the base URL and credentials for all calls. This [handler is](#user-content-fn-1)[^1] [cacheable](../#handler-caching).
 
 ## Actions
 

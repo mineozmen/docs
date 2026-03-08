@@ -10,7 +10,7 @@ description: >-
 
 | Parameter           | Definition                                                                                                         | Example                     | Default                   |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------- | ------------------------- |
-| system              | Name of the [system ](../../systems.md#mongodb)which defines MongoDB service details (uri, database)               | {uri:"mongodb://127.0.0.1"} | master.mongo.uri/database |
+| system              | Name of the [system ](../../systems/#mongodb)which defines MongoDB service details (uri, database)                 | {uri:"mongodb://127.0.0.1"} | master.mongo.uri/database |
 | collection          | Name of the MongoDB collection to store details                                                                    | product                     | \[state manager alias]    |
 | journalCollection   | Name of the MongoDB collection to store state changes                                                              | product\_journal            | -                         |
 | keepJournal         | Alternative to journalCollection parameter, automatically using "draft\_journal" suffix for the journal collection | true                        | false                     |

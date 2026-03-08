@@ -8,13 +8,13 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter         | Definition                                                                                                                  | Example             | Default            |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------ |
-| system            | Name of the [system ](../../systems.md#jdbc)which defines remote service details (dbms, uri, connectionPropertiesmergeInto) | {dbms:"ORACLE"}     | -                  |
-| maxColumnNameSize | Max number of characters allowed for column names                                                                           | 255                 | 100                |
-| rootName          | Root table name                                                                                                             | product             | State manager name |
-| journalTable      | Table for storing change journal records                                                                                    | product\_journal    | -                  |
-| schema.state      | State manager keeping json schemas                                                                                          | schema              | -                  |
-| schema            | Json string representing data schema (if schema. state is not used)                                                         | {id:{type:string\}} | -                  |
+| Parameter         | Definition                                                                                                                | Example             | Default            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------- | ------------------ |
+| system            | Name of the [system ](../../systems/#jdbc)which defines remote service details (dbms, uri, connectionPropertiesmergeInto) | {dbms:"ORACLE"}     | -                  |
+| maxColumnNameSize | Max number of characters allowed for column names                                                                         | 255                 | 100                |
+| rootName          | Root table name                                                                                                           | product             | State manager name |
+| journalTable      | Table for storing change journal records                                                                                  | product\_journal    | -                  |
+| schema.state      | State manager keeping json schemas                                                                                        | schema              | -                  |
+| schema            | Json string representing data schema (if schema. state is not used)                                                       | {id:{type:string\}} | -                  |
 
 This state manager supports [CallSP](../../handlers/core-handlers/write-data.md) action of write event handler, where command is the parameterized command to apply and the inputs are passed as parameters to this command.

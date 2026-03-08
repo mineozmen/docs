@@ -9,7 +9,7 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter | Definition                                                                                                  | Example                        | Default |
-| --------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------ | ------- |
-| system    | Name of the [system ](../../systems.md#rest)which defines remote service details (uri, timeout, allowPatch) | {uri:"http://wms.example.com"} | -       |
-| resource  | Name/path of the resource on target system                                                                  | inventory                      | -       |
+| Parameter | Definition                                                                                                | Example                        | Default |
+| --------- | --------------------------------------------------------------------------------------------------------- | ------------------------------ | ------- |
+| system    | Name of the [system ](../../systems/#rest)which defines remote service details (uri, timeout, allowPatch) | {uri:"http://wms.example.com"} | -       |
+| resource  | Name/path of the resource on target system                                                                | inventory                      | -       |

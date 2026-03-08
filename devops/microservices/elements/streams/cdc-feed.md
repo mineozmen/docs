@@ -6,7 +6,7 @@ description: >-
 
 # CDC Feed
 
-Includes settings required for change data capture flows of a specific data table from [CDC systems](../systems.md#cdc). Typically, name of this stream matches the source table name.
+Includes settings required for change data capture flows of a specific data table from [CDC systems](../systems/#cdc). Typically, name of this stream matches the source table name.
 
 {% embed url="https://www.youtube.com/watch?v=MCvRGhUhijg" %}
 

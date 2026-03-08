@@ -8,6 +8,6 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter | Definition                                                                                                                                | Example                       | Default                 |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------- |
-| system    | Name of the ES [system ](../systems.md#elasticsearch)with configuration details (url, pathPrefix, username, password, token, key, secret) | {url:"http://localhost:9200"} | master.elasticsearch.\* |
+| Parameter | Definition                                                                                                                              | Example                       | Default                 |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------- |
+| system    | Name of the ES [system ](../systems/#elasticsearch)with configuration details (url, pathPrefix, username, password, token, key, secret) | {url:"http://localhost:9200"} | master.elasticsearch.\* |

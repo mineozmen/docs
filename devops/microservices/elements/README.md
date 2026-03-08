@@ -16,7 +16,7 @@ There are 10 types of elements, which can be defined using the Rierino admin use
 
 **2.** [**Generic Setting**](generic-settings.md)**:** Used for describing settings for a specific prefix, such as "master" system configurations (optional way of configuring systems)
 
-**3.** [**System**](systems.md)**:** Used for settings which are applicable to all components of a system, such as the URI for a database connection or URL & authentication details for a 3rd party REST system
+**3.** [**System**](systems/)**:** Used for settings which are applicable to all components of a system, such as the URI for a database connection or URL & authentication details for a 3rd party REST system
 
 **4.** [**Stream**](streams/)**:** Used for describing settings for a data stream, such as a Kafka topic or REST path&#x20;
 

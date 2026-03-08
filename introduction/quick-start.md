@@ -68,7 +68,7 @@ Focus on the following concepts first:
 * Start using existing training microservices with [saga flows](../devops/api-flows/).
 * Perform [read](../devops/microservices/elements/handlers/core-handlers/read-data.md) and [write](../devops/microservices/elements/handlers/core-handlers/write-data.md) operations on existing runners.
 * Perform [query](../devops/microservices/elements/handlers/core-handlers/query-data.md) operations and visually design [queries](../configuration/queries/).
-* Integrate with 3rd party [rest systems](../devops/microservices/elements/systems.md#rest) and [call their APIs](../devops/microservices/elements/handlers/core-handlers/call-rest-api.md).
+* Integrate with 3rd party [rest systems](../devops/microservices/elements/systems/#rest) and [call their APIs](../devops/microservices/elements/handlers/core-handlers/call-rest-api.md).
 * Build new [UIs](../design/user-interface/uis/) and add them to [Apps](../design/user-interface/apps.md).
 
 If you prefer a guided path, complete the [self-paced interactive training](https://rierino-open.github.io/training/intro-core-capabilities/8912351230123.html). It introduces the main concepts and terminology using hands-on steps.

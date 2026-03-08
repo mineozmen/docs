@@ -8,6 +8,6 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter | Definition                                                                                        | Example                     | Default                   |
-| --------- | ------------------------------------------------------------------------------------------------- | --------------------------- | ------------------------- |
-| system    | Name of the [system ](../systems.md#mongodb)which defines MongoDB service details (uri, database) | {uri:"mongodb://127.0.0.1"} | master.mongo.uri/database |
+| Parameter | Definition                                                                                      | Example                     | Default                   |
+| --------- | ----------------------------------------------------------------------------------------------- | --------------------------- | ------------------------- |
+| system    | Name of the [system ](../systems/#mongodb)which defines MongoDB service details (uri, database) | {uri:"mongodb://127.0.0.1"} | master.mongo.uri/database |
