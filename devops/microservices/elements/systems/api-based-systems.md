@@ -15,7 +15,7 @@ Includes settings required for connecting with an http server for standard REST 
 | url                   | Base URL for REST endpoint                                                                                               | http://localhost:8080/api                         | -                             |
 | contentType           | Media content type for REST communications ("query" for url parameters, "none" for no content)                           | application/xml                                   | application/json              |
 | trust                 | Whether endpoint should be trusted without SSL validation                                                                | true                                              | false                         |
-| auth.method           | Method to use for authentication to endpoint (input, basic, bearer, scribe, jwt)                                         | basic                                             | -                             |
+| auth.method           | Method to use for authentication to endpoint (input, basic, bearer, oauth2, oauth1, jwt, custom)                         | basic                                             | -                             |
 | auth.token.header[^1] | Header to include generated token in                                                                                     | custom-auth                                       | Authorization                 |
 | auth.prefix[^1]       | Prefix to include for generated token                                                                                    | none (for no prefix)                              | Bearer (Basic for basic auth) |
 | header.\[header]      | Additional header to send in system communications                                                                       | special-header=value                              | -                             |
@@ -92,9 +92,9 @@ Authentication with a bearer token:
 Example Bearer Authentication Rest System Definition (Can be Imported on Element Screen)
 {% endfile %}
 
-### Scribe Authentication Method
+### OAuth2 Authentication Method
 
-Scribe based OAuth token authentication:
+OAuth2 based token authentication:
 
 | Parameter                    | Definition                                                                                                                     | Example                                             | Default              |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- | -------------------- |
