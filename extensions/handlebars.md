@@ -338,7 +338,6 @@ Legacy naming and version notes:
   * `md` → `rierinoMarkdown`
   * `eval` → `rierinoEval`
   * `dateToString` → `rierinoDate`
-* `dataLookup` is available since `0.5.2`.
 {% endhint %}
 
 ## Client-Side Actions

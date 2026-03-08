@@ -8,7 +8,7 @@ description: >-
 
 While in most cases it is possible to receive all required data through API mapping, in certain scenarios, it is useful to receive additional data for display purposes (such as retrieving data based on a currently selected value).
 
-[Extra data configurations](#user-content-fn-1)[^1] can be performed at both editor and widget levels, using an array (allowing multiple extra data feeds) of the following properties for each entry:
+Extra data configurations can be performed at both editor and widget levels, using an array (allowing multiple extra data feeds) of the following properties for each entry:
 
 * **URL:** API url to pull extra data from, required unless extra data is calculation from input data only.
 * **Method:** Request method to pull data from the URL (defaults to GET).
@@ -23,5 +23,3 @@ While in most cases it is possible to receive all required data through API mapp
 An additional property is used above the array entries:
 
 * **Extra Path:** Json path to merge all extra data on current record (e.g. extra).
-
-[^1]: since 0.5.2

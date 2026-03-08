@@ -57,7 +57,7 @@ implementation (group:'com.rierino.custom', name: 'debezium', version:"${rierino
 
 * **com.rierino.state.cdc.HDFSCDCManager**: Uses "uri" and all settings applicable to HDFS file systems for file system change data capture.
 * **com.rierino.state.cdc.odata4.OdataCDCManager:** Uses "url" and "path" settings and delta logic of odata v4 endpoints for change data capture.
-* **com.rierino.state.cdc.MailCDCManager:** Uses[^2] "mail.\*" settings and UID logic of email servers to fetch new emails as change data capture.
+* **com.rierino.state.cdc.MailCDCManager:** Uses "mail.\*" settings and UID logic of email servers to fetch new emails as change data capture.
 
 {% hint style="info" %}
 Runners using CDC managers should be deployed with single replicas since managers consume all records coming from a CDC stream without applying any partitioning. To apply partitioning on these records, the runners should output records to Kafka topics and run business logic on runners consuming these topics.
@@ -128,7 +128,7 @@ When writing to sequence files with FSEventHandler, this system also uses the fo
 | Setting          | Definition                                                                                    | Example                                             | Default                                             |
 | ---------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | path.writer      | Full class name of the path writer to use for generating file paths                           | com.rierino.handler.util.helper.hdfs.DatePathWriter | com.rierino.handler.util.helper.hdfs.DatePathWriter |
-| path.maxRows     | [Maximum records ](#user-content-fn-3)[^3]to include in each sequence file (-1 for unlimited) | 10000                                               | -1                                                  |
+| path.maxRows     | [Maximum records ](#user-content-fn-2)[^2]to include in each sequence file (-1 for unlimited) | 10000                                               | -1                                                  |
 | path.bufferSize  | Buffer size for sequence file writer                                                          | 1000                                                | -1                                                  |
 | path.blockSize   | Block size for sequence file writer                                                           | 100                                                 | -1                                                  |
 | path.compression | Compression to apply on sequence file writer                                                  | BLOCK                                               | NONE                                                |
@@ -179,6 +179,4 @@ implementation (group:'com.rierino.runner', name: 'camel', version:"${rierinoVer
 
 [^1]: Defined at stream level instead
 
-[^2]: since 0.5.2
-
-[^3]: File is closed only after this number of records are produced        &#x20;
+[^2]: File is closed only after this number of records are produced        &#x20;

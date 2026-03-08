@@ -56,7 +56,7 @@ SingleLister allows displaying only a single record as an object editor screen w
 
 <figure><img src="../../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 
-HandlebarsLister[^1] allows building highly customized listers using handlebars template and custom events.&#x20;
+HandlebarsLister allows building highly customized listers using handlebars template and custom events.&#x20;
 
 This lister has the following special properties:
 
@@ -100,7 +100,7 @@ These configurations define details of filters applicable for a query based tabl
 
 #### Tab Filter
 
-It is also possible[^1] to add a tab to query table lister, which allows switching between different sub-sets of lists easier (e.g. grouped by state). The configuration of tab filter is as follows:
+It is also possible to add a tab to query table lister, which allows switching between different sub-sets of lists easier (e.g. grouped by state). The configuration of tab filter is as follows:
 
 * **Path:** Path for the filter value
 * **Option Values:** List of id, name pairs for listing tabs and applying the filter value
@@ -144,7 +144,7 @@ These configurations define details of columns displayed on a query based table 
 * **Path:** Json path of the column data
 * **Widget:** Widget for displaying column values (e.g. img)
 * **Properties:** Properties to pass on to column widget (e.g. baseUrl)
-* **Column Properties:** Properties to pass on to table column object (width, minWidth, maxWidth, hidden, defaultHidden[^2], orderField)
+* **Column Properties:** Properties to pass on to table column object (width, minWidth, maxWidth, hidden, defaultHidden[^1], orderField)
 
 {% hint style="info" %}
 A typical use case for setting a column as hidden is id columns, which are required for making a list selectable even when it is not preferred to display an id column.
@@ -211,6 +211,4 @@ This lister has the following special properties:
 
 CustomCodeLister allows using JSX code for rendering custom listers on the fly, where all lister props are passed on to custom code lister, as well as onSelect, setSelection and selection properties.
 
-[^1]: since 0.5.2
-
-[^2]: User can override with preference
+[^1]: User can override with preference

@@ -23,7 +23,7 @@ implementation (group:'com.rierino.processors', name: 'mail', version:"${rierino
 
 ### SendEmail
 
-[Sends an email](#user-content-fn-1)[^1] using the configured email server. Event metadata fields applicable for this action are as follows:
+Sends an email using the configured email server. Event metadata fields applicable for this action are as follows:
 
 {% tabs %}
 {% tab title="Table" %}
@@ -94,7 +94,7 @@ With event metadata parameters as:
 
 ### ReceiveEmail
 
-[Receives details](#user-content-fn-1)[^1] of a specific email with given UID using the configured email server. Event metadata fields applicable for this action are as follows:
+Receives details of a specific email with given UID using the configured email server. Event metadata fields applicable for this action are as follows:
 
 {% tabs %}
 {% tab title="Table" %}
@@ -181,5 +181,3 @@ With event metadata parameters as:
 ```
 {% endtab %}
 {% endtabs %}
-
-[^1]: since 0.5.2

@@ -25,7 +25,7 @@ If one of these apply to your case, you can map URL endpoints for different acti
 * **URL:** URL path on the API gateway, after the "/api/" section (e.g. request/crud/variable).
 * **Method:** Http request method to use for the action (e.g. POST, GET).
 * **Parameters:** "body", "url" or "query", defining where to send the parameters (e.g. id of the record for GET) for the action.
-* [**Extra Body**](#user-content-fn-1)[^1]**:** Extra json body to include in request (e.g. a filter value to pass on). Extra body is sent in body or query based on the parameters configuration.
+* **Extra Body:** Extra json body to include in request (e.g. a filter value to pass on). Extra body is sent in body or query based on the parameters configuration.
 
 When a source is not defined for a UI, it uses default CRUD endpoint for the admin core services, which is typically only used for Rierino platform's internal states.
 
@@ -39,5 +39,3 @@ Sources have a "Validate Version" parameter, which allows handling conflicts in 
 * Source in design application should have "Validate Version" set to true.
 
 In this scenario, the UI sends an incremented instanceVersion value to the backend for write operation, and if this incremented value is not a valid update version, it is rejected by the backend. The front-end displays an option to "Cancel", "Force Update" or "Merge" selected updates with the latest record in this case, allowing user to handle conflict in preferred manner.
-
-[^1]: since 0.5.2

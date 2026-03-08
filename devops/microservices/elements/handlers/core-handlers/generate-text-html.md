@@ -8,7 +8,7 @@ description: >-
 
 ## Handler Parameters
 
-This [handler is](#user-content-fn-1)[^1] [cacheable](../#handler-caching).
+This handler is [cacheable](../#handler-caching).
 
 | Parameter  | Definition                                                 | Example                                                  | Default       |
 | ---------- | ---------------------------------------------------------- | -------------------------------------------------------- | ------------- |
@@ -184,7 +184,7 @@ With event metadata parameters as:
 {% tab title="Table" %}
 | Parameter        | Definition                                                    | Example | Default |
 | ---------------- | ------------------------------------------------------------- | ------- | ------- |
-| Output Structure | Structure of output to produce (map[^2], array[^3], text[^4]) | map     | -       |
+| Output Structure | Structure of output to produce (map[^1], array[^2], text[^3]) | map     | -       |
 | Output Delimiter | Delimiter for concatenating results if structure is "text"    | \n      | -       |
 | Input Path       | Json path to get list of requests from                        | list    | input   |
 | Result Path      | Json path to add produced text on output element              | output  | result  |
@@ -261,10 +261,8 @@ This helper (_com.rierino.handler.util.helper.HandlebarsTemplateHelper_) uses [H
 
 This helper (_com.rierino.handler.util.helper.FreemarkerTemplateHelper_) uses [Freemarker](https://freemarker.apache.org/) library for processing given template.
 
-[^1]: Since version 0.4.1
+[^1]: {section:\[{templateId, result}]}
 
-[^2]: {section:\[{templateId, result}]}
+[^2]: \[{section, templateId, result}]
 
-[^3]: \[{section, templateId, result}]
-
-[^4]: Concatenated result text
+[^3]: Concatenated result text
