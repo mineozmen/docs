@@ -6,7 +6,7 @@ icon: flag-checkered
 
 ## Easy Access to Rierino
 
-Fastest way to start testing and developing on Rierino is using our **Developer Lite** edition on AWS Marketplace. It is deployed as a multi-service VM. You can choose the region and instance type. You also get full control of the environment.
+Fastest way to start testing and developing on Rierino is using our free **Community Edition** on AWS Marketplace. It is deployed as a multi-service VM. You can choose the region and instance type. You also get full control of the environment.
 
 <mark style="background-color:yellow;">**Click**</mark> [<mark style="background-color:yellow;">**here**</mark>](https://aws.amazon.com/marketplace/pp/prodview-up2fcxku3k742) <mark style="background-color:yellow;">**to start with AWS now.**</mark>
 

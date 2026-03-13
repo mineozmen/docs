@@ -21,7 +21,7 @@ The following table compares [Rierino Core](https://rierino.com/platform/core) a
 <figure><img src=".gitbook/assets/image (144).png" alt=""><figcaption><p>Rierino vs. Traditional Low Code Development Platforms</p></figcaption></figure>
 
 {% hint style="info" %}
-Fastest way to start testing out and developing on Rierino is using our 'Developer Lite' edition on AWS Marketplace, which is deployed as a multi-service VM within the region and instance type of your choosing with 100% control.
+Fastest way to start testing out and developing on Rierino is using our free 'Community Edition' on AWS Marketplace, which is deployed as a multi-service VM within the region and instance type of your choosing with 100% control.
 
 <mark style="background-color:yellow;">**Click**</mark> [<mark style="background-color:yellow;">**here**</mark>](https://aws.amazon.com/marketplace/pp/prodview-up2fcxku3k742) <mark style="background-color:yellow;">**to start with AWS now.**</mark>
 
