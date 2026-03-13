@@ -10,11 +10,11 @@ Fastest way to start testing and developing on Rierino is using our free **Commu
 
 <mark style="background-color:yellow;">**Click**</mark> [<mark style="background-color:yellow;">**here**</mark>](https://aws.amazon.com/marketplace/pp/prodview-up2fcxku3k742) <mark style="background-color:yellow;">**to start with AWS now.**</mark>
 
-### What you get with Developer Lite
+### What you get with Community Edition
 
 * A ready-to-use environment for exploring the platform.
-* A good baseline for running training examples and quick experiments.
-* A fast path to validate the architecture before a custom installation.
+* A good baseline for running MVPs and small projects.
+* A fast path to validate the architecture before scaling up with a custom installation.
 
 ## Custom Installation
 
@@ -23,7 +23,7 @@ For installing Rierino yourself, follow the [Installation](https://app.gitbook.c
 ### Common installation options
 
 * **Single VM (dev/test):** use the Docker Compose setup in [Sandbox Deployment](https://app.gitbook.com/s/pV7u8nn9fFM9XMp0tNic/deployment-alternatives/sandbox-vm-deployment).
-* **Kubernetes (recommended for teams):** use the fully automated Helm Chart or Ansible options in [Kubernetes Deployment](https://app.gitbook.com/s/pV7u8nn9fFM9XMp0tNic/deployment-alternatives/kubernetes-deployment).
+* **Kubernetes (recommended for teams):** use the fully automated Helm Chart option in [Kubernetes Deployment](https://app.gitbook.com/s/pV7u8nn9fFM9XMp0tNic/deployment-alternatives/kubernetes-deployment).
 
 The standard configuration uses **MongoDB** as the main data store. This is a good default for most training and initial development.
 
