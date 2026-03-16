@@ -97,7 +97,7 @@ Save the query.
 
 Open the [Saga](../../devops/api-flows/) screen from the [Devops](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/PWyjQCLF01E9OngBbsr8) app.
 
-If you need a refresher on the basics, follow the structure in [Exercise: Hello World API](../training-examples/exercise-hello-world-api.md).
+If you need a refresher on the basics, follow the structure in [Exercise: Hello World API](../training-examples/exercise-create-an-api-endpoint.md).
 {% endstep %}
 
 {% step %}

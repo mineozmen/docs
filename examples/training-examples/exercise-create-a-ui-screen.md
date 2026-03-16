@@ -2,9 +2,9 @@
 description: Create a minimal UI and source mapping for the /test CRUD endpoint.
 ---
 
-# Exercise: Test UI
+# Exercise: Create a UI Screen
 
-This exercise creates a tiny admin UI for the `test` collection. It assumes you already created the backend CRUD endpoint in [Exercise: Test State](exercise-test-state.md).
+This exercise creates a tiny admin UI for the `test` collection. It assumes you already created the backend CRUD endpoint in [Exercise: Test State](exercise-create-a-crud-service.md).
 
 ### Before you start
 

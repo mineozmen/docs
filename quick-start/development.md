@@ -1,31 +1,8 @@
 ---
-icon: flag-checkered
+icon: display-code
 ---
 
-# Quick Start
-
-## Easy Access to Rierino
-
-Fastest way to start testing and developing on Rierino is using our free **Community Edition** on AWS Marketplace. It is deployed as a multi-service VM. You can choose the region and instance type. You also get full control of the environment.
-
-<mark style="background-color:yellow;">**Click**</mark> [<mark style="background-color:yellow;">**here**</mark>](https://aws.amazon.com/marketplace/pp/prodview-up2fcxku3k742) <mark style="background-color:yellow;">**to start with AWS now.**</mark>
-
-### What you get with Community Edition
-
-* A ready-to-use environment for exploring the platform.
-* A good baseline for running MVPs and small projects.
-* A fast path to validate the architecture before scaling up with a custom installation.
-
-## Custom Installation
-
-For installing Rierino yourself, follow the [Installation](https://app.gitbook.com/o/lZ6vN24S2tXuHH7DjdWa/s/pV7u8nn9fFM9XMp0tNic/) documentation. You can also check alternative ways to start using Rierino [here](https://rierino.com/start).
-
-### Common installation options
-
-* **Single VM (dev/test):** use the Docker Compose setup in [Sandbox Deployment](https://app.gitbook.com/s/pV7u8nn9fFM9XMp0tNic/deployment-alternatives/sandbox-vm-deployment).
-* **Kubernetes (recommended for teams):** use the fully automated Helm Chart option in [Kubernetes Deployment](https://app.gitbook.com/s/pV7u8nn9fFM9XMp0tNic/deployment-alternatives/kubernetes-deployment).
-
-The standard configuration uses **MongoDB** as the main data store. This is a good default for most training and initial development.
+# Development
 
 ## Rierino Development Apps
 
@@ -77,10 +54,10 @@ If you prefer a guided path, complete the [self-paced interactive training](http
 
 Once you are comfortable with the basics, use the examples below to build confidence. They are also a good way to validate that your deployment is working end to end.
 
-* Reviewing [Training Runners](../examples/training-examples/microservice-examples.md)
-* Reviewing [Training APIs](../examples/training-examples/api-flow-examples.md)
-* Creating a [Hello World API](../examples/training-examples/exercise-hello-world-api.md)
-* Creating a [new CRUD endpoint](../examples/training-examples/exercise-test-state.md)
+* Reviewing [Training APIs](../examples/training-examples/api-flow-examples.md) & creating an [API endpoint](../examples/training-examples/exercise-create-an-api-endpoint.md)
+* Reviewing [Training Microservices](../examples/training-examples/microservice-examples.md) & creating a [CRUD service](../examples/training-examples/exercise-create-a-crud-service.md)
+* Reviewing [Training UI](../examples/training-examples/ui-example.md) & creating a [UI screen](../examples/training-examples/exercise-create-a-ui-screen.md)
+* Reviewing [Training AI Agent](../examples/training-examples/ai-agent-example.md)
 * Building a complete [To-do List App](../examples/in-depth-exercise/)
 
 ### Videos

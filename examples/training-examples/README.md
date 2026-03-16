@@ -27,9 +27,9 @@ You get three sets of assets. They map to the three main “build surfaces” in
 
 Do these in order. Each step builds on the previous one.
 
-1. Build a minimal API flow: [Exercise: Hello World API](exercise-hello-world-api.md)
-2. Expose a new CRUD collection: [Exercise: Test State](exercise-test-state.md)
-3. Add a UI on top of that CRUD endpoint: [Exercise: Test UI](exercise-test-ui.md)
+1. Build a minimal API flow: [Exercise: Hello World API](exercise-create-an-api-endpoint.md)
+2. Expose a new CRUD collection: [Exercise: Test State](exercise-create-a-crud-service.md)
+3. Add a UI on top of that CRUD endpoint: [Exercise: Test UI](exercise-create-a-ui-screen.md)
 
 {% hint style="info" %}
 If you already have a working environment, start with **Hello World API**. It is the fastest routing smoke test.

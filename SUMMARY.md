@@ -6,18 +6,23 @@
 * [Use Cases](introduction/use-cases.md)
 * [Architecture](introduction/architecture.md)
 * [Built with ML & AI](introduction/built-with-ml-and-ai.md)
-* [Layout & Navigation](introduction/layout-and-navigation.md)
-* [Quick Start](introduction/quick-start.md)
+
+## QUICK START
+
+* [Installation](quick-start/installation.md)
+* [Layout & Navigation](quick-start/layout-and-navigation.md)
+* [Development](quick-start/development.md)
+* [I would like to start with...](quick-start/i-would-like-to-start-with....md)
 
 ## Examples
 
 * [Training Examples](examples/training-examples/README.md)
   * [API Flow Examples](examples/training-examples/api-flow-examples.md)
-    * [Exercise: Hello World API](examples/training-examples/exercise-hello-world-api.md)
+  * [Exercise: Create an API Endpoint](examples/training-examples/exercise-create-an-api-endpoint.md)
   * [Microservice Examples](examples/training-examples/microservice-examples.md)
-    * [Exercise: Test State](examples/training-examples/exercise-test-state.md)
+  * [Exercise: Create a CRUD Service](examples/training-examples/exercise-create-a-crud-service.md)
   * [UI Example](examples/training-examples/ui-example.md)
-    * [Exercise: Test UI](examples/training-examples/exercise-test-ui.md)
+  * [Exercise: Create a UI Screen](examples/training-examples/exercise-create-a-ui-screen.md)
   * [AI Agent Example](examples/training-examples/ai-agent-example.md)
 * [In-depth Exercise](examples/in-depth-exercise/README.md)
   * [To-do List Runner](examples/in-depth-exercise/to-do-list-runner.md)
