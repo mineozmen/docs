@@ -21,7 +21,7 @@ Fastest way to start testing and developing on Rierino is using our free **Commu
 
 ## Custom Installation
 
-For installing Rierino yourself, follow the [Installation](https://app.gitbook.com/o/lZ6vN24S2tXuHH7DjdWa/s/pV7u8nn9fFM9XMp0tNic/) documentation. You can also check alternative ways to start using Rierino [here](https://rierino.com/start).
+For installing Rierino yourself, follow the [Installation](https://app.gitbook.com/o/lZ6vN24S2tXuHH7DjdWa/s/pV7u8nn9fFM9XMp0tNic/) documentation. Custom installation requires licensing. You can check alternative ways to start using Rierino [here](https://rierino.com/start).
 
 ### Common installation options
 
