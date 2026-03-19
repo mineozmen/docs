@@ -6,6 +6,7 @@
 * [Use Cases](introduction/use-cases.md)
 * [Platform Architecture](introduction/platform-architecture.md)
 * [Built with ML & AI](introduction/built-with-ml-and-ai.md)
+* [FAQ](introduction/faq.md)
 
 ## QUICK START
 
@@ -13,6 +14,7 @@
 * [Layout & Navigation](quick-start/layout-and-navigation.md)
 * [Development](quick-start/development.md)
 * [I would like to start with...](quick-start/i-would-like-to-start-with....md)
+* [FAQ](quick-start/faq.md)
 
 ## Examples
 
