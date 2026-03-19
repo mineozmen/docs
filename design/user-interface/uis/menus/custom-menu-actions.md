@@ -6,7 +6,7 @@ description: Custom menu actions are specific to certain types of screens or lis
 
 ## Command
 
-An item level menu action, which allows sending a specific [command](../../../../devops/microservices/elements/handlers/flow-handlers/trigger-runner-command.md) for the current deployment item.
+An item level menu action, which allows sending a specific [command](/broken/pages/nRuFHTLRNV7B96HttylP) for the current deployment item.
 
 This action has the following special properties:
 
@@ -14,7 +14,7 @@ This action has the following special properties:
 
 ## Command Runner
 
-An item level menu action, which allows sending a specific [command](../../../../devops/microservices/elements/handlers/flow-handlers/trigger-runner-command.md) for the current runner item.
+An item level menu action, which allows sending a specific [command](/broken/pages/nRuFHTLRNV7B96HttylP) for the current runner item.
 
 This action has the following special properties:
 

@@ -38,7 +38,7 @@ Tokens have the following main settings:
 * **Audience:** List of audience to include in produced tokens.
 
 {% hint style="info" %}
-API keys can be safely generated and resolved using [SecretEventHandler](../../microservices/elements/handlers/core-handlers/generate-secrets.md) hash actions if a third party key management solution is not used.
+API keys can be safely generated and resolved using [SecretEventHandler](/broken/pages/blTJECkmngVGRFGp25Ks) hash actions if a third party key management solution is not used.
 {% endhint %}
 
 ### Claims

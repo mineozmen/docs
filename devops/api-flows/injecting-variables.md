@@ -2,7 +2,7 @@
 
 [API flows](./) as well as [queries](../../configuration/queries/) allow use of variables for creating more dynamic actions without the need to create complex conditional flows or query logic.
 
-Variables can be referenced within metadata fields of [event steps](configuring-saga-steps/event-step.md) as well as query fields and conditions using %%VARIABLE%% notation, with the following extra features:&#x20;
+Variables can be referenced within metadata fields of [event steps](configuring-saga-steps/event-step/) as well as query fields and conditions using %%VARIABLE%% notation, with the following extra features:&#x20;
 
 * Using multiple variables within a single field: %%VARIABLE1%%\_%%VARIABLE2%%.
 * Using default value when missing: %%VARIABLE|DEFAULT%%

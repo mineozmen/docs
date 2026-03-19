@@ -89,7 +89,7 @@ This keeps the “tool layer” consistent across internal and external capabili
 * You want to reuse existing API, event, or CDC flows without rebuilding tool wrappers.
 * You need enterprise governance to apply to the tool layer by default.
 
-For more details [click here](../devops/microservices/elements/handlers/ml-and-ai-handlers/service-mcp-requests.md).
+For more details [click here](/broken/pages/nROiQweGSG7a5Q2JITkp).
 
 ## A2A Server & Middleware
 
@@ -103,7 +103,7 @@ You configure which LLM flows are exposed for agent-to-agent task execution. Thi
 * Route specialized tasks to dedicated agents (support, ops, data, commerce).
 * Keep agent coordination decoupled from UI channels and client apps.
 
-For more details [click here](../devops/microservices/elements/handlers/ml-and-ai-handlers/service-a2a-requests.md).
+For more details [click here](/broken/pages/OJZXriH2cJwka5MR5bKI).
 
 ## Real-Time Inference with Specialized Handlers
 
@@ -128,7 +128,7 @@ This is useful when decisions must happen “in the transaction”. It also help
 
 Keep feature extraction close to the scoring call. Prefer deterministic inputs and explicit versions. This makes results easier to debug and audit.
 
-For more details [click here](../devops/microservices/elements/handlers/ml-and-ai-handlers/use-ml-models.md).
+For more details [click here](/broken/pages/cNRp2sZlzMyLGcNuHh6y).
 
 ## Seamless Integration with REST API-Based AI Services
 
@@ -150,7 +150,7 @@ Calls to external AI services can be modeled like any other integration step. Th
 
 External model calls have cost and latency implications. Treat prompts and model parameters as versioned configuration. Monitor both output quality and throughput over time.
 
-For more details [click here](../devops/microservices/elements/handlers/core-handlers/call-rest-api.md).
+For more details [click here](/broken/pages/UhdC9EjYpWaLh8PhyvdB).
 
 ## Custom Python ML Model Training and Scoring
 
@@ -175,4 +175,4 @@ Python procedures can be orchestrated alongside other steps. This includes calls
 * Shared scoring logic between batch and real-time flows.
 * Custom libraries and domain-specific model pipelines.
 
-For more details [click here](../devops/microservices/elements/handlers/custom-code-handlers/run-python-procedure.md).
+For more details [click here](/broken/pages/PpEVmUyz1AQjjKom7mlO).

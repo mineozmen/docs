@@ -84,7 +84,7 @@ You can incorporate business rules and ML into workflows. This supports decision
 
 #### Where to go next
 
-* [Orchestrate User Task](devops/microservices/elements/handlers/core-handlers/orchestrate-user-task.md)
+* [Orchestrate User Task](/broken/pages/xzL5715XvDnlRM8mwJ7m)
 
 ### Rule Management
 
@@ -122,7 +122,7 @@ Once configured, agents can be exposed as APIs. This makes them easy to embed in
 #### Where to go next
 
 * [GenAI Models](data-science/genai-models/)
-* [Service MCP Requests](devops/microservices/elements/handlers/ml-and-ai-handlers/service-mcp-requests.md)
+* [Service MCP Requests](/broken/pages/nROiQweGSG7a5Q2JITkp)
 
 ## Systems & Data Integration
 
@@ -143,9 +143,9 @@ Rierino can integrate with public and private 3rd party APIs. It supports differ
 
 #### Where to go next
 
-* [Call Rest API](devops/microservices/elements/handlers/core-handlers/call-rest-api.md)
-* [Call SOAP API](devops/microservices/elements/handlers/specialized-handlers/call-soap-api.md)
-* [Integrate with Camel](devops/microservices/elements/handlers/specialized-handlers/integrate-with-camel.md)
+* [Call Rest API](/broken/pages/UhdC9EjYpWaLh8PhyvdB)
+* [Call SOAP API](/broken/pages/oMG74wG5QWnemFi8qMQ5)
+* [Integrate with Camel](/broken/pages/KnQmumvddzfbZ4c0o80B)
 
 ### Streaming Events
 

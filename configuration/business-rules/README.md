@@ -7,7 +7,7 @@ icon: list-radio
 
 # Business Rules
 
-Business rules are typically used by rule handlers such as [DroolsProcessEventHandler](../../devops/microservices/elements/handlers/specialized-handlers/apply-advanced-rules.md).
+Business rules are typically used by rule handlers such as [DroolsProcessEventHandler](/broken/pages/PAl3ujZHgdLsoCDNTkcP).
 
 ## Rule Domains
 

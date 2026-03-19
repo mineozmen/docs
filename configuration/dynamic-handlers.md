@@ -7,7 +7,7 @@ icon: square-terminal
 
 # Dynamic Handlers
 
-Dynamic handlers are typically facilitated by code or package handlers such as [OpenHFTEventHandler](../devops/microservices/elements/handlers/custom-code-handlers/run-java-code.md), [ScriptLoadedEventHandler](../devops/microservices/elements/handlers/custom-code-handlers/run-scripts.md) or [JarLoadedEventHandler.](../devops/microservices/elements/handlers/custom-code-handlers/run-java-package.md)
+Dynamic handlers are typically facilitated by code or package handlers such as [OpenHFTEventHandler](/broken/pages/Hfwxb76TXmG73YeRjSSY), [ScriptLoadedEventHandler](/broken/pages/nu3R4vUYzNbUuyXTQKuc) or [JarLoadedEventHandler.](/broken/pages/0DaLwUvznsjitTQJKbDs)
 
 ## Handler Codes
 

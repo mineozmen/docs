@@ -25,7 +25,7 @@ These steps define entry and exit points of the flow:
 
 These steps do the work between Start and exit nodes:
 
-* [Event Step](event-step.md): calls an event handler action with parameters.
+* [Event Step](event-step/): calls an event handler action with parameters.
 * [Transform Step](transform-step/): transforms the current payload and passes the output forward.
 * [Condition Step](condition-step/): evaluates a condition and routes to different next steps.
 

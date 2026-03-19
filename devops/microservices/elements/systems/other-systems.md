@@ -6,7 +6,7 @@ description: Other systems range from event streaming to custom Camel based conn
 
 ## CDC
 
-Includes settings required for connecting to a database or a similar system for change data capture. CDC managers produce CDCRecord entries and publish them on a given stream, which can be consumed by a [CDCRoleHandler ](../handlers/flow-handlers/convert-pulse-to-journal.md)to convert them into pulse and journal records.
+Includes settings required for connecting to a database or a similar system for change data capture. CDC managers produce CDCRecord entries and publish them on a given stream, which can be consumed by a [CDCRoleHandler ](/broken/pages/QMAwCDov0qa30B9EOZvG)to convert them into pulse and journal records.
 
 Spring event runners provide support for CDC managers, where each CDC stream linked to a CDC manager can define an offset state (using offset.state parameter of the stream), which is updated based on the specified commit duration (using commitMs parameter of the runner) for managing resume tokens on restart.
 

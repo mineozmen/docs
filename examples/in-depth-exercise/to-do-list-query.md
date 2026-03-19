@@ -156,7 +156,7 @@ Edit the **Event** step:
     * **Key:** `queryId`
     * **Value:** `todo`
 
-This step executes [GetQuery](../../devops/microservices/elements/handlers/core-handlers/query-data.md) against the `master` system, using the Query ID `todo`.
+This step executes [GetQuery](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/oAal4A8dPg9i6GOLrJcV) against the `master` system, using the Query ID `todo`.
 
 It reads query parameters from `parameters` (so `project=...` becomes available as `%%project%%`).
 {% endstep %}

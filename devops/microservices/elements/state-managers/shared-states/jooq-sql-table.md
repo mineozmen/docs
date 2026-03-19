@@ -17,4 +17,4 @@ description: >-
 | schema.state      | State manager keeping json schemas                                                                                        | schema              | -                  |
 | schema            | Json string representing data schema (if schema. state is not used)                                                       | {id:{type:string\}} | -                  |
 
-This state manager supports [CallSP](../../handlers/core-handlers/write-data.md) action of write event handler, where command is the parameterized command to apply and the inputs are passed as parameters to this command.
+This state manager supports [CallSP](/broken/pages/0a3jLM4TdCuK7kEQqgi2) action of write event handler, where command is the parameterized command to apply and the inputs are passed as parameters to this command.

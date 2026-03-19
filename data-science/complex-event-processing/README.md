@@ -9,7 +9,7 @@ icon: wind-warning
 
 ![Data Flow UI](../../.gitbook/assets/UI_Data_Flow.png)
 
-Data flows are typically used by data flow handlers such as [JsonSiddhiEventHandler](../../devops/microservices/elements/handlers/specialized-handlers/calculate-real-time-metrics.md).
+Data flows are typically used by data flow handlers such as [JsonSiddhiEventHandler](/broken/pages/DkSrF2iIprUTYDcbgTeJ).
 
 Data flows share the following attributes:
 
