@@ -1,15 +1,23 @@
 ---
 description: >-
-  Rierino platform covers various components, used in front-end, microservices,
-  data storage and integration as well as analytics
+  Headless, multi-tier microservices architecture with full control over
+  security, scalability, integrations and deployment model
 icon: sitemap
 ---
 
-# Architecture
+# Platform Architecture
+
+{% hint style="info" icon="magnifying-glass" %}
+**In brief:** Rierino is a headless, micro-composable platform. The architecture has three layers:&#x20;
+
+1. A flexible front-end with a customizable Next.js Admin UI and headless APIs for any customer channel
+2. A scalable back-end with API gateways, composable Java service runners, and Python batch tasks
+3. Plug-and-play storage supporting cache, NoSQL/SQL, search engines, real-time analytics stores, and data lakes
+{% endhint %}
 
 Key components included in a full deployment are:
 
-<figure><img src="../.gitbook/assets/image (111).png" alt=""><figcaption><p>Platform Architecture</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (111).png" alt="External channels → API Gateway → Service Runners → Data Stores (Cache, Operational, Search, Real-Time, Data Lake). Admin UI connects to runners via admin APIs. Batch tasks (Python) connect to data stores and external systems."><figcaption><p>Platform Architecture</p></figcaption></figure>
 
 ## Hyper-Flexible Front-end
 
@@ -83,9 +91,9 @@ Rierino integrates with 3rd party solutions like payments, OMS, and WMS. It supp
 
 Rierino supports multiple data systems with different latency and proximity. Each system is replaceable with minimal effort. In some cases you may only need a new adapter.
 
-* **Cache:** Local and shared caching options for lowest latency operations
-* **Operational:** NoSQL & SQL data stores used as master or read/write stores
-* **Search:** Specialized search engines for use cases such as product search
+* **Cache:** Local and shared (In-Memory, Redis, Couchbase, etc.) caching options for lowest latency operations
+* **Operational:** NoSQL & SQL (MongoDB, MySQL, PostgreSQL, Oracle, MS SQL, etc.) data stores used as master or read/write stores
+* **Search:** Specialized search engines (Elasticsearch, Algolia, etc.) for use cases such as product search
 * **Real-Time:** Columnar or similar real-time analytics data stores for insights
 * **Data Lake:** Big data store for high latency and analytics use cases
 

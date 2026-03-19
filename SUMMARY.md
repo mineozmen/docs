@@ -4,7 +4,7 @@
 
 * [Overview](README.md)
 * [Use Cases](introduction/use-cases.md)
-* [Architecture](introduction/architecture.md)
+* [Platform Architecture](introduction/platform-architecture.md)
 * [Built with ML & AI](introduction/built-with-ml-and-ai.md)
 
 ## QUICK START
