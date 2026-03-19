@@ -195,6 +195,7 @@
   * [Custom State Managers](devops/pro-code/custom-state-managers.md)
   * [Custom Query Managers](devops/pro-code/custom-query-managers.md)
   * [Custom CDC Managers](devops/pro-code/custom-cdc-managers.md)
+* [FAQ](devops/faq.md)
 
 ## Design
 
@@ -232,6 +233,7 @@
   * [Environment API](design/api-mapping/environment-api.md)
 * [Data Schema](design/data-schema/README.md)
   * [Common Data](design/data-schema/common-data.md)
+* [FAQ](design/faq.md)
 
 ## Configuration
 
@@ -248,6 +250,7 @@
 * [Business Rules](configuration/business-rules/README.md)
   * [Drools Rules](configuration/business-rules/drools-rules.md)
 * [Dynamic Handlers](configuration/dynamic-handlers.md)
+* [FAQ](configuration/faq.md)
 
 ## Data Science
 
@@ -262,6 +265,7 @@
 * [Complex Event Processing](data-science/complex-event-processing/README.md)
   * [Siddhi Data Flows](data-science/complex-event-processing/siddhi-data-flows.md)
 * [Data Visualizations](data-science/data-visualizations.md)
+* [FAQ](data-science/faq.md)
 
 ## EXTENSIONS
 
