@@ -9,6 +9,54 @@ icon: comment-question
 
 ## Frequently asked questions
 
+### What is low-code?
+
+<details>
+
+<summary>Show answer</summary>
+
+Low-code is a way to build software mostly through configuration, visual tools, and reusable components.
+
+It reduces the amount of hand-written code needed for common features such as APIs, workflows, forms, and integrations.
+
+Teams still use code for edge cases, custom logic, or deeper extensions.
+
+</details>
+
+### What are the types of low-code platforms?
+
+<details>
+
+<summary>Show answer</summary>
+
+Low-code platforms usually focus on one or more of these areas:
+
+* **Internal app builders** for forms, lists, and back-office screens
+* **Workflow and BPM platforms** for process automation and task management
+* **Integration platforms** for connecting APIs, events, and external systems
+* **Database and CRUD app builders** for data entry and record management
+* **Backend and microservices platforms** for APIs, orchestration, business logic, and automation
+
+</details>
+
+### How does low-code compare with vibe coding?
+
+<details>
+
+<summary>Show answer</summary>
+
+Low-code and vibe coding solve different parts of the same problem.
+
+Low-code gives teams structured building blocks, reuse, governance, and operational control. It is strong for production systems that need consistency, security, and maintainability.
+
+Vibe coding is strong for rapid exploration, prototyping, and generating custom logic with AI assistance. It helps teams move faster when they need something more tailored.
+
+They complement each other instead of replacing each other.
+
+In practice, teams can use vibe coding to create or refine custom pieces, while low-code provides the stable platform for deploying, integrating, governing, and evolving the full solution.
+
+</details>
+
 ### What is Rierino?
 
 <details>
