@@ -47,7 +47,7 @@ You can extend the UI with 3rd party webcomponents. You can also use Handlebars 
 #### Where to go next
 
 * [User Interface](design/user-interface/)
-* [Data Visualization](data-science/data-visualizations.md)
+* [Data Visualizations](data-science/data-visualizations.md)
 
 ## Services & Business Logic
 
@@ -84,7 +84,7 @@ You can incorporate business rules and ML into workflows. This supports decision
 
 #### Where to go next
 
-* [Orchestrate User Task](/broken/pages/xzL5715XvDnlRM8mwJ7m)
+* [Orchestrate User Task](devops/api-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md)
 
 ### Rule Management
 
@@ -122,7 +122,7 @@ Once configured, agents can be exposed as APIs. This makes them easy to embed in
 #### Where to go next
 
 * [GenAI Models](data-science/genai-models/)
-* [Service MCP Requests](/broken/pages/nROiQweGSG7a5Q2JITkp)
+* [Service MCP Requests](devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
 
 ## Systems & Data Integration
 
@@ -143,9 +143,9 @@ Rierino can integrate with public and private 3rd party APIs. It supports differ
 
 #### Where to go next
 
-* [Call Rest API](/broken/pages/UhdC9EjYpWaLh8PhyvdB)
-* [Call SOAP API](/broken/pages/oMG74wG5QWnemFi8qMQ5)
-* [Integrate with Camel](/broken/pages/KnQmumvddzfbZ4c0o80B)
+* [Call Rest API](devops/api-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
+* [Call SOAP API](devops/api-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
+* [Integrate with Camel](devops/api-flows/configuring-saga-steps/event-step/specialized-actions/integrate-with-camel.md)
 
 ### Streaming Events
 

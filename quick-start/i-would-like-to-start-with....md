@@ -47,9 +47,9 @@ In Rierino, custom APIs usually start as **Sagas**. A saga is a flow. It can cal
 
 **Most common flow steps**
 
-* [Read Data](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/rd5eitG70c99RohCh3AX)
-* [Write Data](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/0a3jLM4TdCuK7kEQqgi2)
-* [Query Data](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/oAal4A8dPg9i6GOLrJcV)
+* [Read Data](../devops/api-flows/configuring-saga-steps/event-step/core-actions/read-data.md)
+* [Write Data](../devops/api-flows/configuring-saga-steps/event-step/core-actions/write-data.md)
+* [Query Data](../devops/api-flows/configuring-saga-steps/event-step/core-actions/query-data.md)
 * [Transform Step](../devops/api-flows/configuring-saga-steps/transform-step/)
 * [Condition Step](../devops/api-flows/configuring-saga-steps/condition-step/)
 
@@ -71,13 +71,13 @@ This path is also saga-first. The difference is that the saga coordinates **mult
 
 **Start here**
 
-* [Call Rest API](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/UhdC9EjYpWaLh8PhyvdB)
+* [Call Rest API](../devops/api-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
 * [Video: Integrate External APIs in 2 Minutes](https://www.youtube.com/watch?v=4KXbjt1qylk)
 
 **Learn next**
 
 * [API Based Systems](../devops/microservices/elements/systems/api-based-systems.md)
-* [Call SOAP API](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/oMG74wG5QWnemFi8qMQ5)
+* [Call SOAP API](../devops/api-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
 
 ## An internal application
 
@@ -98,7 +98,7 @@ This path is also saga-first. The difference is that the saga coordinates **mult
 * [UIs](../design/user-interface/uis/) for creating data entry and workflow forms
 * [API Mapping](../design/api-mapping/) for mapping backend to frontend
 * [Data Schema](../design/data-schema/) for structuring your data model
-* [Orchestrate User Task](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/xzL5715XvDnlRM8mwJ7m) for business process flows
+* [Orchestrate User Task](../devops/api-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md) for business process flows
 
 ## An AI agent
 
@@ -123,8 +123,8 @@ Rierino agents are usually built from:
 **Learn next**
 
 * [AI Agent APIs](../data-science/genai-models/ai-agent-apis.md)
-* [Service MCP Requests](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/nROiQweGSG7a5Q2JITkp)
-* [Service A2A Requests](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/OJZXriH2cJwka5MR5bKI)
+* [Service MCP Requests](../devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
+* [Service A2A Requests](../devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-a2a-requests.md)
 
 ## If you are not sure which path fits
 
