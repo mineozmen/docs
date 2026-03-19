@@ -21,5 +21,3 @@ This specification is automatically generated using the following configurations
 {% hint style="info" %}
 If JSON schema for a state is not configured, it is not displayed for the mapping CRUD runner.
 {% endhint %}
-
-You can also access structure of standard CRUD & RPC endpoints here: ![Run In Postman](https://run.pstmn.io/button.svg)
