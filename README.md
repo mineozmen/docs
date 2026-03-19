@@ -7,7 +7,9 @@ icon: circle-info
 
 # Overview
 
-Rierino is a low-code backend platform for building microservices, orchestration flows, and AI agents. You assemble services from configuration-first building blocks, then deploy them across environments as APIs, async triggers, and workflows. It also includes an internal Admin UI builder plus plug-in adapters for data stores, streaming, and external integrations. The goal is fast iteration at scale, without losing governance.
+{% hint style="info" icon="magnifying-glass" %}
+**In brief:** Rierino is a low-code backend platform for building microservices, orchestration flows, and AI agents. You assemble services from configuration-first building blocks, then deploy them across environments as APIs, async triggers, and workflows. It also includes an internal Admin UI builder plus plug-in adapters for data stores, streaming, and external integrations. The goal is fast iteration at scale, without losing governance.
+{% endhint %}
 
 ## At a glance
 
@@ -18,7 +20,7 @@ Rierino is a low-code backend platform for building microservices, orchestration
 
 The following table compares [Rierino Core](https://rierino.com/platform/core) against different categories of traditional low code development platforms, along with the core capabilities provided out of box with Rierino:
 
-<figure><img src=".gitbook/assets/image (144).png" alt=""><figcaption><p>Rierino vs. Traditional Low Code Development Platforms</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (144).png" alt="Comparison of Rierino against other low-code development platform categories where Rierino provides more comprehensive backend automation capabilities."><figcaption><p>Rierino vs. Traditional Low Code Development Platforms</p></figcaption></figure>
 
 {% hint style="info" %}
 Fastest way to start testing out and developing on Rierino is using our free 'Community Edition' on AWS Marketplace, which is deployed as a multi-service VM within the region and instance type of your choosing with 100% control.

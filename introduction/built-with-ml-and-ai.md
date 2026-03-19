@@ -1,12 +1,15 @@
 ---
+description: >-
+  Rierino natively supports embedding GenAI as well as traditional ML models and
+  features into any UI, workflow or API through low-code configurations
 icon: brain-circuit
 ---
 
 # Built with ML & AI
 
-Rierino supports extensive ML and AI capabilities out of the box. These capabilities are designed to work together. They cover productivity, agent development, protocol-based exposure, and real-time inference.
-
-You can use them independently. You can also combine them into end-to-end flows.
+{% hint style="info" icon="magnifying-glass" %}
+**In brief:** Rierino supports extensive ML and AI capabilities out of the box. These capabilities are designed to work together. They cover productivity, agent development, protocol-based exposure, and real-time inference. You can use them independently. You can also combine them into end-to-end flows.
+{% endhint %}
 
 ## AI-Powered Productivity with RAI
 

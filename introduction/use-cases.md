@@ -1,15 +1,15 @@
 ---
 description: >-
-  Rierino can boost development of any large scale backend application, with a
-  state-of-the-art microservices architecture
+  Rierino can boost development of any large scale backend heavy application,
+  such as information management, decision automation, BPM, agentic operations &
+  orchestration
 icon: building-memo
 ---
 
 # Use Cases
 
-Rierino is a backend development platform for many modules and systems.
-
-It is most useful when you need one or more of these traits:
+{% hint style="info" icon="magnifying-glass" %}
+**In brief:** Rierino is a backend heavy development platform for many modules and systems. It is most useful when you need one or more of these traits:
 
 * **Large scale operations.** Handle millions of requests with millisecond latency.
 * **Dynamic business environment.** Ship frequent changes without heavy rewrites.
@@ -17,6 +17,7 @@ It is most useful when you need one or more of these traits:
 * **Data-heavy domains.** Turn data into real-time actions and insights.
 * **Modernization.** Reduce monolith debt with incremental migration to services.
 * **Many integrations.** Connect internal and external systems without fragile glue.
+{% endhint %}
 
 Rierino keeps teams focused on domain logic. It provides consistent building blocks for services and orchestration. It reduces the operational cost of scaling and integrating.
 

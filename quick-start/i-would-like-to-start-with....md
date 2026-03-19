@@ -1,12 +1,13 @@
 ---
+description: Use this page when you know what you want to build, but not where to start.
 icon: user-helmet-safety
 ---
 
 # I would like to start with...
 
-Use this page when you know **what you want to build**, but not **where to start**.
-
+{% hint style="info" %}
 If you are brand new to the platform, first skim [Development](development.md) and [Training Examples](../examples/training-examples/). They give you the basic mental model fast.
+{% endhint %}
 
 ## A CRUD service
 
