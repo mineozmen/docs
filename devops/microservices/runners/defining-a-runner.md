@@ -1,3 +1,9 @@
+---
+description: >-
+  Reference for a runner’s core definition fields, including status, domain,
+  base runners, and description.
+---
+
 # Defining a Runner
 
 <figure><img src="../../../.gitbook/assets/image (121).png" alt=""><figcaption><p>Runner Definition</p></figcaption></figure>

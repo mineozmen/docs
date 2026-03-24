@@ -1,5 +1,7 @@
 ---
-description: Runners are the main components for executing services across the platform.
+description: >-
+  Runners are the main components for creating and running microservices across
+  the platform.
 ---
 
 # Runners

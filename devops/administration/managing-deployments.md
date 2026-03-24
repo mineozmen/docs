@@ -1,3 +1,9 @@
+---
+description: >-
+  Manage deployed runner packages with deploy, undeploy, restart, health check,
+  pod inspection, and log retrieval actions.
+---
+
 # Managing Deployments
 
 Once defined, it is possible to perform the following actions on a [deployment](../microservices/deployments/) through the editor menu (for more commands, [Command Center](sending-commands.md) can be used):

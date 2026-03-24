@@ -1,3 +1,9 @@
+---
+description: >-
+  Reference for configuring a saga’s definition, execution rules, caching,
+  resilience, scheduling, schema, and AI settings.
+---
+
 # Defining a Saga
 
 <figure><img src="../../.gitbook/assets/image (157).png" alt=""><figcaption><p>Saga Definition</p></figcaption></figure>

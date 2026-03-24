@@ -1,3 +1,9 @@
+---
+description: >-
+  Guide to adding runner elements, setting aliases and member types, overriding
+  settings, and wiring element dependencies.
+---
+
 # Adding Runner Elements
 
 Elements are the building blocks for all runners, hence the microservices. They also provide the mechanism for extending Rierino capabilities by integrating new systems, databases and functions. While Rierino is shipped with a rich set of runner elements, it is possible to create new elements to address any new business use case.

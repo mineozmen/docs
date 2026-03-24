@@ -1,3 +1,9 @@
+---
+description: >-
+  Reference for configuring runner I/O, partition selection, and runner-level
+  settings such as rebuild, commit, logging, and handler access.
+---
+
 # Managing Runner Settings
 
 <figure><img src="../../../.gitbook/assets/image (122).png" alt=""><figcaption><p>Runner I/O</p></figcaption></figure>

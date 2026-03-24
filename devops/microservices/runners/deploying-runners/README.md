@@ -1,3 +1,9 @@
+---
+description: >-
+  Overview of how runner configurations are deployed, the core deployment
+  parameters, and the runtime commands available after rollout.
+---
+
 # Deploying Runners
 
 Runner configurations do not mandate deployment of these capabilities on a specific platform. It is possible to define any number and type of new runners using different programming languages or frameworks. Runners shipped with Rierino for different use cases are listed in this section.

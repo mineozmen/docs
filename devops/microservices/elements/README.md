@@ -1,5 +1,7 @@
 ---
-description: Elements are the building blocks for runners.
+description: >-
+  Overview of the runner element types used to define systems, streams, data
+  access, handlers, actions, and runtime behavior.
 ---
 
 # Elements

@@ -1,3 +1,9 @@
+---
+description: >-
+  Reference for injecting variables into saga steps and queries using payload
+  fields, defaults, and built-in values.
+---
+
 # Injecting Variables
 
 [API flows](./) as well as [queries](../../configuration/queries/) allow use of variables for creating more dynamic actions without the need to create complex conditional flows or query logic.

@@ -1,5 +1,7 @@
 ---
-description: Visual design allows development of new apps with all details.
+description: >-
+  Overview of the Design app features for building admin apps, screens, menus,
+  options, translations, icons, and styles in Rierino.
 icon: sidebar
 ---
 
@@ -10,7 +12,7 @@ With Rierino, it is possible to design different admin UI apps for different bus
 * **App:** Each app defines a set of user screens and navigation menus, typically mapping to user profiles and roles
 * **UI:** Each UI represents a data entry user screen, where generic widgets and listers allow manipulation of data of any kind
 * **Option:** Each option represents the list and properties of options listed in drop-down widgets
-* **Translation:** Contains translations for all common and business domain specific labels&#x20;
+* **Translation:** Contains translations for all common and business domain specific labels
 * **Icon:** Contains all SVG icon definitions used across the platform
 * **Style:** Allows configuration of custom CSS for styling and changing color theme
 

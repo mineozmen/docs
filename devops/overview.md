@@ -1,7 +1,7 @@
 ---
 description: >-
-  Rierino provides low/no-code capabilities for designing and deploying new
-  services in real-time.
+  Overview of the Devops app for building API flows, microservices, gateways,
+  deployments, and runtime operations in Rierino.
 icon: circle-info
 ---
 

@@ -1,3 +1,9 @@
+---
+description: >-
+  Reference for the common settings, step types, and links used to build and
+  control saga execution flows.
+---
+
 # Configuring Saga Steps
 
 Saga flows start with a single START node and can have one or more SUCCESS / FAIL nodes as the exit point. Other nodes are linked as sequential steps in between them and have the following common parameters:

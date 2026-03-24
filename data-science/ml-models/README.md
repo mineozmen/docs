@@ -1,7 +1,7 @@
 ---
 description: >-
-  Model configurations allow central listing and management of all data science
-  models.
+  ML model configurations allow central listing and management of all data
+  science models.
 icon: head-side-gear
 ---
 

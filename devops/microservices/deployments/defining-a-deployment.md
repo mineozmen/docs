@@ -1,3 +1,9 @@
+---
+description: >-
+  How to define a deployment, choose runner versions, pass task parameters, and
+  include extra deployment files.
+---
+
 # Defining a Deployment
 
 Opening the **Deployment** screen from **Devops** app menu or navigation bar, you will come across an editor, allowing definition of deployments.
