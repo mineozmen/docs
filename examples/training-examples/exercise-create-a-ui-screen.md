@@ -1,5 +1,7 @@
 ---
-description: Create a minimal UI and source mapping for the /test CRUD endpoint.
+description: >-
+  This page lists an exercise for creating a minimal UI and source mapping for
+  the /test CRUD endpoint.
 ---
 
 # Exercise: Create a UI Screen

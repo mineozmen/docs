@@ -1,8 +1,10 @@
 ---
-description: 'Build a minimal saga on Train RPC that returns {message: "Hello World"}.'
+description: >-
+  This page lists an exercise for building a minimal saga on Train RPC that
+  returns {message: "Hello World"}.
 ---
 
-# Exercise: Hello World API
+# Exercise: Create an API Endpoint
 
 This exercise creates a tiny saga and exposes it as an API endpoint. You will run it through the **Train RPC** runner. The flow uses only three steps: `Start` → `Transform` → `Success`.
 

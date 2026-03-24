@@ -1,5 +1,7 @@
 ---
-description: This example can be viewed from GenAI Model screen in Data Science app
+description: >-
+  This page lists example AI agent configurations, which can be viewed from
+  GenAI Model screen in Data Science app
 ---
 
 # AI Agent Example

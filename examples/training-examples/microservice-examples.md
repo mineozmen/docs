@@ -1,5 +1,7 @@
 ---
-description: These examples can be viewed from Runner and Deployment screens in Devops app
+description: >-
+  This page lists example microservice runners which can be viewed from Runner
+  and Deployment screens in Devops app
 ---
 
 # Microservice Examples

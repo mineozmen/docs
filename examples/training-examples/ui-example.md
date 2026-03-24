@@ -1,5 +1,7 @@
 ---
-description: This example can be viewed from UI and Source screens in Design app
+description: >-
+  This page lists example UIs which can be viewed from UI and Source screens in
+  Design app
 ---
 
 # UI Example

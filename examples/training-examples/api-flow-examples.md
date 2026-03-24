@@ -1,7 +1,7 @@
 ---
 description: >-
-  These flows can be viewed from Saga screen in Devops app, grouped under
-  training domain
+  This page lists example flows which can be viewed from Saga screen in Devops
+  app, grouped under training domain
 ---
 
 # API Flow Examples

@@ -1,6 +1,6 @@
 ---
 description: >-
-  Devops, Configurtion, Design and Data Science apps allow users develop
+  Devops, Configuration, Design and Data Science apps allow users develop
   sophisticated enterprise applications rapidly through low-code interfaces
 icon: display-code
 ---

@@ -1,7 +1,7 @@
 ---
 description: >-
-  Standard Rierino installations include training entries which can be used as
-  starter templates.
+  This section explains the training examples deployed with standard Rierino
+  installations, which can be used as starter templates.
 icon: books
 ---
 

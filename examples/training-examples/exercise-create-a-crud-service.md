@@ -1,8 +1,10 @@
 ---
-description: Add a new MongoDB-backed state to Train CRUD and expose it at /test.
+description: >-
+  This page lists an exercise for adding a new MongoDB-backed state to Train
+  CRUD and exposing it as a /test endpoint.
 ---
 
-# Exercise: Test State
+# Exercise: Create a CRUD Service
 
 This exercise extends the existing **Train CRUD** runner with a new state. The result is a new CRUD endpoint under the runner. The endpoint reads and writes to a MongoDB collection automatically.
 
