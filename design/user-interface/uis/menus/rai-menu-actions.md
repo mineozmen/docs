@@ -37,9 +37,9 @@ These agents support the following special properties:
 
 * **Prompts:** List of label, content pairs providing a predefined list of prompts that users can start with
 * **Params:** List of special parameters to pass on to AI service, such as:
-  * **agent:** ID of the GenAI model to utilize
-  * **apiPath:** API path to communicate with the agent (e.g. request/train\_rpc/CallAIAgent)
-  * **promptId:** ID of the GenAI model prompt, if request will be sent as a structured data using predefined prompt template
+  * **Agent:** ID of the GenAI model to utilize
+  * **API Path:** API path to communicate with the agent (e.g. request/train\_rpc/CallAIAgent)
+  * **Predefined Prompt:** ID of the GenAI model prompt, if request will be sent as a structured data using predefined prompt template
 
 ## General Purpose Actions
 
@@ -57,15 +57,24 @@ When used in frontend agent mode, by default, GPT\_ASSISTANT\_TEXT environment v
 
 Allows translation of localized text and objects. This action is used with Localized Editors, and allows selection of source and target languages for translation, based on editor's configuration.&#x20;
 
+This action has the following special properties:
+
+* **To JSON:** Whether response should be converted to JSON object
+* **Data Path:** Item data path to inject received response into in current record (e.g. data.content)
+* **Separate Answer:** Whether agent should also send its comments in addition to data updates
+
 When used in frontend agent mode, by default, GPT\_ASSISTANT\_TRANSLATE environment variable is used to identify the assistant ID to use for AI interactions.
 
 ### Generic AI (F,B)
 
 Allows population of a data model (e.g. creating a product entry) using a predefined schema.&#x20;
 
-This action has the following special property:
+This action has the following special properties:
 
-* **Schema:** JSON schema to utilize for populating data
+* **To JSON:** Whether response should be converted to JSON object
+* **Data Path:** Item data path to inject received response into in current record (e.g. data.content)
+* **Separate Answer:** Whether agent should also send its comments in addition to data updates
+* **Schema:** JSON schema to utilize for populating data (F)
 
 When used in frontend agent mode, by default, GPT\_ASSISTANT\_ANY environment variable is used to identify the assistant ID to use for AI interactions.
 

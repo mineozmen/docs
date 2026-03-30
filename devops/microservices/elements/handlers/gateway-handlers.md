@@ -62,6 +62,12 @@ Uses a state manager as the credential store with salted passwords and token han
 | `auth.keyLength`         | PBKDF2 key length                            | `1024`                 | `512`                  |
 | `auth.algorithm`         | Password hashing algorithm                   | `PBKDF2WithHmacSHA256` | `PBKDF2WithHmacSHA256` |
 | `auth.issuer`            | Issuer included in generated tokens          | `Rierino`              | -                      |
+| `auth.minPassLength`     | Minimum allowed password length              | 8                      | 4                      |
+| `auth.maxPassLength`     | Maximum allowed password length              | 20                     | 512                    |
+| `auth.passRegex`         | Regex to validate password                   | -                      | -                      |
+| `auth.minSecretLength`   | Minimum allowed secret length                | 8                      | 4                      |
+| `auth.maxSecretLength`   | Maximum allowed secret length                | 20                     | 512                    |
+| `auth.secretRegex`       | Regex to validate secret                     | -                      | -                      |
 
 Action details: [State Based](../../../api-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/state-based.md)
 
