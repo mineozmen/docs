@@ -44,7 +44,7 @@ For OpenAI, store `rierino.system.openai.apikey` key as a secret. In local setup
 
 Fill the model definition. Keep the instructions concrete. Limit **Allowed For** to the runner you want serving the agent, unless it should be running within all microservices.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>Training Agent Example</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Training Agent Example</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -52,7 +52,7 @@ Fill the model definition. Keep the instructions concrete. Limit **Allowed For**
 
 Pick **OpenAI** (or your provider). Reference the API key through a secret entry.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Training Agent LLM Model</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Training Agent LLM Model</p></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -62,7 +62,7 @@ Add the `/train_rest` saga as a **Tool Saga**. This is what turns a chat-only ag
 
 Add `dummy` as a **Tool State**. Keep it read-only unless you need writes.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Training Agent Tools</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>Training Agent Tools</p></figcaption></figure>
 
 {% hint style="info" %}
 Tool sagas work with an input schema. Schema nudges the LLM into correct parameter shapes.

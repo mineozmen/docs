@@ -697,6 +697,183 @@ If props.template is not provided, this display can use full text contents as an
 
 {% embed url="https://mermaid.js.org/intro/syntax-reference.html" %}
 
+## 3D Model Display
+
+ThreeSceneEditor is a visualization editor, allowing display of 3D models with visual parameters such as color overridden by dynamic data inputs. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Properties" %}
+| Property          | Definition                                    | Example                       | Default |
+| ----------------- | --------------------------------------------- | ----------------------------- | ------- |
+| Model File URL    | URL for glb file which defines the 3D model   | https://example.com/model.glb | -       |
+| Height            | Height of the model as an editor              | 100                           | -       |
+| Show Toolbar      | Whether model editor should display toolbar   | true                          | false   |
+| Show Inspector    | Whether model editor should display inspector | true                          | false   |
+| Show Grid         | Whether model editor should display grid      | true                          | false   |
+| Canvas Props      | Properties to pass to 3D model canvas         | -                             | -       |
+| Grid Props        | Properties to pass to 3D model grid           | -                             | -       |
+| Orbit Controls    | Properties to pass to 3D model controls       | -                             | -       |
+| Ambient Light     | Properties to pass to 3D model light          | -                             | -       |
+| Directional Light | Properties to pass to 3D model light          | -                             | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ThreeSceneEditor widget options",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "definition": "URL for glb file which defines the 3D model",
+          "example": "https://example.com/model.glb"
+        },
+        "height": {
+          "type": "integer",
+          "definition": "Height of the model as an editor",
+          "example": 100
+        },
+        "showToolbar": {
+          "type": "boolean",
+          "definition": "Whether model editor should display toolbar",
+          "example": true,
+          "default": false
+        },
+        "showInspector": {
+          "type": "boolean",
+          "definition": "Whether model editor should display inspector",
+          "example": true,
+          "default": false
+        },
+        "showGrid": {
+          "type": "boolean",
+          "definition": "Whether model editor should display grid",
+          "example": true,
+          "default": false
+        },
+        "canvas": {
+          "type": "object",
+          "definition": "Properties to pass to 3D model canvas"
+        },
+        "grid": {
+          "type": "object",
+          "definition": "Properties to pass to 3D model grid"
+        },
+        "orbitControls": {
+          "type": "object",
+          "definition": "Properties to pass to 3D model controls"
+        },
+        "ambientLight": {
+          "type": "object",
+          "definition": "Properties to pass to 3D model light"
+        },
+        "directionalLight": {
+          "type": "object",
+          "definition": "Properties to pass to 3D model light"
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+## Whiteboard Editor
+
+WhiteboardEditor is a special component allowing drawing of free format images and diagrams, storing them as data inside current record for future reference. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Properties" %}
+| Property       | Definition                                            | Example | Default    |
+| -------------- | ----------------------------------------------------- | ------- | ---------- |
+| Editor Height  | Height of the editor                                  | 100     | -          |
+| Hide Toolbar   | Whether toolbar for editing contents should be hidden | true    | false      |
+| File Name Base | Name to use for exporting images as files             | project | whiteboard |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WhiteboardEditor widget options",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "hideToolbar": {
+          "type": "boolean",
+          "definition": "Whether toolbar for editing contents should be hidden",
+          "example": true,
+          "default": false
+        },
+        "height": {
+          "type": "integer",
+          "definition": "Height of the editor",
+          "example": 100
+        },
+        "fileNameBase": {
+          "type": "string",
+          "definition": "Name to use for exporting images as files",
+          "example": "project",
+          "default": "whiteboard"
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+## PDF Display
+
+ObjectPdfEditor is a component for rendering a template with dynamic data contents as an embedded PDF file. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Properties" %}
+| Property                | Definition                                                | Example                       | Default |
+| ----------------------- | --------------------------------------------------------- | ----------------------------- | ------- |
+| PDF Predefined Template | Existing JSX template stored in handler codes             | invoice\_template             | -       |
+| PDF Template            | Full JSX text contents of the PDF template                | \<Page>\</Page>               | -       |
+| PDF Styles              | Named CSS styles to apply for different template sections | {"main": {"color": "black"\}} | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ButtonAction widget options",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "templateId": {
+          "type": "string",
+          "definition": "Existing JSX template stored in handler codes"
+        },
+        "templateText": {
+          "type": "string",
+          "definition": "Full JSX text contents of the PDF template"
+        },
+        "templateStyle": {
+          "type": "object",
+          "definition": "Named CSS styles to apply for different template sections"
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## Button Action
 
 ButtonAction is a specialized component, which allows triggering one or more actions from within a UI using buttons. Button actions receive data assigned to this widget. This widget has the following special properties:

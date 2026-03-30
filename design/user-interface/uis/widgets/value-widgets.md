@@ -12,7 +12,7 @@ It is possible to extend the list and variety of value widgets, and Rierino is s
 
 ### Text Editor
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 TextEditor provides ability to enter free text data. This widget has the following special properties:
 
@@ -57,7 +57,7 @@ TextEditor provides ability to enter free text data. This widget has the followi
 
 ### Code Editor
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 CodeEditor provides ability to enter multi-line code with syntax highlighting and autocomplete in various languages (such as java, javascript, python) using Ace editor. This widget has the following special properties:
 

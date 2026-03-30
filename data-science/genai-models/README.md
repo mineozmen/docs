@@ -7,7 +7,7 @@ icon: robot
 
 # GenAI Models
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption><p>GenAI Model UI</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>GenAI Model UI</p></figcaption></figure>
 
 GenAI model definitions allow configuration of AI agents and general purpose LangChain models using different providers such as Amazon Bedrock, Anthropic, Azure, Google Gemini, Mistral, OpenAI, as well as local LLM models.
 
@@ -35,7 +35,9 @@ Initial definition of a GenAI model includes 4 main tabs:
 * **Allowed For:** List of runners which can provide the AI agent
 * **Tags:** Descriptive tags for the model
 * **Status:** Whether this model should be deployed or not
-* **Instructions:** Instructions to send to agent for its initialization (such as main purpose and persona)
+* **Instructions:** Instructions to send to agent for its initialization (such as main purpose and persona), allows using Handlebars templates for dynamic contents, with:
+  * **Templated Instructions:** When set to true, it replaces Handlebars curly bracket contents with user & request data
+  * **Template Input Saga:** If template requires backend logic beyond request event payload, allows using an existing saga for enriching the template input (saga output becomes the template input data)&#x20;
 * **Call Path:** URL path to use for calling this agent directly from admin UI
 * **Definition Path:** URL path to use for getting information about this agent directly from admin UI
 
@@ -59,14 +61,16 @@ Initial definition of a GenAI model includes 4 main tabs:
   * **Restrict Tool Repetition:** Whether same tool call with same parameters is allowed
   * **Tool Repetition Scope:** Scope of assessing whether same tool call is happening
 
-### Prompts
+### Interactivity
+
+#### Structured Prompts
 
 * **ID:** Unique identifier of the prompt used when calling AI agent
 * **Name:** Descriptive name of the prompt
 * **Description:** Detailed description of the prompt and its use cases
 * **Template:** Handlebars template for producing prompt with given structured inputs
 
-### Interfaces
+#### Interfaces
 
 * **Use Interfaces:** Whether agent is allowed to send responses as UI forms instead of plain messages
 * **Interfaces:** List of UIs the agent can use in communications
@@ -99,6 +103,8 @@ Common event types used are as follows:
 
 Regular Rierino [widgets](../../design/user-interface/uis/widgets/) automatically set input parameters when their values change, using their path attribute, without any additional configurations. But, for custom input elements embedded into Handlebars templates, it is possible to use "data-change-path" attribute to automatically pass data updates to be used in AI messages.
 
-### Comments
+### Guidance
 
-List of comments for reference to model capabilities or changes over time.
+* **Welcome Message:** First message displayed when user selects the AI agent
+* **Capabilities:** List of tools and skills that are supported by the agent, used for descriptive purposes
+* **Dialog Starters:** Predefined list of prompts which can be used with a single click to populate prompts on AI agent screen

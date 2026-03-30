@@ -8,7 +8,7 @@ description: >-
 
 All API workflows can be accessed via DevOps → Saga in the admin UI. In that screen, you’ll find the flows listed below under the “training” group.
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Training Sagas</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Training Sagas</p></figcaption></figure>
 
 ## Saga: /train\_ping
 
