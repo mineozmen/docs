@@ -5,6 +5,24 @@ icon: code-branch
 
 # Release Notes
 
+## 2.3.0 \[03/2026]
+
+### Dynamic AI Agent Instructions
+
+AI agent instructions now allow using Handlebars templates with pre-processing using saga flows, to generate dynamic systems instructions specific to user and the use case.
+
+### Automated MCP Server State Tools
+
+MCP server configurations now allow selecting states for read and/or write activities, which automatically generate MCP tools with simple configurations.
+
+### AI Agent Guidance Details
+
+AI agent definitions now allow configuration of welcome messages, capability lists and dialog starters to support users better understand how they can benefit from each agent and what actions they can take on their behalf.
+
+### New UI Widgets
+
+3 new widgets are added to UI builder, providing ability to generate rich visual components - 3D Editor, Whiteboard Editor, PDF Editor.
+
 ## 2.2.0 \[02/2026]
 
 ### Server Sent Events
