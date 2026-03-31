@@ -11,36 +11,9 @@ icon: brain-circuit
 **In brief:** Rierino supports extensive ML and AI capabilities out of the box. These capabilities are designed to work together. They cover productivity, agent development, protocol-based exposure, and real-time inference. You can use them independently. You can also combine them into end-to-end flows.
 {% endhint %}
 
-## AI-Powered Productivity with RAI
-
-<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
-
-At the heart of Rierino’s AI-supported development experience is the AI assistant, [RAI](https://rierino.com/platform/rai). RAI is embedded directly into the Rierino UI. This keeps AI assistance close to where users configure apps, services, and data.
-
-RAI helps both technical and non-technical users move faster. It provides a conversational interface to accelerate common tasks. It also reduces handoffs between teams by turning intent into structured changes.
-
-### What RAI is used for
-
-* Generate and improve content (summaries, translations, rewrites).
-* Assist with creating and updating UI screens and menus.
-* Help configure workflows and automation steps.
-* Analyze data and suggest next actions based on context.
-
-### Why it matters
-
-RAI is not a separate “chat tool”. It is designed to operate inside the platform. That means it can be guided by the same roles and security controls as the UI.
-
-### Typical teams that benefit
-
-* Business users who need help producing and reviewing content at scale.
-* Product and operations teams who need guided automation.
-* Developers who want faster iteration on UI and workflow configuration.
-
-For more details [click here](../design/user-interface/uis/menus/rai-menu-actions.md).
-
 ## 'Empowered' AI Agent Development
 
-<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/A.5. Agent Response.png" alt=""><figcaption></figcaption></figure>
 
 [Rierino AI Agent Builder](https://rierino.com/platform/agent) lets you rapidly create AI agents. Agents can access internal data sources and call enterprise systems and APIs. They can also trigger automated actions when tasks require execution, not just answers.
 
@@ -56,6 +29,13 @@ This enables assistants that are more than Q\&A bots. Agents can retrieve, decid
 ### Governance by default
 
 Agent tools follow existing security policies and user access rights. This keeps assistants structured and safe for different user types. It also supports using the same agent across teams with different permissions.
+
+### Multiple Agent Patterns
+
+In addition to building and running individual AI agents, Rierino also allows buildings ecosystems of agents, in different formats, such as:
+
+* **Agent Panels:** Multiple agents voting or returning responses which are processed & judged by a 'panelist' agent
+* **Agent Teams:** Multiple agents working together with complementing skills, with oversight by a 'manager' agent
 
 ### When to use agents vs. flows
 
@@ -104,6 +84,33 @@ You configure which LLM flows are exposed for agent-to-agent task execution. Thi
 * Keep agent coordination decoupled from UI channels and client apps.
 
 For more details [click here](/broken/pages/OJZXriH2cJwka5MR5bKI).
+
+## AI-Powered Productivity with RAI
+
+<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+
+At the heart of Rierino’s AI-supported development experience is the AI assistant, [RAI](https://rierino.com/platform/rai). RAI is embedded directly into the Rierino UI. This keeps AI assistance close to where users configure apps, services, and data.
+
+RAI helps both technical and non-technical users move faster. It provides a conversational interface to accelerate common tasks. It also reduces handoffs between teams by turning intent into structured changes.
+
+### What RAI is used for
+
+* Generate and improve content (summaries, translations, rewrites).
+* Assist with creating and updating UI screens and menus.
+* Help configure workflows and automation steps.
+* Analyze data and suggest next actions based on context.
+
+### Why it matters
+
+RAI is not a separate “chat tool”. It is designed to operate inside the platform. That means it can be guided by the same roles and security controls as the UI.
+
+### Typical teams that benefit
+
+* Business users who need help producing and reviewing content at scale.
+* Product and operations teams who need guided automation.
+* Developers who want faster iteration on UI and workflow configuration.
+
+For more details [click here](../design/user-interface/uis/menus/rai-menu-actions.md).
 
 ## Real-Time Inference with Specialized Handlers
 
