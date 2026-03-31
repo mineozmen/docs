@@ -48,6 +48,31 @@ Initial definition of a GenAI model includes 4 main tabs:
 * **Memory Size:** Maximum memory size to be kept for chat history
 * **Parameters:** Model level parameters specific to LLM provider, including sagas that are allowed access for the AI agents as tools
 
+#### Out of Box LLM Providers
+
+Following chat models provide access to common LLM providers as well as local LLM models:
+
+* AnthropicChatModel
+* GitHubModelsChatModel
+* GoogleChatModel
+* HuggingFaceChatModel
+* LocalAiChatModel
+* MistralChatModel
+* OllamaChatModel
+* OpenAiChatModel
+* OpenAiResponsesChatModel
+* VertexAiChatModel
+* WorkersAiChatModel
+
+#### Flows as Custom Models
+
+In addition to out of box LLM providers (such as OpenAI, LocalAI, etc.), it is possible to implement fully custom LLM chat models using Saga flows. SagaChatModel class provides this ability to use an existing Saga as an LLM model, which can make calls to external APIs or use custom local logic to respond to chat requests. This model has the following parameters:
+
+* **Saga:** ID of the saga to use for the chat
+* **Handler:** Alias of the saga event handler (defaults to "saga")
+
+Saga flows are expected to return "response" in event payload as the response from the model.
+
 ### Toolkit
 
 * **Tool Sagas:** List of sagas that can be executed by the agent for custom business flows & logic, which allows agents to have access to all capabilities available within Rierino
