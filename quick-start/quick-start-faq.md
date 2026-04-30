@@ -5,7 +5,7 @@ description: >-
 icon: comment-question
 ---
 
-# FAQ
+# Quick Start FAQ
 
 ## Frequently asked questions
 
@@ -19,7 +19,7 @@ The fastest path is the free Community Edition on AWS Marketplace.
 
 It gives you a ready-to-use environment for exploring the platform and validating the architecture quickly.
 
-See [Installation](installation.md).
+See [Installation](rierino-installation.md).
 
 </details>
 
@@ -35,7 +35,7 @@ You can start with the hosted marketplace option first. Use custom installation 
 
 Common self-managed options are a single VM with Docker Compose or Kubernetes with Helm.
 
-See [Installation](installation.md).
+See [Installation](rierino-installation.md).
 
 </details>
 
@@ -61,7 +61,7 @@ Keep secrets and connection values outside the UI when possible.
 
 On a single VM, they usually live in `globalconfig.properties` and `globalsecrets.properties`. On Kubernetes, they are commonly stored in ConfigMaps and Secrets.
 
-See [Installation](installation.md).
+See [Installation](rierino-installation.md).
 
 </details>
 
@@ -137,7 +137,7 @@ Use **Devops**.
 
 That is where you define runners, sagas, gateway routing, security, and deployments.
 
-See [Development](development.md).
+See [Development](development-with-rierino.md).
 
 </details>
 
@@ -151,7 +151,7 @@ Use **Configuration**.
 
 That is where you define reusable queries, business rules, and dynamic handlers that can run at runtime without redeploying services.
 
-See [Development](development.md).
+See [Development](development-with-rierino.md).
 
 </details>
 
@@ -165,7 +165,7 @@ Use **Design**.
 
 That is where you define apps, UIs, widgets, listers, and source mappings that connect the UI to backend APIs.
 
-See [Development](development.md).
+See [Development](development-with-rierino.md).
 
 </details>
 
@@ -179,7 +179,7 @@ Use **Data Science**.
 
 That is where you manage ML models, GenAI models, MCP servers, visualizations, and related assets.
 
-See [Development](development.md).
+See [Development](development-with-rierino.md).
 
 </details>
 
@@ -189,7 +189,7 @@ See [Development](development.md).
 
 <summary>Show answer</summary>
 
-Start with [Development](development.md).
+Start with [Development](development-with-rierino.md).
 
 Then review the training examples and the guided starting paths. That gives you the quickest mental model of how the platform fits together.
 
@@ -299,6 +299,6 @@ Start with the basics:
 
 Then review error codes, common checks, and release notes if needed.
 
-See [Development](development.md).
+See [Development](development-with-rierino.md).
 
 </details>

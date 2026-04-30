@@ -5,7 +5,7 @@ description: >-
 icon: comment-question
 ---
 
-# FAQ
+# Configuration FAQ
 
 ## Frequently asked questions
 
@@ -19,7 +19,7 @@ Configuration is where you define reusable logic as managed records.
 
 Instead of hardcoding behavior into services, you store queries, rules, and dynamic handlers so runners and sagas can load them at runtime.
 
-See [Overview](overview.md).
+See [Overview](configuration-overview.md).
 
 </details>
 
@@ -37,7 +37,7 @@ The main categories are:
 * **Business Rules** for decision logic and policy evaluation
 * **Dynamic Handlers** for specialized runtime logic that extends built-in handlers
 
-See [Overview](overview.md).
+See [Overview](configuration-overview.md).
 
 </details>
 
@@ -56,7 +56,7 @@ A simple mental model is:
 * **Configuration** defines what reusable logic exists
 * **Devops** decides where and how that logic runs
 
-See [Devops FAQ](../devops/faq.md).
+See [Devops FAQ](../devops/devops-faq.md).
 
 </details>
 

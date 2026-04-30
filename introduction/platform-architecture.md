@@ -85,7 +85,7 @@ Rierino also includes DevOps features for runner deployment and maintenance. You
 
 Rierino integrates with 3rd party solutions like payments, OMS, and WMS. It supports both REST API integration and data-based integration approaches.
 
-## Plug & Play Storage
+## Storage and Data Systems
 
 ### Data Stores
 

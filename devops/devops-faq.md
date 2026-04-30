@@ -5,7 +5,7 @@ description: >-
 icon: comment-question
 ---
 
-# FAQ
+# Devops FAQ
 
 ## Frequently asked questions
 
@@ -19,7 +19,7 @@ Devops is the backend runtime and delivery layer of Rierino.
 
 It is where you define API flows, assemble microservices, expose them through gateways, deploy them, and operate them.
 
-See [Overview](overview.md).
+See [Overview](devops-overview.md).
 
 </details>
 

@@ -2,19 +2,19 @@
 
 ## Introduction
 
-* [Overview](README.md)
-* [Use Cases](introduction/use-cases.md)
+* [Rierino Overview](README.md)
+* [Rierino Use Cases](introduction/rierino-use-cases.md)
 * [Platform Architecture](introduction/platform-architecture.md)
 * [Built with ML & AI](introduction/built-with-ml-and-ai.md)
-* [FAQ](introduction/faq.md)
+* [Rierino FAQ](introduction/rierino-faq.md)
 
 ## QUICK START
 
-* [Installation](quick-start/installation.md)
+* [Rierino Installation](quick-start/rierino-installation.md)
 * [Layout & Navigation](quick-start/layout-and-navigation.md)
-* [Development](quick-start/development.md)
+* [Development with Rierino](quick-start/development-with-rierino.md)
 * [I would like to start with...](quick-start/i-would-like-to-start-with....md)
-* [FAQ](quick-start/faq.md)
+* [Quick Start FAQ](quick-start/quick-start-faq.md)
 
 ## Examples
 
@@ -34,7 +34,7 @@
 
 ## Devops
 
-* [Overview](devops/overview.md)
+* [Devops Overview](devops/devops-overview.md)
 * [API Flows](devops/api-flows/README.md)
   * [Using the Saga Screen](devops/api-flows/using-the-saga-screen.md)
   * [Defining a Saga](devops/api-flows/defining-a-saga.md)
@@ -197,11 +197,11 @@
   * [Custom State Managers](devops/pro-code/custom-state-managers.md)
   * [Custom Query Managers](devops/pro-code/custom-query-managers.md)
   * [Custom CDC Managers](devops/pro-code/custom-cdc-managers.md)
-* [FAQ](devops/faq.md)
+* [Devops FAQ](devops/devops-faq.md)
 
 ## Design
 
-* [Overview](design/overview.md)
+* [Design Overview](design/design-overview.md)
 * [User Interface](design/user-interface/README.md)
   * [Apps](design/user-interface/apps.md)
   * [UIs](design/user-interface/uis/README.md)
@@ -235,11 +235,11 @@
   * [Environment API](design/api-mapping/environment-api.md)
 * [Data Schema](design/data-schema/README.md)
   * [Common Data](design/data-schema/common-data.md)
-* [FAQ](design/faq.md)
+* [Design FAQ](design/design-faq.md)
 
 ## Configuration
 
-* [Overview](configuration/overview.md)
+* [Configuration Overview](configuration/configuration-overview.md)
 * [Queries](configuration/queries/README.md)
   * [Query Types](configuration/queries/query-types.md)
   * [Query Platforms](configuration/queries/query-platforms/README.md)
@@ -252,11 +252,11 @@
 * [Business Rules](configuration/business-rules/README.md)
   * [Drools Rules](configuration/business-rules/drools-rules.md)
 * [Dynamic Handlers](configuration/dynamic-handlers.md)
-* [FAQ](configuration/faq.md)
+* [Configuration FAQ](configuration/configuration-faq.md)
 
 ## Data Science
 
-* [Overview](data-science/overview.md)
+* [Data Science Overview](data-science/data-science-overview.md)
 * [ML Models](data-science/ml-models/README.md)
   * [Scheduler Platforms](data-science/ml-models/scheduler-platforms/README.md)
     * [Airflow Scheduler](data-science/ml-models/scheduler-platforms/airflow-scheduler.md)
@@ -267,17 +267,18 @@
 * [Complex Event Processing](data-science/complex-event-processing/README.md)
   * [Siddhi Data Flows](data-science/complex-event-processing/siddhi-data-flows.md)
 * [Data Visualizations](data-science/data-visualizations.md)
-* [FAQ](data-science/faq.md)
+* [Data Science FAQ](data-science/data-science-faq.md)
 
 ## EXTENSIONS
 
-* [JMESPath](extensions/jmespath.md)
-* [Handlebars](extensions/handlebars.md)
-* [JSON Schema](extensions/json-schema.md)
+* [JMESPath Extensions](extensions/jmespath-extensions.md)
+* [Handlebars Extensions](extensions/handlebars-extensions.md)
+* [JSON Schema Extensions](extensions/json-schema-extensions.md)
 
 ## Troubleshooting
 
 * [Rierino Packages](troubleshooting/rierino-packages.md)
-* [Release Notes](troubleshooting/release-notes.md)
+* [Rierino Release Notes](troubleshooting/rierino-release-notes.md)
 * [Useful Checks](troubleshooting/useful-checks.md)
 * [Error Codes](troubleshooting/error-codes.md)
+* [Glossary](troubleshooting/glossary.md)

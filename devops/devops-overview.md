@@ -5,11 +5,15 @@ description: >-
 icon: circle-info
 ---
 
-# Overview
+# Devops Overview
+
+## **What the Devops app does**
 
 The Devops app is where you design, deploy, and operate the platform’s core building blocks. It brings the runtime pieces (runners and deployments) together with orchestration (sagas) and the edge layer (gateway and security), so you can ship changes quickly and still keep control.
 
 <figure><img src="../.gitbook/assets/image (165).png" alt=""><figcaption><p>Devops App</p></figcaption></figure>
+
+## **Core Devops capability areas**
 
 Devops capabilities fall into four main areas:
 
@@ -17,6 +21,8 @@ Devops capabilities fall into four main areas:
 * **Gateway:** Key capabilities for configuring [API gateways](gateway-and-security/), including authentication customizations
 * **Rollout:** Key capabilities for creating & merging [branches](branching-and-migration/), migrating to test & production environments and deployments
 * **Control & Admin:** Key capabilities for [controlling](administration/) deployed services and users
+
+## **How Devops components work together**
 
 These building blocks are tightly connected. A typical request starts at the gateway, gets routed to one or more runners, and is often orchestrated through a saga. Supporting configuration, such as queries or model definitions, is usually stored in state managers so it can be updated without redeploying code.
 

@@ -112,7 +112,7 @@ RAI is not a separate “chat tool”. It is designed to operate inside the plat
 
 For more details [click here](../design/user-interface/uis/menus/rai-menu-actions.md).
 
-## Real-Time Inference with Specialized Handlers
+## Real-Time ML Inference
 
 Rierino enables real-time machine learning with specialized handlers. These handlers are designed to work with a variety of ML model types. They let you score models inside APIs and workflows with millisecond-level latency.
 
@@ -137,7 +137,7 @@ Keep feature extraction close to the scoring call. Prefer deterministic inputs a
 
 For more details [click here](/broken/pages/cNRp2sZlzMyLGcNuHh6y).
 
-## Seamless Integration with REST API-Based AI Services
+## External AI API Integration
 
 Rierino integrates with REST API-based AI services, including OpenAI and others. This lets you access generative AI and predictive capabilities without heavy middleware.
 
@@ -159,7 +159,7 @@ External model calls have cost and latency implications. Treat prompts and model
 
 For more details [click here](/broken/pages/UhdC9EjYpWaLh8PhyvdB).
 
-## Custom Python ML Model Training and Scoring
+## Python ML Training and Scoring
 
 You can also build custom ML capabilities in Python. This includes training, evaluation, and scoring. It is a good fit when you need domain-specific models or custom feature logic.
 

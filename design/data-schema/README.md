@@ -11,7 +11,7 @@ icon: table
 
 As the UI screen allows designing visual structure of forms and lists, the schema screen allows designing the underlying data structure. When using a schema-free no-SQL database, this is not strictly necessary, but is always recommended to have a reference for data model design.
 
-Rierino uses [JSON schema](https://json-schema.org/) as a standard for structuring data format for different record types, with [extensions](../../extensions/json-schema.md) for more advanced use cases. These schemas are also used for defining validation rules (e.g. required fields, minimum length), which are automatically used in UI screens to display warnings to users.
+Rierino uses [JSON schema](https://json-schema.org/) as a standard for structuring data format for different record types, with [extensions](../../extensions/json-schema-extensions.md) for more advanced use cases. These schemas are also used for defining validation rules (e.g. required fields, minimum length), which are automatically used in UI screens to display warnings to users.
 
 If you define a schema that has the same id as a UI screen, the screen automatically uses this schema for populating its editor labels as well as validation rules. It is also possible to select a different schema for a given UI from its design screen.
 

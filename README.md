@@ -5,18 +5,22 @@ description: >-
 icon: circle-info
 ---
 
-# Overview
+# Rierino Overview
 
 {% hint style="info" icon="magnifying-glass" %}
 **In brief:** Rierino is a low-code backend platform for building microservices, orchestration flows, and AI agents. You assemble services from configuration-first building blocks, then deploy them across environments as APIs, async triggers, and workflows. It also includes an internal Admin UI builder plus plug-in adapters for data stores, streaming, and external integrations. The goal is fast iteration at scale, without losing governance.
 {% endhint %}
 
-## At a glance
+## What Rierino does
 
 * Build microservices with configuration-first building blocks.
 * Orchestrate services into APIs, async triggers, and workflows.
 * Use pluggable storage, query, and integration adapters.
 * Add rules, ML scoring, and AI-assisted operations where needed.
+
+For common product and delivery patterns, see [Use Cases](introduction/rierino-use-cases.md).
+
+For the system structure and deployment model, see [Platform Architecture](introduction/platform-architecture.md).
 
 The following table compares [Rierino Core](https://rierino.com/platform/core) against different categories of traditional low code development platforms, along with the core capabilities provided out of box with Rierino:
 
@@ -30,7 +34,7 @@ Fastest way to start testing out and developing on Rierino is using our free 'Co
 You can also check all alternative ways to start using Rierino [here](https://rierino.com/start).
 {% endhint %}
 
-## Front-End UI
+## Admin UI for internal operations
 
 ### Internal User Experience
 
@@ -44,12 +48,12 @@ It also supports AI-assisted operations, such as summarizing, translating, and r
 
 You can extend the UI with 3rd party webcomponents. You can also use Handlebars templates for deeper customization.
 
-#### Where to go next
+#### Explore internal UI capabilities
 
 * [User Interface](design/user-interface/)
 * [Data Visualizations](data-science/data-visualizations.md)
 
-## Services & Business Logic
+## Backend services, orchestration, and automation
 
 ### Microservices Development
 
@@ -59,7 +63,7 @@ You can build them without writing a single line of code.
 
 You can deploy services to many environments. This includes public clouds, private clouds, on-prem, and bare metal.
 
-#### Where to go next
+#### Explore microservices
 
 * [Microservices](devops/microservices/)
 
@@ -69,7 +73,7 @@ Rierino can orchestrate your microservices and 3rd party services. You can model
 
 This lets you extend the platform using any language. It also lets you bring existing services into a consistent execution model.
 
-#### Where to go next
+#### Explore orchestration and APIs
 
 * [API Flows](devops/api-flows/)
 * [Gateway & Security](devops/gateway-and-security/)
@@ -82,7 +86,7 @@ You can escalate tasks when they are not completed on time.
 
 You can incorporate business rules and ML into workflows. This supports decision automation and process automation.
 
-#### Where to go next
+#### Explore workflow automation
 
 * [Orchestrate User Task](devops/api-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md)
 
@@ -92,7 +96,7 @@ Rierino includes a flexible and customizable business rule engine. Use it to con
 
 Depending on the modules deployed, rule domains may be preconfigured. You can then customize them for your business requirements.
 
-#### Where to go next
+#### Explore rule configuration
 
 * [Business Rules](configuration/business-rules/)
 
@@ -102,7 +106,7 @@ Rierino provides real-time ML scoring and MLOps automation capabilities. You can
 
 Once configured, ML models built in R or Python can be converted and uploaded. They can then be used as a step in any API flow.
 
-#### Where to go next
+#### Explore machine learning capabilities
 
 * [ML Models](data-science/ml-models/)
 * [Complex Event Processing](data-science/complex-event-processing/)
@@ -119,12 +123,14 @@ Agents are usually composed from:
 
 Once configured, agents can be exposed as APIs. This makes them easy to embed into apps and workflows.
 
-#### Where to go next
+For the broader AI capability model, see [Built with ML & AI](introduction/built-with-ml-and-ai.md).
+
+#### Explore AI agent development
 
 * [GenAI Models](data-science/genai-models/)
 * [Service MCP Requests](devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
 
-## Systems & Data Integration
+## Data stores, APIs, and event integration
 
 ### Database Systems
 
@@ -132,7 +138,7 @@ Rierino has an open architecture for data sources. It integrates with SQL, NoSQL
 
 The platform also provides an abstraction layer for operations and queries. This helps you switch data systems without migrating all logic.
 
-#### Where to go next
+#### Explore data systems
 
 * [State Managers](devops/microservices/elements/state-managers/)
 * [Query Managers](devops/microservices/elements/query-managers/)
@@ -141,7 +147,7 @@ The platform also provides an abstraction layer for operations and queries. This
 
 Rierino can integrate with public and private 3rd party APIs. It supports different auth mechanisms and formats (e.g. JSON, XML, SOAP, OData, GraphQL).
 
-#### Where to go next
+#### Explore external integration patterns
 
 * [Call Rest API](devops/api-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
 * [Call SOAP API](devops/api-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
@@ -151,6 +157,6 @@ Rierino can integrate with public and private 3rd party APIs. It supports differ
 
 Rierino can consume and produce real-time event streams (for example, Kafka). This enables patterns that are hard with request-only architectures. Examples include async tasks, CDC feeds, and some analytics use cases.
 
-#### Where to go next
+#### Explore streaming and event delivery
 
 * [Streams](devops/microservices/elements/streams/)

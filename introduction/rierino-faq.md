@@ -5,7 +5,7 @@ description: >-
 icon: comment-question
 ---
 
-# FAQ
+# Rierino FAQ
 
 ## Frequently asked questions
 
@@ -99,7 +99,7 @@ Common examples include:
 * Integration and orchestration layers across many systems
 * AI-enabled services and agents
 
-See [Use Cases](use-cases.md).
+See [Use Cases](rierino-use-cases.md).
 
 </details>
 
@@ -259,7 +259,7 @@ It also keeps authentication, retries, and observability consistent.
 
 </details>
 
-### Where can Rierino be deployed?
+### Which deployment environments does Rierino support?
 
 <details>
 
@@ -271,7 +271,7 @@ This gives teams full control over security, scale, and operating model.
 
 </details>
 
-### Who is Rierino a good fit for?
+### When is Rierino a good fit?
 
 <details>
 
@@ -286,7 +286,7 @@ Rierino is strongest when you need one or more of these:
 * Decision automation
 * Incremental modernization from monoliths
 
-See [Use Cases](use-cases.md).
+See [Use Cases](rierino-use-cases.md).
 
 </details>
 
@@ -296,7 +296,7 @@ See [Use Cases](use-cases.md).
 
 <summary>Show answer</summary>
 
-Start with the [Overview](../), then move into [Installation](../quick-start/installation.md) and [Quick Start](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/13CTa2zTaEUFEIKvmPib).
+Start with the [Overview](../), then move into [Installation](../quick-start/rierino-installation.md) and [Quick Start](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/13CTa2zTaEUFEIKvmPib).
 
 If you already know what you want to build, use [I would like to start with...](../quick-start/i-would-like-to-start-with....md).
 

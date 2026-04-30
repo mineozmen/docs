@@ -5,7 +5,7 @@ description: >-
 icon: comment-question
 ---
 
-# FAQ
+# Design FAQ
 
 ## Frequently asked questions
 
@@ -19,7 +19,7 @@ Design is where you build and evolve the admin UI.
 
 It covers screen structure, interaction patterns, API wiring, and data shape so teams can change internal experiences quickly.
 
-See [Overview](overview.md).
+See [Overview](design-overview.md).
 
 </details>
 
@@ -37,7 +37,7 @@ Think in three main groups:
 
 Supporting assets such as options, translations, icons, styles, and components help standardize the UI across apps.
 
-See [Overview](overview.md).
+See [Overview](design-overview.md).
 
 </details>
 
@@ -256,7 +256,7 @@ Devops provides the backend services and APIs that the screens call.
 
 A common setup is: Devops exposes an endpoint, API Mapping connects a UI to it, and Schema keeps the record structure consistent.
 
-See [Overview](overview.md) and [Devops FAQ](../devops/faq.md).
+See [Overview](design-overview.md) and [Devops FAQ](../devops/devops-faq.md).
 
 </details>
 

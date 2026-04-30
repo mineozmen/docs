@@ -5,7 +5,7 @@ description: >-
 icon: comment-question
 ---
 
-# FAQ
+# Data Science FAQ
 
 ## Frequently asked questions
 
@@ -19,7 +19,7 @@ Data Science is where you configure and govern reusable AI, ML, and analytics as
 
 It centralizes model settings, execution parameters, and related definitions so they can be invoked from APIs, batch jobs, or stream processing flows.
 
-See [Overview](overview.md).
+See [Overview](data-science-overview.md).
 
 </details>
 
@@ -37,7 +37,7 @@ Think in five main groups:
 * **Complex Event Processing** for real-time stream logic and derived signals
 * **Data Visualizations** for dashboards and reporting views
 
-See [Overview](overview.md).
+See [Overview](data-science-overview.md).
 
 </details>
 
@@ -56,7 +56,7 @@ A simple mental model is:
 * **Data Science** defines the model or analytical asset
 * **Devops** decides where and how that asset is executed
 
-See [Devops FAQ](../devops/faq.md).
+See [Devops FAQ](../devops/devops-faq.md).
 
 </details>
 
@@ -72,7 +72,7 @@ Data Science stores reusable analytical and AI assets such as models, agents, CE
 
 They often work together, but they solve different layers of runtime behavior.
 
-See [Configuration FAQ](../configuration/faq.md).
+See [Configuration FAQ](../configuration/configuration-faq.md).
 
 </details>
 
@@ -252,7 +252,7 @@ They can be used in real-time APIs, in background processes, or in stream-orient
 
 A saga can call an ML or GenAI handler directly. A batch process can train or backfill. A CEP flow can compute live signals.
 
-See [Overview](overview.md).
+See [Overview](data-science-overview.md).
 
 </details>
 
