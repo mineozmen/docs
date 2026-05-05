@@ -32,7 +32,7 @@ This guide configures the endpoint as **public** for simplicity. For real enviro
 {% step %}
 ### Open the Gateway Channel screen
 
-Open the [Gateway Channels](../../devops/gateway-and-security/gateway-servers/gateway-channels.md) screen from the Devops app.
+Open the [Gateway Channels](../../devops/api-gateway-and-security/gateway-servers/gateway-channels.md) screen from the Devops app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/gateway_channel`.
 

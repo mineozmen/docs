@@ -20,11 +20,11 @@ New elements can be built and stored in a Maven repository that is accessible by
 
 ## Deploying in Microservices
 
-All custom elements can be included in required microservices as dependencies within their [deployment configurations](../microservices/deployments/defining-a-deployment.md).
+All custom elements can be included in required microservices as dependencies within their [deployment configurations](../microservices/deployment-packages/defining-a-deployment.md).
 
 ## Using in Microservices
 
-Once the microservices are configured to use new element dependencies, these elements can be configured on the [elements](../microservices/elements/) screen of devops application and added to the runners which will be utilizing them.
+Once the microservices are configured to use new element dependencies, these elements can be configured on the [elements](../microservices/building-blocks/) screen of devops application and added to the runners which will be utilizing them.
 
 {% hint style="warning" %}
 Rierino provides a wide range of options for creating flexible microservices, APIs and event processing capabilities, including custom scripting and dynamic code processing features.&#x20;

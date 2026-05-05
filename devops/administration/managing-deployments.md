@@ -6,7 +6,7 @@ description: >-
 
 # Managing Deployments
 
-Once defined, it is possible to perform the following actions on a [deployment](../microservices/deployments/) through the editor menu (for more commands, [Command Center](sending-commands.md) can be used):
+Once defined, it is possible to perform the following actions on a [deployment](../microservices/deployment-packages/) through the editor menu (for more commands, [Command Center](sending-commands.md) can be used):
 
 * **Deploy:** Makes a call to "/Deploy" API endpoint with current deployment's id to trigger the CD task responsible for runner deployments.
 * **Undeploy:** Makes a call to "/Undeploy" API endpoint with current deployment's id to trigger the CD task responsible for runner removals.

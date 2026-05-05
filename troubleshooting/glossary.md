@@ -35,19 +35,19 @@ See [Managing Branches](../devops/branching-and-migration/managing-branches.md).
 
 A packaged runtime unit that installs one or more runners onto a target environment.
 
-See [Deployments](../devops/microservices/deployments/).
+See [Deployments](../devops/microservices/deployment-packages/).
 
 ### Element
 
 A building block inside a runner. Elements define what a runner can access and what it can do.
 
-See [Elements](../devops/microservices/elements/).
+See [Elements](../devops/microservices/building-blocks/).
 
 ### Gateway
 
 The entry layer for external and internal API access. It handles routing, authentication, sessions, and edge security.
 
-See [Gateway & Security](../devops/gateway-and-security/).
+See [Gateway & Security](../devops/api-gateway-and-security/).
 
 ### Microservice
 
@@ -65,13 +65,13 @@ See [Rierino Overview](../).
 
 The main runtime container for microservice capabilities. A runner holds elements such as handlers, systems, states, and streams.
 
-See [Runners](../devops/microservices/runners/).
+See [Runners](../devops/microservices/service-runners/).
 
 ### Saga
 
 A flow definition used for APIs, events, and process orchestration. A saga coordinates steps across one or more runners.
 
-See [API Flows](../devops/api-flows/).
+See [API Flows](../devops/api-event-and-process-flows/).
 
 ### Screen
 
@@ -83,7 +83,7 @@ See [Layout & Navigation](../quick-start/layout-and-navigation.md).
 
 A shared configuration object for connecting to a data store, external API, message stream, or other integration target.
 
-See [Systems](../devops/microservices/elements/systems/).
+See [Systems](../devops/microservices/building-blocks/systems-integrations/).
 
 ## Runtime and orchestration
 
@@ -91,67 +91,67 @@ See [Systems](../devops/microservices/elements/systems/).
 
 A reusable function call, usually backed by a handler action with predefined parameters.
 
-See [Actions](../devops/microservices/elements/actions.md).
+See [Actions](../devops/microservices/building-blocks/additional-elements/actions.md).
 
 ### Event
 
 A payload passed between steps, handlers, streams, or services. Events are the main unit of processing in many flows.
 
-See [Event Step](../devops/api-flows/configuring-saga-steps/event-step/).
+See [Event Step](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/).
 
 ### Event step
 
 A saga step that sends an event payload to an event handler for execution.
 
-See [Event Step](../devops/api-flows/configuring-saga-steps/event-step/).
+See [Event Step](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/).
 
 ### Handler
 
 A runtime component that executes logic when a runner receives an event or request.
 
-See [Handlers](../devops/microservices/elements/handlers/).
+See [Handlers](../devops/microservices/building-blocks/execution-handlers/).
 
 ### Listener
 
 A runner element that watches for changes in state managers and reacts to them.
 
-See [Listeners](../devops/microservices/elements/listeners.md).
+See [Listeners](../devops/microservices/building-blocks/additional-elements/listeners.md).
 
 ### Query manager
 
 A runner element used to execute queries against a backing data system.
 
-See [Query Managers](../devops/microservices/elements/query-managers/).
+See [Query Managers](../devops/microservices/building-blocks/query-and-search-sources/).
 
 ### State manager
 
 A runner element used to store and retrieve aggregate data. It provides a consistent model across different data stores.
 
-See [State Managers](../devops/microservices/elements/state-managers/).
+See [State Managers](../devops/microservices/building-blocks/data-sources/).
 
 ### Step link
 
 A connection between saga steps. Step links define how a flow moves from one step to the next.
 
-See [Step Link](../devops/api-flows/configuring-saga-steps/step-link.md).
+See [Step Link](../devops/api-event-and-process-flows/configuring-saga-steps/step-link.md).
 
 ### Stream
 
 A runner element for input or output data flow, such as events, journals, or CDC feeds.
 
-See [Streams](../devops/microservices/elements/streams/).
+See [Streams](../devops/microservices/building-blocks/data-and-event-streams/).
 
 ### Transform step
 
 A saga step that changes an incoming event before passing it onward.
 
-See [Transform Step](../devops/api-flows/configuring-saga-steps/transform-step/).
+See [Transform Step](../devops/api-event-and-process-flows/configuring-saga-steps/transform-step/).
 
 ### Condition step
 
 A saga step that checks a condition and routes flow based on the result.
 
-See [Condition Step](../devops/api-flows/configuring-saga-steps/condition-step/).
+See [Condition Step](../devops/api-event-and-process-flows/configuring-saga-steps/condition-step/).
 
 ## Gateway and API terms
 
@@ -159,43 +159,43 @@ See [Condition Step](../devops/api-flows/configuring-saga-steps/condition-step/)
 
 A saga used as a request-response API or service orchestration layer.
 
-See [API Flows](../devops/api-flows/).
+See [API Flows](../devops/api-event-and-process-flows/).
 
 ### Gateway channel
 
 A mapping from an external path segment to a backend system or service route.
 
-See [Gateway Channels](../devops/gateway-and-security/gateway-servers/gateway-channels.md).
+See [Gateway Channels](../devops/api-gateway-and-security/gateway-servers/gateway-channels.md).
 
 ### Gateway server
 
 The service that accepts API requests at the edge and routes them into runners, flows, or gateway-native features.
 
-See [Gateway Servers](../devops/gateway-and-security/gateway-servers/).
+See [Gateway Servers](../devops/api-gateway-and-security/gateway-servers/).
 
 ### Gateway service
 
 A gateway-side integration for capabilities handled directly by the gateway, such as logging or file operations.
 
-See [Gateway Services](../devops/gateway-and-security/gateway-servers/gateway-services.md).
+See [Gateway Services](../devops/api-gateway-and-security/gateway-servers/gateway-services.md).
 
 ### Gateway system
 
 A gateway configuration that defines how the gateway reaches backend runners or services.
 
-See [Gateway Systems](../devops/gateway-and-security/gateway-servers/gateway-systems.md).
+See [Gateway Systems](../devops/api-gateway-and-security/gateway-servers/gateway-systems.md).
 
 ### Gateway token
 
 A token definition for authentication details, claims, and user-type-specific access behavior.
 
-See [Gateway Tokens](../devops/gateway-and-security/gateway-servers/gateway-tokens.md).
+See [Gateway Tokens](../devops/api-gateway-and-security/gateway-servers/gateway-tokens.md).
 
 ### OpenAPI specification
 
 A machine-readable API description generated from runner and saga configuration.
 
-See [OpenAPI Specification](../devops/gateway-and-security/apis/openapi-specification.md).
+See [OpenAPI Specification](../devops/api-gateway-and-security/apis/openapi-specification.md).
 
 ## UI and design terms
 

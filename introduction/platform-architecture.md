@@ -49,7 +49,7 @@ This layer typically uses a dedicated Spring Webflux deployment for Gateway Serv
 
 Authentication and session management are implemented as API flows. This keeps them fully customizable. It also makes it easier to integrate existing security systems and policies.
 
-Customize the gateway layer using Systems, Channels, Services, and Tokens. See [Gateway & Security](../devops/gateway-and-security/).
+Customize the gateway layer using Systems, Channels, Services, and Tokens. See [Gateway & Security](../devops/api-gateway-and-security/).
 
 {% hint style="info" %}
 While it is possible to deploy a single gateway layer for all types of users and requests, it is recommended to have dedicated instances for different user types (e.g. internal users, sellers, buyers) to allow customized network security and performance management configurations for each.
@@ -59,7 +59,7 @@ While it is possible to deploy a single gateway layer for all types of users and
 
 Micro-composable service runners sit at the heart of Rierino. You can design, deploy, and control them through the Admin UI.
 
-Each runner is composed from a set of [elements](../devops/microservices/elements/). Elements define:
+Each runner is composed from a set of [elements](../devops/microservices/building-blocks/). Elements define:
 
 * Which data sources a runner can access
 * Which functions it can execute

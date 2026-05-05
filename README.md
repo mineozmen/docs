@@ -75,8 +75,8 @@ This lets you extend the platform using any language. It also lets you bring exi
 
 #### Explore orchestration and APIs
 
-* [API Flows](devops/api-flows/)
-* [Gateway & Security](devops/gateway-and-security/)
+* [API Flows](devops/api-event-and-process-flows/)
+* [Gateway & Security](devops/api-gateway-and-security/)
 
 ### Workflow Management
 
@@ -88,7 +88,7 @@ You can incorporate business rules and ML into workflows. This supports decision
 
 #### Explore workflow automation
 
-* [Orchestrate User Task](devops/api-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md)
+* [Orchestrate User Task](devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md)
 
 ### Rule Management
 
@@ -128,7 +128,7 @@ For the broader AI capability model, see [Built with ML & AI](introduction/built
 #### Explore AI agent development
 
 * [GenAI Models](data-science/genai-models/)
-* [Service MCP Requests](devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
+* [Service MCP Requests](devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
 
 ## Data stores, APIs, and event integration
 
@@ -140,8 +140,8 @@ The platform also provides an abstraction layer for operations and queries. This
 
 #### Explore data systems
 
-* [State Managers](devops/microservices/elements/state-managers/)
-* [Query Managers](devops/microservices/elements/query-managers/)
+* [State Managers](devops/microservices/building-blocks/data-sources/)
+* [Query Managers](devops/microservices/building-blocks/query-and-search-sources/)
 
 ### External APIs
 
@@ -149,9 +149,9 @@ Rierino can integrate with public and private 3rd party APIs. It supports differ
 
 #### Explore external integration patterns
 
-* [Call Rest API](devops/api-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
-* [Call SOAP API](devops/api-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
-* [Integrate with Camel](devops/api-flows/configuring-saga-steps/event-step/specialized-actions/integrate-with-camel.md)
+* [Call Rest API](devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
+* [Call SOAP API](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
+* [Integrate with Camel](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/integrate-with-camel.md)
 
 ### Streaming Events
 
@@ -159,4 +159,4 @@ Rierino can consume and produce real-time event streams (for example, Kafka). Th
 
 #### Explore streaming and event delivery
 
-* [Streams](devops/microservices/elements/streams/)
+* [Streams](devops/microservices/building-blocks/data-and-event-streams/)

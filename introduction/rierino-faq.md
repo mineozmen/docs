@@ -165,7 +165,7 @@ You can assemble services from runners, handlers, states, queries, and flows thr
 
 You can also add custom code when you need deeper specialization.
 
-See [Microservices](../devops/microservices/) and [API Flows](../devops/api-flows/).
+See [Microservices](../devops/microservices/) and [API Flows](../devops/api-event-and-process-flows/).
 
 </details>
 
@@ -195,7 +195,7 @@ That includes SQL databases, NoSQL databases, caches, search engines, file syste
 
 This helps teams switch or combine data systems without rewriting all service logic.
 
-See [State Managers](../devops/microservices/elements/state-managers/) and [Query Managers](../devops/microservices/elements/query-managers/).
+See [State Managers](../devops/microservices/building-blocks/data-sources/) and [Query Managers](../devops/microservices/building-blocks/query-and-search-sources/).
 
 </details>
 
@@ -211,7 +211,7 @@ Rierino can consume and produce streams such as Kafka. It also supports async tr
 
 This is useful for high-volume automation and loosely coupled architectures.
 
-See [Streams](../devops/microservices/elements/streams/).
+See [Streams](../devops/microservices/building-blocks/data-and-event-streams/).
 
 </details>
 

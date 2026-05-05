@@ -13,7 +13,7 @@ Opening the **Query** screen from **Configuration** app menu or navigation bar, 
 
 {% embed url="https://www.youtube.com/watch?v=ZcPnXyv9nqI" %}
 
-Queries are mainly used by [Query Managers](../../devops/microservices/elements/query-managers/) in extracting specific data from different platforms.
+Queries are mainly used by [Query Managers](../../devops/microservices/building-blocks/query-and-search-sources/) in extracting specific data from different platforms.
 
 Following attributes are used for all query types:
 
@@ -33,5 +33,5 @@ It is possible to make any query filter optional based on a condition (such as t
 {% endhint %}
 
 {% hint style="info" %}
-See [injecting variables](../../devops/api-flows/injecting-variables.md) for creating dynamic queries using variables.
+See [injecting variables](../../devops/api-event-and-process-flows/injecting-variables.md) for creating dynamic queries using variables.
 {% endhint %}

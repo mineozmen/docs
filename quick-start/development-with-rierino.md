@@ -45,10 +45,10 @@ To start using Rierino right away, use the training microservices shipped with t
 
 Focus on the following concepts first:
 
-* Start using existing training microservices with [saga flows](../devops/api-flows/).
-* Perform [read](../devops/api-flows/configuring-saga-steps/event-step/core-actions/read-data.md) and [write](../devops/api-flows/configuring-saga-steps/event-step/core-actions/write-data.md) operations on existing runners.
-* Perform [query](../devops/api-flows/configuring-saga-steps/event-step/core-actions/query-data.md) operations and visually design [queries](../configuration/queries/).
-* Integrate with 3rd party [API based systems](../devops/microservices/elements/systems/api-based-systems.md) and [call their APIs](../devops/api-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md).
+* Start using existing training microservices with [saga flows](../devops/api-event-and-process-flows/).
+* Perform [read](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/read-data.md) and [write](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/write-data.md) operations on existing runners.
+* Perform [query](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/query-data.md) operations and visually design [queries](../configuration/queries/).
+* Integrate with 3rd party [API based systems](../devops/microservices/building-blocks/systems-integrations/api-based-systems.md) and [call their APIs](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md).
 * Build new [UIs](../design/user-interface/uis/) and add them to [Apps](../design/user-interface/apps.md).
 
 If you prefer a guided path, complete the [self-paced interactive training](https://rierino-open.github.io/training/intro-core-capabilities/8912351230123.html). It introduces the main concepts and terminology using hands-on steps.

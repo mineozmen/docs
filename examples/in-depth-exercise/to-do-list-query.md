@@ -18,7 +18,7 @@ This exercise adds a simple search flow on top of the to-do list. You will:
 * You completed [To-do List UI](to-do-list-ui.md).
 * You can access:
   * the [Query](../../configuration/queries/) screen in the Configuration app
-  * the [Saga](../../devops/api-flows/) screen in the Devops app
+  * the [Saga](../../devops/api-event-and-process-flows/) screen in the Devops app
   * the [Source](../../design/api-mapping/) and [UI](../../design/user-interface/uis/) screens in the Design app
 * You know your API base URL: `https://[YOUR_ADMIN_API_DOMAIN]`.
 
@@ -95,7 +95,7 @@ Save the query.
 {% step %}
 ### Open the Saga screen
 
-Open the [Saga](../../devops/api-flows/) screen from the [Devops](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Saga](../../devops/api-event-and-process-flows/) screen from the [Devops](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/PWyjQCLF01E9OngBbsr8) app.
 
 If you need a refresher on the basics, follow the structure in [Exercise: Hello World API](../training-examples/exercise-create-an-api-endpoint.md).
 {% endstep %}

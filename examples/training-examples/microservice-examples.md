@@ -12,7 +12,7 @@ description: >-
 
 Train CRUD is a basic HTTP CRUD microservice. It exposes standard `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` operations on a single MongoDB collection named `dummy` in the `master` database. It is the fastest way to see “data in / data out” behavior across gateway → runner → state manager.
 
-It supports the generic CRUD operation set and parameters described in [CRUD event runner](../../devops/microservices/runners/deploying-runners/spring-runners.md#crud-event-runner). Use that reference when you want to understand supported query params, request bodies, and how partial updates work.
+It supports the generic CRUD operation set and parameters described in [CRUD event runner](../../devops/microservices/service-runners/deploying-runners/spring-runners.md#crud-event-runner). Use that reference when you want to understand supported query params, request bodies, and how partial updates work.
 
 This runner is mapped to the `CRUD Train` gateway system and the `Train CRUD` gateway channel. You can reach it at `[{API_SERVER}]/api/request/train_crud/[PATH]`.
 

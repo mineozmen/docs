@@ -26,9 +26,9 @@ This is the fastest path in Rierino. In most cases, you only need to drag & drop
 
 **Learn next**
 
-* [State Managers](../devops/microservices/elements/state-managers/) for storage patterns
-* [Runners](../devops/microservices/runners/) for selecting microservices for your services
-* [Gateway Channels](../devops/gateway-and-security/gateway-servers/gateway-channels.md) for granular control on RBAC
+* [State Managers](../devops/microservices/building-blocks/data-sources/) for storage patterns
+* [Runners](../devops/microservices/service-runners/) for selecting microservices for your services
+* [Gateway Channels](../devops/api-gateway-and-security/gateway-servers/gateway-channels.md) for granular control on RBAC
 
 ## An API endpoint
 
@@ -47,16 +47,16 @@ In Rierino, custom APIs usually start as **Sagas**. A saga is a flow. It can cal
 
 **Most common flow steps**
 
-* [Read Data](../devops/api-flows/configuring-saga-steps/event-step/core-actions/read-data.md)
-* [Write Data](../devops/api-flows/configuring-saga-steps/event-step/core-actions/write-data.md)
-* [Query Data](../devops/api-flows/configuring-saga-steps/event-step/core-actions/query-data.md)
-* [Transform Step](../devops/api-flows/configuring-saga-steps/transform-step/)
-* [Condition Step](../devops/api-flows/configuring-saga-steps/condition-step/)
+* [Read Data](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/read-data.md)
+* [Write Data](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/write-data.md)
+* [Query Data](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/query-data.md)
+* [Transform Step](../devops/api-event-and-process-flows/configuring-saga-steps/transform-step/)
+* [Condition Step](../devops/api-event-and-process-flows/configuring-saga-steps/condition-step/)
 
 **Learn next**
 
-* [API Flows](../devops/api-flows/) for details on how to build Sagas
-* [Handlers](../devops/microservices/elements/handlers/) for rich set of actions available in steps
+* [API Flows](../devops/api-event-and-process-flows/) for details on how to build Sagas
+* [Handlers](../devops/microservices/building-blocks/execution-handlers/) for rich set of actions available in steps
 
 ## Multi-systems integration or orchestration
 
@@ -71,13 +71,13 @@ This path is also saga-first. The difference is that the saga coordinates **mult
 
 **Start here**
 
-* [Call Rest API](../devops/api-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
+* [Call Rest API](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/call-rest-api.md)
 * [Video: Integrate External APIs in 2 Minutes](https://www.youtube.com/watch?v=4KXbjt1qylk)
 
 **Learn next**
 
-* [API Based Systems](../devops/microservices/elements/systems/api-based-systems.md)
-* [Call SOAP API](../devops/api-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
+* [API Based Systems](../devops/microservices/building-blocks/systems-integrations/api-based-systems.md)
+* [Call SOAP API](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
 
 ## An internal application
 
@@ -98,7 +98,7 @@ This path is also saga-first. The difference is that the saga coordinates **mult
 * [UIs](../design/user-interface/uis/) for creating data entry and workflow forms
 * [API Mapping](../design/api-mapping/) for mapping backend to frontend
 * [Data Schema](../design/data-schema/) for structuring your data model
-* [Orchestrate User Task](../devops/api-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md) for business process flows
+* [Orchestrate User Task](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/orchestrate-user-task.md) for business process flows
 
 ## An AI agent
 
@@ -123,8 +123,8 @@ Rierino agents are usually built from:
 **Learn next**
 
 * [AI Agent APIs](../data-science/genai-models/ai-agent-apis.md)
-* [Service MCP Requests](../devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
-* [Service A2A Requests](../devops/api-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-a2a-requests.md)
+* [Service MCP Requests](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-mcp-requests.md)
+* [Service A2A Requests](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-a2a-requests.md)
 
 ## If you are not sure which path fits
 

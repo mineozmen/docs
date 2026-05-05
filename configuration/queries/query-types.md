@@ -34,11 +34,11 @@ This type of queries are used for grouping data sources to calculate aggregation
 
 ## Bundle Queries
 
-This type of queries bundle one or more aggregation queries with a simple query, improving response times in running multiple, dependent queries. Only some query managers (such as [ElasticQueryManager](../../devops/microservices/elements/query-managers/elasticsearch.md)) support this type of queries. Bundle query configurations start same as simple queries, where bundles are added as new queries to it next.
+This type of queries bundle one or more aggregation queries with a simple query, improving response times in running multiple, dependent queries. Only some query managers (such as [ElasticQueryManager](../../devops/microservices/building-blocks/query-and-search-sources/elasticsearch.md)) support this type of queries. Bundle query configurations start same as simple queries, where bundles are added as new queries to it next.
 
 ## Pipeline Queries
 
-This type of queries run a series of query steps on target platform and return the final result set, improving response times and flexibility in query plans. Only some query managers (such as [MongoQueryManager](../../devops/microservices/elements/query-managers/mongodb.md)) support this type of queries. Pipeline queries are defined as a list of pipeline steps, each having:
+This type of queries run a series of query steps on target platform and return the final result set, improving response times and flexibility in query plans. Only some query managers (such as [MongoQueryManager](../../devops/microservices/building-blocks/query-and-search-sources/mongodb.md)) support this type of queries. Pipeline queries are defined as a list of pipeline steps, each having:
 
 * **Name:** Descriptive name and alias of the step.
 * **Description:** Detailed description of the step.

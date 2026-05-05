@@ -23,7 +23,7 @@ This exercise extends the existing **Train CRUD** runner with a new state. The r
 {% step %}
 ### Open the Runner screen
 
-Open the [Runner](../../devops/microservices/runners/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Runner](../../devops/microservices/service-runners/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/runner`.
 
@@ -78,7 +78,7 @@ Expected result:
 * HTTP `200 OK`
 * Body: `{list: []}` (the collection starts empty)
 
-Full list of supported CRUD operations and parameters is in [CRUD event runner](../../devops/microservices/runners/deploying-runners/spring-runners.md#crud-event-runner).
+Full list of supported CRUD operations and parameters is in [CRUD event runner](../../devops/microservices/service-runners/deploying-runners/spring-runners.md#crud-event-runner).
 {% endstep %}
 {% endstepper %}
 

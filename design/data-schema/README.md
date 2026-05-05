@@ -17,7 +17,7 @@ If you define a schema that has the same id as a UI screen, the screen automatic
 
 Rierino schemas also allow use of "ref" attribute, for referencing other schema names when settings can be reused across different record types. For example, if you create a multi-language string schema with "localized\_string" id, you can reuse it within the attributes of a "name" element, which will automatically copy its contents.
 
-The structure of data schema (except for those used only for reference or customized with read only elements) always follows [aggregate data model](../../devops/microservices/elements/state-managers/state-data-structure.md) (i.e. with id, data).
+The structure of data schema (except for those used only for reference or customized with read only elements) always follows [aggregate data model](../../devops/microservices/building-blocks/data-sources/state-data-structure.md) (i.e. with id, data).
 
 {% embed url="https://json-schema.org" %}
 Json Schema Page

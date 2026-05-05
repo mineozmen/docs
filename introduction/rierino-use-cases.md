@@ -6,7 +6,7 @@ description: >-
 icon: building-memo
 ---
 
-# Use Cases
+# Rierino Use Cases
 
 {% hint style="info" icon="magnifying-glass" %}
 **In brief:** Rierino is a backend heavy development platform for many modules and systems. It is most useful when you need one or more of these traits:
@@ -40,15 +40,15 @@ These use cases usually center on data entry, enrichment, and publishing. They a
 Start with a clean CRUD backbone and an admin UX:
 
 * [Apps](../design/user-interface/apps.md) & [UIs](../design/user-interface/uis/) for admin screens. Use them for listing and editing records.
-* [State Managers](../devops/microservices/elements/state-managers/), especially [MongoDB Collection](../devops/microservices/elements/state-managers/shared-states/mongodb-collection.md), for persistence. Use it as the operational store.
-* [Runners](../devops/microservices/runners/), especially [CRUD Event Runner](../devops/microservices/runners/deploying-runners/spring-runners.md#crudeventrunner), for REST APIs. Keep reads and writes consistent.
-* [API Flows](../devops/api-flows/) and [Queries](../configuration/queries/) for orchestration. Use them for enrichment and advanced reads.
+* [State Managers](../devops/microservices/building-blocks/data-sources/), especially [MongoDB Collection](../devops/microservices/building-blocks/data-sources/shared-states/mongodb-collection.md), for persistence. Use it as the operational store.
+* [Runners](../devops/microservices/service-runners/), especially [CRUD Event Runner](../devops/microservices/service-runners/deploying-runners/spring-runners.md#crudeventrunner), for REST APIs. Keep reads and writes consistent.
+* [API Flows](../devops/api-event-and-process-flows/) and [Queries](../configuration/queries/) for orchestration. Use them for enrichment and advanced reads.
 
 ### More advanced elements (frequently used)
 
 These show up when you need derived views and performance layers:
 
-* [Loading Strategies](../devops/microservices/elements/state-managers/loading-strategies.md) & [CDC Systems](../devops/microservices/elements/systems/#cdc) for CQRS patterns. Use them for cache and read models.
+* [Loading Strategies](../devops/microservices/building-blocks/data-sources/loading-strategies.md) & [CDC Systems](../devops/microservices/building-blocks/systems-integrations/#cdc) for CQRS patterns. Use them for cache and read models.
 * [Generate Text/Html](/broken/pages/4agpq23HZi7h24EmlS5j) handler for server-side rendering. Use it for templates and rich outputs.
 
 ## Decision Automation
@@ -73,7 +73,7 @@ These use cases combine deterministic rules and ML scoring. They also benefit fr
 
 These help when decisions are event-driven and time-sensitive:
 
-* [Kafka Topic](../devops/microservices/elements/streams/kafka-topic.md) and [Samza Runners](../devops/microservices/runners/deploying-runners/samza-runners.md) for real-time streams. Use them for async decisions.
+* [Kafka Topic](../devops/microservices/building-blocks/data-and-event-streams/kafka-topic.md) and [Samza Runners](../devops/microservices/service-runners/deploying-runners/samza-runners.md) for real-time streams. Use them for async decisions.
 * [Calculate Real-time Metrics](/broken/pages/DkSrF2iIprUTYDcbgTeJ) handler and [Complex Event Processing](../data-science/complex-event-processing/) configuration. Use them for windows and joins.
 * [Run Python Procedure](/broken/pages/PpEVmUyz1AQjjKom7mlO) handler for custom analytics. Use it for bespoke feature logic.
 
@@ -91,15 +91,15 @@ These use cases need secure access and traceable task execution. They often requ
 
 ### Typical elements to focus on
 
-* [Authenticate](/broken/pages/aLGgdzi8fy5sQg5x9cJZ) handlers and [Gateway Servers](../devops/gateway-and-security/gateway-servers/) for identity. Use them for role-based access.
+* [Authenticate](/broken/pages/aLGgdzi8fy5sQg5x9cJZ) handlers and [Gateway Servers](../devops/api-gateway-and-security/gateway-servers/) for identity. Use them for role-based access.
 * [Orchestrate User Task](/broken/pages/xzL5715XvDnlRM8mwJ7m) handler and [Dynamic Editor](../design/user-interface/uis/widgets/object-widgets.md#dynamic-editor) for work. Use them for task screens.
-* [Condition](../devops/api-flows/configuring-saga-steps/condition-step/) & [Transform](../devops/api-flows/configuring-saga-steps/transform-step/) steps for control flow. Use them for branching decisions.
+* [Condition](../devops/api-event-and-process-flows/configuring-saga-steps/condition-step/) & [Transform](../devops/api-event-and-process-flows/configuring-saga-steps/transform-step/) steps for control flow. Use them for branching decisions.
 
 ### More advanced elements (frequently used)
 
 These are common once processes include files and strict validation:
 
-* [File Systems](../devops/microservices/elements/systems/#hdfs) and [Media Editors](../design/user-interface/uis/widgets/value-widgets.md#media-editor) for uploading, editing and displaying process documents and media.
+* [File Systems](../devops/microservices/building-blocks/systems-integrations/#hdfs) and [Media Editors](../design/user-interface/uis/widgets/value-widgets.md#media-editor) for uploading, editing and displaying process documents and media.
 * [Validate Event](/broken/pages/kJ3kXYeQsHNpcrHrgp2k) handler and [Data Schema](../design/data-schema/) for validation of user inputs against content structure.
 * [Run Scripts](/broken/pages/nu3R4vUYzNbUuyXTQKuc) handler for implementing customized logic. Use it for edge cases.
 
@@ -118,14 +118,14 @@ These use cases focus on connecting services reliably. They need transformations
 ### Typical elements to focus on
 
 * [Call Rest API](/broken/pages/UhdC9EjYpWaLh8PhyvdB) and [Call SOAP API](/broken/pages/oMG74wG5QWnemFi8qMQ5) handlers for third-party calls. Use them for integrations.
-* [Odata Service](../devops/microservices/elements/state-managers/specialized-states/odata-service.md) & [Odata Queries](../configuration/queries/query-platforms/odata-queries.md) for OData sources. Use them for data-backed integration.
-* [API Flows](../devops/api-flows/) & [Orchestrate Saga](/broken/pages/oHzAjO7pithj1w5QvAb8) handler for orchestration. Use them for multi-step flows.
+* [Odata Service](../devops/microservices/building-blocks/data-sources/specialized-states/odata-service.md) & [Odata Queries](../configuration/queries/query-platforms/odata-queries.md) for OData sources. Use them for data-backed integration.
+* [API Flows](../devops/api-event-and-process-flows/) & [Orchestrate Saga](/broken/pages/oHzAjO7pithj1w5QvAb8) handler for orchestration. Use them for multi-step flows.
 * Handlers such as [Buffer Payloads](/broken/pages/Ie4Y5ViXoXGjLjopJZhw), [Loop Each Entry](/broken/pages/69VDPwaKpR3esVnQp8UM) for control. Use them for batching and fan-out.
 
 ### More advanced elements (frequently used)
 
 These help when integrations require extra dependencies or file orchestration:
 
-* [Deployments](../devops/microservices/deployments/) for incorporating custom client libraries for integration.
+* [Deployments](../devops/microservices/deployment-packages/) for incorporating custom client libraries for integration.
 * [Integrate with Camel](/broken/pages/KnQmumvddzfbZ4c0o80B) for integrations with less conventional services.
 * [Perform File Operation](/broken/pages/HC0rqt1ZVaVnPiMcwX4P) for orchestrating files across different systems.

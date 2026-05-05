@@ -24,7 +24,7 @@ This exercise creates a tiny saga and exposes it as an API endpoint. You will ru
 {% step %}
 ### Open the Saga screen
 
-Open the [Saga](../../devops/api-flows/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Saga](../../devops/api-event-and-process-flows/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/saga`.
 
@@ -119,7 +119,7 @@ Your graph should look like this:
 
 The flow runs now, but it does not yet return `"Hello World"`. You’ll add a static value to the payload.
 
-Select the [Transform](../../devops/api-flows/configuring-saga-steps/transform-step/) step. Click its pencil icon to edit.
+Select the [Transform](../../devops/api-event-and-process-flows/configuring-saga-steps/transform-step/) step. Click its pencil icon to edit.
 
 <figure><img src="../../.gitbook/assets/Hello_World_Saga_Transform_Icon.png" alt=""><figcaption><p>Transform Step Icons</p></figcaption></figure>
 

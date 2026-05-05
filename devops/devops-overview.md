@@ -17,8 +17,8 @@ The Devops app is where you design, deploy, and operate the platform’s core bu
 
 Devops capabilities fall into four main areas:
 
-* **Runtime:** Sagas, actions, runners and elements used for implementing [API flows](api-flows/) and building [microservices](microservices/)
-* **Gateway:** Key capabilities for configuring [API gateways](gateway-and-security/), including authentication customizations
+* **Runtime:** Sagas, actions, runners and elements used for implementing [API flows](api-event-and-process-flows/) and building [microservices](microservices/)
+* **Gateway:** Key capabilities for configuring [API gateways](api-gateway-and-security/), including authentication customizations
 * **Rollout:** Key capabilities for creating & merging [branches](branching-and-migration/), migrating to test & production environments and deployments
 * **Control & Admin:** Key capabilities for [controlling](administration/) deployed services and users
 

@@ -30,7 +30,7 @@ If you are on a **Sandbox** deployment, UI-based deployments may be disabled. Yo
 {% step %}
 ### Open the Elements screen
 
-Open the [Elements](../../devops/microservices/elements/) screen from the Devops app.
+Open the [Elements](../../devops/microservices/building-blocks/) screen from the Devops app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/element`.
 
@@ -74,7 +74,7 @@ Fill in the **DEFINITION** and **STATE DEFINITION** tabs and save:
   * **System:** `mongo_master`
   * **Collection:** `todo`
 
-This creates a state backed by [MongoDB Collection](../../devops/microservices/elements/state-managers/shared-states/mongodb-collection.md). It reuses the existing `mongo_master` system configuration.
+This creates a state backed by [MongoDB Collection](../../devops/microservices/building-blocks/data-sources/shared-states/mongodb-collection.md). It reuses the existing `mongo_master` system configuration.
 
 {% hint style="info" %}
 **Why define a State as an Element?**
@@ -88,7 +88,7 @@ When you centralize state and system config as Elements, you avoid duplicating c
 {% step %}
 ### Open the Runner screen
 
-Open the [Runners](../../devops/microservices/runners/) screen from the Devops app.
+Open the [Runners](../../devops/microservices/service-runners/) screen from the Devops app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/runner`.
 
@@ -184,7 +184,7 @@ At this point, the runner has everything it needs to execute CRUD operations. Sa
 {% step %}
 ### Create a Deployment (K8s environments)
 
-Open the [Deployments](../../devops/microservices/deployments/) screen from the Devops app.
+Open the [Deployments](../../devops/microservices/deployment-packages/) screen from the Devops app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/deployment`.
 
@@ -240,7 +240,7 @@ Wait for your pipeline to finish. You should also see a UI notification that the
 {% step %}
 ### Test the runner (without gateway)
 
-In most K8s setups, runners are not publicly exposed. They are reachable from inside the cluster or through [Gateway Servers](../../devops/gateway-and-security/gateway-servers/).
+In most K8s setups, runners are not publicly exposed. They are reachable from inside the cluster or through [Gateway Servers](../../devops/api-gateway-and-security/gateway-servers/).
 
 If you want to test immediately, exec into the runner pod:
 

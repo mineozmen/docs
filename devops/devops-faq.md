@@ -38,7 +38,7 @@ Think in six main groups:
 * **Administration** for controlling deployed services
 * **Batch Tasks** and **Pro-Code** for specialized jobs and extensions
 
-Most teams spend the most time in [API Flows](api-flows/), [Microservices](microservices/), and [Gateway & Security](gateway-and-security/).
+Most teams spend the most time in [API Flows](api-event-and-process-flows/), [Microservices](microservices/), and [Gateway & Security](api-gateway-and-security/).
 
 </details>
 
@@ -56,7 +56,7 @@ A **deployment** decides where one or more runners run.
 
 In practice, a request often enters through the gateway, triggers a saga, calls handlers inside one or more runners, and runs inside a specific deployment target.
 
-See [API Flows](api-flows/) and [Microservices](microservices/).
+See [API Flows](api-event-and-process-flows/) and [Microservices](microservices/).
 
 </details>
 
@@ -90,7 +90,7 @@ Examples include handlers, state managers, query managers, systems, streams, act
 
 Elements let you configure a capability once and reuse it across many services.
 
-See [Elements](microservices/elements/).
+See [Elements](microservices/building-blocks/).
 
 </details>
 
@@ -140,7 +140,7 @@ The gateway maps paths to backend services, applies security rules, and forwards
 
 This is also where token handling, session behavior, and edge-level controls live.
 
-See [Gateway & Security](gateway-and-security/).
+See [Gateway & Security](api-gateway-and-security/).
 
 </details>
 
@@ -189,7 +189,7 @@ It defines how and where runners are installed or started for a target environme
 
 One deployment can contain one or many runners, depending on how you want to package scale, isolation, and operational ownership.
 
-See [Deployments](microservices/deployments/).
+See [Deployments](microservices/deployment-packages/).
 
 </details>
 
@@ -207,7 +207,7 @@ They solve different backend access patterns:
 
 Together, they let one platform handle transactional APIs, search-oriented reads, and async processing.
 
-See [State Managers](microservices/elements/state-managers/), [Query Managers](microservices/elements/query-managers/), and [Streams](microservices/elements/streams/).
+See [State Managers](microservices/building-blocks/data-sources/), [Query Managers](microservices/building-blocks/query-and-search-sources/), and [Streams](microservices/building-blocks/data-and-event-streams/).
 
 </details>
 
@@ -285,9 +285,9 @@ See [Branching & Migration](branching-and-migration/).
 
 Start with the subsection that matches your immediate goal:
 
-* Need endpoint orchestration or process logic → [API Flows](api-flows/)
+* Need endpoint orchestration or process logic → [API Flows](api-event-and-process-flows/)
 * Need service structure or deployment model → [Microservices](microservices/)
-* Need API exposure or auth setup → [Gateway & Security](gateway-and-security/)
+* Need API exposure or auth setup → [Gateway & Security](api-gateway-and-security/)
 * Need promotion and release flow → [Branching & Migration](branching-and-migration/)
 * Need runtime control after deployment → [Administration](administration/)
 
