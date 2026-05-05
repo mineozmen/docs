@@ -8,7 +8,9 @@ description: >-
 
 It is possible to extend the list and variety of object widgets, and Rierino is shipped with the following widgets:
 
-## Localized Editor
+## Generic Objects
+
+### Localized Editor
 
 <figure><img src="../../../../.gitbook/assets/image (162).png" alt=""><figcaption></figcaption></figure>
 
@@ -88,7 +90,7 @@ LocalizedEditor provides ability to display and enter localized (e.g. by languag
 {% endtab %}
 {% endtabs %}
 
-## Json Editor
+### Json Editor
 
 <figure><img src="../../../../.gitbook/assets/image (163).png" alt=""><figcaption></figcaption></figure>
 
@@ -132,7 +134,7 @@ JsonEditor provides ultimate flexibility to display and edit complex data struct
 {% endtab %}
 {% endtabs %}
 
-## Map Editor
+### Map Editor
 
 MapEditor provides ability to modify map type objects with a table of key-value pairs. This widget has the following special properties:
 
@@ -194,7 +196,7 @@ MapEditor provides ability to modify map type objects with a table of key-value 
 {% endtab %}
 {% endtabs %}
 
-## Map Object Editor
+### Map Object Editor
 
 MapObjectEditor provides ability to modify map type objects with a table of key-value pairs where the value is an object. This widget uses the same properties as [Object Table Editor](array-widgets.md#object-table-editor), as well as the following special properties:
 
@@ -249,7 +251,7 @@ MapObjectEditor provides ability to modify map type objects with a table of key-
 {% endtab %}
 {% endtabs %}
 
-## Contents Editor
+### Contents Editor
 
 ContentsEditor provides ability to display and edit multiple data elements. This editor only displays contents within a single grid, without any tabs or additional layouts applied. This widget has the following special properties:
 
@@ -290,7 +292,7 @@ ContentsEditor provides ability to display and edit multiple data elements. This
 {% endtab %}
 {% endtabs %}
 
-## Grid Contents Editor
+### Grid Contents Editor
 
 GridsEditor provides ability to display and edit multiple data elements. This editor displays contents within multiple grids, but without any tabs. This widget has the following special properties:
 
@@ -340,65 +342,7 @@ GridsEditor provides ability to display and edit multiple data elements. This ed
 {% endtab %}
 {% endtabs %}
 
-## Schema Editor
-
-SchemaEditor provides ability to view and edit JSON schema contents for data modeling use cases. This widget has no extra properties.
-
-## Media Metadata Editor
-
-ContentsEditor displays an image or video with metadata fields editable, represented by its relative URL path. This widget has the following special properties in addition to those listed in [Media Editor](value-widgets.md#media-editor):
-
-{% tabs %}
-{% tab title="Properties" %}
-| Property                           | Definition                                                                | Example                          | Default |
-| ---------------------------------- | ------------------------------------------------------------------------- | -------------------------------- | ------- |
-| Editor UI (Icon, Title & Contents) | Complete editor UI configurations for detail contents                     | {"tabs":\[{"tab":"DEFINITION"}]} | -       |
-| Value DOM                          | Additional dom properties to pass on to div encapsulating the image       | -                                | -       |
-| Input DOM                          | Additional dom properties to pass on to TextField for entering image path | -                                | -       |
-{% endtab %}
-
-{% tab title="JSON Schema" %}
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "MediaMetadataEditor widget options",
-  "type": "object",
-  "properties": {
-    "props": {
-      "type": "object",
-      "properties": {
-        "uiDesign": {
-          "type": "object",
-          "definition": "Complete editor UI configurations for detail contents",
-          "example": { "tabs": [{ "tab": "DEFINITION" }] }
-        }
-      }
-    },
-    "valueProps": {
-      "type": "object",
-      "properties": {
-        "dom": {
-          "type": "object",
-          "definition": "Additional dom properties to pass on to div encapsulating the image"
-        }
-      }
-    },
-    "inputProps": {
-      "type": "object",
-      "properties": {
-        "dom": {
-          "type": "object",
-          "definition": "Additional dom properties to pass on to TextField for entering image path"
-        }
-      }
-    }
-  }
-}
-```
-{% endtab %}
-{% endtabs %}
-
-## Dynamic Editor
+### Dynamic Editor
 
 DynamicParameterEditor provides ability to use a dynamic UI, where displayed widgets and data depend on a specific data value (e.g. parameters required for a business rule). This widget has the following special properties:
 
@@ -444,7 +388,7 @@ DynamicParameterEditor provides ability to use a dynamic UI, where displayed wid
 {% endtab %}
 {% endtabs %}
 
-## Dynamic Object Editor
+### Dynamic Object Editor
 
 DynamicObjectEditor provides ability to embed and display data in the form of another ObjectEditor. It is typically used for displaying data input by another user for approval. This widget has the following special properties:
 
@@ -484,7 +428,9 @@ DynamicObjectEditor provides ability to embed and display data in the form of an
 {% endtab %}
 {% endtabs %}
 
-## Handlebars Display
+## Structured Rich Text
+
+### Handlebars Display
 
 HandlebarsDisplay provides ability to render read-only Handlebars templates using UI data, typically used for preview functionality or static messages. This widget has the following special properties:
 
@@ -580,11 +526,11 @@ To make a handlebars display editable with pop-ups, define props.editorSource an
 To add drag & drop features to handlebars displays, "data-drag-value", "data-drag-path", "data-drop-value", "data-drop-event", "data-drop-params", "data-drop-path" attributes can be added to rendered html tags.
 {% endhint %}
 
-## Handlebars Builder
+### Handlebars Builder
 
 HandlebarsTemplateEditor is a drag & drop UI builder for creating Handlebars templates and static HTML contents. This widget stores generated contents as "markup" as well as platform independent structured elements.
 
-## TipTap Editor
+### TipTap Editor
 
 <figure><img src="../../../../.gitbook/assets/image (164).png" alt=""><figcaption></figcaption></figure>
 
@@ -621,7 +567,7 @@ TipTapEditor is a WYSIWYG editor, allowing editing and visualization of rich con
 {% endtab %}
 {% endtabs %}
 
-## MDX Editor
+### MDX Editor
 
 MDXEditor is a template based editor, allowing building interactive custom content, using a blend of JSX and markdown. This widget has the following special properties:
 
@@ -661,7 +607,53 @@ All props of the MDXEditor are passed to its MDX code, along with all registered
 
 {% embed url="https://nextjs.org/docs/app/guides/mdx" %}
 
-## Mermaid Display
+## Visual Objects
+
+### Data Visualization Display
+
+<figure><img src="../../../../.gitbook/assets/image (179).png" alt=""><figcaption></figcaption></figure>
+
+DVDisplay provides ability to display data visualization components such as charts inside object editors, typically using an array input. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Properties" %}
+| Property             | Definition                                       | Example   | Default |
+| -------------------- | ------------------------------------------------ | --------- | ------- |
+| Component Type       | Visualization component type                     | RPlotly   | -       |
+| Component Properties | Visualization component type specific properties | width=200 | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DVDisplay widget options",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "definition": "Visualization component options. Component-specific options depend on props.type.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "definition": "Visualization component type",
+          "example": "RPlotly"
+        }
+      },
+      "example": {
+        "type": "RPlotly",
+        "width": 200
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### Mermaid Display
+
+<figure><img src="../../../../.gitbook/assets/image (175).png" alt=""><figcaption></figcaption></figure>
 
 MermaidDisplay is a visualization editor, allowing creating Mermaid diagrams using its special markdown language. This widget has the following special properties:
 
@@ -701,7 +693,9 @@ If props.template is not provided, this display can use full text contents as an
 
 {% embed url="https://mermaid.js.org/intro/syntax-reference.html" %}
 
-## 3D Model Display
+### 3D Model Display
+
+<figure><img src="../../../../.gitbook/assets/image (176).png" alt=""><figcaption></figcaption></figure>
 
 ThreeSceneEditor is a visualization editor, allowing display of 3D models with visual parameters such as color overridden by dynamic data inputs. This widget has the following special properties:
 
@@ -787,7 +781,9 @@ ThreeSceneEditor is a visualization editor, allowing display of 3D models with v
 {% endtab %}
 {% endtabs %}
 
-## Whiteboard Editor
+### Whiteboard Editor
+
+<figure><img src="../../../../.gitbook/assets/image (177).png" alt=""><figcaption></figcaption></figure>
 
 WhiteboardEditor is a special component allowing drawing of free format images and diagrams, storing them as data inside current record for future reference. This widget has the following special properties:
 
@@ -835,7 +831,9 @@ WhiteboardEditor is a special component allowing drawing of free format images a
 {% endtab %}
 {% endtabs %}
 
-## PDF Display
+### PDF Display
+
+<figure><img src="../../../../.gitbook/assets/image (178).png" alt=""><figcaption></figcaption></figure>
 
 ObjectPdfEditor is a component for rendering a template with dynamic data contents as an embedded PDF file. This widget has the following special properties:
 
@@ -878,7 +876,9 @@ ObjectPdfEditor is a component for rendering a template with dynamic data conten
 {% endtab %}
 {% endtabs %}
 
-## Button Action
+## Specialized Objects
+
+### Button Action
 
 ButtonAction is a specialized component, which allows triggering one or more actions from within a UI using buttons. Button actions receive data assigned to this widget. This widget has the following special properties:
 
@@ -927,42 +927,62 @@ ButtonAction is a specialized component, which allows triggering one or more act
 {% endtab %}
 {% endtabs %}
 
-## File Manager
+### File Manager
 
 FileManagerEditor provides ability to manage a file system, by listing, creating and deleting files and folders. This widget supports all non-media specific properties listed in [Media Editor](value-widgets.md#media-editor).
 
-## Data Visualization Display
+### Schema Editor
 
-DVDisplay provides ability to display data visualization components such as charts inside object editors, typically using an array input. This widget has the following special properties:
+<figure><img src="../../../../.gitbook/assets/image (173).png" alt=""><figcaption></figcaption></figure>
+
+SchemaEditor provides ability to view and edit JSON schema contents for data modeling use cases. This widget has no extra properties.
+
+### Media Metadata Editor
+
+ContentsEditor displays an image or video with metadata fields editable, represented by its relative URL path. This widget has the following special properties in addition to those listed in [Media Editor](value-widgets.md#media-editor):
 
 {% tabs %}
 {% tab title="Properties" %}
-| Property             | Definition                                       | Example   | Default |
-| -------------------- | ------------------------------------------------ | --------- | ------- |
-| Component Type       | Visualization component type                     | RPlotly   | -       |
-| Component Properties | Visualization component type specific properties | width=200 | -       |
+| Property                           | Definition                                                                | Example                          | Default |
+| ---------------------------------- | ------------------------------------------------------------------------- | -------------------------------- | ------- |
+| Editor UI (Icon, Title & Contents) | Complete editor UI configurations for detail contents                     | {"tabs":\[{"tab":"DEFINITION"}]} | -       |
+| Value DOM                          | Additional dom properties to pass on to div encapsulating the image       | -                                | -       |
+| Input DOM                          | Additional dom properties to pass on to TextField for entering image path | -                                | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "DVDisplay widget options",
+  "title": "MediaMetadataEditor widget options",
   "type": "object",
   "properties": {
     "props": {
       "type": "object",
-      "definition": "Visualization component options. Component-specific options depend on props.type.",
       "properties": {
-        "type": {
-          "type": "string",
-          "definition": "Visualization component type",
-          "example": "RPlotly"
+        "uiDesign": {
+          "type": "object",
+          "definition": "Complete editor UI configurations for detail contents",
+          "example": { "tabs": [{ "tab": "DEFINITION" }] }
         }
-      },
-      "example": {
-        "type": "RPlotly",
-        "width": 200
+      }
+    },
+    "valueProps": {
+      "type": "object",
+      "properties": {
+        "dom": {
+          "type": "object",
+          "definition": "Additional dom properties to pass on to div encapsulating the image"
+        }
+      }
+    },
+    "inputProps": {
+      "type": "object",
+      "properties": {
+        "dom": {
+          "type": "object",
+          "definition": "Additional dom properties to pass on to TextField for entering image path"
+        }
       }
     }
   }
@@ -971,11 +991,11 @@ DVDisplay provides ability to display data visualization components such as char
 {% endtab %}
 {% endtabs %}
 
-## Data Visualization Editor
+### Data Visualization Editor
 
 DVLayoutEditor provides ability to design data visualization layouts, used for embedded dashboards and reports. This widget has no extra properties, as it creates and edits data inline with data visualization data format.
 
-## Condition Editor
+### Condition Editor
 
 ConditionEditor is a special component for editing conditional logic for business rules and queries through a user friendly interface. This widget has the following special properties:
 
