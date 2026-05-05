@@ -340,6 +340,10 @@ GridsEditor provides ability to display and edit multiple data elements. This ed
 {% endtab %}
 {% endtabs %}
 
+## Schema Editor
+
+SchemaEditor provides ability to view and edit JSON schema contents for data modeling use cases. This widget has no extra properties.
+
 ## Media Metadata Editor
 
 ContentsEditor displays an image or video with metadata fields editable, represented by its relative URL path. This widget has the following special properties in addition to those listed in [Media Editor](value-widgets.md#media-editor):

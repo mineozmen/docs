@@ -3,7 +3,25 @@ description: This section explains the new features and updates applied with eac
 icon: code-branch
 ---
 
-# Release Notes
+# Rierino Release Notes
+
+## 2.4.0 \[04/2026]
+
+### GenAI OpenTelemetry
+
+In addition to existing insights within the chat memory, GenAI token and tool usage is now available as metrics and logs through OpenTelemetry, making them natively available for APM platforms.
+
+### Adhoc Fire Forget Calls
+
+All API calls can now be made asynchronous using X-Async header, allowing front-end applications to fire & forget requests.
+
+### Simplified Dynamic Scheduling
+
+Sagas can now be configured to have dynamically scheduled iterations (deciding on how long to wait for next iteration based on current run), without requiring a separate CDC stream configuration.
+
+### New RAI Event Handler
+
+A new RAI event handler replaces Langchain, providing more control over metadata, memory contents, tool governance and ability to summarize chat messages automatically.
 
 ## 2.3.0 \[03/2026]
 

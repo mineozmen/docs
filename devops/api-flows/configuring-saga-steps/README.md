@@ -38,3 +38,7 @@ These steps do the work between Start and exit nodes:
 #### Connecting steps
 
 * [Step Link](step-link.md): defines how the flow moves from one step to the next. Use condition values to model branching and default (`*`) paths.
+
+{% hint style="info" %}
+Double clicking on a step on stencil automatically adds it as a connected step for the currently selected node on saga flow.
+{% endhint %}
