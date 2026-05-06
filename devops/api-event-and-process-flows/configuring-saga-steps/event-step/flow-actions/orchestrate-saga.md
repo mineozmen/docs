@@ -55,12 +55,13 @@ With the following event metadata parameters:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter      | Definition                                                          | Example         | Default |
-| -------------- | ------------------------------------------------------------------- | --------------- | ------- |
-| Saga           | ID of the saga to call                                              | list\_customers | -       |
-| Saga Path      | Path of the saga to call                                            | /ListCustomers  |         |
-| Input Pattern  | JMESPath pattern to apply on data input                             | -               | -       |
-| Output Pattern | JMESPath pattern to apply on data output, before returning response | -               | -       |
+| Parameter      | Definition                                                                                      | Example         | Default |
+| -------------- | ----------------------------------------------------------------------------------------------- | --------------- | ------- |
+| Saga           | ID of the saga to call                                                                          | list\_customers | -       |
+| Saga Path      | Path of the saga to call                                                                        | /ListCustomers  |         |
+| Fire Forget    | Whether specific call to saga should work async (in case saga itself is not configured as such) | true            | false   |
+| Input Pattern  | JMESPath pattern to apply on data input                                                         | -               | -       |
+| Output Pattern | JMESPath pattern to apply on data output, before returning response                             | -               | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -86,6 +87,11 @@ With the following event metadata parameters:
               "definition": "Path of the saga to call",
               "example": "/ListCustomers",
               "default": null
+            },
+            "fireForget": {
+              "type": "string",
+              "definition": "Whether specific call to saga should work async (in case saga itself is not configured as such)",
+              "default": "false"
             },
             "inputPattern": {
               "type": "string",
