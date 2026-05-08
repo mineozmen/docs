@@ -9,6 +9,8 @@ icon: robot
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>GenAI Model UI</p></figcaption></figure>
 
+{% embed url="https://rierino.com/platform/agent" %}
+
 GenAI model definitions allow configuration of AI agents and general purpose LangChain models using different providers such as Amazon Bedrock, Anthropic, Azure, Google Gemini, Mistral, OpenAI, as well as local LLM models.
 
 {% hint style="success" %}

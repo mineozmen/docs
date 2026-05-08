@@ -19,6 +19,8 @@ Key components included in a full deployment are:
 
 <figure><img src="../.gitbook/assets/image (111).png" alt="External channels → API Gateway → Service Runners → Data Stores (Cache, Operational, Search, Real-Time, Data Lake). Admin UI connects to runners via admin APIs. Batch tasks (Python) connect to data stores and external systems."><figcaption><p>Platform Architecture</p></figcaption></figure>
 
+{% embed url="https://rierino.com/platform/core" %}
+
 ## Hyper-Flexible Front-end
 
 ### External UIs & Systems

@@ -45,6 +45,14 @@ Use agents when users need a conversational interface. Use agents when the “ne
 
 For more details [click here](../data-science/genai-models/), for details on training AI agent example [click here](../examples/training-examples/ai-agent-example.md).
 
+### Related Blog Posts
+
+{% embed url="https://rierino.com/blog/from-automation-to-agentic-ops-enterprise" %}
+
+{% embed url="https://rierino.com/blog/openai-frontier-ai-orchestration-llms-vs-workflows" %}
+
+{% embed url="https://rierino.com/blog/ai-agent-interfaces-a2ui-apps-sdk" %}
+
 ## MCP Server & Middleware
 
 <figure><img src="../.gitbook/assets/image (148).png" alt=""><figcaption><p>MCP Server</p></figcaption></figure>
