@@ -143,7 +143,7 @@ This is useful when decisions must happen “in the transaction”. It also help
 
 Keep feature extraction close to the scoring call. Prefer deterministic inputs and explicit versions. This makes results easier to debug and audit.
 
-For more details [click here](/broken/pages/cNRp2sZlzMyLGcNuHh6y).
+For more details [click here](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/use-ml-models.md).
 
 ## External AI API Integration
 
@@ -165,7 +165,7 @@ Calls to external AI services can be modeled like any other integration step. Th
 
 External model calls have cost and latency implications. Treat prompts and model parameters as versioned configuration. Monitor both output quality and throughput over time.
 
-For more details [click here](/broken/pages/UhdC9EjYpWaLh8PhyvdB).
+For more details [click here](../data-science/genai-models/).
 
 ## Python ML Training and Scoring
 
@@ -190,4 +190,4 @@ Python procedures can be orchestrated alongside other steps. This includes calls
 * Shared scoring logic between batch and real-time flows.
 * Custom libraries and domain-specific model pipelines.
 
-For more details [click here](/broken/pages/PpEVmUyz1AQjjKom7mlO).
+For more details [click here](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/custom-code-actions/run-python-procedure.md).
