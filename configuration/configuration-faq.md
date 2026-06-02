@@ -244,7 +244,7 @@ For example, a Design source may call an endpoint that runs a stored query, or a
 
 Design handles the screen. Configuration helps supply the runtime logic behind it.
 
-See [Design FAQ](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/MZPhPCPMwvBjeS1VPo2O).
+See [Design FAQ](../design/design-faq.md).
 
 </details>
 

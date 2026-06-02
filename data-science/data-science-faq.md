@@ -280,7 +280,7 @@ Data Science provides model-driven capabilities those screens may call or displa
 
 For example, a UI can trigger an agent interaction, render an analytics view, or display outputs from an ML-backed endpoint.
 
-See [Design FAQ](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/MZPhPCPMwvBjeS1VPo2O).
+See [Design FAQ](../design/design-faq.md).
 
 </details>
 

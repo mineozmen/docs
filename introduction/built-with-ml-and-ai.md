@@ -77,7 +77,7 @@ This keeps the “tool layer” consistent across internal and external capabili
 * You want to reuse existing API, event, or CDC flows without rebuilding tool wrappers.
 * You need enterprise governance to apply to the tool layer by default.
 
-For more details [click here](/broken/pages/nROiQweGSG7a5Q2JITkp).
+For more details [click here](../data-science/mcp-servers.md).
 
 ## A2A Server & Middleware
 
@@ -91,7 +91,7 @@ You configure which LLM flows are exposed for agent-to-agent task execution. Thi
 * Route specialized tasks to dedicated agents (support, ops, data, commerce).
 * Keep agent coordination decoupled from UI channels and client apps.
 
-For more details [click here](/broken/pages/OJZXriH2cJwka5MR5bKI).
+For more details [click here](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-a2a-requests.md).
 
 ## AI-Powered Productivity with RAI
 
