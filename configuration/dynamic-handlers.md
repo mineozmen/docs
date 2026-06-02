@@ -7,7 +7,7 @@ icon: square-terminal
 
 # Dynamic Handlers
 
-Dynamic handlers are typically facilitated by code or package handlers such as [OpenHFTEventHandler](/broken/pages/Hfwxb76TXmG73YeRjSSY), [ScriptLoadedEventHandler](/broken/pages/nu3R4vUYzNbUuyXTQKuc) or [JarLoadedEventHandler.](/broken/pages/0DaLwUvznsjitTQJKbDs)
+Dynamic handlers are typically facilitated by code or package handlers such as OpenHFTEventHandler, ScriptLoadedEventHandler or JarLoadedEventHandler.
 
 ## Handler Codes
 

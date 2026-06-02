@@ -43,7 +43,7 @@ For querying, you typically expose a dedicated RPC endpoint using a Saga (or an 
 {% step %}
 ### Open the Query screen
 
-Open the [Query](../../configuration/queries/) screen from the [Configuration](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/NhIhtgvnmxDul9vF2Bww) app.
+Open the [Query](../../configuration/queries/) screen from the [Configuration](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/configuration) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/configuration/common/query`.
 
@@ -95,7 +95,7 @@ Save the query.
 {% step %}
 ### Open the Saga screen
 
-Open the [Saga](../../devops/api-event-and-process-flows/) screen from the [Devops](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Saga](../../devops/api-event-and-process-flows/) screen from the [Devops](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops) app.
 
 If you need a refresher on the basics, follow the structure in [Exercise: Hello World API](../training-examples/exercise-create-an-api-endpoint.md).
 {% endstep %}
@@ -156,7 +156,7 @@ Edit the **Event** step:
     * **Key:** `queryId`
     * **Value:** `todo`
 
-This step executes [GetQuery](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/oAal4A8dPg9i6GOLrJcV) against the `master` system, using the Query ID `todo`.
+This step executes [GetQuery](../../devops/api-event-and-process-flows/configuring-saga-steps/event-step/core-actions/query-data.md) against the `master` system, using the Query ID `todo`.
 
 It reads query parameters from `parameters` (so `project=...` becomes available as `%%project%%`).
 {% endstep %}
