@@ -39,6 +39,9 @@ Following Rierino specific properties are also applicable to these gateways, whi
 | rierino.id.instanceNum.class          | Fully qualified class name for gateway instance number (used in request id generation)         | com.rierino.handler.util.generator.ConstantNumberGenerator | com.rierino.handler.util.generator.EpochNumberGenerator |
 | rierino.id.instanceNum.\*             | Parameters for gateway instance number class                                                   | value=0                                                    | -                                                       |
 | rierino.telemetry.trace.input.enabled | Whether gateway should accept trace & span ids from requestor client for correlations          | true                                                       | false                                                   |
+| rierino.request.maxSize               | Maximum bytes allowed for API requests                                                         | -                                                          | -1                                                      |
+| rierino.file.maxSize                  | Maximum bytes allowed for file requests                                                        | -                                                          | -1                                                      |
+| rierino.codecs.memory.maxSize         | Maximum bytes allowed for in memory buffering                                                  | -                                                          | 1024000                                                 |
 
 {% hint style="info" %}
 Gateway creates request ids using rierino.id settings, which produce ids in the following form:
