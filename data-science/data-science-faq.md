@@ -152,6 +152,120 @@ See [GenAI Models](genai-models/).
 
 </details>
 
+### What are AI guardrails in Rierino?
+
+<details>
+
+<summary>Show answer</summary>
+
+AI guardrails are reusable safety and governance checks for GenAI agents.
+
+They can inspect user prompts, model outputs, and tool responses inside the agent loop.
+
+This gives you a central place to block, modify, or reprompt unsafe content.
+
+See [AI Guardrails](genai-models/ai-guardrails.md).
+
+</details>
+
+### When should I add an input guardrail versus an output guardrail?
+
+<details>
+
+<summary>Show answer</summary>
+
+Use **input guardrails** to stop unsafe prompts before the model or tools see them.
+
+Use **output guardrails** to review or rewrite model responses before they reach the user.
+
+Use **tool response guardrails** when retrieved or tool-generated data should be checked before it goes back into the model context.
+
+</details>
+
+### Can I use the same guardrail model across all stages?
+
+<details>
+
+<summary>Show answer</summary>
+
+Yes.
+
+Input, output, and tool-response guardrails use the same configuration model.
+
+What usually changes is the stage-specific risk policy and how strict the thresholds are.
+
+</details>
+
+### When should I mask content instead of blocking it?
+
+<details>
+
+<summary>Show answer</summary>
+
+Mask content when the request is still useful after redaction.
+
+This is common for PII such as emails, phone numbers, or account identifiers.
+
+Block content when the content itself is unsafe, such as prompt injection attempts or dangerous commands.
+
+</details>
+
+### What does `REPROMPT` do in AI guardrails?
+
+<details>
+
+<summary>Show answer</summary>
+
+`REPROMPT` asks the model to generate a safer answer instead of failing immediately.
+
+This is most useful on output checks where the response can be recovered.
+
+Use `BLOCK` when the request should stop instead of retrying.
+
+</details>
+
+### How does the risk policy affect blocking?
+
+<details>
+
+<summary>Show answer</summary>
+
+Each finding contributes a risk level such as `LOW`, `MEDIUM`, `HIGH`, or `CRITICAL`.
+
+The risk policy then combines those findings using weighted scores, thresholds, critical overrides, or count-based rules.
+
+This lets you tune strictness without rewriting every guardrail.
+
+</details>
+
+### Should I start with presets or custom guardrail patterns?
+
+<details>
+
+<summary>Show answer</summary>
+
+Start with presets for common cases such as PII redaction or jailbreak protection.
+
+Use custom patterns when your policy is domain-specific or more precise than the built-in presets.
+
+You can also combine presets and custom rules in the same stage.
+
+</details>
+
+### Do AI guardrails replace custom governance in AI flows?
+
+<details>
+
+<summary>Show answer</summary>
+
+No.
+
+AI guardrails provide a reusable built-in governance layer for common safety controls.
+
+If you need fully custom behavior, you can still embed checks directly in your AI flow logic.
+
+</details>
+
 ### Do GenAI capabilities have special runtime requirements?
 
 <details>
