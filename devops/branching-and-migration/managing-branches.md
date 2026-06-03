@@ -77,6 +77,10 @@ Any asset, including business domain records, can be branch enabled, which allow
 Rule engines do not utilize branching as using separate rule domains for development simplifies management.
 {% endhint %}
 
+{% hint style="warning" %}
+It is important to note that for some assets like Sagas, if the branch record becomes inactive (e.g. status = Passive), and the main branch has an active record, the main branch implementation will continue to execute for the branch as well (i.e. branch record becomes 'invisible' instead of 'blocking').
+{% endhint %}
+
 In case required for a specific business domain, branching can be enabled using the following configurations:
 
 * Making its state manager 'writeBranched', which allows storing branch versioned copies with write operations
