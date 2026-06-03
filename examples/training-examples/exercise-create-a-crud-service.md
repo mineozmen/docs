@@ -23,7 +23,7 @@ This exercise extends the existing **Train CRUD** runner with a new state. The r
 {% step %}
 ### Open the Runner screen
 
-Open the [Runner](../../devops/microservices/service-runners/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Runner](../../devops/microservices/service-runners/) screen from the [Devops](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/runner`.
 

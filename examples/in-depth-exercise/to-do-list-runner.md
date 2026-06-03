@@ -11,7 +11,7 @@ This exercise creates the backend microservice for the to-do list. You will defi
 
 ### Before you start
 
-* You can access the [Devops](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/PWyjQCLF01E9OngBbsr8) app.
+* You can access the [Devops](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops) app.
 * The platform has a MongoDB system Element available (typically `system-mongo_master-0001`).
 * You know your Admin UI base URL: `https://[YOUR_ADMIN_UI_DOMAIN]`.
 

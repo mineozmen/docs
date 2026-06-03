@@ -24,7 +24,7 @@ This exercise creates a tiny saga and exposes it as an API endpoint. You will ru
 {% step %}
 ### Open the Saga screen
 
-Open the [Saga](../../devops/api-event-and-process-flows/) screen from the [Devops](/broken/pages/PWyjQCLF01E9OngBbsr8) app.
+Open the [Saga](../../devops/api-event-and-process-flows/) screen from the [Devops](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/devops/common/saga`.
 

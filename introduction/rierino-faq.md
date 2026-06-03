@@ -296,7 +296,7 @@ See [Use Cases](rierino-use-cases.md).
 
 <summary>Show answer</summary>
 
-Start with the [Overview](../), then move into [Installation](../quick-start/rierino-installation.md) and [Quick Start](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/13CTa2zTaEUFEIKvmPib).
+Start with the [Overview](../), then move into [Installation](../quick-start/rierino-installation.md) and [Quick Start](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/quick-start).
 
 If you already know what you want to build, use [I would like to start with...](../quick-start/i-would-like-to-start-with....md).
 

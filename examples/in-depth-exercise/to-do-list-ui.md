@@ -12,7 +12,7 @@ This exercise builds the Admin UI on top of your to-do API. You will create an A
 
 * You completed [To-do List Gateway](to-do-list-gateway.md).
 * The gateway endpoint works: `GET https://[YOUR_ADMIN_API_DOMAIN]/api/request/todo_crud/todo`.
-* You can access the [Design](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/R6CwbBwzD5B7a9dcS18z) app.
+* You can access the [Design](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/design) app.
 * You know your Admin UI base URL: `https://[YOUR_ADMIN_UI_DOMAIN]`.
 
 ### What you’ll build

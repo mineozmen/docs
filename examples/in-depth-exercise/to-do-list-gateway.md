@@ -12,7 +12,7 @@ This exercise exposes the to-do runner outside the cluster. You will create a **
 ### Before you start
 
 * You completed [To-do List Runner](to-do-list-runner.md) and the runner is deployed.
-* You can access the [Devops](/broken/spaces/cnDk3J1AzTgg2NFrGPlh/pages/PWyjQCLF01E9OngBbsr8) app.
+* You can access the [Devops](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops) app.
 * You know your API base URL: `https://[YOUR_ADMIN_API_DOMAIN]`.
 * You have a gateway instance to target (example: `admin-prod`).
 

@@ -264,6 +264,7 @@
     * [Airflow Scheduler](data-science/ml-models/scheduler-platforms/airflow-scheduler.md)
 * [GenAI Models](data-science/genai-models/README.md)
   * [AI Agent APIs](data-science/genai-models/ai-agent-apis.md)
+  * [AI Guardrails](data-science/genai-models/ai-guardrails.md)
   * [Useful Checks](data-science/genai-models/useful-checks.md)
 * [MCP Servers](data-science/mcp-servers.md)
 * [Complex Event Processing](data-science/complex-event-processing/README.md)

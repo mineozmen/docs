@@ -26,7 +26,7 @@ This exercise creates a tiny admin UI for the `test` collection. It assumes you 
 {% step %}
 ### Create a new UI
 
-Open the [UI](../../design/user-interface/uis/) screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
+Open the [UI](../../design/user-interface/uis/) screen from the [Design](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/design) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/design/common/ui`.
 
@@ -80,7 +80,7 @@ Click **Apply**. Then click **Save**.
 {% step %}
 ### Create a source mapping
 
-Open the **Source** screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
+Open the **Source** screen from the [Design](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/design) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/design/common/source`.
 
@@ -98,7 +98,7 @@ Fastest path is duplicating the existing `dummy` source. Then change any `dummy`
 {% step %}
 ### Add it to the Training app menu
 
-Open the [App](../../design/user-interface/apps.md) screen from the [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z) app.
+Open the [App](../../design/user-interface/apps.md) screen from the [Design](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/design) app.
 
 Unless you changed routing, the UI is at `https://[YOUR_ADMIN_UI_DOMAIN]/app/design/common/app`.
 

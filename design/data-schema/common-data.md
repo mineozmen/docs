@@ -6,7 +6,7 @@ description: >-
 
 # Common Data
 
-Common data model stores elements mainly used by [DevOps](/broken/pages/PWyjQCLF01E9OngBbsr8), [Design](/broken/pages/R6CwbBwzD5B7a9dcS18z),[ ](/broken/pages/PWyjQCLF01E9OngBbsr8)[Configuration](/broken/pages/NhIhtgvnmxDul9vF2Bww), and [Data Science](/broken/pages/wWEaREJE3r9cn4bQ9yGk) operations.&#x20;
+Common data model stores elements mainly used by [DevOps](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops), [Design](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/design),[ ](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/devops)[Configuration](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/configuration), and [Data Science](https://app.gitbook.com/s/cnDk3J1AzTgg2NFrGPlh/data-science) operations.&#x20;
 
 ## Authentication
 
