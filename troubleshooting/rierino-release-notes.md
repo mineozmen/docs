@@ -5,6 +5,24 @@ icon: code-branch
 
 # Rierino Release Notes
 
+## 2.5.0 \[05/2026]
+
+### Built-in GenAI Guardrails
+
+Adding guardrails to GenAI interactions is both simplified and enriched with built-in, highly configurable guardrails that can be added to validate & mask inputs, tool responses and outputs for safe LLM use. Regular expressions, LLM judges and even custom rules, flows & logic can now be added as guardrails to any AI agent configuration.
+
+### Built-in AI Chat Summarization & Rating
+
+AI interactions can now be summarized manually or automatically through simple configurations, and users are able to rate all AI responses from within the agent screen for custom model training & fine-tuning as well as reporting.
+
+### Thread & Parallelization Optimizations
+
+Thread performance is further optimized for parallel saga flows, fire-forget use cases as well as for each loop calls, improving memory use and speed.
+
+### Dynamic Header Mapping
+
+API aliases now allow configuration of header maps, allowing automated transformation of custom headers required by third parties to Rierino standard headers and format.
+
 ## 2.4.0 \[04/2026]
 
 ### GenAI OpenTelemetry
