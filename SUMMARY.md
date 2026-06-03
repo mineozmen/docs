@@ -201,6 +201,22 @@
   * [Custom CDC Managers](devops/pro-code/custom-cdc-managers.md)
 * [Devops FAQ](devops/devops-faq.md)
 
+## Data Science
+
+* [Data Science Overview](data-science/data-science-overview.md)
+* [GenAI Models](data-science/genai-models/README.md)
+  * [AI Agent APIs](data-science/genai-models/ai-agent-apis.md)
+  * [AI Guardrails](data-science/genai-models/ai-guardrails.md)
+  * [Useful Checks](data-science/genai-models/useful-checks.md)
+* [MCP Servers](data-science/mcp-servers.md)
+* [ML Models](data-science/ml-models/README.md)
+  * [Scheduler Platforms](data-science/ml-models/scheduler-platforms/README.md)
+    * [Airflow Scheduler](data-science/ml-models/scheduler-platforms/airflow-scheduler.md)
+* [Complex Event Processing](data-science/complex-event-processing/README.md)
+  * [Siddhi Data Flows](data-science/complex-event-processing/siddhi-data-flows.md)
+* [Data Visualizations](data-science/data-visualizations.md)
+* [Data Science FAQ](data-science/data-science-faq.md)
+
 ## Design
 
 * [Design Overview](design/design-overview.md)
@@ -255,22 +271,6 @@
   * [Drools Rules](configuration/business-rules/drools-rules.md)
 * [Dynamic Handlers](configuration/dynamic-handlers.md)
 * [Configuration FAQ](configuration/configuration-faq.md)
-
-## Data Science
-
-* [Data Science Overview](data-science/data-science-overview.md)
-* [ML Models](data-science/ml-models/README.md)
-  * [Scheduler Platforms](data-science/ml-models/scheduler-platforms/README.md)
-    * [Airflow Scheduler](data-science/ml-models/scheduler-platforms/airflow-scheduler.md)
-* [GenAI Models](data-science/genai-models/README.md)
-  * [AI Agent APIs](data-science/genai-models/ai-agent-apis.md)
-  * [AI Guardrails](data-science/genai-models/ai-guardrails.md)
-  * [Useful Checks](data-science/genai-models/useful-checks.md)
-* [MCP Servers](data-science/mcp-servers.md)
-* [Complex Event Processing](data-science/complex-event-processing/README.md)
-  * [Siddhi Data Flows](data-science/complex-event-processing/siddhi-data-flows.md)
-* [Data Visualizations](data-science/data-visualizations.md)
-* [Data Science FAQ](data-science/data-science-faq.md)
 
 ## EXTENSIONS
 

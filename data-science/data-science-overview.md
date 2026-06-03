@@ -17,9 +17,9 @@ The Data Science app is where you configure and govern ML and GenAI capabilities
 
 Data Science capabilities are organized into these areas:
 
-* **ML Models:** Configure traditional machine learning models, their inputs, and runtime settings in [ML Models](ml-models/). Use this when you want consistent inference behavior across environments.
 * **GenAI Models:** Manage LLM providers, credentials, and agent-facing configuration in [GenAI Models](genai-models/). This is the starting point for agent APIs and GenAI troubleshooting.
 * **MCP Servers:** Expose existing platform capabilities over MCP by configuring [MCP Servers](mcp-servers.md). Use this when you want tools and microservices to be consumable by MCP clients.
+* **ML Models:** Configure traditional machine learning models, their inputs, and runtime settings in [ML Models](ml-models/). Use this when you want consistent inference behavior across environments.
 * **Complex Event Processing:** Define real-time stream logic and windowed aggregations in [Complex Event Processing](complex-event-processing/). This is typically used for CEP and near-real-time enrichment pipelines.
 * **Data Visualizations:** Publish embedded dashboards and reporting views through [Data Visualizations](data-visualizations.md). Use this for observability of outcomes and business-facing reporting.
 
