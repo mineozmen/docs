@@ -38,6 +38,7 @@ Fields marked with `*` are required.
   * If disabled, handle failures per step and route explicitly.
 * **Fire & Forget:** Return immediately and run the flow asynchronously.
   * Status and results are recorded if Fire & Forget state is configured.
+  * Fire & forget sagas include "reference" data field including the unique ID returned to the user for querying status of the execution. At the end of saga execution, the status is automatically updated, but it can be manually edited (e.g. "Processing X Step") within the saga flow with an Update action as well.
 
 ## Configuration
 

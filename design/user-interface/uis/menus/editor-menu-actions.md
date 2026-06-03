@@ -38,6 +38,15 @@ This action has the following special properties in addition to [API action prop
 * **ID:** Field to send item ID on in request payload.
 * **Item As:** Field to send full item data on in request payload ($ sends item as the root payload, if empty, only ID field is sent).&#x20;
 
+## Export API
+
+Sends a request to given API endpoint with the current item data and exports results in a file with provided column details.
+
+This action has the following special properties in addition to [API action properties](./):
+
+* **Type:** Type of file to export.
+* **Sheets:** Configuration of sheets & columns to export.&#x20;
+
 ## Call API
 
 Sends a request to given API endpoint with the current item data with option to update current record.

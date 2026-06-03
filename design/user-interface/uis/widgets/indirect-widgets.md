@@ -14,15 +14,15 @@ DependentObjectEditor provides ability to search for, create and edit entries th
 
 {% tabs %}
 {% tab title="Table" %}
-| Property              | Definition                                                                                          | Example                   | Default                   |
-| --------------------- | --------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------- |
-| Type                  | Name of the schema and UI configuration that will be used for listing and editing dependent objects | product\_variant          | -                         |
-| Source                | Name of data source mapping to use for fetching dependent objects                                   | product\_variants         | value of type property    |
-| Query Field           | Filter name that will be passed on for querying the source                                          | productid                 | -                         |
-| Data Field            | Json path for setting value of current object in dependent entries                                  | data.productId            | -                         |
-| No Create             | Whether record creation should be restricted                                                        | true                      | false                     |
-| Dependent Lister Type | Type of dependent lister to use for displaying records                                              | DependentHandlebarsLister | DependentQueryTableLister |
-| Keep Filters          | Whether original lister filters defined in referenced UI should be displayed or not                 | true                      | false                     |
+| Property              | Definition                                                                                                                                 | Example                   | Default                   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | ------------------------- |
+| Type                  | Name of the schema and UI configuration that will be used for listing and editing dependent objects                                        | product\_variant          | -                         |
+| Source                | Name of data source mapping to use for fetching dependent objects                                                                          | product\_variants         | value of type property    |
+| Query Field           | Filter name that will be passed on for querying the source                                                                                 | productid                 | -                         |
+| Data Field            | Json path for setting value of current object in dependent entries                                                                         | data.productId            | -                         |
+| No Create             | Whether record creation should be restricted                                                                                               | true                      | false                     |
+| Dependent Lister Type | Type of dependent lister (DependentCustomCodeLister, DependentHandlebarsLister or DependentQueryTableLister) to use for displaying records | DependentHandlebarsLister | DependentQueryTableLister |
+| Keep Filters          | Whether original lister filters defined in referenced UI should be displayed or not                                                        | true                      | false                     |
 {% endtab %}
 
 {% tab title="JSON Schema" %}

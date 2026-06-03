@@ -107,6 +107,12 @@ This action has the following special properties:
 
 * **Sheets:** List of sheets with column configurations and mappings to export.
 
+Following alternatives also exist, for exporting data in different file formats:
+
+* Export CSV
+* Export XML
+* Export Handlebars
+
 ## Import XLSX
 
 Imports data from a local Excel file to an editor.
