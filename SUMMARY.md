@@ -2,7 +2,7 @@
 
 ## Introduction
 
-* [Rierino Overview](README.md)
+* [Rierino | Low-Code Microservices & AI Agent Platform](README.md "Rierino Overview")
 * [Rierino Use Cases](introduction/rierino-use-cases.md)
 * [Platform Architecture](introduction/platform-architecture.md)
 * [Built with ML & AI](introduction/built-with-ml-and-ai.md)
