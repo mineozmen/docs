@@ -5,7 +5,8 @@
 * [Low-Code Microservices & AI Agent Platform](README.md "Rierino Overview")
 * [Rierino Use Cases](introduction/rierino-use-cases.md)
 * [Platform Architecture](introduction/platform-architecture.md)
-* [Built with ML & AI](introduction/built-with-ml-and-ai.md)
+* [Built with ML & AI](introduction/built-with-ml-and-ai/README.md)
+  * [Rierino Claude Plugin](introduction/built-with-ml-and-ai/rierino-claude-plugin.md)
 * [Rierino FAQ](introduction/rierino-faq.md)
 
 ## QUICK START

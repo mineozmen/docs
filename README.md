@@ -5,7 +5,7 @@ description: >-
 icon: circle-info
 ---
 
-# Rierino Overview
+# Low-Code Microservices & AI Agent Platform
 
 {% hint style="info" icon="magnifying-glass" %}
 **In brief:** Rierino is a low-code backend platform for building microservices, orchestration flows, and AI agents. You assemble services from configuration-first building blocks, then deploy them across environments as APIs, async triggers, and workflows. It also includes an internal Admin UI builder plus plug-in adapters for data stores, streaming, and external integrations. The goal is fast iteration at scale, without losing governance.
@@ -125,7 +125,7 @@ Agents are usually composed from:
 
 Once configured, agents can be exposed as APIs. This makes them easy to embed into apps and workflows.
 
-For the broader AI capability model, see [Built with ML & AI](introduction/built-with-ml-and-ai.md).
+For the broader AI capability model, see [Built with ML & AI](introduction/built-with-ml-and-ai/).
 
 #### Explore AI agent development
 

@@ -225,7 +225,7 @@ Rierino supports both traditional ML and generative AI.
 
 You can use ML for real-time scoring. You can use GenAI for assistants, content generation, and AI agents. You can also expose capabilities through MCP and A2A protocols.
 
-See [Built with ML & AI](built-with-ml-and-ai.md).
+See [Built with ML & AI](built-with-ml-and-ai/).
 
 </details>
 

@@ -279,7 +279,7 @@ See [Data Schema](../design/data-schema/).
 
 Agent-to-Agent protocol support. It lets other agents delegate tasks to Rierino-exposed agent capabilities.
 
-See [Built with ML & AI](../introduction/built-with-ml-and-ai.md).
+See [Built with ML & AI](../introduction/built-with-ml-and-ai/).
 
 ### AI agent
 
@@ -315,7 +315,7 @@ See [ML Models](../data-science/ml-models/).
 
 Rierino’s built-in AI assistant for guided productivity inside the platform.
 
-See [Built with ML & AI](../introduction/built-with-ml-and-ai.md).
+See [Built with ML & AI](../introduction/built-with-ml-and-ai/).
 
 ## Related pages
 

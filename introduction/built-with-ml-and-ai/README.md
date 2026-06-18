@@ -13,7 +13,7 @@ icon: brain-circuit
 
 ## 'Empowered' AI Agent Development
 
-<figure><img src="../.gitbook/assets/A.5. Agent Response.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/A.5. Agent Response.png" alt=""><figcaption></figcaption></figure>
 
 [Rierino AI Agent Builder](https://rierino.com/platform/agent) lets you rapidly create AI agents. Agents can access internal data sources and call enterprise systems and APIs. They can also trigger automated actions when tasks require execution, not just answers.
 
@@ -43,7 +43,7 @@ Use agents when users need a conversational interface. Use agents when the “ne
 
 {% embed url="https://www.youtube.com/watch?ab_channel=Rierino&v=jgKj4_019Ps" %}
 
-For more details [click here](../data-science/genai-models/), for details on training AI agent example [click here](../examples/training-examples/ai-agent-example.md).
+For more details [click here](../../data-science/genai-models/), for details on training AI agent example [click here](../../examples/training-examples/ai-agent-example.md).
 
 ### Related Blog Posts
 
@@ -55,7 +55,7 @@ For more details [click here](../data-science/genai-models/), for details on tra
 
 ## MCP Server & Middleware
 
-<figure><img src="../.gitbook/assets/image (148).png" alt=""><figcaption><p>MCP Server</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (148).png" alt=""><figcaption><p>MCP Server</p></figcaption></figure>
 
 Rierino can service its functionality over Model Context Protocol (MCP). This is done through configuration. You select which flows become MCP tools. You select which states become MCP resources.
 
@@ -77,7 +77,7 @@ This keeps the “tool layer” consistent across internal and external capabili
 * You want to reuse existing API, event, or CDC flows without rebuilding tool wrappers.
 * You need enterprise governance to apply to the tool layer by default.
 
-For more details [click here](../data-science/mcp-servers.md).
+For more details [click here](../../data-science/mcp-servers.md).
 
 ## A2A Server & Middleware
 
@@ -91,11 +91,11 @@ You configure which LLM flows are exposed for agent-to-agent task execution. Thi
 * Route specialized tasks to dedicated agents (support, ops, data, commerce).
 * Keep agent coordination decoupled from UI channels and client apps.
 
-For more details [click here](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-a2a-requests.md).
+For more details [click here](../../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/service-a2a-requests.md).
 
 ## AI-Powered Productivity with RAI
 
-<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 At the heart of Rierino’s AI-supported development experience is the AI assistant, [RAI](https://rierino.com/platform/rai). RAI is embedded directly into the Rierino UI. This keeps AI assistance close to where users configure apps, services, and data.
 
@@ -118,7 +118,7 @@ RAI is not a separate “chat tool”. It is designed to operate inside the plat
 * Product and operations teams who need guided automation.
 * Developers who want faster iteration on UI and workflow configuration.
 
-For more details [click here](../design/user-interface/uis/menus/rai-menu-actions.md).
+For more details [click here](../../design/user-interface/uis/menus/rai-menu-actions.md).
 
 ## Real-Time ML Inference
 
@@ -143,7 +143,7 @@ This is useful when decisions must happen “in the transaction”. It also help
 
 Keep feature extraction close to the scoring call. Prefer deterministic inputs and explicit versions. This makes results easier to debug and audit.
 
-For more details [click here](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/use-ml-models.md).
+For more details [click here](../../devops/api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/use-ml-models.md).
 
 ## External AI API Integration
 
@@ -165,7 +165,7 @@ Calls to external AI services can be modeled like any other integration step. Th
 
 External model calls have cost and latency implications. Treat prompts and model parameters as versioned configuration. Monitor both output quality and throughput over time.
 
-For more details [click here](../data-science/genai-models/).
+For more details [click here](../../data-science/genai-models/).
 
 ## Python ML Training and Scoring
 
@@ -190,4 +190,4 @@ Python procedures can be orchestrated alongside other steps. This includes calls
 * Shared scoring logic between batch and real-time flows.
 * Custom libraries and domain-specific model pipelines.
 
-For more details [click here](../devops/api-event-and-process-flows/configuring-saga-steps/event-step/custom-code-actions/run-python-procedure.md).
+For more details [click here](../../devops/api-event-and-process-flows/configuring-saga-steps/event-step/custom-code-actions/run-python-procedure.md).
