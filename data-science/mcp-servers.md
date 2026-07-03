@@ -30,6 +30,10 @@ Definition of an MCP server includes:
 * **Resources:** Mapping of state managers as static resources, automatically enabled in resources/list and resources/read
 * **Resource Templates:** Mapping of state managers as dynamic templated resources, automatically enabled in resources/templates/list and resources/read
 
+{% hint style="info" %}
+For RBAC to specific tools by different user roles, Tool Sagas provide the most flexibility (and can be used to implement all other types of tools). As a rule of thumb, it is recommended to use other tool types for resources which are accessible by all users of the agent, and switch to sagas for granular access control.
+{% endhint %}
+
 ### Prompts
 
 List of prompts returned from prompts/list and prompts/get methods

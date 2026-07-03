@@ -88,6 +88,10 @@ Saga flows are expected to return "response" in event payload as the response fr
   * **Restrict Tool Repetition:** Whether same tool call with same parameters is allowed
   * **Tool Repetition Scope:** Scope of assessing whether same tool call is happening
 
+{% hint style="info" %}
+For RBAC to specific tools by different user roles, Tool Sagas provide the most flexibility (and can be used to implement all other types of tools). As a rule of thumb, it is recommended to use other tool types for resources which are accessible by all users of the agent, and switch to sagas for granular access control.
+{% endhint %}
+
 ### Interactivity
 
 #### Structured Prompts
