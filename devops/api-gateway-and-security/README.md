@@ -20,7 +20,7 @@ The gateway layer exposes backend capabilities to clients and applies the contro
   * [OpenAPI Specification](apis/openapi-specification.md) explains how gateway, runner, schema, and saga configuration become generated API docs.
   * [Response Formats](apis/response-formats.md) explains JSON, XML, HTML, plain text, and CSV responses.
 * [Server Sent Events](apis/server-sent-events.md) explains how `/api/stream/...` turns repeated saga calls into an SSE feed using `list`, `continue`, `wait`, and `next`.
-* [Rate Limiting](resilince-configuration.md) covers built-in user and IP based throttling at gateway and channel level.
+* [Resilience Configuration](resilince-configuration.md) covers built-in rate limiting, bulk head, circuit breaker anbulkheadd retry logic at gateway channel level.
 * [Dynamic TLS & mTLS](dynamic-tls-and-mtls.md) explains runtime certificate loading and rotation for both server and client connections.
 
 ### How the pieces fit together
@@ -46,4 +46,4 @@ The gateway layer exposes backend capabilities to clients and applies the contro
 * Start with [Gateway Servers](gateway-servers/) if you are wiring a new gateway.
 * Go to [Gateway Channels](gateway-servers/gateway-channels.md) and [Gateway Systems](gateway-servers/gateway-systems.md) when exposing a runner.
 * Go to [Gateway Tokens](gateway-servers/gateway-tokens.md) when setting up login, claims, or cookies.
-* Go to [Rate Limiting](resilince-configuration.md) or [Dynamic TLS & mTLS](dynamic-tls-and-mtls.md) when hardening production traffic.
+* Go to [Resilience Configuration](resilince-configuration.md) or [Dynamic TLS & mTLS](dynamic-tls-and-mtls.md) when hardening production traffic.
