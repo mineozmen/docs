@@ -29,25 +29,26 @@ It is possible to define any number and type of new gateway systems with special
 
 With a specific executor (_com.rierino.api.gateway.executor.RPCExecutor_) this gateway system is used for communicating with [RPCEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#rpceventrunner) instances over http or https, with the following parameters:
 
-| Parameter                | Definition                                                                            | Example                          | Default |
-| ------------------------ | ------------------------------------------------------------------------------------- | -------------------------------- | ------- |
-| server.baseUrl           | URL applied as the base for all channels                                              | https://spring-runner-admin-prod | -       |
-| server.balanced          | Whether executor should use client side load balancing (or use URL for direct access) | true                             | false   |
-| server.secure            | Whether executor should use SSL                                                       | true                             | false   |
-| server.mTLS.enabled      | Whether executor should use mTLS (requires [mTLS config](../dynamic-tls-and-mtls.md)) | true                             | false   |
-| server.maxInMemorySize   | Bytes limit for buffering data in memory by web client                                | 16777216                         | -1      |
-| server.timeout           | Milliseconds before the executor times out a request                                  | 10000                            | -       |
-| server.connectionTimeout | Milliseconds before the executor times out a connection                               | 1000                             | -       |
-| server.maxConnections    | Maximum number of connections to open                                                 | 100                              | -       |
-| server.maxIdleTime       | Maximum connection idle time                                                          | 60000                            | -       |
-| server.maxLifeTime       | Maximum connection lifetime                                                           | -                                | -       |
-| server.header.\*         | List of headers to send                                                               | -                                | -       |
-| server.cookie.\*         | List of cookies to send                                                               | -                                | -       |
-| authenticated            | Whether target runner requires authentication or not                                  | true                             | false   |
-| token                    | Static token to send for authentication                                               | -                                | -       |
-| server.clientId          | Client id to send for authentication                                                  | gw                               | -       |
-| server.secret            | Client secret to send for authentication                                              | secret                           | -       |
-| server.tokenPath         | URL to use for issuing tokens for id & secret                                         | /IssueToken                      | -       |
+| Parameter                | Definition                                                                                                                             | Example                          | Default |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------- |
+| server.baseUrl           | URL applied as the base for all channels                                                                                               | https://spring-runner-admin-prod | -       |
+| server.balanced          | Whether executor should use client side load balancing (or use URL for direct access)                                                  | true                             | false   |
+| server.secure            | Whether executor should use SSL                                                                                                        | true                             | false   |
+| server.mTLS.enabled      | Whether executor should use mTLS (requires [mTLS config](../dynamic-tls-and-mtls.md))                                                  | true                             | false   |
+| server.maxInMemorySize   | Bytes limit for buffering data in memory by web client                                                                                 | 16777216                         | -1      |
+| server.timeout           | Milliseconds before the executor times out a request                                                                                   | 10000                            | -       |
+| server.retryAfter503     | If a request is rejected due to rate limiter / bulkhead / circuit breaker, defines Retry-After response header to be sent to requestor | 10                               | 30      |
+| server.connectionTimeout | Milliseconds before the executor times out a connection                                                                                | 1000                             | -       |
+| server.maxConnections    | Maximum number of connections to open                                                                                                  | 100                              | -       |
+| server.maxIdleTime       | Maximum connection idle time                                                                                                           | 60000                            | -       |
+| server.maxLifeTime       | Maximum connection lifetime                                                                                                            | -                                | -       |
+| server.header.\*         | List of headers to send                                                                                                                | -                                | -       |
+| server.cookie.\*         | List of cookies to send                                                                                                                | -                                | -       |
+| authenticated            | Whether target runner requires authentication or not                                                                                   | true                             | false   |
+| token                    | Static token to send for authentication                                                                                                | -                                | -       |
+| server.clientId          | Client id to send for authentication                                                                                                   | gw                               | -       |
+| server.secret            | Client secret to send for authentication                                                                                               | secret                           | -       |
+| server.tokenPath         | URL to use for issuing tokens for id & secret                                                                                          | /IssueToken                      | -       |
 
 ### RPC API Flow
 
