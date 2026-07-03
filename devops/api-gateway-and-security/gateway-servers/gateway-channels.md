@@ -33,6 +33,7 @@ Authentication requirements for a channel are defined with the following setting
   * **Methods:** Customized authentication settings for different call methods on the channel:
     * **Method:** Name of the method (e.g. GET). \* is used as a wildcard meaning all methods.
     * **Accessing Roles:** List of user roles which are allowed access for this method (e.g. admin). Leaving this list empty or including \* as a role allows access for all users regardless of their roles.
+    * **Is Public:** Whether the method can be called without authentication (to override Path configuration)
 
 ## Path Aliases
 
