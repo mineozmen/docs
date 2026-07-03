@@ -26,11 +26,18 @@ A typical use case for this tab is for assigning default stream to RPC runners (
 
 All runners share the following settings that can be also configured from this screen:
 
-| Parameter                              | Definition                                                                                                        | Example   |
-| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| rierino.runner.\[runner].rebuildMs     | Milliseconds period to check whether runner is updated and automatically rebuild                                  | 30000     |
-| rierino.runner.\[runner].commitMs[^1]  | Milliseconds period to commit current records / resume tokens                                                     | 10000     |
-| rierino.runner.\[runner].logDetail     | When to perform detailed logging for the runner (overrides log\_level setting, with options as "never", "always") | always    |
-| rierino.runner.\[runner].allowHandlers | Whether the runner should allow use of handlers not mapped on to individual streams for event calls               | crud-0001 |
+| Parameter     | Definition                                                                                                        | Example   |
+| ------------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
+| rebuildMs     | Milliseconds period to check whether runner is updated and automatically rebuild                                  | 30000     |
+| commitMs[^1]  | Milliseconds period to commit current records / resume tokens                                                     | 10000     |
+| logDetail     | When to perform detailed logging for the runner (overrides log\_level setting, with options as "never", "always") | always    |
+| allowHandlers | Whether the runner should allow use of handlers not mapped on to individual streams for event calls               | crud-0001 |
+
+## Partitioned Runners
+
+For use cases such as consuming message queues, instances of a single runner may need to process only selected partition(s) of their input streams. Some runner types like Samza event runner can automatically assign partitions to runner instances, for others, it is possible to assign individual partitions to individual instances through configuration:
+
+* **Runner Partition:** A runner instance can be assigned to a specific partition (which is used by stream managers such as Kafka), by setting "runner.partition" value in application.properties configuration or RUNNER\_PARTITION environment variable (which has higher priority).
+* **Runner Partition Modulo:** When assigning partitions, runners also need to know the total number of partitions (or modulo for assignment of partitions to IDs), which can be assigned by setting "runner.partitionMod" value in application.properties configuration or RUNNER\_PARTITION\_MOD environment variable (which has higher priority).
 
 [^1]: Should not be used with Samza runners since Samza has its custom implementation of checkpoints
