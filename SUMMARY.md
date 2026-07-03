@@ -181,7 +181,7 @@
     * [Headers, Cookies & Paths](devops/api-gateway-and-security/apis/headers-cookies-and-paths.md)
     * [Server Sent Events](devops/api-gateway-and-security/apis/server-sent-events.md)
     * [Response Formats](devops/api-gateway-and-security/apis/response-formats.md)
-  * [Rate Limiting](devops/api-gateway-and-security/rate-limiting.md)
+  * [Resilince Configuration](devops/api-gateway-and-security/resilince-configuration.md)
   * [Dynamic TLS & mTLS](devops/api-gateway-and-security/dynamic-tls-and-mtls.md)
 * [Branching & Migration](devops/branching-and-migration/README.md)
   * [Managing Branches](devops/branching-and-migration/managing-branches.md)

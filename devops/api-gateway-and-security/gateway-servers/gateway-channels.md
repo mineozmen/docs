@@ -49,19 +49,3 @@ Custom response headers can be configured for each channel as well as path & met
 
 * **Header Key:** Header to send
 * **Header Value:** Value to send for the header
-
-## Channel Resilience
-
-Resilience requirements for a channel are defined with the following settings:
-
-* **Rate Limit:** Rate limit settings based on resilience4j parameters.
-* **Paths:** Customized resilience settings for different path segments.
-  * **Path:** Path segment for customization (e.g. product). \* is used as a wildcard meaning all paths.
-  * **Circuit Break:** Circuit breaker settings based on resilience4j parameters.
-* **Retries:** Automated retries in case of failures in accessing runner endpoints with path & method level configurations.&#x20;
-
-{% embed url="https://resilience4j.readme.io/docs/circuitbreaker" %}
-Resilience4j Circuit Breaker
-{% endembed %}
-
-In addition, channels can be configured to apply [user based rate limits](../rate-limiting.md).
