@@ -170,6 +170,7 @@
   * [Deployment Packages](devops/microservices/deployment-packages/README.md)
     * [Defining a Deployment](devops/microservices/deployment-packages/defining-a-deployment.md)
     * [Alternative Loaders](devops/microservices/deployment-packages/alternative-loaders.md)
+  * [Async Services and Flows](devops/microservices/async-services-and-flows.md)
 * [API Gateway & Security](devops/api-gateway-and-security/README.md)
   * [Gateway Servers](devops/api-gateway-and-security/gateway-servers/README.md)
     * [Gateway Tokens](devops/api-gateway-and-security/gateway-servers/gateway-tokens.md)
