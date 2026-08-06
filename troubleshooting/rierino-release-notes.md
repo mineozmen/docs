@@ -5,6 +5,20 @@ icon: code-branch
 
 # Rierino Release Notes
 
+## 2.7.0 \[07/2026]
+
+### Orchestrated Thread & Timer Management
+
+All thread operations & timers are now orchestrated within event runners, allowing full control over the thread pool as well as graceful stop / restart during runner rebuild operations in case of inconsistent or misconfigured runners.
+
+### Enriched LLM Tooling Facilities
+
+Chunking process is now available as a standalone tool as well, allowing combination of custom chunking strategies for already parsed documents or textual contents. LLM tuners also now support multi-path inputs, for batch processing of files with simpler configurations.
+
+### Notes on Saga Flows
+
+Saga flows now have an additional node type "Note", which allows adding descriptive notes and to-do action lists for developers.
+
 ## 2.6.0 \[06/2026]
 
 ### AI-Assisted Fully Custom UIs
