@@ -19,6 +19,10 @@ Chunking process is now available as a standalone tool as well, allowing combina
 
 Saga flows now have an additional node type "Note", which allows adding descriptive notes and to-do action lists for developers.
 
+### Rich Word & PowerPoint Producers
+
+Runners can now produce rich Word and PowerPoint documents from data assets with support for templating options.
+
 ## 2.6.0 \[06/2026]
 
 ### AI-Assisted Fully Custom UIs
