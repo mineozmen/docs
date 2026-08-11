@@ -82,6 +82,8 @@
         * [Produce Web of Things](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/produce-web-of-things.md)
         * [Generate Excel](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/generate-excel.md)
         * [Generate PDF](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/generate-pdf.md)
+        * [Generate Word](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/generate-word.md)
+        * [Generate PowerPoint](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/generate-powerpoint.md)
         * [Call SOAP API](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/call-soap-api.md)
         * [Integrate with Camel](devops/api-event-and-process-flows/configuring-saga-steps/event-step/specialized-actions/integrate-with-camel.md)
       * [Custom Code Actions](devops/api-event-and-process-flows/configuring-saga-steps/event-step/custom-code-actions/README.md)
