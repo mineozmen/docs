@@ -40,5 +40,11 @@ These steps do the work between Start and exit nodes:
 * [Step Link](step-link.md): defines how the flow moves from one step to the next. Use condition values to model branching and default (`*`) paths.
 
 {% hint style="info" %}
-Double clicking on a step on stencil automatically adds it as a connected step for the currently selected node on saga flow.
+Double-clicking on a step on the stencil automatically adds it as a connected step for the currently selected node on the saga flow.
+{% endhint %}
+
+Sagas also include a "Note" step, which is used for descriptive notes within the flow, such as to-dos, comments that are specific to a certain section of the flow for documentation & reference purposes. These notes have no functional impact on the saga flow.
+
+{% hint style="info" %}
+Selecting a group of steps & links allows copying multiple components between sagas, moving them together, as well as deleting a group of steps easily.
 {% endhint %}
