@@ -85,6 +85,18 @@ Includes settings required for connecting to a Kafka cluster.
 Kafka Page
 {% endembed %}
 
+## STAN
+
+Includes settings required for connecting to a NATS Streaming (NATS) system.
+
+| Setting         | Definition                   | Example | Default               |
+| --------------- | ---------------------------- | ------- | --------------------- |
+| nats.url        | NATS URL(s), comma separated | -       | nats://localhost:4222 |
+| cluster.id      | STAN cluster id              | prod    | -                     |
+| client.id       | STAN client id               | -       | prefix-UUID           |
+| client.prefix   | Prefix for default client.id | core    | System alias          |
+| connect.wait.ms | Connection timeout           | 10000   | 2000                  |
+
 ## Email
 
 Includes settings required for connecting to an email server system.
