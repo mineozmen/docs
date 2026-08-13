@@ -14,3 +14,5 @@ Typical microservice development with Rierino follows 3 main steps, building and
 3. Structuring of [deployments](deployment-packages/), which describes how and where to deploy each runner, including required CD settings. Typically, a deployment is executed by triggering a specific Jenkins or similar automation task with specific parameters. A deployment can include one or more runners, which allows for shrinkage or expansion of scale.
 
 {% embed url="https://www.youtube.com/watch?v=qIJNBnN6v8U" %}
+
+{% embed url="https://www.linkedin.com/pulse/decouple-first-separate-later-pragmatic-path-from-monolith-ozmen-x2huf" %}
