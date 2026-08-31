@@ -179,6 +179,10 @@ AI settings control how this saga is exposed as an agent tool. This is optional.
 * **Tool Description:** Tool description shown to the agent.
   * If empty, the saga description is used.
   * Use this when you need AI-specific wording.
-* **Tool Response Pattern:** JMESPath expression that maps saga output to text.
+* **Tool Response Pattern:** JMESPath expression that maps saga output to text / body to be returned to an AI agent.
   * If empty, the agent expects a `message` field.
 * **Tool Restriction:** Controls repeated calls with identical parameters.
+* **Approval Pattern:** JMESPath expression that decides whether a tool call to this saga requires user approval to proceed. (E.g. `` `true` `` to force approval for all calls, `` parameters.spend > `1000` `` for calls above 1000 spend).
+  * When true, the agent is blocked from executing the tool call automatically. Tool call request is listed as a candidate in the message sent to user for approval.
+* **Input Explainer Template:** Handlebars template for presenting the tool call to end users for approvals as well as auditing (used by admin UI). (E.g. `Requesting allocation of {{parameters.spend}} USD`).
+* **Output Explainer Template:** Handlebars template for presenting the tool result to end users for auditing (used by admin UI).
