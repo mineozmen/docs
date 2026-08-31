@@ -26,12 +26,17 @@ A typical use case for this tab is for assigning default stream to RPC runners (
 
 All runners share the following settings that can be also configured from this screen:
 
-| Parameter     | Definition                                                                                                        | Example   |
-| ------------- | ----------------------------------------------------------------------------------------------------------------- | --------- |
-| rebuildMs     | Milliseconds period to check whether runner is updated and automatically rebuild                                  | 30000     |
-| commitMs[^1]  | Milliseconds period to commit current records / resume tokens                                                     | 10000     |
-| logDetail     | When to perform detailed logging for the runner (overrides log\_level setting, with options as "never", "always") | always    |
-| allowHandlers | Whether the runner should allow use of handlers not mapped on to individual streams for event calls               | crud-0001 |
+| Parameter     | Definition                                                                                                                                                           | Example   |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| rebuildMs     | Milliseconds period to check whether runner is updated and automatically rebuild                                                                                     | 30000     |
+| commitMs[^1]  | Milliseconds period to commit current records / resume tokens                                                                                                        | 10000     |
+| logDetail     | When to perform detailed logging for the runner (overrides log\_level setting, with options as "never", "always")                                                    | always    |
+| allowHandlers | Whether the runner should allow use of handlers not mapped on to individual streams for event calls                                                                  | crud-0001 |
+| waitForDrain  | Whether the runner should wait for old instance to complete processing before starting rebuild (defaults to false, providing 0 downtime with concurrent drain/start) | false     |
+
+{% hint style="warning" %}
+For CDC runners, it is recommended to set waitForDrain to true, to avoid processing the same CDC messages twice. Otherwise draining runner could process the same message as the new runner at the same time.
+{% endhint %}
 
 ## Partitioned Runners
 

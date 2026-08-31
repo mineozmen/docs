@@ -39,7 +39,8 @@ Initial definition of a GenAI model includes 4 main tabs:
 * **Status:** Whether this model should be deployed or not
 * **Instructions:** Instructions to send to agent for its initialization (such as main purpose and persona), allows using Handlebars templates for dynamic contents, with:
   * **Templated Instructions:** When set to true, it replaces Handlebars curly bracket contents with user & request data
-  * **Template Input Saga:** If template requires backend logic beyond request event payload, allows using an existing saga for enriching the template input (saga output becomes the template input data)&#x20;
+  * **Template Input Saga:** If template requires backend logic beyond request event payload, allows using an existing saga for enriching the template input (saga output becomes the template input data)
+  * **Template Schemas:** If template requires JSON schema of certain business domains, they can be easily added to instructions by selecting template schemas, each schema can be referenced as schema.\[id] from inside the templated instructions
 * **Call Path:** URL path to use for calling this agent directly from admin UI
 * **Definition Path:** URL path to use for getting information about this agent directly from admin UI
 
