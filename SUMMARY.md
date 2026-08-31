@@ -161,6 +161,7 @@
       * [Gateway Handlers](devops/microservices/building-blocks/execution-handlers/gateway-handlers.md)
     * [Data & Event Streams](devops/microservices/building-blocks/data-and-event-streams/README.md)
       * [Kafka Topic](devops/microservices/building-blocks/data-and-event-streams/kafka-topic.md)
+      * [RabbitMQ Queue](devops/microservices/building-blocks/data-and-event-streams/rabbitmq-queue.md)
       * [STAN Channel](devops/microservices/building-blocks/data-and-event-streams/stan-channel.md)
       * [CDC Feed](devops/microservices/building-blocks/data-and-event-streams/cdc-feed.md)
       * [Camel Component](devops/microservices/building-blocks/data-and-event-streams/camel-component.md)

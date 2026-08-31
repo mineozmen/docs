@@ -85,6 +85,47 @@ Includes settings required for connecting to a Kafka cluster.
 Kafka Page
 {% endembed %}
 
+## RabbitMQ
+
+Includes settings required for connecting to Rabbit MQ system.
+
+Connection settings:
+
+| Setting                | Definition                                              | Example                          | Default             |
+| ---------------------- | ------------------------------------------------------- | -------------------------------- | ------------------- |
+| uri                    | Full connection uri, overrides host/port/credentials    | amqp://user:pass@host:5672/vhost | -                   |
+| host                   | Broker host                                             | rabbit-preprod                   | localhost           |
+| port                   | Broker port                                             | 5672                             | 5672, 5671 with tls |
+| addresses              | Cluster nodes, comma separated, overrides host/port     | node1:5672,node2:5672            | -                   |
+| username               | User                                                    | rierino                          | guest               |
+| password               | Password                                                | -                                | guest               |
+| vhost                  | Virtual host                                            | /preprod                         | /                   |
+| client.id              | Connection name, also the consumer tag on input streams | core-consumer                    | prefix-UUID         |
+| client.prefix          | Prefix for default client.id                            | core                             | System alias        |
+| connect.wait.ms        | TCP connection timeout                                  | 10000                            | 2000                |
+| handshake.timeout.ms   | AMQP handshake timeout                                  | 20000                            | 10000               |
+| shutdown.timeout.ms    | Socket close timeout                                    | 5000                             | 10000               |
+| channel.rpc.timeout.ms | Timeout for declares and other channel operations       | 30000                            | 10000               |
+| heartbeat.sec          | Heartbeat interval, 0 disables                          | 60                               | 30                  |
+| automatic.recovery     | Use client-side recovery instead of the runner's        | true                             | false               |
+| topology.recovery      | Redeclare queues and bindings on client-side recovery   | false                            | true                |
+| network.recovery.ms    | Client-side retry interval, needs automatic.recovery    | 10000                            | 5000                |
+
+TLS settings:
+
+| Setting                 | Definition                                                                        | Example                     | Default |
+| ----------------------- | --------------------------------------------------------------------------------- | --------------------------- | ------- |
+| ssl.enabled             | Enable TLS, also flips the default port to 5671                                   | true                        | false   |
+| ssl.protocol            | TLS protocol version                                                              | TLSv1.3                     | TLSv1.2 |
+| ssl.verify.hostname     | Verify the broker hostname against its certificate                                | false                       | true    |
+| ssl.trust.all           | Skip certificate validation, encrypts but authenticates nothing, development only | true                        | false   |
+| ssl.truststore.path     | Truststore holding the broker certificate, empty uses the JDK default             | /etc/rierino/truststore.jks | -       |
+| ssl.truststore.password | Truststore password                                                               | -                           | -       |
+| ssl.truststore.type     | Truststore format                                                                 | PKCS12                      | JKS     |
+| ssl.keystore.path       | Client certificate keystore for mutual TLS                                        | /etc/rierino/client.p12     | -       |
+| ssl.keystore.password   | Keystore password                                                                 | -                           | -       |
+| ssl.keystore.type       | Keystore format                                                                   | PKCS12                      | JKS     |
+
 ## STAN
 
 Includes settings required for connecting to a NATS Streaming (NATS) system.
