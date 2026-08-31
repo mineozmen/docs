@@ -4,7 +4,7 @@ description: >-
   product, price definitions)
 ---
 
-# State Managers
+# Data Sources
 
 State managers are used for executing read / write operations on underlying database, search and cache management systems. Typically, each state element maps to a single database table or an equivalent record source.
 
@@ -50,6 +50,7 @@ It is possible to define any number and type of new state managers with speciali
 | buffer.size              | Number of requests to buffer before applying changes on state                                                                                                   | 1000                                                | -1                                             |
 | logDetail                | Whether detailed trace logs should be performed (always[^3]/never[^4]) independent of the current logging level                                                 | never                                               | -                                              |
 | maxRowsToRead            | Maximum number of rows that can be retrieved from the state for read & condition handlers (-1 for unlimited)                                                    | 1000                                                | -1                                             |
+| maxRowsToWrite           | Maximum number of rows that can be created / edited / deleted on a state manager with a bulk submission for write handlers (-1 for unlimited)                   | 1000                                                | -1                                             |
 | queryId                  | ID of the query for reading records from this state manager (in read & condition handlers)                                                                      | read\_product                                       | -                                              |
 | queryDomain              | Domain for running queries                                                                                                                                      | -                                                   | master                                         |
 | queryHandler             | Event handler to use for running queries                                                                                                                        | -                                                   | query                                          |
