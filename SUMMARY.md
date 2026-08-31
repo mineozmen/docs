@@ -217,6 +217,7 @@
   * [LLM Helpers](data-science/genai-models/llm-helpers/README.md)
     * [LLM Fine-tuning & Training](data-science/genai-models/llm-helpers/llm-fine-tuning-and-training.md)
     * [Document Parsing](data-science/genai-models/llm-helpers/document-parsing.md)
+    * [PII Anonymization](data-science/genai-models/llm-helpers/pii-anonymization.md)
   * [Useful Checks](data-science/genai-models/useful-checks.md)
 * [MCP Servers](data-science/mcp-servers.md)
 * [ML Models](data-science/ml-models/README.md)

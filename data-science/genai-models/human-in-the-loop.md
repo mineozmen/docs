@@ -1,7 +1,7 @@
 ---
 description: >-
-  Configure human-in-the-loop controls for Rierino AI agents, including
-  confirmations, enforced approvals, drafts, and task handoffs.
+  Configure built-in human-in-the-loop controls for Rierino AI agents, including
+  confirmations, enforced approvals, drafts, and task handoffs
 ---
 
 # Human-in-the-Loop
