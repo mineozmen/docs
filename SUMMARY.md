@@ -213,6 +213,7 @@
 * [GenAI Models](data-science/genai-models/README.md)
   * [AI Agent APIs](data-science/genai-models/ai-agent-apis.md)
   * [AI Guardrails](data-science/genai-models/ai-guardrails.md)
+  * [Human-in-the-Loop](data-science/genai-models/human-in-the-loop.md)
   * [Useful Checks](data-science/genai-models/useful-checks.md)
 * [MCP Servers](data-science/mcp-servers.md)
 * [ML Models](data-science/ml-models/README.md)
