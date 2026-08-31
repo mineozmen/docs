@@ -5,6 +5,24 @@ icon: code-branch
 
 # Rierino Release Notes
 
+## 2.8.0 \[08/2026]
+
+### Enriched Human-in-the-Loop
+
+AI agent tools can now enforce real-time HILT approvals with simple configurations, which automatically require user approval before executing specific tool calls. The configurations also allow defining conditional approvals (such as enforcing approval for actions above a specific budget threshold).
+
+### Common Table Expressions
+
+SQL queries now support structured common table expressions (CTE), making it possible to add "with" statements without using free-format query commands.
+
+### Simplified Dashboard Builder
+
+Visual dashboard builder now has simplified editing capabilities, with easy management of layers and components through sidebars, making it faster to develop and customize dashboards.&#x20;
+
+### Dynamic Login Page
+
+In addition to theme and logo customizations, the Rierino login page now supports custom-coded React login pages, including MFA and any preferred login flows.
+
 ## 2.7.0 \[07/2026]
 
 ### Orchestrated Thread & Timer Management
