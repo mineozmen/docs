@@ -19,6 +19,7 @@ If the environment API returns the fields below, Admin UI can change the landing
 * **landingRedirect**: For redirecting global home page visits to another admin UI page (e.g. /app/custom)
 * **landingTemplatePath**: For pulling template for the global home page (e.g. request/cms\_rpc/GlobalLandingPage)
 * **aiTemplatePath**: For pulling template for the AI agent home page (e.g. request/cms\_rpc/AIAgentsPage)
+* **loginComponentPath:** For pulling React component code for overriding the default Rierino login page (e.g. request/crud/handler\_code/login).
 
 {% hint style="info" %}
 Template paths are gateway API paths. Use the same format you use elsewhere in Admin UI, like `request/...`.
