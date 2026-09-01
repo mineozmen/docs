@@ -93,6 +93,8 @@ Action details: [Keycloak Based](../../../api-event-and-process-flows/configurin
 
 #### LDAP Based
 
+Class: `com.rierino.handler.auth.ldap.LDAPEventHandler`
+
 The handler binds as the end user to verify credentials, reads the user entry and its group memberships, and packs the requested attributes into the tokens.
 
 The directory is treated as read only: registration, user modification and user deletion are not supported.
@@ -113,7 +115,13 @@ Connection, bind, attribute and token settings come from the referenced LDAP sys
 | id\_token      | `sub`, `token_use=id`, plus every attribute listed in `idTokenClaims`                                            |
 | refresh\_token | `sub`, `username`, `token_use=refresh`, plus `snap` (the attribute snapshot) when no `adminBindDn` is configured |
 
-`token_use` is enforced on validation, so a refresh token is rejected wherever an access token is expected, and the other way around.
+**Runtime dependency**
+
+```gradle
+implementation (group:'com.rierino.custom', name: 'ldap', version:"${rierinoVersion}")
+```
+
+Action details: [LDAP Based](../../../api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/ldap-based.md)
 
 ### Sessionize
 
