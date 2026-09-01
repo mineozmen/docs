@@ -91,6 +91,30 @@ implementation (group:'com.rierino.custom', name: 'keycloak', version:"${rierino
 
 Action details: [Keycloak Based](../../../api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/keycloak-based.md)
 
+#### LDAP Based
+
+The handler binds as the end user to verify credentials, reads the user entry and its group memberships, and packs the requested attributes into the tokens.
+
+The directory is treated as read only: registration, user modification and user deletion are not supported.
+
+Connection, bind, attribute and token settings come from the referenced LDAP system.
+
+**Handler parameters**
+
+| Parameter | Definition                                       | Example  | Default |
+| --------- | ------------------------------------------------ | -------- | ------- |
+| system    | Name of the LDAP system configuration to be used | corpLdap | -       |
+
+**Issued token claims**
+
+| Token          | Claims                                                                                                           |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- |
+| access\_token  | `sub`, `username`, `token_use=access`, `roles`, plus every attribute listed in `accessTokenClaims`               |
+| id\_token      | `sub`, `token_use=id`, plus every attribute listed in `idTokenClaims`                                            |
+| refresh\_token | `sub`, `username`, `token_use=refresh`, plus `snap` (the attribute snapshot) when no `adminBindDn` is configured |
+
+`token_use` is enforced on validation, so a refresh token is rejected wherever an access token is expected, and the other way around.
+
 ### Sessionize
 
 Class: `com.rierino.handler.SessionEventHandler`

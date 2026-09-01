@@ -95,6 +95,7 @@
         * [Authenticate](devops/api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/README.md)
           * [State Based](devops/api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/state-based.md)
           * [Keycloak Based](devops/api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/keycloak-based.md)
+          * [LDAP Based](devops/api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/ldap-based.md)
         * [Sessionize](devops/api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/sessionize.md)
     * [Transform Step](devops/api-event-and-process-flows/configuring-saga-steps/transform-step/README.md)
       * [Transform Classes](devops/api-event-and-process-flows/configuring-saga-steps/transform-step/transform-classes.md)
