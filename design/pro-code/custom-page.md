@@ -6,8 +6,6 @@ description: Custom page allows creating full pages with custom code
 
 A hosted page is a menu entry whose content is entirely your code. Nothing is fetched or wrapped for you: no data source, no list, no editor. You get a blank canvas inside the application shell.
 
-> **What your component receives:** the application context, the menu entry's own settings and (when configured) the schema and UI design. See Props reference → Custom page props for the full list.
-
 Two things to know:
 
 * **The page must be in the app menu.** A hosted page URL that isn't reachable from the app's menu configuration is rejected with a _"ui not in app"_ redirect. Add the entry to the menu.

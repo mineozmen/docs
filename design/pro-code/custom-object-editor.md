@@ -10,8 +10,6 @@ Set the screen's editor to `ObjectEditorCustomCode` and put your code in the edi
 
 The platform still gives you the working copy of the record, change tracking, and a ready-made set of actions.
 
-> **What your component receives:** the working copy of the record, the dirty fields and the editor actions. See Props reference → Custom editor props for the full list.
-
 **Use `props.events()` for saving**
 
 `events` is a **function** that returns the action bundle:

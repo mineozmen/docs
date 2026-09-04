@@ -6,8 +6,6 @@ description: Custom listers allow customizing UI screens listing records from a 
 
 Set the screen's lister to `CustomCodeLister` and put your code in the list configuration. Your component replaces the table; the platform keeps handling the data source, the filters and the record editor.
 
-> **What your component receives:** the records, the selection and the select / create / save / delete / filter actions. See Props reference → Custom list props for the full list.
-
 ## Customer lister types
 
 A `structure` setting on the list configuration controls this:
