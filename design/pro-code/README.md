@@ -73,3 +73,9 @@ Most screen types fall back to a key derived from the data source when you don't
 ## Custom code access
 
 Because it runs in the page rather than in a sandbox, your component has access to the browser (`window`, `document`, `localStorage`), the session and the platform modules documented here. Treat custom code with the same care as application code: review it and don't paste in code you don't trust.
+
+{% hint style="info" %}
+You can use Rierino AI assistants to create custom coded components and listers from within the UI or using our [Rierino Claude Marketplace Plugin](https://github.com/rierino-open/rierino-claude-plugin).
+{% endhint %}
+
+{% embed url="https://www.linkedin.com/pulse/vibe-code-edges-constrain-core-architecture-ai-built-enterprise-yglie" %}
