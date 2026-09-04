@@ -9,7 +9,7 @@ A hosted page is a menu entry whose content is entirely your code. Nothing is fe
 Two things to know:
 
 * **The page must be in the app menu.** A hosted page URL that isn't reachable from the app's menu configuration is rejected with a _"ui not in app"_ redirect. Add the entry to the menu.
-* **You fetch your own data.** Either use the query hooks from `store`, or wrap yourself in `ConnectionWrapper` to get the same data contract a standard list screen has. Both are shown in Recipes §6.
+* **You fetch your own data.** Either use the query hooks from `store`, or wrap yourself in `ConnectionWrapper` to get the same data contract a standard list screen has. Both are shown in [Recipes](recipes.md).
 
 If the menu entry is configured to use a UI definition, the schema and UI design for that type are handed to your page as props, so you can render a standard list or standard editors inside your custom layout.
 

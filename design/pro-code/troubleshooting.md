@@ -92,7 +92,7 @@ Compiled output is cached, but the cache always verifies your source before reus
 
 ## Performance
 
-* **A custom list loads the whole result set.** Standard page-size handling is off. On a large source, push `limit` and `skip` through `onFilter`. See Recipes §3.
+* **A custom list loads the whole result set.** Standard page-size handling is off. On a large source, push `limit` and `skip` through `onFilter`. See [Recipes](recipes.md).
 * **`esm.sh` imports dominate compile time.** A large package makes the first compile slow and the component big. Prefer a platform module when one exists.
 * **Prefer a stored component in production.** It is compiled once and delivered ready to run, so the browser never loads a compiler for it.
 * **Don't fetch during render.** Use `useEffect` with a correct dependency array; lists re-render on every data update.

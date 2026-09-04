@@ -22,7 +22,7 @@ Use the default when you want a different _presentation_ of a normal list (cards
 
 A custom list receives the **whole result set** the query returns. The standard page-size handling is switched off, because a custom layout usually wants to group or lay out everything at once.
 
-On a large data source you must limit the query yourself, by pushing `limit` / `skip` (or your own filters) through the `onFilter` prop. See Recipes §3.
+On a large data source you must limit the query yourself, by pushing `limit` / `skip` (or your own filters) through the `onFilter` prop. See [Recipes](recipes.md).
 
 **Nested lists**
 
