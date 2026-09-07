@@ -111,3 +111,5 @@ Include enough task context for the assignee to act without reopening the chat. 
 4. **Keep an offline path for long reviews.** Use drafts or handoffs when a live response is not practical.
 
 Review the tools available to each agent in [.](./ "mention"). Grant only the capabilities the agent needs. Then apply the appropriate HITL pattern to every consequential action.
+
+{% embed url="https://www.linkedin.com/pulse/human-in-the-loop-who-enforces-pause-berkin-ozmen-izdff/" %}
