@@ -349,7 +349,9 @@ Output:
 ["editor", "finance"]
 ```
 
-\{% hint style="info" %\} Combine with `length()` to check access: `` length(intersect(userRoles, allowedRoles)) > `0` `` returns `true`. \{% endhint %\}
+{% hint style="info" %}
+Combine with `length()` to check access: `` length(intersect(userRoles, allowedRoles)) > `0` `` returns `true`.
+{% endhint %}
 
 </details>
 
@@ -583,7 +585,9 @@ Output:
 }
 ```
 
-\{% hint style="info" %\} With the shallow `merge(defaults, user)`, `settings` would be replaced entirely, giving `{"settings": {"theme": "dark"}, "pageSize": 20}`. \{% endhint %\}
+{% hint style="info" %}
+With the shallow `merge(defaults, user)`, `settings` would be replaced entirely, giving `{"settings": {"theme": "dark"}, "pageSize": 20}`.
+{% endhint %}
 
 </details>
 
@@ -1238,7 +1242,9 @@ Output:
 
 Splits `text` by `delimiter`. Trailing empty strings are dropped.
 
-\{% hint style="warning" %\} The delimiter is treated as a regular expression, so special characters must be escaped: use `split(path, '\.')` or `split(value, '\|')`. Unescaped, `split('a.b', '.')` returns an empty array. \{% endhint %\}
+{% hint style="warning" %}
+The delimiter is treated as a regular expression, so special characters must be escaped: use `split(path, '\.')` or `split(value, '\|')`. Unescaped, `split('a.b', '.')` returns an empty array.
+{% endhint %}
 
 <details>
 
@@ -1939,7 +1945,9 @@ Output:
 }
 ```
 
-\{% hint style="info" %\} On the server side, the input must not be null for `now()` to return a value (see the warning above). Pass any object, such as `{}`. \{% endhint %\}
+{% hint style="info" %}
+On the server side, the input must not be null for `now()` to return a value (see the warning above). Pass any object, such as `{}`.
+{% endhint %}
 
 </details>
 
@@ -2091,9 +2099,13 @@ Here `last` is 2026-09-25 09:00 Lisbon, `next` is 2026-09-26 09:00 Lisbon, `from
 
 Encrypts `plainText` using `key` and returns base64 text. Returns null on error.
 
-\{% hint style="warning" %\} `AES/ECB/PKCS5Padding` is not recommended for high-security use cases. Use a stronger mode, such as `AES/GCM/NoPadding`. \{% endhint %\}
+{% hint style="warning" %}
+`AES/ECB/PKCS5Padding` is not recommended for high-security use cases. Use a stronger mode, such as `AES/GCM/NoPadding`.
+{% endhint %}
 
-\{% hint style="info" %\} For structured payloads, pair this with `to_json()` / `from_json()`. \{% endhint %\}
+{% hint style="info" %}
+For structured payloads, pair this with `to_json()` / `from_json()`.
+{% endhint %}
 
 <details>
 
@@ -2123,7 +2135,9 @@ Example with a structured payload:
 encrypt(from_json(@), '0123456789abcdef')
 ```
 
-\{% hint style="info" %\} Keep keys out of expressions in real use, for example by reading them with `get_env()`. \{% endhint %\}
+{% hint style="info" %}
+Keep keys out of expressions in real use, for example by reading them with `get_env()`.
+{% endhint %}
 
 </details>
 
@@ -2143,7 +2157,9 @@ encrypt(from_json(@), '0123456789abcdef')
 
 Decrypts `cipherText` using `key`. Returns null on error (e.g. wrong key).
 
-\{% hint style="warning" %\} `AES/ECB/PKCS5Padding` is not recommended for high-security use cases. Use a stronger mode. \{% endhint %\}
+{% hint style="warning" %}
+`AES/ECB/PKCS5Padding` is not recommended for high-security use cases. Use a stronger mode.
+{% endhint %}
 
 <details>
 
@@ -2310,9 +2326,11 @@ Matching entries are merged into one object (on conflicting fields, `right` wins
 **Client-side source lookup** (\[C])\
 Looks up a record by `id` from a configured [source](https://claude.ai/design/api-mapping.md).
 
-\{% hint style="info" %\} Client-side `lookup()` is only available in evaluation providers (not in Handlebars templates).
+{% hint style="info" %}
+Client-side `lookup()` is only available in evaluation providers (not in Handlebars templates).
 
-It is not implemented server-side to avoid unintended access to sensitive states. \{% endhint %\}
+It is not implemented server-side to avoid unintended access to sensitive states.
+{% endhint %}
 
 <details>
 
@@ -2394,7 +2412,9 @@ Output:
 
 ### Math & logic
 
-\{% hint style="info" %\} On the server side, `divide`, `multiply`, `mod`, `power` and `minus` return decimal numbers, so whole results appear as `56.0` rather than `56`. Wrap them with `to_int()` when an integer is needed. \{% endhint %\}
+{% hint style="info" %}
+On the server side, `divide`, `multiply`, `mod`, `power` and `minus` return decimal numbers, so whole results appear as `56.0` rather than `56`. Wrap them with `to_int()` when an integer is needed.
+{% endhint %}
 
 #### Compare values
 
@@ -2826,7 +2846,9 @@ Output:
 
 Returns the environment variable value. Intended for server-side use only.
 
-\{% hint style="warning" %\} Only allow-listed variables can be read; others return null. By default only `RIERINO_ENV` is allowed. Set the `RIERINO_SAFE_VARS` environment variable on the runner to a comma-separated list to allow others (this replaces the default list). \{% endhint %\}
+{% hint style="warning" %}
+Only allow-listed variables can be read; others return null. By default only `RIERINO_ENV` is allowed. Set the `RIERINO_SAFE_VARS` environment variable on the runner to a comma-separated list to allow others (this replaces the default list).
+{% endhint %}
 
 <details>
 
