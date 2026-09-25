@@ -59,6 +59,7 @@ With the following event metadata parameters:
 | -------------- | ----------------------------------------------------------------------------------------------- | --------------- | ------- |
 | Saga           | ID of the saga to call                                                                          | list\_customers | -       |
 | Saga Path      | Path of the saga to call                                                                        | /ListCustomers  |         |
+| Saga Path Path | Json path of the payload element that specifies saga path to call                               | data.saga       | -       |
 | Fire Forget    | Whether specific call to saga should work async (in case saga itself is not configured as such) | true            | false   |
 | Input Pattern  | JMESPath pattern to apply on data input                                                         | -               | -       |
 | Output Pattern | JMESPath pattern to apply on data output, before returning response                             | -               | -       |
@@ -86,6 +87,12 @@ With the following event metadata parameters:
               "type": "string",
               "definition": "Path of the saga to call",
               "example": "/ListCustomers",
+              "default": null
+            },
+            "sagaPathPath": {
+              "type": "string",
+              "definition": "Json path of the payload element that specifies saga path to call",
+              "example": "data.saga",
               "default": null
             },
             "fireForget": {
