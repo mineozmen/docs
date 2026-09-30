@@ -14,6 +14,7 @@
 * [Rierino Installation](quick-start/rierino-installation.md)
 * [Layout & Navigation](quick-start/layout-and-navigation.md)
 * [Development with Rierino](quick-start/development-with-rierino.md)
+* [Debugging with Rierino](quick-start/debugging-with-rierino.md)
 * [I would like to start with...](quick-start/i-would-like-to-start-with....md)
 * [Quick Start FAQ](quick-start/quick-start-faq.md)
 
