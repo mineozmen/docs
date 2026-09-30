@@ -30,12 +30,14 @@ Runs real-time inference using pre-trained ML models.
 
 #### Handler parameters
 
-| Parameter            | Definition                               | Example          | Default          |
-| -------------------- | ---------------------------------------- | ---------------- | ---------------- |
-| `model.state`        | State manager with model configurations  | `model`          | -                |
-| `model.id`           | Model id to run on this handler instance | `recommendation` | -                |
-| `model.store.system` | System used to store model assets        | `hdfs_default`   | -                |
-| `model.local.dir`    | Local directory used for model assets    | `/tmp`           | `java.io.tmpdir` |
+| Parameter            | Definition                                                                                           | Example          | Default          |
+| -------------------- | ---------------------------------------------------------------------------------------------------- | ---------------- | ---------------- |
+| `model.state`        | State manager with model configurations                                                              | `model`          | `genai_model`    |
+| `model.id`           | Model id to run on this handler instance                                                             | `recommendation` | -                |
+| `model.store.system` | System used to store model assets                                                                    | `hdfs_default`   | -                |
+| `model.local.dir`    | Local directory used for model assets                                                                | `/tmp`           | `java.io.tmpdir` |
+| `store.saga`         | Saga used to read and write chat memory. A model can override it with its own `memorySaga` parameter | `chat_memory`    | -                |
+| `roles.variable`     | Variable that resolves the calling user's roles, checked against each model's allowed roles          | `user_roles`     | `user.roles`     |
 
 This handler supports caching.
 
@@ -123,6 +125,117 @@ For custom embedding providers:
 | `embeddingMethods` | Method configuration passed to the embedding class | `{"apiKey":"xxx"}`                                  | -       |
 
 Action details: [Perform Text Embedding](../../../api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/perform-text-embedding.md)
+
+### **Perform Sparse Text Embedding**
+
+Class: `com.rierino.handler.rai.SparseEmbeddingEventHandler`
+
+Creates sparse (lexical) embeddings with SPLADE or BGE-M3 models. These are used for hybrid or keyword-aware search, for example with Elastic `sparse_vector` fields. It can also add embeddings to a local in-memory sparse store, or search that store.
+
+{% hint style="info" %}
+The local sparse store is meant for testing and small, single-replica use cases. For larger data, send the embeddings to a database that supports sparse vectors (such as Elastic) through a state and query manager.
+{% endhint %}
+
+#### **Handler parameters**
+
+For single-file ONNX models:
+
+| Parameter            | Definition                                          | Example         | Default                            |
+| -------------------- | --------------------------------------------------- | --------------- | ---------------------------------- |
+| `model.store.system` | System to fetch ONNX model files from               | `model_fs`      | default Hugging Face repo          |
+| `sparse.path`        | Sparse model file path (falls back to `model.path`) | /splade.onnx    | `Qdrant/Splade_PP_en_v1` model     |
+| `tokenizer.path`     | Tokenizer file path                                 | /tokenizer.json | `Qdrant/Splade_PP_en_v1` tokenizer |
+| `model.local.dir`    | Local directory for downloaded model files          | `/app/models`   | system temp dir                    |
+
+For multi-file ONNX bundles (models with external data files, such as BGE-M3):
+
+| Parameter                 | Definition                                                          | Example                                     | Default                   |
+| ------------------------- | ------------------------------------------------------------------- | ------------------------------------------- | ------------------------- |
+| `sparse.bundle.path`      | Remote folder that holds the model bundle                           | `/bge-m3`                                   | -                         |
+| `sparse.bundle.files`     | Comma-separated list of files to copy, keeping their original names | `model.onnx,model.onnx_data,tokenizer.json` | model and tokenizer files |
+| `sparse.bundle.model`     | Model file name within the bundle                                   | `model.onnx`                                | `model.onnx`              |
+| `sparse.bundle.tokenizer` | Tokenizer file name within the bundle                               | `tokenizer.json`                            | `tokenizer.json`          |
+
+Bundles are cached locally and skip the download when the same bundle is already complete.
+
+Common model options:
+
+| Parameter     | Definition                                                 | Example         | Default                                        |
+| ------------- | ---------------------------------------------------------- | --------------- | ---------------------------------------------- |
+| `sparse.mode` | Sparse encoding mode: `SPLADE` or `TOKEN_WEIGHTS` (BGE-M3) | `TOKEN_WEIGHTS` | `SPLADE`                                       |
+| `modelName`   | Model name reported by the model                           | `bge-m3`        | `Splade_PP_en_v1` (only for the default model) |
+| `outputName`  | ONNX output tensor name to read                            | `sparse_vecs`   | model default                                  |
+| `maxLength`   | Maximum token length                                       | `512`           | model default                                  |
+| `minWeight`   | Minimum weight for a term to be kept                       | `0.01`          | model default                                  |
+| `maxTerms`    | Maximum number of terms kept in the sparse vector          | `256`           | model default                                  |
+
+For custom sparse embedding providers:
+
+| Parameter        | Definition                                                | Example                                         | Default |
+| ---------------- | --------------------------------------------------------- | ----------------------------------------------- | ------- |
+| `sparse.class`   | Java class implementing the sparse embedding provider     | `io.rierino.rai.xxx.CustomSparseEmbeddingModel` | -       |
+| `sparse.methods` | Method configuration passed to the sparse embedding class | `{"apiKey":"xxx"}`                              | -       |
+
+Action details: [Perform Sparse Text Embedding](../../../api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/perform-sparse-text-embedding.md)
+
+### **Rerank Documents**
+
+Class: `com.rierino.handler.rai.RerankerEventHandler`
+
+Scores candidate documents against a query and sorts them by relevance. It is typically used after a vector or keyword search to improve retrieval quality in RAG flows.
+
+#### **Handler parameters**
+
+For ONNX-based models:
+
+| Parameter            | Definition                                            | Example         | Default                                   |
+| -------------------- | ----------------------------------------------------- | --------------- | ----------------------------------------- |
+| `model.store.system` | System to fetch ONNX model files from                 | `model_fs`      | default Hugging Face repo                 |
+| `rerank.path`        | Reranker model file path (falls back to `model.path`) | /reranker.onnx  | `Xenova/ms-marco-MiniLM-L-6-v2` model     |
+| `tokenizer.path`     | Tokenizer file path                                   | /tokenizer.json | `Xenova/ms-marco-MiniLM-L-6-v2` tokenizer |
+| `model.local.dir`    | Local directory for downloaded model files            | `/app/models`   | system temp dir                           |
+| `modelName`          | Model name reported by the reranker                   | `bge-reranker`  | `ms-marco-MiniLM-L-6-v2`                  |
+| `normalize`          | Whether to normalize relevance scores                 | `true`          | model default                             |
+| `maxLength`          | Maximum token length per query–document pair          | `512`           | model default                             |
+
+For custom rerank providers:
+
+| Parameter        | Definition                                      | Example                                | Default |
+| ---------------- | ----------------------------------------------- | -------------------------------------- | ------- |
+| `rerank.class`   | Java class implementing the rerank provider     | `io.rierino.rai.xxx.CustomRerankModel` | -       |
+| `rerank.methods` | Method configuration passed to the rerank class | `{"apiKey":"xxx"}`                     | -       |
+
+Action details: [Rerank Documents](../../../api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/rerank-documents.md)
+
+### **Make AI Decisions**
+
+Class: `com.rierino.handler.rai.RAIDecisionEventHandler`
+
+Answers typed questions about a given state, which can include a conversation history. The question types are choice (classification), score (ordinal level) and noul (yes / no / unknown). Answers can include probabilities and confidence. By default it runs zero-shot classification on a local NLI model and makes no LLM call.
+
+#### **Handler parameters**
+
+For ONNX-based (NLI zero-shot) models:
+
+| Parameter              | Definition                                                                    | Example                  | Default                                            |
+| ---------------------- | ----------------------------------------------------------------------------- | ------------------------ | -------------------------------------------------- |
+| `model.store.system`   | System to fetch ONNX model files from                                         | `model_fs`               | default Hugging Face repo                          |
+| `decision.path`        | NLI model file path                                                           | /nli/model.onnx          | `Xenova/DeBERTa-v3-base-mnli-fever-anli` model     |
+| `tokenizer.path`       | Tokenizer file path                                                           | /nli/tokenizer.json      | `Xenova/DeBERTa-v3-base-mnli-fever-anli` tokenizer |
+| `decision.config.path` | Model `config.json` path, which sets the entailment/contradiction label order | /nli/config.json         | `Xenova/DeBERTa-v3-base-mnli-fever-anli` config    |
+| `model.local.dir`      | Local directory for downloaded model files                                    | `/app/models`            | system temp dir                                    |
+| `modelName`            | Model name reported in usage output                                           | `deberta-nli`            | `deberta-v3-base-mnli-fever-anli`                  |
+| `hypothesisTemplate`   | Template used to build NLI hypotheses from questions                          | `This text is about {}.` | model default                                      |
+| `maxLength`            | Maximum token length per premise–hypothesis pair                              | `512`                    | model default                                      |
+
+For custom decision providers:
+
+| Parameter          | Definition                                        | Example                                  | Default |
+| ------------------ | ------------------------------------------------- | ---------------------------------------- | ------- |
+| `decision.class`   | Java class implementing the decision provider     | `io.rierino.rai.xxx.CustomDecisionModel` | -       |
+| `decision.methods` | Method configuration passed to the decision class | `{"apiKey":"xxx"}`                       | -       |
+
+Action details: [Make AI Decisions](../../../api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/make-ai-decisions.md)
 
 ### Service MCP Requests
 
