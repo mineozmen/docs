@@ -5,6 +5,39 @@ icon: code-branch
 
 # Rierino Release Notes
 
+## 2.9.0 \[09/2026]
+
+### Simplified Interactive Debugging
+
+Find and fix issues faster with full visibility into every execution step. New `/api/test` endpoints capture each step of an execution along with detailed error logs, giving you a complete audit trail for troubleshooting and compliance. These steps appear directly inside the Saga Builder, next to the step configurations that produced them, so you can see what happened and why without switching tools. AI-assisted auto-debugging then helps you find root causes and suggests fixes.
+
+Saga-specific logging configurations now support custom MDC attributes. You can tag logs with your own business context and trace requests across your APM tools.
+
+### More Granular Agent Control
+
+Get more out of your AI agents while spending fewer tokens and repeating less configuration.
+
+* **Pre-processing pipelines:** Transform inputs before they reach an agent, for example by parsing files up front, so you only send the content that matters and avoid unnecessary token usage.
+* **Agent inheritance:** Define base agents once with shared global policies, guardrails, models and memory settings, then extend them across your agent portfolio. Updates to a base agent apply to every agent that inherits from it.
+* **Fine-grained memory management:** Use sagas to control how message memory and conversation history are stored, so you can tune retention, cost and performance for each use case.
+* **Profile-aware memories:** Load extra context based on the requestor's profile, not just their user ID, for more relevant, personalized responses.
+
+### Simplified SAML Integration
+
+Enterprise single sign-on now works out of the box. Native SAML support removes the need for custom API integrations or pro-code login page configurations. You connect your identity provider with a dedicated event handler and a few Admin UI environment variables.
+
+### Additional AI Helpers & Models
+
+Build production-grade RAG pipelines with less effort. Built-in dense embedding, sparse embedding and reranker models give you hybrid search and higher-quality retrieval without third-party setup. Decision models such as Laya are also now supported, bringing type-safe, structured outputs to LLM-driven actions.
+
+### Built-in Post-AI Chat Processors
+
+Turn every conversation into lasting insight. Built-in LLM judges automatically score past chats with quick or extended ratings, so you can monitor quality at scale. They can also summarize conversations for later reference and build fully customizable episodic and semantic memories. This gives your agents a long-term understanding of each user's preferences and context.
+
+### Simplified Static Content Endpoints
+
+Serve static content straight from the API Gateway with no backend service required. You can return responses in JSON, XML, plain text, HTML or another content type through simple configuration. Endpoints such as `.well-known` now take minutes to set up instead of a deployment.
+
 ## 2.8.0 \[08/2026]
 
 ### Enriched Human-in-the-Loop
