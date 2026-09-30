@@ -6,17 +6,19 @@ description: >-
 
 # Event Step
 
-<figure><img src="../../../../.gitbook/assets/image (115).png" alt=""><figcaption><p>Event Step Definition</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (182).png" alt="Event Step Definition"><figcaption><p>Event Step Definition</p></figcaption></figure>
 
 Dragging and dropping an event step from the icon bar of a saga adds a new step. It is possible to configure each step clicking on the edit icon displayed when hovering its node. The following fields are used for overall settings of the step:<br>
 
 * **Name:** Descriptive name of the step, which will be displayed on the saga flow.
 * **Auto Fail:** Whether failure of this step should automatically fail the whole saga flow. If not set to true (or the saga itself has auto fail setting), error status should be handled separately.
+* **Continue on Fail:** Whether this step should continue despite failing, in case the saga itself is set to "Auto Fail".
 * **Description:** Verbal description of the step, for reference and documentation.
 * **Stroke:** Color to use for drawing borders of the step, for visual purposes.
 * **Fill:** Color to use for filling the step node, for visual purposes.
+* **ID:** ID of the step used for reference in logs.
 
-<figure><img src="../../../../.gitbook/assets/image (116).png" alt=""><figcaption><p>Event Step Metadata</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (183).png" alt="Event Step Metadata"><figcaption><p>Event Step Metadata</p></figcaption></figure>
 
 The actual functionality of an event step is defined using event metadata settings listed below:<br>
 
@@ -26,12 +28,34 @@ The actual functionality of an event step is defined using event metadata settin
 * **Event Domain:** Alias of a state, query or a system, which is used as the main target for event action (e.g. "Get" from "product" state). The meaning of this setting depends on the event handler configuration itself.
 * **Input Element:** Json path for the data input from event payload (e.g. parameters). This parameter allows using events with different formats as input to the same event handler. If no input element is provided, full payload is used as the input.
 * **Output Element:** Json path for the data output on event payload (e.g. list). This parameter allows outputing to different paths based on output format required by the API endpoint or the next saga step. If an input element is given, output element is relative to that path. If the output element starts with '$.', it is relative to the root of event payload, ignoring input element setting. If the output element is '-', it is ignored and no data is added to event payload as the output.
-* **Deployments:** List of runner deployment ids which are allowed to execute this step. This is required when more than one runner deployment exists (e.g. v1, v2). If the deployment id is not specified in such scenario, both runners would process the same event, resulting in duplicate actions and responses. This is a rare case, typically used when deploying a new runner version while the old version is still running to avoid downtime (e.g. changing deployment id only after new version is up and running).
-* **Inject:** Whether these settings (e.g. input element, domain, etc.) should allow injection of key-value parameters and secrets or not.
-* [**Follow Ack**](#user-content-fn-1)[^1]**:** Whether event status ACK should continue saga flows [instead of immediately returning](#user-content-fn-2)[^2]
-* **Response System:** Alias of the system for the receiving runner to reply on. This setting is used when communication is through an event streaming platform (e.g. Kafka) and the response should be sent through a system different than the default.
-* **Response Stream:** Alias of the stream for the receiving runner to reply on. This setting is used when communication is through an event streaming platform (e.g. Kafka) and the response should be sent through a stream different than the default.
-* **Parameter Map:** Handler and action specific list of parameters to use for the event. For a full list of these parameters, please refer to [Handlers](../../../microservices/building-blocks/execution-handlers/).
+* **Action Specific Parameters:** Based on the "Event Action" selected, a number of additional parameters are displayed dynamicall (such as URL for a Call Rest action).
+
+<figure><img src="../../../../.gitbook/assets/image (184).png" alt="Event Step Advanced"><figcaption><p>Event Step Advanced</p></figcaption></figure>
+
+In addition to action specific parameters, all event steps allow configuration of some additional properties, displayed under ADVANCED tab:
+
+* **Common Parameters**
+  * **Fire & Forget:** Allows submitting action without waiting for its result. In this scenario the step only returns a reference ID, and returns before any processing happens. Fire-forget steps never fail, and results of the step needs to be monitored from a separate state.
+  * **Log Detail:** Defines whether payload details should be fully logged regardless of the current log level. Recommended on development environments only, since can result in logging sensitive data in some cases.
+  * **Ignore Errors:** Comma separated list of Rierino error codes to ignore (e.g. allowing STALE update errors on write actions).
+  * **Delay Ms:** Milliseconds to wait between executing actions (e.g. for rate limiting on target systems).
+  * **Delay ID:** Unique identifier of the actions which should wait each other with "Delay Ms".
+* **Iteration Parameters**
+  * **Loop For Each Input:** Whether the action will be repeated for each record in input element (should be an array)
+  * **Loop In Parallel:** Whether the loop will be executed in parallel faster using more resources
+  * **Inner Input Element:** Json path for the inner element to use in a for each loop (inside main input element)
+  * **Inner Output Element:** Json path for the inner element to output to in a for each loop (inside main output element)
+  * **Pass Root From:** Section of the event payload to pass as root, instead of replicating full payload on each iteration
+  * **Pass Root As:** Data path to pass root elements to for each loop (defaults to "$root"). Use "-" to exclude root from loops.
+  * **Pass Index As:** Data path to pass index of row to for each loop (defaults to "$index"). Use "-" to exclude root from loops.
+  * **Return Full Result:** Whether iterations should return full payload or only the output element values
+* **Full Parameter Map:** Includes a table of all parameters configured.
+* **Response Stream**
+  * **Deployments:** List of runner deployment ids which are allowed to execute this step. This is required when more than one runner deployment exists (e.g. v1, v2). If the deployment id is not specified in such scenario, both runners would process the same event, resulting in duplicate actions and responses. This is a rare case, typically used when deploying a new runner version while the old version is still running to avoid downtime (e.g. changing deployment id only after new version is up and running).
+  * **Inject:** Whether these settings (e.g. input element, domain, etc.) should allow injection of key-value parameters and secrets or not.
+  * [**Follow Ack**](#user-content-fn-1)[^1]**:** Whether event status ACK should continue saga flows [instead of immediately returning](#user-content-fn-2)[^2]
+  * **Response System:** Alias of the system for the receiving runner to reply on. This setting is used when communication is through an event streaming platform (e.g. Kafka) and the response should be sent through a system different than the default.
+  * **Response Stream:** Alias of the stream for the receiving runner to reply on. This setting is used when communication is through an event streaming platform (e.g. Kafka) and the response should be sent through a stream different than the default.
 
 These settings work similar to a remote function call, where the handler and action define target function and other settings define its parameters for execution.
 
