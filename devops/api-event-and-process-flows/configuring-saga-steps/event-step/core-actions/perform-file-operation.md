@@ -118,9 +118,20 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter | Definition                                      | Example  | Default |
-| --------- | ----------------------------------------------- | -------- | ------- |
-| Path Path | Json path in payload for directory path to list | filePath | path    |
+| Parameter      | Definition                                                 | Example  | Default |
+| -------------- | ---------------------------------------------------------- | -------- | ------- |
+| Path Path      | Json path in payload for directory path to list            | filePath | path    |
+| Skip           | Files to skip in list results                              | 10       | -       |
+| Limit          | Number of files to return in results                       | 10       | -       |
+| Search         | Term to search in file names                               | pdf      | -       |
+| Order By       | Sort field (date, name, size)                              | date     | -       |
+| Ascending      | Whether to sort ascending                                  | false    | true    |
+| Detect Type    | Whether to detect content type (single file only)          | true     | -       |
+| Parse Meta     | Whether to detect analyze file metadata (single file only) | true     | -       |
+| Produce Hash   | Whether to produce content hash (single file only)         | true     | -       |
+| Output Pattern | Jmespath for producing list results                        | -        | -       |
+
+
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -141,6 +152,56 @@ With event metadata parameters as:
               "definition": "Json path in payload for directory path to list",
               "default": "path",
               "example": "filePath"
+            },
+            "skip": {
+              "type": "integer",
+              "definition": "Files to skip in list results",
+              "example": 10
+            },
+            "limit": {
+              "type": "integer",
+              "definition": "Number of files to return in results",
+              "example": 10
+            },
+            "search": {
+              "type": "string",
+              "definition": "Term to search in file names",
+              "example": "pdf"
+            },
+            "orderBy": {
+              "type": "string",
+              "definition": "Sort field (date, name, size)",
+              "enum": [
+                "date",
+                "name",
+                "size"
+              ],
+              "example": "date"
+            },
+            "ascending": {
+              "type": "boolean",
+              "definition": "Whether to sort ascending",
+              "default": true,
+              "example": false
+            },
+            "detectType": {
+              "type": "boolean",
+              "definition": "Whether to detect content type (single file only)",
+              "example": true
+            },
+            "parseMeta": {
+              "type": "boolean",
+              "definition": "Whether to analyze file metadata (single file only)",
+              "example": true
+            },
+            "produceHash": {
+              "type": "boolean",
+              "definition": "Whether to produce content hash (single file only)",
+              "example": true
+            },
+            "outputPattern": {
+              "type": "string",
+              "definition": "Jmespath for producing list results"
             }
           }
         }
@@ -193,7 +254,6 @@ With event metadata parameters as:
 | Parameter | Definition                                             | Example  | Default |
 | --------- | ------------------------------------------------------ | -------- | ------- |
 | Path Path | Json path in payload for file/directory path to delete | filePath | path    |
-| Recursive | Whether deletion should include sub-directories        | true     | false   |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -442,7 +502,7 @@ With event metadata parameters as:
 {% tab title="Table" %}
 | Parameter | Definition                                                                                               | Example        | Default |
 | --------- | -------------------------------------------------------------------------------------------------------- | -------------- | ------- |
-| Path Path | Json path in payload for directory path to list (from payload root)                                      | parameters.id  | path    |
+| Path Path | Json path in payload for file path to write (from payload root)                                          | parameters.id  | path    |
 | Mode      | Type of file(s) to output (sequence[^1], single[^2])                                                     | sequence       | single  |
 | Prefix    | Prefix to add to each file's name (for sequence mode output)                                             | tracking/views | -       |
 | Suffix    | Suffix to add to each file's name (for sequence mode output)                                             | \_out.json     | -       |
@@ -587,10 +647,14 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter | Definition                                          | Example | Default |
-| --------- | --------------------------------------------------- | ------- | ------- |
-| Path Path | Json path in payload for directory path to list     | id      | path    |
-| Format    | Format of the file contents to retrieve (json,text) | json    | text    |
+| Parameter      | Definition                                          | Example | Default |
+| -------------- | --------------------------------------------------- | ------- | ------- |
+| Path Path      | Json path in payload for file path to read          | id      | path    |
+| Format         | Format of the file contents to retrieve (json,text) | json    | text    |
+| Max Length     | Maximum file size to be allowed for reading         | 1000000 | -       |
+| Output Pattern | Jmespath pattern to apply to json format output     | -       | -       |
+
+
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -622,6 +686,14 @@ With event metadata parameters as:
               "default": "text",
               "example": "json"
             }
+          },
+          "maxLength": {
+            "type": "string",
+            "definition": "Maximum file size to be allowed for reading"
+          },
+          "outputPattern": {
+            "type": "string",
+            "definition": "Jmespath pattern to apply to json format output"
           }
         }
       }

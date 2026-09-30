@@ -14,7 +14,7 @@ While it is possible to implement new menu action types, Rierino already include
 
 Certain menu actions perform calls to Rierino backend APIs. All these menu actions share the following properties:
 
-* **URL:** URL path of the API endpoint to call.
+* **URL:** URL path of the API endpoint to call (allows using "=pattern" for generating dynamic paths using current data).
 * **Method:** REST method to use for calling API endpoint.
 * **Extra Body:** Extra payload to add to the API call.
 * **Extra Headers:** Extra headers to add to the API call.

@@ -46,6 +46,7 @@ This action has the following special properties in addition to [API action prop
 
 * **Type:** Type of file to export.
 * **Sheets:** Configuration of sheets & columns to export.&#x20;
+* **File Name Path:** Json path to read file name from, in case API is returning dynamic file name.
 
 ## Call API
 

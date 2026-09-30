@@ -21,7 +21,7 @@ However, a source record would be necessary under one of the following circumsta
 
 If one of these apply to your case, you can map URL endpoints for different actions with the following settings:
 
-* **Action:** "default", "post", "put", "patch", "delete", "get", "list" or "query", defining which operation to map to given URL. When an action is not defined, it uses "default" action's URL with its own http request method (e.g. DELETE for "delete").
+* **Action:** "default", "post", "put", "patch", "delete", "get", "list", "bulk" or "query", defining which operation to map to given URL. When an action is not defined, it uses "default" action's URL with its own http request method (e.g. DELETE for "delete").
 * **URL:** URL path on the API gateway, after the "/api/" section (e.g. request/crud/variable).
 * **Method:** Http request method to use for the action (e.g. POST, GET).
 * **Parameters:** "body", "url" or "query", defining where to send the parameters (e.g. id of the record for GET) for the action.
