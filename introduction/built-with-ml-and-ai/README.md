@@ -53,6 +53,45 @@ For more details [click here](../../data-science/genai-models/), for details on 
 
 {% embed url="https://rierino.com/blog/ai-agent-interfaces-a2ui-apps-sdk" %}
 
+## Type-Safe AI Decisions
+
+Rierino supports decision models that answer structured questions with typed, predictable outputs. You define the question and the allowed answers. The model returns exactly one of them, with probabilities. It does not return open-ended text.
+
+This brings a language model's understanding into places where free-form responses are a risk, such as routing, approvals, triage, and compliance checks. Outputs can go straight into rules, flows, and APIs without parsing or prompt-level guesswork.
+
+### **Question types**
+
+* **Choice:** Pick one option from a defined set, such as department, intent, or category.
+* **Score:** Rate on an ordered scale, such as low, medium, or high urgency or risk.
+* **Noul:** Answer yes, no, or unknown, such as "Is the customer asking for a refund?"
+
+Several questions can be answered in one call, about the same state and conversation history. Each answer includes the selected value and, where the model provides them, probabilities and a confidence level. This makes thresholds, fallbacks, and human-in-the-loop escalation simple to configure.
+
+### **Supported model types**
+
+* **ONNX NLI models:** Zero-shot classification with natural language inference models, such as DeBERTa. These run locally inside the service with no external LLM call. A default model is available out of the box.
+* **Laya models:** Larger decision models distributed as ONNX bundles. They give better accuracy on nuanced questions and still run on your own infrastructure.
+* **Custom decision models:** Any provider that implements the decision model interface can be plugged in through configuration. This includes LLM-backed implementations that use constrained outputs.
+
+### **Why it matters**
+
+* **Type safety:** Answers always match the defined options. No hallucinated labels and no malformed JSON.
+* **Cost and latency:** Local models answer in milliseconds, with no per-token API costs.
+* **Data privacy:** State and conversation data never leave your environment with local models.
+* **Auditability:** Probabilities and confidence levels make each decision explainable and easy to monitor.
+
+### **Typical use cases**
+
+* Routing support tickets, emails, or chat messages to the right team.
+* Detecting intent before handing a conversation to a specialized AI agent.
+* Scoring urgency, sentiment, or risk in real time.
+* Pre-checking requests against policies before automated actions run.
+* Acting as a lightweight guard or router in multi-agent setups.
+
+### **Decision models vs. LLM agents**
+
+Use decision models when the set of possible outcomes is known and the result drives a next step. Use LLM agents when the response itself is the product, or when the next steps are open-ended. The two work well together: a decision model can route a request and pick the right agent, and the agent then handles the conversation.
+
 ## MCP Server & Middleware
 
 <figure><img src="../../.gitbook/assets/image (148).png" alt=""><figcaption><p>MCP Server</p></figcaption></figure>
