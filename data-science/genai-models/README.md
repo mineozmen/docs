@@ -33,23 +33,34 @@ Initial definition of a GenAI model includes 4 main tabs:
 
 * **Name:** A descriptive name
 * **Version:** Current version of the model
-* **Domain:** Business domain for grouping of the model
-* **Allowed For:** List of runners which can provide the AI agent
-* **Tags:** Descriptive tags for the model
 * **Status:** Whether this model should be deployed or not
+* **Domain:** Business domain for grouping of the model
+* **Icon:** Icon to display for the agent in agents listing
+* **Tags:** Descriptive tags for the model
+* **Base Models:** List of GenAI models this model should inherit configurations (e.g. model, shared instructions) from
+* **Description:** Verbal description of the model for reference
+* **Access**
+  * **Allowed For Runners:** List of runners which can provide the AI agent
+  * **Allowed For Roles:** List of user roles which can access the AI agent
+  * **Call Path:** URL path to use for calling this agent directly from admin UI
+  * **Definition Path:** URL path to use for getting information about this agent directly from admin UI
+  * **Skip Load:** Whether the model should be skipped as an agent (used for based models when they do not serve as agents stand-alone).
+
+### Instructions
+
 * **Instructions:** Instructions to send to agent for its initialization (such as main purpose and persona), allows using Handlebars templates for dynamic contents, with:
-  * **Templated Instructions:** When set to true, it replaces Handlebars curly bracket contents with user & request data
-  * **Template Input Saga:** If template requires backend logic beyond request event payload, allows using an existing saga for enriching the template input (saga output becomes the template input data)
-  * **Template Schemas:** If template requires JSON schema of certain business domains, they can be easily added to instructions by selecting template schemas, each schema can be referenced as schema.\[id] from inside the templated instructions
-* **Call Path:** URL path to use for calling this agent directly from admin UI
-* **Definition Path:** URL path to use for getting information about this agent directly from admin UI
+* **Templated Instructions:** When set to true, it replaces Handlebars curly bracket contents with user & request data
+* **Template Input Sagas:** If template requires backend logic beyond request event payload, allows using existing sagas for enriching the template input (saga output becomes the template input data)
+* **Template Schemas:** If template requires JSON schema of certain business domains, they can be easily added to instructions by selecting template schemas, each schema can be referenced as schema.\[id] from inside the templated instructions
+* **Structured Prompts:** List of structured prompts which translate structured inputs into AI chat messages with templates
+* **Message Preprocessing Saga:** Saga to call before sending received messages to AI agent, typically used for preprocessing of file attachments
+* **Preprocessing Pattern:** Jmespath pattern for transforming request body before passing to preprocessing saga
 
 ### Model
 
-* **Provider:** LLM provider that will be used by the agent
-* **Memory Name:** State manager which will be used as the chat memory by the agent (distributed states for distributed agents)
-* **Memory Size:** Maximum memory size to be kept for chat history
-* **Parameters:** Model level parameters specific to LLM provider, including sagas that are allowed access for the AI agents as tools
+* **AI Model:** LLM provider that will be used by the agent
+* **Default Request Parameters:** Common LLM provider call parameters such as response format
+* **Model Specific Parameters:** AI model specific parameters, used by the LLM provider (e.g. temperature)
 
 #### Out of Box LLM Providers
 
@@ -75,6 +86,18 @@ In addition to out of box LLM providers (such as OpenAI, LocalAI, etc.), it is p
 * **Handler:** Alias of the saga event handler (defaults to "saga")
 
 Saga flows are expected to return "response" in event payload as the response from the model.
+
+### Memory
+
+* **Memory Name:** State manager which will be used as the chat memory by the agent (distributed states for distributed agents)
+* **Memory Saga:** Saga to use for managing memory state, allowing more granular control over how messages & history are stored (still requires memory name as the prefix of states to use)
+* **Memory Size:** Maximum memory size to be kept for chat history
+* **Memory Summarizer:** GenAI model to use for summarizing contents of the chat messages
+* **Memory Summary - Keep Last:** Number of last messages to keep as is when summarizing
+* **Memory Summary - Keep Instruction:** Whether system instructions should be preserved as is when summarizing
+* **Memory Summary - Keep First:** Number of first messages to keep as is when summarizing
+* **Summarize After Messages:** Number of messages after which the summarizer should start
+* **Summarize After Tokens:** Number of tokens after which the summarizer should start
 
 ### Toolkit
 
