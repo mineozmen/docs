@@ -13,23 +13,31 @@ Most development work in Rierino happens across four apps. Each app “owns” a
 
 ### Devops
 
+<figure><img src="../.gitbook/assets/image (165).png" alt=""><figcaption><p>Devops App</p></figcaption></figure>
+
 Use **Devops** to build and operate backend execution. This is where you define and deploy **runners** (microservices), design **sagas** (API flows), configure **gateway routing/security**, and manage deployments.
 
 Start here when you are building APIs, orchestrations, or anything that needs to run in production. See [Devops Overview](../devops/devops-overview.md).
 
 ### Configuration
 
+<figure><img src="../.gitbook/assets/image (167).png" alt=""><figcaption><p>Configuration App</p></figcaption></figure>
+
 Use **Configuration** to store “logic as data”. This is where you define reusable **queries**, **business rules**, and **dynamic handlers**, which can then be executed by runners and sagas at runtime.
 
 Start here when you want behavior to be editable without redeploying services. See [Configuration Overview](../configuration/configuration-overview.md).
 
-### Design (Admin UI)
+### Design
+
+<figure><img src="../.gitbook/assets/image (166).png" alt=""><figcaption><p>Design App</p></figcaption></figure>
 
 Use **Design** to build the admin UI. This is where you define **apps**, **UIs**, **listers/widgets**, and the **Source** mappings that connect screens to backend APIs. You also manage UI resources like options, translations, icons, and styles.
 
 Start here when you want a screen for listing and editing data or operating flows. See [Design Overview](../design/design-overview.md).
 
 ### Data Science
+
+<figure><img src="../.gitbook/assets/image (168).png" alt=""><figcaption><p>Data Science App</p></figcaption></figure>
 
 Use **Data Science** to configure ML and GenAI assets that can be invoked from real-time APIs or batch processes. This includes ML models, GenAI models, MCP servers, CEP flows, visualizations, and customizations.
 
