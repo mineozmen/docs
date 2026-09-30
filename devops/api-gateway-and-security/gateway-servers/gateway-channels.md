@@ -42,6 +42,8 @@ Aliases allow redirecting specific paths to a target URL for renaming or shorten
 * **Alias:** Root level alias to use for redirecting
 * **Target:** Target path to redirect to on this channel
 * **Header Map:** Header name - Jmespath expression pairs where incoming header value can be used to produce new headers or replace its value (e.g. "API-key": "{ "Authorization": join(' ', \['API-key', value]) }").
+* **Static Content:** Static textual content to service for the alias (e.g. for constant .well-known endpoints)
+* **Static Content Type:** Content-type to return for static textual content served
 
 ## Response Headers
 
