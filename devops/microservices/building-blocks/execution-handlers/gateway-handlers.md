@@ -123,6 +123,34 @@ implementation (group:'com.rierino.custom', name: 'ldap', version:"${rierinoVers
 
 Action details: [LDAP Based](../../../api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/ldap-based.md)
 
+#### SAML Based
+
+Class: `com.rierino.handler.auth.saml.SAMLEventHandler`
+
+Acts as a SAML 2.0 Service Provider, validating assertions from any SAML identity provider such as Entra ID, Okta, ADFS or Keycloak. The browser exchange is owned by the frontend, so this handler only builds AuthnRequests and validates the SAMLResponse forwarded to it, returning the resolved identity. SAML issues no tokens, so it is used together with a token / session handler that trusts its Login and Refresh output.
+
+Handler parameters
+
+| Parameter              | Definition                                                                                                                                   | Example                                | Default            |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------ |
+| `system`               | SAML system name for identity provider and service provider details                                                                          | `corporate_saml`                       | -                  |
+| `state.state`          | State manager used for storing request state server side (single use). Either this or `state.secret` is required                             | `saml_state`                           | -                  |
+| `state.secret`         | Base64 encoded HMAC key used for signing request state returned to the frontend, when `state.state` is not used                              | `c2VjcmV0LWtleS0zMi1ieXRlcy1sb25nIQ==` | -                  |
+| `state.ttl`            | Seconds a SAML request state stays valid                                                                                                     | `300`                                  | `600`              |
+| `replay.state`         | State manager used for rejecting reused assertions across instances. Falls back to an in-memory cache (single instance only) if not provided | `saml_replay`                          | -                  |
+| `replay.ttl`           | Seconds assertions are kept in the in-memory replay cache                                                                                    | `1800`                                 | `900`              |
+| `idpInitiated.enabled` | Whether unsolicited (IdP initiated) responses without a request state are accepted                                                           | `true`                                 | `false`            |
+| `user.idPrefix`        | Prefix added to the NameID to produce the user id                                                                                            | `saml:`                                | -                  |
+| `login.pattern`        | JMESPath pattern applied on the validated assertion to build Login / Refresh output                                                          | `{"user": {"id": userId}}`             | See action details |
+
+Runtime dependency
+
+```
+implementation (group:'com.rierino.custom', name: 'saml', version:"${rierinoVersion}")
+```
+
+Action details: [SAML Based](https://docs.rierino.com/devops/api-event-and-process-flows/configuring-saga-steps/event-step/gateway-actions/authenticate/saml-based)
+
 ### Sessionize
 
 Class: `com.rierino.handler.SessionEventHandler`
