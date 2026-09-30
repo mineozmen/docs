@@ -104,6 +104,14 @@ When scheduling a saga, it is important to configure the "Allowed For Runners" s
 Otherwise, all runners with timers would trigger the same saga with each period.
 {% endhint %}
 
+### Log & Errors
+
+You can configure the logging context & details for errors per saga:
+
+* **Log Contexts:** MDC variables and event payload path to populate in all saga logs (e.g. record\_id = parameters.id)
+* **Keep Errors:** Whether most recent errors should be kept for quick debugging (not stored, in memory only to be retrieved with GetSagaErrors action)
+* **Tracked Errors:** Number of most recent errors to track
+
 ## Schema
 
 Schema defines the saga input and output models. It is used for documentation and optional validation. OpenAPI is generated from this configuration.

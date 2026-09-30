@@ -37,6 +37,7 @@ Coordinates end-to-end saga execution across local or distributed runners.
 | `roles.variable`     | Variable name used for allowed role matching                                           | `userRoles`        | `user.roles` path in payload |
 | `offset.state`       | State manager used for storing offsets for "self waiting" sagas                        | `cdc_offset`       | -                            |
 | `offset.partitioned` | Whether offsets are stored as partitioned (i.e. multiple replicas running as saga CDC) | `true`             | `false`                      |
+| `audit.state`        | State manager to store saga audit results                                              | `saga_audit`       | -                            |
 
 Action details: [Orchestrate Saga](../../../api-event-and-process-flows/configuring-saga-steps/event-step/flow-actions/orchestrate-saga.md)
 

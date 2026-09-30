@@ -42,6 +42,8 @@ Following Rierino specific properties are also applicable to these gateways, whi
 | rierino.request.maxSize               | Maximum bytes allowed for API requests                                                         | -                                                          | -1                                                      |
 | rierino.file.maxSize                  | Maximum bytes allowed for file requests                                                        | -                                                          | -1                                                      |
 | rierino.codecs.memory.maxSize         | Maximum bytes allowed for in memory buffering                                                  | -                                                          | 1024000                                                 |
+| rierino.test.controller.enabled       | Whether /api/test calls (saga auditing) is allowed on gateway                                  | true                                                       | false                                                   |
+| rierino.gateway.errorPayloads         | Whether gateway is allowed to return error payload details                                     | true                                                       | false                                                   |
 
 {% hint style="info" %}
 Gateway creates request ids using rierino.id settings, which produce ids in the following form:

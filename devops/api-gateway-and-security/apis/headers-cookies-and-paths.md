@@ -34,6 +34,13 @@ For sending requests for a specific "branch", two alternative methods can be use
 * {channel} can be suffixed with @{branch}, such as rpc@beta
 * Sending branch as "X-Branch" header, such as X-Branch=beta
 
+## Audit
+
+If the gateway & channels allow, following headers can be used for auditing saga flows:
+
+* "rierino-audit-path": Json path to return audit results (e.g. audit)
+* "rierino-stop-step": ID of the step to stop execution of a saga to see partial results
+
 ## Async Requests
 
 For making API calls that should fire & forget, a special "X-Async" header can be used with 2 alternative values:

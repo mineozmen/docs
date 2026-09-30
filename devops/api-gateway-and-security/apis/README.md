@@ -12,6 +12,10 @@ Request APIs provide ability to communicate with micro-services, where an execut
 
 The method of request (e.g. GET vs POST) is used only by some executors (e.g. CRUDExecutor), whereas the others treat all methods the same (e.g. KafkaExecutor).
 
+{% hint style="info" %}
+All request APIs that are calling sagas can be audited by calling through POST /api/**test**/{channel}/{path}.
+{% endhint %}
+
 {% openapi src="../../../.gitbook/assets/Request APIs.yml" path="/api/request/{channel}/{path}" method="get" %}
 [Request APIs.yml](<../../../.gitbook/assets/Request APIs.yml>)
 {% endopenapi %}
