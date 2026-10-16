@@ -37,13 +37,19 @@ Authentication requirements for a channel are defined with the following setting
 
 ## Path Aliases
 
-Aliases allow redirecting specific paths to a target URL for renaming or shortening API endpoints (e.g. landing -> /GenerateLandingPage) with:
+Aliases map incoming paths to endpoints on a channel. You can use them to rename or shorten API endpoints (e.g. `/landing` → `/GenerateLandingPage`) or to serve fixed content directly from the gateway. Routing is internal: the request is forwarded to `/api/request/{channelId}{target}` without an HTTP redirect, so the client's URL stays the same.
 
-* **Alias:** Root level alias to use for redirecting
-* **Target:** Target path to redirect to on this channel
-* **Header Map:** Header name - Jmespath expression pairs where incoming header value can be used to produce new headers or replace its value (e.g. "API-key": "{ "Authorization": join(' ', \['API-key', value]) }").
-* **Static Content:** Static textual content to service for the alias (e.g. for constant .well-known endpoints)
-* **Static Content Type:** Content-type to return for static textual content served
+Each alias has these fields:
+
+* **Alias**: The path to match. It can be an exact path (e.g. `/landing`) or a path pattern with variables and wildcards (e.g. `/products/{id}`, `/docs/**`).
+* **Target**: The path to forward to on this channel, starting with `/` (e.g. `/GenerateLandingPage`). The original query parameters are kept. For pattern aliases, each path variable is also added as a query parameter (e.g. `/products/123` → `/GetProduct?id=123`). Query parameters are used because every endpoint accepts them, while body formats vary.
+* **Header Map**: Pairs of header name and JMESPath expression. They transform incoming headers before the request is forwarded:
+  * The expression is evaluated against `{"value": "<incoming header value>"}`. Only the first value of the header is used.
+  * The original header is removed. Each field of the resulting object is added as a new header, so a single expression can produce several headers.
+  * If the expression returns null, the header is just dropped. If the request doesn't have the header, nothing happens.
+  * Example: `"API-key": "{ \"Authorization\": join(' ', ['API-key', value]) }"` turns `API-key: abc` into `Authorization: API-key abc`.
+* **Static Content**: Text to return directly instead of forwarding (e.g. for constant `.well-known` endpoints). The response is `200 OK` with `Content-Length` set, and HEAD requests get only the headers. The Header Map is not applied to static responses.
+* **Static Content Type**: The content type for static content (e.g. `application/json`, `text/plain; charset=utf-8`). It defaults to `application/json`, and an invalid value also falls back to `application/json`. The charset in the content type is used to encode the content, with UTF-8 as the default.
 
 ## Response Headers
 
