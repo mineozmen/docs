@@ -77,6 +77,11 @@ LocalizedEditor provides ability to display and enter localized (e.g. by languag
           "definition": "Widget to use for displaying locale specific data",
           "example": "ChipArrayEditor",
           "default": "TextEditor"
+        },
+        "dom": {
+          "type": "object",
+          "definition": "DOM properties to pass to the localized input component.",
+          "example": { "multiline": true }
         }
       },
       "example": {
@@ -140,12 +145,12 @@ MapEditor provides ability to modify map type objects with a table of key-value 
 
 {% tabs %}
 {% tab title="Properties" %}
-| Property                       | Definition                                                                                   | Example                               | Default |
-| ------------------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------- | ------- |
-| Key UI (Widget & Properties)   | UI component configuration for the key column                                                | {"widget": "TextEditor", "props":{\}} | -       |
-| Predefined Key Options         | Whether editor should have a predefined list of key entries (uses keyUi options as the list) | true                                  | false   |
-| Value UI (Widget & Properties) | UI component configuration for the value column                                              | {"widget": "TextEditor", "props":{\}} | -       |
-| Flatten Objects                | Whether editor should flatten and edit nested objects as well                                | true                                  | false   |
+| Property                                      | Definition                                                                                           | Example                               | Default |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------- | ------- |
+| Key UI (Widget & Properties)                  | UI component configuration for the key column                                                        | {"widget": "TextEditor", "props":{\}} | -       |
+| Predefined Key Options (`props.keyUi.preset`) | Whether editor should have a predefined list of key entries (uses `props.keyUi.options` as the list) | true                                  | false   |
+| Value UI (Widget & Properties)                | UI component configuration for the value column                                                      | {"widget": "TextEditor", "props":{\}} | -       |
+| Flatten Objects                               | Whether editor should flatten and edit nested objects as well                                        | true                                  | false   |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -202,12 +207,12 @@ MapObjectEditor provides ability to modify map type objects with a table of key-
 
 {% tabs %}
 {% tab title="Properties" %}
-| Property                           | Definition                                                                                   | Example                               | Default |
-| ---------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------- | ------- |
-| Key UI (Widget & Properties)       | UI component configuration for the key column                                                | {"widget": "TextEditor", "props":{\}} | -       |
-| Predefined Key Options             | Whether editor should have a predefined list of key entries (uses keyUi options as the list) | true                                  | false   |
-| Table Fields                       | List of fields to display on map table                                                       | -                                     | -       |
-| Editor UI (Icon, Title & Contents) | Design of object editor to use for editing                                                   | -                                     | -       |
+| Property                                      | Definition                                                                                           | Example                               | Default |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------- | ------- |
+| Key UI (Widget & Properties)                  | UI component configuration for the key column                                                        | {"widget": "TextEditor", "props":{\}} | -       |
+| Predefined Key Options (`props.keyUi.preset`) | Whether editor should have a predefined list of key entries (uses `props.keyUi.options` as the list) | true                                  | false   |
+| Table Fields                                  | List of fields to display on map table                                                               | -                                     | -       |
+| Editor UI (Icon, Title & Contents)            | Design of object editor to use for editing                                                           | -                                     | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -279,7 +284,8 @@ ContentsEditor provides ability to display and edit multiple data elements. This
             "type": "object",
             "properties": {
               "path": { "type": "string", "example": "name" },
-              "widget": { "type": "string", "example": "TextEditor" }
+              "widget": { "type": "string", "example": "TextEditor" },
+              "props": { "type": "object", "example": {} }
             }
           },
           "example": [{ "path": "name", "widget": "TextEditor" }]
@@ -325,7 +331,8 @@ GridsEditor provides ability to display and edit multiple data elements. This ed
                   "type": "object",
                   "properties": {
                     "path": { "type": "string", "example": "name" },
-                    "widget": { "type": "string", "example": "TextEditor" }
+                    "widget": { "type": "string", "example": "TextEditor" },
+                    "props": { "type": "object", "example": {} }
                   }
                 },
                 "example": [{ "path": "name", "widget": "TextEditor" }]
@@ -617,10 +624,10 @@ DVDisplay provides ability to display data visualization components such as char
 
 {% tabs %}
 {% tab title="Properties" %}
-| Property             | Definition                                       | Example   | Default |
-| -------------------- | ------------------------------------------------ | --------- | ------- |
-| Component Type       | Visualization component type                     | RPlotly   | -       |
-| Component Properties | Visualization component type specific properties | width=200 | -       |
+| Property             | Definition                                                   | Example        | Default |
+| -------------------- | ------------------------------------------------------------ | -------------- | ------- |
+| Component Type       | Visualization component type                                 | RPlotly        | -       |
+| Component Properties | Properties supported by the selected visualization component | {"width": 200} | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -850,7 +857,7 @@ ObjectPdfEditor is a component for rendering a template with dynamic data conten
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "ButtonAction widget options",
+  "title": "ObjectPdfEditor widget options",
   "type": "object",
   "properties": {
     "props": {
@@ -908,10 +915,20 @@ ButtonAction is a specialized component, which allows triggering one or more act
             "properties": {
               "title": { "type": "string", "example": "Accept" },
               "icon": { "type": "string", "example": "ok" },
-              "type": { "type": "string", "example": "CallAPI" }
+              "type": { "type": "string", "example": "CallAPI" },
+              "props": {
+                "type": "object",
+                "definition": "Configuration passed to the selected action type.",
+                "example": { "url": "request/rpc/Approve" }
+              }
             }
           },
-          "example": [{ "title": "Accept", "icon": "ok", "type": "CallAPI" }]
+          "example": [{
+            "title": "Accept",
+            "icon": "ok",
+            "type": "CallAPI",
+            "props": { "url": "request/rpc/Approve" }
+          }]
         },
         "readOnlyBehavior": {
           "type": "string",
@@ -939,7 +956,7 @@ SchemaEditor provides ability to view and edit JSON schema contents for data mod
 
 ### Media Metadata Editor
 
-ContentsEditor displays an image or video with metadata fields editable, represented by its relative URL path. This widget has the following special properties in addition to those listed in [Media Editor](value-widgets.md#media-editor):
+MediaMetadataEditor displays an image or video with editable metadata fields, represented by its relative URL path. This widget has the following special properties in addition to those listed in [Media Editor](value-widgets.md#media-editor):
 
 {% tabs %}
 {% tab title="Properties" %}

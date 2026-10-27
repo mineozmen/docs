@@ -8,14 +8,14 @@ It is possible to extend the list and variety of atom widgets, and Rierino is sh
 
 ## Text Atom
 
-TextAtom displays an image using a text tag such as \<p> or \<span>. This widget has the following special properties:
+TextAtom displays text using a text tag such as \<p> or \<span>. This widget has the following special properties:
 
 {% tabs %}
 {% tab title="Properties" %}
-| Property       | Definition                               | Example                       | Default |
-| -------------- | ---------------------------------------- | ----------------------------- | ------- |
-| Tag            | Tag to use (p, span, h1..h6, blockquote) | h1                            | p       |
-| DOM Attributes | Attributes to apply to text tag          | {"className": "Custom-image"} | -       |
+| Property       | Definition                               | Example                      | Default |
+| -------------- | ---------------------------------------- | ---------------------------- | ------- |
+| Tag            | Tag to use (p, span, h1..h6, blockquote) | h1                           | p       |
+| DOM Attributes | Attributes to apply to text tag          | {"className": "custom-text"} | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -38,7 +38,7 @@ TextAtom displays an image using a text tag such as \<p> or \<span>. This widget
         "dom": {
           "type": "object",
           "definition": "Attributes to apply to text tag",
-          "example": { "className": "Custom-image" },
+          "example": { "className": "custom-text" },
           "default": null
         }
       }
@@ -101,7 +101,7 @@ ViewAtom is a wrapper, which acts similar to ContentsEditor, displaying all its 
 | -------------- | ---------------------------------------------------------------- | ---------------------------------------- | ------- |
 | Tag            | Tag to use (div, main, article, section, header, void)           | main                                     | div     |
 | DOM Attributes | Attributes to apply to view tag                                  | {"className": "Custom-image"}            | -       |
-| Content        | Complete contents mapping object data paths to widgets and props | \[{"path":"name", "widget": "TextAtom"}] | -       |
+| Contents       | Complete contents mapping object data paths to widgets and props | \[{"path":"name", "widget": "TextAtom"}] | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}

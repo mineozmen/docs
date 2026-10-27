@@ -75,11 +75,12 @@ SelectArrayEditor displays a list of values selected from a predefined set of op
 
 {% tabs %}
 {% tab title="Table" %}
-| Property       | Definition                                             | Example        | Default |
-| -------------- | ------------------------------------------------------ | -------------- | ------- |
-| Options Source | Name of the options list used for selection            | conditionClass | -       |
-| Options List   | Actual contents of the options list used for selection | \[{"id":"1"}]  | -       |
-| Placeholder    | Text to display as placeholder                         | Select option  | -       |
+| Property       | Definition                                                | Example        | Default |
+| -------------- | --------------------------------------------------------- | -------------- | ------- |
+| Options Source | Name of the options list used for selection               | conditionClass | -       |
+| Options List   | Actual contents of the options list used for selection    | \[{"id":"1"}]  | -       |
+| Placeholder    | Text to display as placeholder                            | Select option  | -       |
+| DOM            | Additional DOM properties to pass to the Select component | -              | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -133,16 +134,16 @@ ItemArrayEditor displays a list of ids of a lookup record (such as attribute, ca
 
 {% tabs %}
 {% tab title="Table" %}
-| Property          | Definition                                                                                            | Example               | Default                         |
-| ----------------- | ----------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------- |
-| Label Path        | Json path (or JMES pattern) to name field to display as label in drop down                            | data.main.name        | name or data.name               |
-| Tooltip Path      | Json path (or JMES pattern) to description field to display as tooltip in drop down                   | data.main.description | description or data.description |
-| Icon Path         | Json path (or JMES pattern) to icon name field to display in drop down                                | data.main.icon        | -                               |
-| Group Path        | Json path (or JMES pattern) to a field for grouping values by in drop down                            | data.domain           | -                               |
-| Value Type        | Type of value this widget should display and return                                                   | integer               | text                            |
-| Branched          | Whether source of the list is 'branched', which allows listing of entries for the current branch only | true                  | false                           |
-| Allow Free Format | Allow entry of values not in the item list                                                            | false                 | true                            |
-| DOM               | Additional dom properties to pass on to Autocomplete component                                        | -                     | -                               |
+| Property                     | Definition                                                                                            | Example               | Default                         |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------- |
+| Label Path                   | Json path (or JMES pattern) to name field to display as label in drop down                            | data.main.name        | name or data.name               |
+| Tooltip Path                 | Json path (or JMES pattern) to description field to display as tooltip in drop down                   | data.main.description | description or data.description |
+| Icon Path                    | Json path (or JMES pattern) to icon name field to display in drop down                                | data.main.icon        | -                               |
+| Group Path                   | Json path (or JMES pattern) to a field for grouping values by in drop down                            | data.domain           | -                               |
+| Value Type                   | Type of value this widget should display and return                                                   | integer               | text                            |
+| Branched                     | Whether source of the list is 'branched', which allows listing of entries for the current branch only | true                  | false                           |
+| Allow Free Format            | Allow entry of values not in the item list                                                            | false                 | true                            |
+| Input DOM (`inputProps.dom`) | Additional DOM properties to pass to the Autocomplete component                                       | -                     | -                               |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -361,6 +362,10 @@ TreeArrayEditor displays hierarchical list of items in a tree-like structure, al
 {% endtab %}
 {% endtabs %}
 
+### Tree Multi Select Editor
+
+TreeMultiSelectEditor provides multi-selection from a hierarchical list of items.
+
 ### Multi Item Table Editor
 
 ItemTableArrayEditor displays a table of items, allowing easy selection of records while seeing their details. This widget has the following special properties in addition to [sourced widget properties](./#filtered-widgets):
@@ -425,6 +430,7 @@ TableArrayEditor displays a list of objects in table form with all columns edita
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------- |
 | Single Column Widget | Widget to use for a single column table                                                                                                          | TextEditor                                                                                                         | -       |
 | Single Column Props  | Extra properties to pass on to single column table                                                                                               | {"source": "category"}                                                                                             | -       |
+| Field Properties     | Properties to pass to every table column when `contents` is undefined                                                                            | {"sortable": true}                                                                                                 | -       |
 | Column List          | UI description of all table columns similar to grid contents, including simpler widgets (img, time, date, array, table, pattern, option) as well | <p>[</p><p>{"path":"name", "widget":"TextEditor", "props": {}},</p><p>{"path":"image", "widget":"img"}</p><p>]</p> | -       |
 {% endtab %}
 
@@ -479,12 +485,12 @@ ObjectTableArrayEditor displays a list of objects in table form with selected fi
 
 {% tabs %}
 {% tab title="Table" %}
-| Property     | Definition                                       | Example                                    | Default |
-| ------------ | ------------------------------------------------ | ------------------------------------------ | ------- |
-| Table Fields | List of Json paths to display as table columns   | \[{"path":"name", "widget": "TextEditor"}] | -       |
-| Editor Tabs  | Tab contents of displayed editor for row editing | \[{"tab":"DEFINITION"}]                    | -       |
-| Editor Title | Title to display on object editor                | Details                                    | -       |
-| Editor Icon  | Title to display on object editor                | edit                                       | -       |
+| Property                                 | Definition                                       | Example                                    | Default |
+| ---------------------------------------- | ------------------------------------------------ | ------------------------------------------ | ------- |
+| Table Fields (`props.tableFields`)       | List of Json paths to display as table columns   | \[{"path":"name", "widget": "TextEditor"}] | -       |
+| Editor Tabs (`props.uiDesign.tabs`)      | Tab contents of displayed editor for row editing | \[{"tab":"DEFINITION"}]                    | -       |
+| Editor Title (`props.uiDesign.title`)    | Title to display on object editor                | Details                                    | -       |
+| Editor Icon (`props.uiDesign.titleIcon`) | Icon to display on object editor                 | edit                                       | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -516,7 +522,7 @@ ObjectTableArrayEditor displays a list of objects in table form with selected fi
             },
             "title": {
               "type": "string",
-              "description": "Title to display on object editor",
+              "description": "Icon to display on object editor",
               "default": null,
               "examples": ["Details"]
             },
@@ -542,10 +548,10 @@ GridArrayEditor displays a list of objects in a Grid structure. This widget has 
 
 {% tabs %}
 {% tab title="Table" %}
-| Property  | Definition                                                | Example                                               | Default |
-| --------- | --------------------------------------------------------- | ----------------------------------------------------- | ------- |
-| Grid Size | Size of each grid entry (out of 12 per row)               | 6                                                     | 12      |
-| Grid List | List of grids, each with content specifications and props | \[{"contents":\[{"path":"name"}], "props":{"sm":6\}}] | -       |
+| Property                       | Definition                                                | Example                                               | Default |
+| ------------------------------ | --------------------------------------------------------- | ----------------------------------------------------- | ------- |
+| Grid Size                      | Size of each grid entry (out of 12 per row)               | 6                                                     | 12      |
+| Grid List (`valueProps.grids`) | List of grids, each with content specifications and props | \[{"contents":\[{"path":"name"}], "props":{"sm":6\}}] | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -585,12 +591,12 @@ DataGridEditor displays a rich and interactive Excel-like grid structure, suppor
 
 {% tabs %}
 {% tab title="Table" %}
-| Property            | Definition                                                     | Example                                                                                                         | Default |
-| ------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------- |
-| Column List         | List of AG Grid columns and their features                     | <p>[{<br>"field": "quantity",<br>"headerName": "Qty",<br>"maxWidth": 100,<br>"cellDataType": "number"<br>}]</p> | -       |
-| Show Add Row Button | Whether an add button should be displayed to allow adding rows | true                                                                                                            | false   |
-| Height              | Height of the data grid                                        | 100px                                                                                                           | 80vh    |
-| Enabled Features    | Features to enable on AG Grid                                  | {filtering: true, sideBar: true}                                                                                | -       |
+| Property                                          | Definition                                                     | Example                                                                                                         | Default |
+| ------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------- |
+| Column List (`valueProps.columns`)                | List of AG Grid columns and their features                     | <p>[{<br>"field": "quantity",<br>"headerName": "Qty",<br>"maxWidth": 100,<br>"cellDataType": "number"<br>}]</p> | -       |
+| Show Add Row Button (`props.ui.showAddRowButton`) | Whether an add button should be displayed to allow adding rows | true                                                                                                            | false   |
+| Height (`props.ui.height`)                        | Height of the data grid                                        | 100px                                                                                                           | 80vh    |
+| Enabled Features (`props.enabledFeatures`)        | Features to enable on AG Grid                                  | {filtering: true, sideBar: true}                                                                                | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -663,10 +669,10 @@ TabArrayEditor displays a list of objects inside a tab panel, where adding new e
 
 {% tabs %}
 {% tab title="Table" %}
-| Property       | Definition                                                             | Example                                               | Default           |
-| -------------- | ---------------------------------------------------------------------- | ----------------------------------------------------- | ----------------- |
-| Tab Label Path | Json path for displaying as tab labels                                 | tab                                                   | name or data.name |
-| Grid List      | List of grids for each tab, each with content specifications and props | \[{"contents":\[{"path":"name"}], "props":{"sm":6\}}] | -                 |
+| Property                       | Definition                                                             | Example                                               | Default           |
+| ------------------------------ | ---------------------------------------------------------------------- | ----------------------------------------------------- | ----------------- |
+| Tab Label Path                 | Json path for displaying as tab labels                                 | tab                                                   | name or data.name |
+| Grid List (`valueProps.grids`) | List of grids for each tab, each with content specifications and props | \[{"contents":\[{"path":"name"}], "props":{"sm":6\}}] | -                 |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -706,10 +712,10 @@ CustomizeArrayEditor is a special editor which displays data customizations for 
 
 {% tabs %}
 {% tab title="Table" %}
-| Property             | Definition                                                                                 | Example                                               | Default       |
-| -------------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ------------- |
-| Customization Source | Name of data source mapping to use for fetching list of customization names, types and ids | product\_customization                                | customization |
-| Grid List            | List of grids, each with content specifications and props for customized data entries      | \[{"contents":\[{"path":"name"}], "props":{"sm":6\}}] | -             |
+| Property                       | Definition                                                                                 | Example                                               | Default       |
+| ------------------------------ | ------------------------------------------------------------------------------------------ | ----------------------------------------------------- | ------------- |
+| Customization Source           | Name of data source mapping to use for fetching list of customization names, types and ids | product\_customization                                | customization |
+| Grid List (`valueProps.grids`) | List of grids, each with content specifications and props for customized data entries      | \[{"contents":\[{"path":"name"}], "props":{"sm":6\}}] | -             |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -794,6 +800,10 @@ MediaArrayEditor displays a list of images or videos, each represented by their 
 ```
 {% endtab %}
 {% endtabs %}
+
+### Google Maps Array Editor
+
+GoogleMapsArrayEditor displays and edits an array of locations on a Google Maps view.
 
 ### Multi Media Metadata Editor
 

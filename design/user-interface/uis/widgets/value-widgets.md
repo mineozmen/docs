@@ -18,11 +18,11 @@ TextEditor provides ability to enter free text data. This widget has the followi
 
 {% tabs %}
 {% tab title="Table" %}
-| Property     | Definition                                          | Example | Default |
-| ------------ | --------------------------------------------------- | ------- | ------- |
-| Value Type   | Type of value this widget should display and return | integer | text    |
-| Is Multiline | Whether text should be displayed as multiple lines  | true    | false   |
-| Rows         | Number of rows to display (if multiline)            | 5       | -       |
+| Property     | Configuration path    | Definition                                          | Example | Default |
+| ------------ | --------------------- | --------------------------------------------------- | ------- | ------- |
+| Value Type   | `props.valueType`     | Type of value this widget should display and return | integer | text    |
+| Is Multiline | `props.dom.multiline` | Whether text should be displayed as multiple lines  | true    | false   |
+| Rows         | `props.dom.rows`      | Number of rows to display (if multiline)            | 5       | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -63,18 +63,19 @@ CodeEditor provides ability to enter multi-line code with syntax highlighting an
 
 {% tabs %}
 {% tab title="Table" %}
-| Property              | Definition                              | Example | Default    |
-| --------------------- | --------------------------------------- | ------- | ---------- |
-| Language              | Programming language to use for syntax  | java    | javascript |
-| Theme                 | Color theme for the editor              | -       | -          |
-| Max Lines             | Maximum lines to display                | 100     | -          |
-| Min Lines             | Minimum lines to display                | 10      | -          |
-| Cursor Start          | Starting position for the cursor        | -       | -          |
-| Tab Size              | Characters for tab                      | 4       | -          |
-| Enable Wrap           | Whether word wrapping should be allowed | true    | false      |
-| Show Gutter           | Whether gutter should be displayed      | false   | true       |
-| Show Print Margin     | Whether margin should be displayed      | false   | true       |
-| Highlight Active Line | Whether active line should be colored   | false   | true       |
+| Property              | Definition                                | Example | Default    |
+| --------------------- | ----------------------------------------- | ------- | ---------- |
+| Language              | Programming language to use for syntax    | java    | javascript |
+| Syntax Threshold      | Maximum text length for syntax processing | 100000  | 50000      |
+| Theme                 | Color theme for the editor                | -       | -          |
+| Max Lines             | Maximum lines to display                  | 100     | -          |
+| Min Lines             | Minimum lines to display                  | 10      | -          |
+| Cursor Start          | Starting position for the cursor          | -       | -          |
+| Tab Size              | Characters for tab                        | 4       | -          |
+| Enable Wrap           | Whether word wrapping should be allowed   | true    | false      |
+| Show Gutter           | Whether gutter should be displayed        | false   | true       |
+| Show Print Margin     | Whether margin should be displayed        | false   | true       |
+| Highlight Active Line | Whether active line should be colored     | false   | true       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -203,7 +204,7 @@ ValueDisplay provides ability to display static values using Typography. This wi
 
 ### Delimited Text Editor
 
-TextToArrayEditor provides ability to edit delimited test fields as array elements (ensuring automated and correct application of delimiters). This widget has the following special properties:
+TextToArrayEditor provides ability to edit delimited text fields as array elements, ensuring automated and correct application of delimiters. This widget has the following special properties:
 
 {% tabs %}
 {% tab title="Table" %}
@@ -310,6 +311,14 @@ SelectEditor provides ability to select from a predefined list of options (eithe
 {% endtab %}
 {% endtabs %}
 
+### Radio Group Editor
+
+RadioGroupEditor lets users select one option from a radio group. Configure the available options through the widget's standard option configuration.
+
+### Select Menu Editor
+
+SelectMenuEditor lets users select one option from a menu. Configure the available options through the widget's standard option configuration.
+
 ### Autocomplete Editor
 
 AutoCompleteTextEditor provides a list of options to choose from, which is filtered with autocomplete feature. It is also possible to enter a value not included in the list of options to this widget. This widget has the following special properties:
@@ -378,11 +387,11 @@ BoxSelectEditor provides ability to select from a predefined list of options all
 
 {% tabs %}
 {% tab title="Table" %}
-| Property       | Definition                                             | Example        | Default |
-| -------------- | ------------------------------------------------------ | -------------- | ------- |
-| Options Source | Name of the options list used for selection            | conditionClass | -       |
-| Options List   | Actual contents of the options list used for selection | \[{"id":"1"}]  | -       |
-| Size           | Grid size of each displayed entry                      | 3              | -       |
+| Property       | Configuration path   | Definition                                             | Example        | Default |
+| -------------- | -------------------- | ------------------------------------------------------ | -------------- | ------- |
+| Options Source | `props.options`      | Name of the options list used for selection            | conditionClass | -       |
+| Options List   | `props.optionValues` | Actual contents of the options list used for selection | \[{"id":"1"}]  | -       |
+| Size           | `valueProps.size`    | Grid size of each displayed entry                      | 3              | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -540,6 +549,167 @@ SwitchEditor provides ability to enter true/false values with a switch. This wid
 {% endtab %}
 {% endtabs %}
 
+### Cron Editor
+
+CronEditor edits a six-field cron expression. It provides field help and a readable expression description. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property | Definition                               | Example                       | Default |
+| -------- | ---------------------------------------- | ----------------------------- | ------- |
+| DOM      | Attributes to pass to the editor wrapper | `{"className":"cron-editor"}` | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CronEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "dom": {
+          "type": "object",
+          "description": "Attributes to pass to the editor wrapper",
+          "default": null,
+          "examples": [{ "className": "cron-editor" }]
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### Duration Editor
+
+DurationEditor edits a duration with separate inputs for each time unit. It stores the result as a number. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property        | Definition                       | Example           | Default |
+| --------------- | -------------------------------- | ----------------- | ------- |
+| Stored Unit     | Unit used to store the number    | `ms`              | -       |
+| Max Value       | Maximum value in the stored unit | `3600`            | -       |
+| Displayed Units | Units shown in the editor        | `["h", "m", "s"]` | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DurationEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "period": {
+          "type": "string",
+          "description": "Unit used to store the number",
+          "default": null,
+          "examples": ["ms"],
+          "enum": ["ms", "s", "m", "h", "d"]
+        },
+        "maxValue": {
+          "type": "number",
+          "description": "Maximum value in the stored unit",
+          "default": null,
+          "examples": [3600]
+        },
+        "units": {
+          "type": "array",
+          "description": "Units shown in the editor",
+          "default": null,
+          "examples": [["h", "m", "s"]],
+          "items": {
+            "type": "string",
+            "enum": ["d", "h", "m", "s", "ms"]
+          }
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+### Radio Group Editor
+
+RadioGroupEditor selects one value from options displayed as radio buttons. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property       | Definition                         | Example                        | Default |
+| -------------- | ---------------------------------- | ------------------------------ | ------- |
+| Options Source | Name of the options list           | `status`                       | -       |
+| Options List   | Inline radio-button options        | `[{"id":"A","name":"Active"}]` | -       |
+| Orientation    | Layout direction for radio buttons | `horizontal`                   | -       |
+| Disabled       | Whether the editor is disabled     | `true`                         | false   |
+| Read Only      | Whether the editor is read-only    | `true`                         | false   |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RadioGroupEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "options": {
+          "type": "string",
+          "description": "Name of the options list",
+          "default": null,
+          "examples": ["status"]
+        },
+        "optionValues": {
+          "type": "array",
+          "description": "Inline radio-button options",
+          "default": null,
+          "examples": [[{ "id": "A", "name": "Active" }]],
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string", "description": "Option ID" },
+              "name": { "type": "string", "description": "Option label" },
+              "disabled": { "type": "boolean", "description": "Whether the option is disabled" }
+            }
+          }
+        },
+        "orientation": {
+          "type": "string",
+          "description": "Layout direction for radio buttons",
+          "default": null,
+          "examples": ["horizontal"],
+          "enum": ["vertical", "horizontal"]
+        },
+        "isDisabled": {
+          "type": "boolean",
+          "description": "Whether the editor is disabled",
+          "default": false,
+          "examples": [true]
+        },
+        "isReadOnly": {
+          "type": "boolean",
+          "description": "Whether the editor is read-only",
+          "default": false,
+          "examples": [true]
+        }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ### Date Time Editor
 
 <figure><img src="../../../../.gitbook/assets/image (8).png" alt="" width="206"><figcaption></figcaption></figure>
@@ -548,14 +718,14 @@ DateTimeEditor provides ability to select date/time with time zone information a
 
 {% tabs %}
 {% tab title="Table" %}
-| Property          | Definition                           | Example     | Default |
-| ----------------- | ------------------------------------ | ----------- | ------- |
-| Level             | Level of date to be selected         | day         | time    |
-| Pplaceholder      | Text to display as placeholder       | Select date | -       |
-| Locale            | Date/time locale                     | -           | -       |
-| Peek Next Month   | Whether to show days from next month | true        | false   |
-| Show Week Numbers | Whether to show week numbers         | true        | false   |
-| As Modal          | Whether to display as modal          | true        | false   |
+| Property          | Configuration path          | Definition                           | Example     | Default |
+| ----------------- | --------------------------- | ------------------------------------ | ----------- | ------- |
+| Level             | `props.level`               | Level of date to be selected         | day         | time    |
+| Placeholder       | `props.placeholder`         | Text to display as placeholder       | Select date | -       |
+| Locale            | `props.dom.locale`          | Date/time locale                     | -           | -       |
+| Peek Next Month   | `props.dom.peekNextMonth`   | Whether to show days from next month | true        | false   |
+| Show Week Numbers | `props.dom.showWeekNumbers` | Whether to show week numbers         | true        | false   |
+| As Modal          | `props.dom.withPortal`      | Whether to display as modal          | true        | false   |
 {% endtab %}
 
 {% tab title="JSON Schema" %}

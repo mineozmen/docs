@@ -70,7 +70,12 @@ DependentObjectEditor provides ability to search for, create and edit entries th
           "type": "string",
           "description": "Type of dependent lister to use for displaying records.",
           "default": "DependentQueryTableLister",
-          "examples": ["DependentHandlebarsLister"]
+          "examples": ["DependentHandlebarsLister"],
+          "enum": [
+            "DependentCustomCodeLister",
+            "DependentHandlebarsLister",
+            "DependentQueryTableLister"
+          ]
         },
         "keepFilters": {
           "type": "boolean",
@@ -92,20 +97,20 @@ RelatedObjectEditor provides ability to create relation between current record a
 
 {% tabs %}
 {% tab title="Table" %}
-| Property                   | Definition                                                                          | Example                                         | Default |
-| -------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
-| Object Source              | Name of data source mapping to use for fetching list of related records and details | product                                         | -       |
-| Object Selector Path       | Json path to the id field for representing related record                           | id                                              | -       |
-| Object Detail Source       | Overriding data source name to use when displaying related record details           | product-list                                    | -       |
-| Detail Filter              | Filter parameter to pass related records with when querying from detail source      | productids                                      | -       |
-| Detail Columns             | List of table column configurations for displaying related record details           | {"path":"id","title":"ID"}                      | -       |
-| Object List Source         | Overriding data source name to use when searching for records                       | product-search                                  | -       |
-| List Main & Detail Filters | List of main and extra filters for searching from list source                       | "main":\[{"path":"name","widget":"TextFilter"}] | -       |
-| List Columns               | List of table column configurations for displaying search results                   | {"path":"id","title":"ID"}                      | -       |
-| Path to Assign from        | Json path for value to assign to related entities from current record               | id                                              | -       |
-| Path to Assign to          | Json path of related entities to update                                             | data.main.collections                           | -       |
-| Add Url                    | Url for adding relation to new entities                                             | request/rpc/productw/AddToCollection            | -       |
-| Remove URL                 | Url for removing relation from existing entities                                    | request/rpc/productw/RemoveFromCollection       | -       |
+| Property                  | Definition                                                                          | Example                                         | Default |
+| ------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
+| Object Source             | Name of data source mapping to use for fetching list of related records and details | product                                         | -       |
+| Object Selector Path      | Json path to the id field for representing related record                           | id                                              | -       |
+| Object Detail Source      | Overriding data source name to use when displaying related record details           | product-list                                    | -       |
+| Detail Filter             | Filter parameter to pass related records with when querying from detail source      | productids                                      | -       |
+| Detail Columns            | List of table column configurations for displaying related record details           | {"path":"id","title":"ID"}                      | -       |
+| Object List Source        | Overriding data source name to use when searching for records                       | product-search                                  | -       |
+| List Main & Extra Filters | List of main and extra filters for searching from list source                       | "main":\[{"path":"name","widget":"TextFilter"}] | -       |
+| List Columns              | List of table column configurations for displaying search results                   | {"path":"id","title":"ID"}                      | -       |
+| Path to Assign from       | Json path for value to assign to related entities from current record               | id                                              | -       |
+| Path to Assign to         | Json path of related entities to update                                             | data.main.collections                           | -       |
+| Add Url                   | Url for adding relation to new entities                                             | request/rpc/productw/AddToCollection            | -       |
+| Remove URL                | Url for removing relation from existing entities                                    | request/rpc/productw/RemoveFromCollection       | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -176,11 +181,23 @@ RelatedObjectEditor provides ability to create relation between current record a
                       "widget": { "type": "string" }
                     }
                   }
+                },
+                "extra": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": { "type": "string" },
+                      "widget": { "type": "string" },
+                      "props": { "type": "object" }
+                    }
+                  }
                 }
               },
               "examples": [
                 {
-                  "main": [{ "path": "name", "widget": "TextFilter" }]
+                  "main": [{ "path": "name", "widget": "TextFilter" }],
+                  "extra": [{ "path": "status", "widget": "SelectFilter", "props": {} }]
                 }
               ]
             },
@@ -233,8 +250,8 @@ RelatedObjectEditor provides ability to create relation between current record a
 
 ## History Display
 
-HistoryDisplay is a specialized editor for displaying historical versions of an item.
+HistoryDisplay is a specialized editor for displaying historical versions of an item. It has no widget-specific configuration.
 
-## Runner Element Viewer
+## Element Viewer
 
-ElementViewer is a specialized editor for displaying details of an element added to a runner.
+ElementViewer is a specialized editor for displaying details of an element added to a runner. It has no widget-specific configuration.
