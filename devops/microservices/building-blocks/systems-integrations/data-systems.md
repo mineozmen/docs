@@ -29,13 +29,17 @@ implementation (group:'com.rierino.processors', name: 'mongodb', version:"${rier
 
 ## JDBC
 
-Includes settings required for connecting to a database using JDBC.&#x20;
+Includes settings required for connecting to a database using JDBC.
 
-| Setting              | Definition                                                                   | Example                                       | Default |
-| -------------------- | ---------------------------------------------------------------------------- | --------------------------------------------- | ------- |
-| uri                  | JDBC data source uri                                                         | jdbc:sqlite:test.db                           | -       |
-| connectionProperties | JDBC connection properties                                                   | DriverClassName=org.sqlite.JDBC,Username=user | -       |
-| dataSourceClassName  | [XA data source class name for transaction handling](#user-content-fn-1)[^1] | org.postgresql.xa.PGXADataSource              | -       |
+| Setting              | Definition                                                                                              | Example                                       | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------- |
+| uri                  | JDBC data source uri                                                                                    | jdbc:sqlite:test.db                           | -       |
+| connectionProperties | JDBC connection properties                                                                              | DriverClassName=org.sqlite.JDBC,Username=user | -       |
+| dataSourceClassName  | [XA data source class name for transaction handling](#user-content-fn-1)[^1]                            | org.postgresql.xa.PGXADataSource              | -       |
+| username             | Database username, if not included in uri                                                               | -                                             | -       |
+| password             | Database password, if not included in uri                                                               | -                                             | -       |
+| connectionType       | Required connection type: basic (pooled) or xa (distributed transactions, requires dataSourceClassName) | xa                                            | basic   |
+| useTransaction       | Whether each operation runs in its own transaction (set to false if a parent saga transaction is used)  | false                                         | true    |
 
 {% embed url="https://commons.apache.org/proper/commons-dbcp/configuration.html" %}
 Connection Properties
@@ -82,10 +86,11 @@ implementation (group:'com.rierino.custom', name: 'elastic', version:"${rierinoV
 
 Includes settings required for connecting to a Redis store.
 
-| Setting | Definition                                                                                       | Example                | Default |
-| ------- | ------------------------------------------------------------------------------------------------ | ---------------------- | ------- |
-| uri     | Connection string in URI format for connecting to Redis system (can be multiple comma separated) | redis://localhost:6379 | -       |
-| master  | Master name if using sentinel pool                                                               | master                 | -       |
+| Setting         | Definition                                                                                       | Example                | Default |
+| --------------- | ------------------------------------------------------------------------------------------------ | ---------------------- | ------- |
+| uri             | Connection string in URI format for connecting to Redis system (can be multiple comma separated) | redis://localhost:6379 | -       |
+| master          | Master name if using sentinel pool                                                               | master                 | -       |
+| redisson.config | Redisson client configuration in yaml, used by Redisson state managers and locks                 | -                      | -       |
 
 {% embed url="https://redis.io" %}
 Redis Page
@@ -137,4 +142,4 @@ This system requires the following dependency added to [deployment contents](../
 implementation (group:'com.rierino.processors', name: 'etcd', version:"${rierinoVersion}")
 ```
 
-[^1]: JDBC system connections use Atomikos for transaction handling, hence also require its configuration parameters.&#x20;
+[^1]: JDBC system connections use Atomikos for transaction handling, hence also require its configuration parameters.

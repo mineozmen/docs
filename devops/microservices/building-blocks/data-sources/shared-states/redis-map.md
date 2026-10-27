@@ -13,3 +13,8 @@ description: >-
 | system            | Name of the [system ](../../systems-integrations/#redis)which defines Redis service details (uri) | {uri:"redis://127.0.0.1:6379"} | master.redis.uri |
 | collection        | Name of the collection to store details, which is used as a prefix in Redis keys                  | product                        | -                |
 | journalCollection | Name of the collection to store state changes, which is used as a prefix in Redis keys            | product\_journal               | -                |
+| ttl               | Seconds after which records expire, if given                                                      | 3600                           | -                |
+
+### Redisson variant
+
+`com.rierino.state.manager.RedissonStateManager` uses the same parameters: `system`, `collection`, `journalCollection`, and `ttl`. Its system must define `redisson.config` for the Redisson client.

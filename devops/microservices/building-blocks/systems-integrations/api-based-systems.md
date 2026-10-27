@@ -10,24 +10,28 @@ description: >-
 
 Includes settings required for connecting with an http server for standard REST API calls.
 
-| Setting            | Definition                                                                                                               | Example                                           | Default                       |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- | ----------------------------- |
-| url                | Base URL for REST endpoint                                                                                               | http://localhost:8080/api                         | -                             |
-| contentType        | Media content type for REST communications ("query" for url parameters, "none" for no content)                           | application/xml                                   | application/json              |
-| trust              | Whether endpoint should be trusted without SSL validation                                                                | true                                              | false                         |
-| auth.method        | Method to use for authentication to endpoint (input, basic, bearer, oauth2, oauth1, jwt, custom)                         | basic                                             | -                             |
-| auth.token.header  | Header to include generated token in                                                                                     | custom-auth                                       | Authorization                 |
-| auth.prefix        | Prefix to include for generated token                                                                                    | none (for no prefix)                              | Bearer (Basic for basic auth) |
-| header.\[header]   | Additional header to send in system communications                                                                       | special-header=value                              | -                             |
-| clientPrefix       | Client library specific prefix to use for setting client properties                                                      | jersey.config.client                              | -                             |
-| client.\[property] | Client library specific property to include                                                                              | async.threadPoolSize=10                           | -                             |
-| alternateUrls      | Comma separated list of alternate URLs for fallback                                                                      | http://back1.example.com,http://back2.example.com | -                             |
-| retries            | Maximum number of retries allowed in case of server failure                                                              | 5                                                 | 0                             |
-| backoffMs          | Milliseconds to wait between retries                                                                                     | 500                                               | 1000                          |
-| failTTLMs          | Milliseconds to wait until reconsidering a base or alternate URL                                                         | 10000                                             | 5000                          |
-| responseCookies    | Json path to return cookie details received in response (in {path, value, domain, expiry, \[name]} format)               | cookies                                           | -                             |
-| responseHeaders    | Json path to return header details received in response (in {\[name]:\[]} format)                                        | headers                                           | -                             |
-| connector          | Rest conector to use (default for multi part body support, apache for native PATCH calls without method header override) | apache                                            | default                       |
+| Setting            | Definition                                                                                                                | Example                                           | Default                       |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----------------------------- |
+| url                | Base URL for REST endpoint                                                                                                | http://localhost:8080/api                         | -                             |
+| contentType        | Media content type for REST communications ("query" for url parameters, "none" for no content)                            | application/xml                                   | application/json              |
+| trust              | Whether endpoint should be trusted without SSL validation                                                                 | true                                              | false                         |
+| auth.method        | Method to use for authentication to endpoint (input, basic, bearer, oauth2, oauth1, jwt)                                  | basic                                             | -                             |
+| auth.token.header  | Header to include generated token in                                                                                      | custom-auth                                       | Authorization                 |
+| auth.prefix        | Prefix to include for generated token                                                                                     | none (for no prefix)                              | Bearer (Basic for basic auth) |
+| header.\[header]   | Additional header to send in system communications                                                                        | special-header=value                              | -                             |
+| clientPrefix       | Client library specific prefix to use for setting client properties                                                       | jersey.config.client                              | -                             |
+| client.\[property] | Client library specific property to include                                                                               | async.threadPoolSize=10                           | -                             |
+| alternateUrls      | Comma separated list of alternate URLs for fallback                                                                       | http://back1.example.com,http://back2.example.com | -                             |
+| retries            | Maximum number of retries allowed in case of server failure                                                               | 5                                                 | 0                             |
+| backoffMs          | Milliseconds to wait between retries                                                                                      | 500                                               | 1000                          |
+| failTTLMs          | Milliseconds to wait until reconsidering a base or alternate URL                                                          | 10000                                             | 5000                          |
+| responseCookies    | Json path to return cookie details received in response (in {path, value, domain, expiry, \[name]} format)                | cookies                                           | -                             |
+| responseHeaders    | Json path to return header details received in response (in {\[name]:\[]} format)                                         | headers                                           | -                             |
+| returnErrors       | Whether error responses should be returned instead of failing                                                             | true                                              | false                         |
+| responseStatus     | Json path to include response HTTP status in                                                                              | status                                            | -                             |
+| responseType       | Media type to parse responses with, if it differs from the response header or request content type                        | application/json                                  | -                             |
+| encoding           | Compression encoding to apply on requests and accept in responses (gzip, deflate)                                         | gzip                                              | -                             |
+| connector          | REST connector to use (default for multi part body support, apache for native PATCH calls without method header override) | apache                                            | default                       |
 
 {% embed url="https://www.youtube.com/watch?v=4KXbjt1qylk" %}
 
@@ -36,9 +40,9 @@ Example Rest System Definition (Can be Imported on Element Screen)
 {% endfile %}
 
 {% hint style="info" %}
-When using XML contents, json body elements starting with [- character are converted](#user-content-fn-1)[^1] to attributes. E.g.&#x20;
+When using XML contents, json body elements starting with [- character are converted](#user-content-fn-1)[^1] to attributes. E.g.
 
-{"soapenv:Envelope": {"-xmls:soapenv": "[http://schemas.xmlsoap.org/soap/envelope/](http://schemas.xmlsoap.org/soap/envelope/)"} }&#x20;
+{"soapenv:Envelope": {"-xmls:soapenv": "[http://schemas.xmlsoap.org/soap/envelope/](http://schemas.xmlsoap.org/soap/envelope/)"} }
 
 generates
 
@@ -49,9 +53,7 @@ generates
 Cookies can be sent using "header.cookie" header parameter with "\[name]=\[value];\[name]=\[value]" format as the header value, similar to regular headers.
 {% endhint %}
 
-
-
-Based on auth.method, additional system parameters are used:
+Based on auth.method, additional system parameters are used. OAuth1 is supported but has no additional parameter section.
 
 ### Input Authentication Method
 
@@ -114,10 +116,10 @@ Depending on the grant type parameter, additional settings are applicable as fol
 
 #### Password Grant Type
 
-| Setting       | Definition                | Example | Default |
-| ------------- | ------------------------- | ------- | ------- |
-| auth.username | Username for scribe grant | admin   | -       |
-| auth.password | Password for scribe grant | pass    | -       |
+| Setting       | Definition                  | Example | Default |
+| ------------- | --------------------------- | ------- | ------- |
+| auth.username | Username for password grant | admin   | -       |
+| auth.password | Password for password grant | pass    | -       |
 
 #### Refresh Token Grant Type
 

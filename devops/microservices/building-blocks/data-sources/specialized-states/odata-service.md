@@ -14,6 +14,7 @@ description: >-
 | system    | Name of the rest system which defines remote service details (url, auth, allowPatch) | {url:"http://odata.example.com"} | -       |
 | path      | Path of the resource on target system                                                | /odata                           | -       |
 | entity    | Name of the resource on target system                                                | product                          | -       |
+| entityId  | Entity ID field: name of the entity key field (**OData 2 only**)                     | id                               | -       |
 
 {% hint style="info" %}
 Selected state manager library version should match target web service's odata version.

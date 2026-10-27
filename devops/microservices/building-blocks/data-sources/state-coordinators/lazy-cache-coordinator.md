@@ -14,4 +14,4 @@ State manager searches for requested ids in cache first, and the loader afterwar
 | ----------------- | ---------------------------------------------------------------------------------------- | --------------- | ------- |
 | cache.state       | Name of the state manager which acts as the cache                                        | variable\_local | -       |
 | expirationSeconds | Optional TTL seconds to ignore old cache entries (typically used when CDC is not active) | 60              | -       |
-
+| cache.null        | Whether missing records should also be cached                                            | true            | false   |

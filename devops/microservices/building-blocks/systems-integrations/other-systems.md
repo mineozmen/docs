@@ -26,8 +26,8 @@ Samza Systems Configurations
 | systems.$alias.consumer.dlq.suffix                         | dlq.suffix       | Suffix to add to CDC stream names for dead letter queues                                         | \_fail                                | -                              |
 | systems.$alias.consumer.dlq.enrich                         | dlq.enrich       | Whether dead letter queue entries should include CDC content                                     | true                                  | false                          |
 | systems.$alias.consumer.offset.type                        | offset.type      | Type of resume token / offset value (long, comparable or unordered)                              | long                                  | unordered                      |
-| systems.$alias.consumer.pollMs                             | -[^1]            | Milliseconds to wait before polling new records                                                  | 5000                                  | 1000                           |
-| systems.$alias.consumer.asPulse                            | -[^1]            | Whether CDC should produce records as pulse instead of CDC records                               | false                                 | true                           |
+| systems.$alias.consumer.pollMs                             | -                | Milliseconds to wait before polling new records                                                  | 5000                                  | 1000                           |
+| systems.$alias.consumer.asPulse                            | -                | Whether CDC should produce records as pulse instead of CDC records                               | false                                 | true                           |
 | systems.$alias.consumer.manager.parameter.ignoreTerminate  | ignoreTerminate  | Whether the system should stop listening if a TERMINATE operation is received                    | true                                  | false                          |
 | systems.$alias.consumer.manager.parameter.onResumeFail     | onResumeFail     | Type of action when CDC manager can not resume from last checkpoint (SKIP, MUTE or FATAL)        | FATAL                                 | SKIP                           |
 | systems.$alias.consumer.manager.parameter.onRecordFail     | onRecordFail     | Type of action when CDC manager can not process current change record (SKIP, DLQ, MUTE or FATAL) | FATAL                                 | SKIP                           |
@@ -63,6 +63,10 @@ implementation (group:'com.rierino.custom', name: 'debezium', version:"${rierino
 Runners using CDC managers should be deployed with single replicas since managers consume all records coming from a CDC stream without applying any partitioning. To apply partitioning on these records, the runners should output records to Kafka topics and run business logic on runners consuming these topics.
 {% endhint %}
 
+## Custom Stream
+
+A custom stream system uses type `auto`. Its `manager` setting is the fully qualified class name of a custom stream manager. All other settings are passed to that manager. The CDC settings in the preceding table also apply, including `offset.type`, `ignoreResume`, `resumeReset`, `dlq.suffix`, `dlq.enrich`, `onResumeFail`, and `onRecordFail`.
+
 ## Kafka
 
 Includes settings required for connecting to a Kafka cluster.
@@ -76,10 +80,10 @@ Includes settings required for connecting to a Kafka cluster.
 | rierino.system.$alias.consumer.\* | Kafka consumer configurations (except for Samza)                                            | bootstrap.servers=localhost:9092                               | -       |
 | rierino.system.$alias.producer.\* | Kafka producer configurations (except for Samza)                                            | batch.size=1                                                   | -       |
 | systems.$alias.\*                 | Samza specific connection configurations                                                    | samza.factory=org.apache.samza.system.kafka.KafkaSystemFactory | -       |
-| parameter.consumer.\[property]    | Kafka consumer properties                                                                   | auto.offset.reset=earliest                                     | -       |
-| parameter.producer.\[property]    | Kafka producer properties                                                                   | acks=0                                                         | -       |
-| parameter.output.backupSystem     | Name of backup system to use if a stream of this system fails                               | kafka\_backup                                                  | -       |
-| parameter.output.backupStream     | Name of backup stream to use if a stream of this system fails                               | journal\_backup                                                | -       |
+| consumer.\[property]              | Kafka consumer properties                                                                   | auto.offset.reset=earliest                                     | -       |
+| producer.\[property]              | Kafka producer properties                                                                   | acks=0                                                         | -       |
+| output.backupSystem               | Name of backup system to use if a stream of this system fails                               | kafka\_backup                                                  | -       |
+| output.backupStream               | Name of backup stream to use if a stream of this system fails                               | journal\_backup                                                | -       |
 
 {% embed url="https://kafka.apache.org" %}
 Kafka Page
@@ -142,10 +146,20 @@ Includes settings required for connecting to a NATS Streaming (NATS) system.
 
 Includes settings required for connecting to an email server system.
 
-| Setting         | Definition                                                              | Example                  | Default |
-| --------------- | ----------------------------------------------------------------------- | ------------------------ | ------- |
-| mail.\*         | Jakarta mail settings to apply                                          | mail.store.protocol=imap | -       |
-| mail.rierino.\* | Rierino OAuth2Auth authentication settings (when mechanism is XOAUTH2)  | -                        | -       |
+| Setting                             | Definition                                                             | Example              | Default |
+| ----------------------------------- | ---------------------------------------------------------------------- | -------------------- | ------- |
+| mail.transport.protocol             | Protocol used for sending emails (smtp, smtps)                         | smtps                | smtp    |
+| mail.smtp.host / mail.smtp.port     | Host and port for sending emails                                       | smtp.gmail.com / 587 | -       |
+| mail.smtp.user / mail.smtp.password | Credentials for sending emails                                         | -                    | -       |
+| mail.smtp.auth                      | Whether SMTP requires authentication                                   | true                 | false   |
+| mail.smtp.starttls.enable           | Whether SMTP connection uses StartTLS                                  | true                 | false   |
+| mail.store.protocol                 | Protocol used for receiving emails (imap, imaps, pop3)                 | imaps                | imap    |
+| mail.imap.host / mail.imap.port     | Host and port for receiving emails                                     | imap.gmail.com / 993 | -       |
+| mail.imap.user / mail.imap.password | Credentials for receiving emails                                       | -                    | -       |
+| mail.imap.folder                    | Folder to read emails from                                             | Archive              | INBOX   |
+| mail.imap.ssl.enable                | Whether IMAP connection uses SSL                                       | true                 | false   |
+| mail.\*                             | Additional Jakarta Mail settings to apply                              | mail.debug=true      | -       |
+| mail.rierino.\*                     | Rierino OAuth2Auth authentication settings (when mechanism is XOAUTH2) | -                    | -       |
 
 {% embed url="https://jakarta.ee/specifications/mail/" %}
 Jakarta Mail
@@ -161,12 +175,13 @@ implementation (group:'com.rierino.processors', name: 'mail', version:"${rierino
 
 Includes settings required for connecting to a file system. Additional HDFS settings can be applied using site.xml files.
 
-| Setting           | Definition                                                            | Example                                            | Default |
-| ----------------- | --------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| uri               | Filesystem root address                                               | hdfs://localhost:8020/master                       | -       |
-| fsspec.protocol   | Fsspec protocol when using file system with a Py4J handler            | sftp                                               | -       |
-| fsspec.options    | Json representation of fsspec options when using with a Py4J handler  | {host:"", port:22, username:"", password:""}       | -       |
-| hdfs.\[parameter] | Filesystem parameters when using with an FSEventHandler               | fs.s3a.impl=com.rierino.util.fs.CustomS3FileSystem | -       |
+| Setting           | Definition                                                           | Example                                            | Default |
+| ----------------- | -------------------------------------------------------------------- | -------------------------------------------------- | ------- |
+| uri               | Filesystem root address                                              | hdfs://localhost:8020/master                       | -       |
+| root              | Root folder for paths used by FSEventHandler                         | /uploads                                           | -       |
+| fsspec.protocol   | Fsspec protocol when using file system with a Py4J handler           | sftp                                               | -       |
+| fsspec.options    | Json representation of fsspec options when using with a Py4J handler | {host:"", port:22, username:"", password:""}       | -       |
+| hdfs.\[parameter] | Filesystem parameters when using with an FSEventHandler              | fs.s3a.impl=com.rierino.util.fs.CustomS3FileSystem | -       |
 
 {% hint style="info" %}
 Custom file systems listed in "Gateway Services" can be also used with FSEventHandler.
@@ -181,7 +196,7 @@ When writing to sequence files with FSEventHandler, this system also uses the fo
 | Setting          | Definition                                                                                    | Example                                             | Default                                             |
 | ---------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | path.writer      | Full class name of the path writer to use for generating file paths                           | com.rierino.handler.util.helper.hdfs.DatePathWriter | com.rierino.handler.util.helper.hdfs.DatePathWriter |
-| path.maxRows     | [Maximum records ](#user-content-fn-2)[^2]to include in each sequence file (-1 for unlimited) | 10000                                               | -1                                                  |
+| path.maxRows     | [Maximum records ](#user-content-fn-1)[^1]to include in each sequence file (-1 for unlimited) | 10000                                               | -1                                                  |
 | path.bufferSize  | Buffer size for sequence file writer                                                          | 1000                                                | -1                                                  |
 | path.blockSize   | Block size for sequence file writer                                                           | 100                                                 | -1                                                  |
 | path.compression | Compression to apply on sequence file writer                                                  | BLOCK                                               | NONE                                                |
@@ -190,7 +205,7 @@ When writing to sequence files with FSEventHandler, this system also uses the fo
 
 ## Camel
 
-Includes settings required for connecting to an Apache Camel system.&#x20;
+Includes settings required for connecting to an Apache Camel system.
 
 | Setting    | Definition                        | Example  | Default |
 | ---------- | --------------------------------- | -------- | ------- |
@@ -206,6 +221,4 @@ This system requires the following dependency added to [deployment contents](../
 implementation (group:'com.rierino.runner', name: 'camel', version:"${rierinoVersion}")
 ```
 
-[^1]: Defined at stream level instead
-
-[^2]: File is closed only after this number of records are produced        &#x20;
+[^1]: File is closed only after this number of records are produced
