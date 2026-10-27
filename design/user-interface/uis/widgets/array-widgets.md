@@ -130,7 +130,7 @@ SelectArrayEditor displays a list of values selected from a predefined set of op
 
 ### Multi Item Editor
 
-ItemArrayEditor displays a list of ids of a lookup record (such as attribute, category), with structure similar to ItemEditor. Each value is selected from an AutoComplete drop down and list of current values are displayed as Chips. This widget has the following special properties in addition to [sourced widget properties](./#filtered-widgets):
+ItemArrayEditor displays a list of ids of a lookup record (such as attribute, category), with structure similar to ItemEditor. Each value is selected from an AutoComplete drop down and list of current values are displayed as Chips. This widget has the following special properties in addition to [sourced widget properties](./#sourced-widgets):
 
 {% tabs %}
 {% tab title="Table" %}
@@ -322,7 +322,7 @@ ItemSearchArrayEditor displays a list of ids of a lookup record (such as product
 
 ### Multi Item Tree Editor
 
-TreeArrayEditor displays hierarchical list of items in a tree-like structure, allowing easy selection of records. This widget has the following special properties in addition to [sourced widget properties](./#filtered-widgets):
+TreeArrayEditor displays hierarchical list of items in a tree-like structure, allowing easy selection of records. This widget has the following special properties in addition to [sourced widget properties](./#sourced-widgets):
 
 {% tabs %}
 {% tab title="Table" %}
@@ -364,11 +364,28 @@ TreeArrayEditor displays hierarchical list of items in a tree-like structure, al
 
 ### Tree Multi Select Editor
 
-TreeMultiSelectEditor provides multi-selection from a hierarchical list of items.
+TreeMultiSelectEditor provides multi-selection from a hierarchical list of items. It supports [sourced widget properties](./#sourced-widgets) and these properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property     | Configuration path   | Definition                             | Example         |
+| ------------ | -------------------- | -------------------------------------- | --------------- |
+| Value Type   | `props.valueType`    | Type of values returned by the editor  | `string`        |
+| Label Path   | `props.itemLabel`    | Path used as the item label            | `data.name`     |
+| Parent Path  | `props.itemParent`   | Path used to create the item hierarchy | `data.parentId` |
+| Options List | `props.optionValues` | Used instead of source if provided     | `[{"id":"1"}]`  |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"TreeMultiSelectEditor widget properties","type":"object","properties":{"props":{"type":"object","properties":{"valueType":{"type":"string","description":"Type of values returned by the editor"},"itemLabel":{"type":"string","description":"Path used as the item label"},"itemParent":{"type":"string","description":"Path used to create the item hierarchy"},"optionValues":{"type":"array","description":"Used instead of source if provided","items":{"type":"object"}}}}}}
+```
+{% endtab %}
+{% endtabs %}
 
 ### Multi Item Table Editor
 
-ItemTableArrayEditor displays a table of items, allowing easy selection of records while seeing their details. This widget has the following special properties in addition to [sourced widget properties](./#filtered-widgets):
+ItemTableArrayEditor displays a table of items, allowing easy selection of records while seeing their details. This widget has the following special properties in addition to [sourced widget properties](./#sourced-widgets):
 
 {% tabs %}
 {% tab title="Table" %}

@@ -8,13 +8,14 @@ description: >-
 
 Widgets define the visual components which build up the editor screens. Each widget has a unique look and feel, and is able to work with certain types of data.
 
-There are 5 categories of widgets:
+There are 6 categories of widgets:
 
 * [**Value Widgets**](value-widgets.md)**:** Used for editing simple values such as text, numbers and boolean values
 * [**Array Widgets**](array-widgets.md)**:** Used for editing arrays of values or objects
 * [**Object Widgets**](object-widgets.md)**:** Used for editing Json objects
 * [**Indirect Widgets**](indirect-widgets.md)**:** Used for editing data that is not within current element's scope
 * [**Atom Widgets**](atom-widgets.md)**:** Used for display of simple data with traditional html elements
+* [**Hosted Widgets**](hosted-widgets.md)**:** Custom React components compiled at run time
 
 While all widgets have their own properties, most also support use of the following:
 

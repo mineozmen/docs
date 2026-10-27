@@ -240,16 +240,59 @@ LinkAtom is a wrapper, similar to ViewAtom, but using \<a> tag with a url refere
 {% endtab %}
 {% endtabs %}
 
+## HTML Atom
+
+HtmlAtom displays its data as raw HTML inside a `<div>` tag.
+
+{% tabs %}
+{% tab title="Table" %}
+| Property       | Configuration path | Definition                                   | Example                | Default |
+| -------------- | ------------------ | -------------------------------------------- | ---------------------- | ------- |
+| DOM Attributes | `props.dom`        | Attributes applied to the containing `<div>` | `{"className":"html"}` | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HtmlAtom widget properties",
+  "type": "object",
+  "properties": { "props": { "type": "object", "properties": { "dom": { "type": "object", "description": "Attributes applied to the containing div" } } } }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+## Remote Editor Atom
+
+RemoteEditorAtom renders hosted editor code provided as its data. See [Hosted Widgets](hosted-widgets.md#hosted-widgets).
+
+{% tabs %}
+{% tab title="Table" %}
+No widget-specific properties.
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RemoteEditorAtom widget properties",
+  "type": "object",
+  "properties": {}
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ## Repeat Atom
 
 RepeatAtom is a wrapper, which repeats its content widget for its data array. This widget has the following special properties:
 
 {% tabs %}
-{% tab title="Properties" %}
-| Property | Definition                                                          | Example                               | Default |
-| -------- | ------------------------------------------------------------------- | ------------------------------------- | ------- |
-| Tag      | Tag to use (div, main, article, section, header, void)              | main                                  | div     |
-| Content  | Content details mapping array entry data paths to widgets and props | {"path":"name", "widget": "TextAtom"} | -       |
+{% tab title="Table" %}
+| Property | Configuration path | Definition                                                          | Example                               | Default |
+| -------- | ------------------ | ------------------------------------------------------------------- | ------------------------------------- | ------- |
+| Content  | `props.content`    | Content details mapping array entry data paths to widgets and props | `{"path":"name","widget":"TextAtom"}` | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -262,13 +305,6 @@ RepeatAtom is a wrapper, which repeats its content widget for its data array. Th
     "props": {
       "type": "object",
       "properties": {
-        "tag": {
-          "type": "string",
-          "definition": "Tag to use (div, main, article, section, header, void)",
-          "example": "main",
-          "default": "div",
-          "enum": ["div", "main", "article", "section", "header", "void"]
-        },
         "content": {
           "type": "object",
           "definition": "Content details mapping array entry data paths to widgets and props",

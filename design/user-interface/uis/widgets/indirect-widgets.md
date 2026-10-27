@@ -23,6 +23,7 @@ DependentObjectEditor provides ability to search for, create and edit entries th
 | No Create             | Whether record creation should be restricted                                                                                               | true                      | false                     |
 | Dependent Lister Type | Type of dependent lister (DependentCustomCodeLister, DependentHandlebarsLister or DependentQueryTableLister) to use for displaying records | DependentHandlebarsLister | DependentQueryTableLister |
 | Keep Filters          | Whether original lister filters defined in referenced UI should be displayed or not                                                        | true                      | false                     |
+| Template              | Template used by DependentHandlebarsLister or DependentCustomCodeLister                                                                    | `{{name}}`                | -                         |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -82,6 +83,11 @@ DependentObjectEditor provides ability to search for, create and edit entries th
           "description": "Whether original lister filters defined in referenced UI should be displayed or not.",
           "default": false,
           "examples": [true]
+        },
+        "template": {
+          "type": "string",
+          "description": "Template used by DependentHandlebarsLister or DependentCustomCodeLister.",
+          "examples": ["{{name}}"]
         }
       }
     }
@@ -97,20 +103,22 @@ RelatedObjectEditor provides ability to create relation between current record a
 
 {% tabs %}
 {% tab title="Table" %}
-| Property                  | Definition                                                                          | Example                                         | Default |
-| ------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------- | ------- |
-| Object Source             | Name of data source mapping to use for fetching list of related records and details | product                                         | -       |
-| Object Selector Path      | Json path to the id field for representing related record                           | id                                              | -       |
-| Object Detail Source      | Overriding data source name to use when displaying related record details           | product-list                                    | -       |
-| Detail Filter             | Filter parameter to pass related records with when querying from detail source      | productids                                      | -       |
-| Detail Columns            | List of table column configurations for displaying related record details           | {"path":"id","title":"ID"}                      | -       |
-| Object List Source        | Overriding data source name to use when searching for records                       | product-search                                  | -       |
-| List Main & Extra Filters | List of main and extra filters for searching from list source                       | "main":\[{"path":"name","widget":"TextFilter"}] | -       |
-| List Columns              | List of table column configurations for displaying search results                   | {"path":"id","title":"ID"}                      | -       |
-| Path to Assign from       | Json path for value to assign to related entities from current record               | id                                              | -       |
-| Path to Assign to         | Json path of related entities to update                                             | data.main.collections                           | -       |
-| Add Url                   | Url for adding relation to new entities                                             | request/rpc/productw/AddToCollection            | -       |
-| Remove URL                | Url for removing relation from existing entities                                    | request/rpc/productw/RemoveFromCollection       | -       |
+| Property             | Definition                                                                          | Example                                       | Default |
+| -------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------- | ------- |
+| Object Source        | Name of data source mapping to use for fetching list of related records and details | product                                       | -       |
+| Object Selector Path | Json path to the id field for representing related record                           | id                                            | -       |
+| Object Detail Source | Overriding data source name to use when displaying related record details           | product-list                                  | -       |
+| Detail Filter        | Filter parameter to pass related records with when querying from detail source      | productids                                    | -       |
+| Detail Columns       | List of table column configurations for displaying related record details           | {"path":"id","title":"ID"}                    | -       |
+| Object List Source   | Overriding data source name to use when searching for records                       | product-search                                | -       |
+| List Main Filters    | Main filters for searching from list source                                         | `[{"path":"name","widget":"TextFilter"}]`     | -       |
+| List Extra Filters   | Additional filters for searching from list source                                   | `[{"path":"status","widget":"SelectFilter"}]` | -       |
+| List Columns         | List of table column configurations for displaying search results                   | {"path":"id","title":"ID"}                    | -       |
+| Default Columns      | Used when list or detail columns are not provided                                   | `[{\"path\":\"id\"}]`                         | -       |
+| Path to Assign from  | Json path for value to assign to related entities from current record               | id                                            | -       |
+| Path to Assign to    | Json path of related entities to update                                             | data.main.collections                         | -       |
+| Add Url              | Url for adding relation to new entities                                             | request/rpc/productw/AddToCollection          | -       |
+| Remove URL           | Url for removing relation from existing entities                                    | request/rpc/productw/RemoveFromCollection     | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -132,6 +140,11 @@ RelatedObjectEditor provides ability to create relation between current record a
           "type": "string",
           "description": "Json path to the id field for representing related record.",
           "examples": ["id"]
+        },
+        "columns": {
+          "type": "array",
+          "description": "Used when list or detail columns are not provided.",
+          "items": { "type": "object" }
         },
         "detail": {
           "type": "object",
@@ -250,7 +263,45 @@ RelatedObjectEditor provides ability to create relation between current record a
 
 ## History Display
 
-HistoryDisplay is a specialized editor for displaying historical versions of an item. It has no widget-specific configuration.
+HistoryDisplay displays version history of the current record with compare and restore options.
+
+{% tabs %}
+{% tab title="Table" %}
+| Property       | Configuration path    | Definition                       |
+| -------------- | --------------------- | -------------------------------- |
+| Form           | `props.form`          | Form configuration               |
+| Allow Save     | `props.allowSave`     | Whether versions can be restored |
+| Version Source | `props.versionSource` | Data source for versions         |
+| History URL    | `props.historyUrl`    | URL used to load history         |
+| Version URL    | `props.versionUrl`    | URL used to load a version       |
+| Save URL       | `props.saveUrl`       | URL used to restore a version    |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"HistoryDisplay widget properties","type":"object","properties":{"props":{"type":"object","properties":{"form":{"description":"Form configuration"},"allowSave":{"type":"boolean","description":"Whether versions can be restored"},"versionSource":{"type":"string","description":"Data source for versions"},"historyUrl":{"type":"string","description":"URL used to load history"},"versionUrl":{"type":"string","description":"URL used to load a version"},"saveUrl":{"type":"string","description":"URL used to restore a version"}}}}}
+```
+{% endtab %}
+{% endtabs %}
+
+## File Explorer
+
+FileExplorerEditor browses files in a file system folder derived from the field value.
+
+{% tabs %}
+{% tab title="Table" %}
+| Property         | Configuration path  | Definition                                                       | Example            |
+| ---------------- | ------------------- | ---------------------------------------------------------------- | ------------------ |
+| File System Path | `props.fsPath`      | Root path on the file system to browse                           | `/data`            |
+| Path Pattern     | `props.pathPattern` | Subpath pattern where `%%value%%` is replaced by the field value | `%%value%%/images` |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"FileExplorerEditor widget properties","type":"object","properties":{"props":{"type":"object","properties":{"fsPath":{"type":"string","description":"Root path on the file system to browse"},"pathPattern":{"type":"string","description":"Sub path pattern, where %%value%% is replaced by field value","examples":["%%value%%/images"]}}}}}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Element Viewer
 

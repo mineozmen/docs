@@ -95,6 +95,27 @@ LocalizedEditor provides ability to display and enter localized (e.g. by languag
 {% endtab %}
 {% endtabs %}
 
+### JMESPath Editor
+
+JMESPathEditor extends Code Editor for JMESPath expressions, with AI assistance. It inherits Code Editor properties.
+
+{% tabs %}
+{% tab title="Table" %}
+No widget-specific properties.
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JMESPathEditor widget properties",
+  "type": "object",
+  "properties": {}
+}
+```
+{% endtab %}
+{% endtabs %}
+
 ### Json Editor
 
 <figure><img src="../../../../.gitbook/assets/image (163).png" alt=""><figcaption></figcaption></figure>

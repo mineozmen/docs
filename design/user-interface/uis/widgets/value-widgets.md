@@ -18,11 +18,11 @@ TextEditor provides ability to enter free text data. This widget has the followi
 
 {% tabs %}
 {% tab title="Table" %}
-| Property     | Configuration path    | Definition                                          | Example | Default |
-| ------------ | --------------------- | --------------------------------------------------- | ------- | ------- |
-| Value Type   | `props.valueType`     | Type of value this widget should display and return | integer | text    |
-| Is Multiline | `props.dom.multiline` | Whether text should be displayed as multiple lines  | true    | false   |
-| Rows         | `props.dom.rows`      | Number of rows to display (if multiline)            | 5       | -       |
+| Property     | Definition                                          | Example | Default |
+| ------------ | --------------------------------------------------- | ------- | ------- |
+| Value Type   | Type of value this widget should display and return | integer | text    |
+| Is Multiline | Whether text should be displayed as multiple lines  | true    | false   |
+| Rows         | Number of rows to display (if multiline)            | 5       | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -68,8 +68,8 @@ CodeEditor provides ability to enter multi-line code with syntax highlighting an
 | Language              | Programming language to use for syntax    | java    | javascript |
 | Syntax Threshold      | Maximum text length for syntax processing | 100000  | 50000      |
 | Theme                 | Color theme for the editor                | -       | -          |
-| Max Lines             | Maximum lines to display                  | 100     | -          |
 | Min Lines             | Minimum lines to display                  | 10      | -          |
+| Max Lines             | Maximum lines to display                  | 100     | -          |
 | Cursor Start          | Starting position for the cursor          | -       | -          |
 | Tab Size              | Characters for tab                        | 4       | -          |
 | Enable Wrap           | Whether word wrapping should be allowed   | true    | false      |
@@ -102,19 +102,18 @@ CodeEditor provides ability to enter multi-line code with syntax highlighting an
         },
         "dom": {
           "type": "object",
-          "description": "Additional dom properties to pass on to Ace component. Keys depend on the underlying UI component.",
-          "default": null,
-          "examples": [{
-        		"highlightActiveLine": false,
-        		"showGutter": false,
-        		"showPrintMargin": false,
-        		"wrapEnabled": true,
-        		"theme": "dark",
-        		"maxLines": 100,
-        		"minLines": 10,
-        		"cursorStart": 0,
-        		"tabSize": 4
-        	}]
+          "description": "Ace editor configuration",
+          "properties": {
+            "theme": { "type": "string", "description": "Color theme for the editor" },
+            "minLines": { "type": "integer", "description": "Minimum lines to display" },
+            "maxLines": { "type": "integer", "description": "Maximum lines to display" },
+            "cursorStart": { "description": "Starting position for the cursor" },
+            "tabSize": { "type": "integer", "description": "Characters for tab" },
+            "wrapEnabled": { "type": "boolean", "description": "Whether word wrapping should be allowed", "default": false },
+            "showGutter": { "type": "boolean", "description": "Whether gutter should be displayed", "default": true },
+            "showPrintMargin": { "type": "boolean", "description": "Whether margin should be displayed", "default": true },
+            "highlightActiveLine": { "type": "boolean", "description": "Whether active line should be colored", "default": true }
+          }
         }
       }
     }
@@ -174,9 +173,12 @@ ValueDisplay provides ability to display static values using Typography. This wi
 
 {% tabs %}
 {% tab title="Table" %}
-| Property | Definition                                                   | Example | Default |
-| -------- | ------------------------------------------------------------ | ------- | ------- |
-| DOM      | Additional dom properties to pass on to Typography component | -       | -       |
+| Property     | Definition                       | Example | Default |
+| ------------ | -------------------------------- | ------- | ------- |
+| Variant      | Typography variant               | h6      | -       |
+| Is Paragraph | Whether to render a paragraph    | true    | false   |
+| Alignment    | Text alignment                   | center  | -       |
+| No Wrap      | Whether to prevent text wrapping | true    | false   |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -191,8 +193,13 @@ ValueDisplay provides ability to display static values using Typography. This wi
       "properties": {
         "dom": {
           "type": "object",
-          "description": "Additional dom properties to pass on to Typography component",
-          "default": null
+          "description": "Typography configuration",
+          "properties": {
+            "variant": { "type": "string", "description": "Typography variant" },
+            "paragraph": { "type": "boolean", "description": "Whether to render a paragraph", "default": false },
+            "align": { "type": "string", "description": "Text alignment" },
+            "noWrap": { "type": "boolean", "description": "Whether to prevent text wrapping", "default": false }
+          }
         }
       }
     }
@@ -247,12 +254,13 @@ SelectEditor provides ability to select from a predefined list of options (eithe
 
 {% tabs %}
 {% tab title="Table" %}
-| Property       | Definition                                             | Example                   | Default |
-| -------------- | ------------------------------------------------------ | ------------------------- | ------- |
-| Options Source | Name of the options list used for selection            | status                    | -       |
-| Options List   | Actual contents of the options list used for selection | \[{"id":"A"}, {"id":"I"}] | -       |
-| Placeholder    | Text to display as placeholder                         | Select option             | -       |
-| Clear Option   | Text to display for setting selected value as null     | None                      | -       |
+| Property                | Definition                                             | Example                   | Default |
+| ----------------------- | ------------------------------------------------------ | ------------------------- | ------- |
+| Options Source          | Name of the options list used for selection            | status                    | -       |
+| Options List            | Actual contents of the options list used for selection | \[{"id":"A"}, {"id":"I"}] | -       |
+| Placeholder             | Text to display as placeholder                         | Select option             | -       |
+| Clear Option            | Text to display for setting selected value as null     | None                      | -       |
+| Autocomplete Properties | JSON passed to the underlying autocomplete             | `{"freeSolo":true}`       | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -298,9 +306,9 @@ SelectEditor provides ability to select from a predefined list of options (eithe
           "default": null,
           "examples": ["None"]
         },
-        "dom": {
+        "autoCompleteProps": {
           "type": "object",
-          "description": "Additional dom properties to pass on to Select component",
+          "description": "JSON passed to the underlying autocomplete",
           "default": null
         }
       }
@@ -317,7 +325,41 @@ RadioGroupEditor lets users select one option from a radio group. Configure the 
 
 ### Select Menu Editor
 
-SelectMenuEditor lets users select one option from a menu. Configure the available options through the widget's standard option configuration.
+SelectMenuEditor lets users select one option from a menu. This widget has the following special properties:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property          | Definition                                             | Example            | Default |
+| ----------------- | ------------------------------------------------------ | ------------------ | ------- |
+| Options Source    | Name of the options list used for selection            | status             | -       |
+| Options List      | Actual contents of the options list used for selection | `[{"id":"A"}]`     | -       |
+| Button Text       | Text displayed on the menu trigger button              | Select             | -       |
+| Button Icon       | Icon displayed on the menu trigger button              | `DoubleDown`       | -       |
+| Button Properties | JSON passed to the trigger button                      | `{"size":"small"}` | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SelectMenuEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "options": { "type": "string", "description": "Name of the options list used for selection" },
+        "optionValues": { "type": "array", "description": "Actual contents of the options list used for selection", "items": { "type": "object" } },
+        "triggerButtonText": { "type": "string", "description": "Text displayed on the menu trigger button" },
+        "triggerIcon": { "type": "string", "description": "Icon displayed on the menu trigger button", "examples": ["DoubleDown"] },
+        "triggerButtonProps": { "type": "object", "description": "JSON passed to the trigger button" }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### Autocomplete Editor
 
@@ -387,11 +429,11 @@ BoxSelectEditor provides ability to select from a predefined list of options all
 
 {% tabs %}
 {% tab title="Table" %}
-| Property       | Configuration path   | Definition                                             | Example        | Default |
-| -------------- | -------------------- | ------------------------------------------------------ | -------------- | ------- |
-| Options Source | `props.options`      | Name of the options list used for selection            | conditionClass | -       |
-| Options List   | `props.optionValues` | Actual contents of the options list used for selection | \[{"id":"1"}]  | -       |
-| Size           | `valueProps.size`    | Grid size of each displayed entry                      | 3              | -       |
+| Property       | Definition                                             | Example        | Default |
+| -------------- | ------------------------------------------------------ | -------------- | ------- |
+| Options Source | Name of the options list used for selection            | conditionClass | -       |
+| Options List   | Actual contents of the options list used for selection | \[{"id":"1"}]  | -       |
+| Size           | Grid size of each displayed entry                      | 3              | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -441,11 +483,63 @@ BoxSelectEditor provides ability to select from a predefined list of options all
 
 ### Item Editor
 
-ItemEditor provides ability to select id of a lookup record (such as attribute, category) from an AutoComplete drop down. This widget can load full list of records or apply a given set of filters as well. It has the same properties as [multi item editor](array-widgets.md#multi-item-editor).
+ItemEditor provides ability to select id of a lookup record (such as attribute, category) from an AutoComplete drop down. It inherits [Multi Item Editor properties](array-widgets.md#multi-item-editor) and adds:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property              | Definition                                | Example | Default |
+| --------------------- | ----------------------------------------- | ------- | ------- |
+| Hide Selected Tooltip | Whether to hide the selected-item tooltip | true    | false   |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ItemEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "noSelectedTooltip": { "type": "boolean", "description": "Whether to hide the selected-item tooltip", "default": false, "examples": [true] }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### Item Search Editor
 
-ItemSearchEditor provides ability to select id of a lookup record (such as product) from a searchable table of values. This widget allows filtering results and should be preferred for selecting among large number of records. It has the same properties as [multi item search editor](array-widgets.md#multi-item-search-editor).
+ItemSearchEditor provides ability to select id of a lookup record (such as product) from a searchable table of values. This widget allows filtering results and should be preferred for selecting among large number of records. It inherits [Multi Item Search Editor properties](array-widgets.md#multi-item-search-editor), where **Item Label** means the path in the selected item to display as its label. It adds:
+
+{% tabs %}
+{% tab title="Table" %}
+| Property       | Definition                              | Example                       | Default |
+| -------------- | --------------------------------------- | ----------------------------- | ------- |
+| DOM Attributes | Attributes passed to the editor wrapper | `{"className":"item-search"}` | -       |
+{% endtab %}
+
+{% tab title="JSON Schema" %}
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ItemSearchEditor widget properties",
+  "type": "object",
+  "properties": {
+    "props": {
+      "type": "object",
+      "properties": {
+        "dom": { "type": "object", "description": "Attributes passed to the editor wrapper" }
+      }
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### Schema Select Editor
 
@@ -718,14 +812,14 @@ DateTimeEditor provides ability to select date/time with time zone information a
 
 {% tabs %}
 {% tab title="Table" %}
-| Property          | Configuration path          | Definition                           | Example     | Default |
-| ----------------- | --------------------------- | ------------------------------------ | ----------- | ------- |
-| Level             | `props.level`               | Level of date to be selected         | day         | time    |
-| Placeholder       | `props.placeholder`         | Text to display as placeholder       | Select date | -       |
-| Locale            | `props.dom.locale`          | Date/time locale                     | -           | -       |
-| Peek Next Month   | `props.dom.peekNextMonth`   | Whether to show days from next month | true        | false   |
-| Show Week Numbers | `props.dom.showWeekNumbers` | Whether to show week numbers         | true        | false   |
-| As Modal          | `props.dom.withPortal`      | Whether to display as modal          | true        | false   |
+| Property          | Definition                           | Example     | Default |
+| ----------------- | ------------------------------------ | ----------- | ------- |
+| Level             | Level of date to be selected         | day         | time    |
+| Placeholder       | Text to display as placeholder       | Select date | -       |
+| Locale            | Date/time locale                     | -           | -       |
+| Peek Next Month   | Whether to show days from next month | true        | false   |
+| Show Week Numbers | Whether to show week numbers         | true        | false   |
+| As Modal          | Whether to display as modal          | true        | false   |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -787,9 +881,9 @@ ColorEditor provides ability to pick colors and return their hex code using Sket
 
 {% tabs %}
 {% tab title="Table" %}
-| Property | Definition                                                     | Example | Default |
-| -------- | -------------------------------------------------------------- | ------- | ------- |
-| DOM      | Additional dom properties to pass on to SketchPicker component | -       | -       |
+| Property | Definition                         | Example             | Default |
+| -------- | ---------------------------------- | ------------------- | ------- |
+| Styles   | JSON styles passed to SketchPicker | `{"width":"180px"}` | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -804,8 +898,10 @@ ColorEditor provides ability to pick colors and return their hex code using Sket
       "properties": {
         "dom": {
           "type": "object",
-          "description": "Additional dom properties to pass on to SketchPicker component",
-          "default": null
+          "description": "DOM configuration for SketchPicker",
+          "properties": {
+            "styles": { "type": "object", "description": "JSON styles passed to SketchPicker" }
+          }
         }
       }
     }
@@ -823,14 +919,17 @@ SliderEditor provides ability to enter single and {min, max} range type numerica
 
 {% tabs %}
 {% tab title="Table" %}
-| Property    | Definition                                         | Example  | Default    |
-| ----------- | -------------------------------------------------- | -------- | ---------- |
-| Orientation | Whether the slider should be displayed vertical    | vertical | horizontal |
-| Size        | Defines width of the slider                        | small    | base       |
-| Min         | Minimum value to allow                             | 1        | 0          |
-| Max         | Maximum value to allow                             | 10       | 100        |
-| Step        | Numerical increments on each step                  | 2        | 1          |
-| Is Range    | Whether slider requires 2 values or a single value | true     | false      |
+| Property    | Definition                                      | Example  | Default    |
+| ----------- | ----------------------------------------------- | -------- | ---------- |
+| Orientation | Whether the slider should be displayed vertical | vertical | horizontal |
+| Size        | Defines width of the slider                     | small    | base       |
+| Min         | Minimum value to allow                          | 1        | 0          |
+| Max         | Maximum value to allow                          | 10       | 100        |
+| Step        | Numerical increments on each step               | 2        | 1          |
+| Is Range    | Whether slider requires two values or one value | true     | false      |
+| Disabled    | Whether the editor is disabled                  | true     | false      |
+| Show Value  | Whether to show the selected value              | true     | false      |
+| Aria Label  | Accessible label for the slider                 | Volume   | -          |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -856,13 +955,13 @@ SliderEditor provides ability to enter single and {min, max} range type numerica
           "default": "base",
           "examples": ["small"]
         },
-        "min": {
+        "minValue": {
           "type": "number",
           "description": "Minimum value to allow",
           "default": 0,
           "examples": [1]
         },
-        "max": {
+        "maxValue": {
           "type": "number",
           "description": "Maximum value to allow",
           "default": 100,
@@ -874,12 +973,15 @@ SliderEditor provides ability to enter single and {min, max} range type numerica
           "default": 1,
           "examples": [2]
         },
-        "range": {
+        "isRange": {
           "type": "boolean",
           "description": "Whether slider requires 2 values or a single value",
           "default": false,
           "examples": [true]
-        }
+        },
+        "isDisabled": { "type": "boolean", "description": "Whether the editor is disabled", "default": false, "examples": [true] },
+        "showValue": { "type": "boolean", "description": "Whether to show the selected value", "default": false, "examples": [true] },
+        "ariaLabel": { "type": "string", "description": "Accessible label for the slider", "examples": ["Volume"] }
       }
     }
   }
@@ -894,13 +996,20 @@ RatingEditor provides ability to select a numerical values with a rating indicat
 
 {% tabs %}
 {% tab title="Table" %}
-| Property    | Definition                                      | Example  | Default    |
-| ----------- | ----------------------------------------------- | -------- | ---------- |
-| Orientation | Whether the rating should be displayed vertical | vertical | horizontal |
-| Min         | Minimum value to allow                          | 1        | 0          |
-| Max         | Maximum value to allow                          | 10       | 100        |
-| Step        | Numerical increments on each star               | 2        | 1          |
-| Fractions   | Fractional increments allowed                   | 0.5      | -          |
+| Property         | Definition                                      | Example                            | Default    |
+| ---------------- | ----------------------------------------------- | ---------------------------------- | ---------- |
+| Orientation      | Whether the rating should be displayed vertical | vertical                           | horizontal |
+| Min              | Minimum value to allow                          | 1                                  | 0          |
+| Max              | Maximum value to allow                          | 10                                 | 100        |
+| Step             | Numerical increments on each star               | 2                                  | 1          |
+| Fractions        | Fractional increments allowed                   | 0.5                                | -          |
+| Allow Clear      | `props.allowClear`                              | Whether users can clear the rating | true       |
+| Disabled         | `props.isDisabled`                              | Whether the editor is disabled     | true       |
+| Aria Label       | `props.ariaLabel`                               | Accessible label for the rating    | Quality    |
+| Rating Class     | `props.ratingClassName`                         | CSS class for the rating           | rating     |
+| Star Class       | `props.starClassName`                           | CSS class for every star           | star       |
+| Full Star Class  | `props.fullClassName`                           | CSS class for full stars           | full       |
+| Empty Star Class | `props.emptyClassName`                          | CSS class for empty stars          | empty      |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -943,7 +1052,14 @@ RatingEditor provides ability to select a numerical values with a rating indicat
           "description": "Fractional increments allowed",
           "default": null,
           "examples": [0.5]
-        }
+        },
+        "allowClear": { "type": "boolean", "description": "Whether users can clear the rating", "default": false, "examples": [true] },
+        "isDisabled": { "type": "boolean", "description": "Whether the editor is disabled", "default": false, "examples": [true] },
+        "ariaLabel": { "type": "string", "description": "Accessible label for the rating", "examples": ["Quality"] },
+        "ratingClassName": { "type": "string", "description": "CSS class for the rating" },
+        "starClassName": { "type": "string", "description": "CSS class for every star" },
+        "fullClassName": { "type": "string", "description": "CSS class for full stars" },
+        "emptyClassName": { "type": "string", "description": "CSS class for empty stars" }
       }
     }
   }
@@ -1186,10 +1302,12 @@ This widget also has the following special properties:
 
 {% tabs %}
 {% tab title="Table" %}
-| Property  | Definition                                                        | Example | Default |
-| --------- | ----------------------------------------------------------------- | ------- | ------- |
-| Value DOM | Additional dom properties to pass on to wrapper div component     | -       | -       |
-| Input DOM | Additional dom properties to pass on to input TextField component | -       | -       |
+| Property       | Definition                                                        | Example                                 | Default                 |
+| -------------- | ----------------------------------------------------------------- | --------------------------------------- | ----------------------- |
+| Value DOM      | Additional dom properties to pass on to wrapper div component     | -                                       | -                       |
+| Input DOM      | Additional dom properties to pass on to input TextField component | -                                       | -                       |
+| Size           | `props.size`                                                      | Display size for the media editor       | small                   |
+| DOM Attributes | `props.dom`                                                       | Attributes passed to the editor wrapper | `{"className":"media"}` |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -1248,6 +1366,13 @@ FileUpload provides ability to select a local file using file browser and pass i
   "type": "object",
   "properties": {
     "props": {
+      "type": "object",
+      "properties": {
+        "size": { "type": "string", "description": "Display size for the media editor", "examples": ["small"] },
+        "dom": { "type": "object", "description": "Attributes passed to the editor wrapper" }
+      }
+    },
+    "valueProps": {
       "type": "object",
       "properties": {
         "import": {
