@@ -34,6 +34,36 @@ The actual functionality of an event step is defined using event metadata settin
 
 In addition to action specific parameters, all event steps allow configuration of some additional properties, displayed under ADVANCED tab:
 
+### Common Action Parameters
+
+Some actions support the following optional parameter groups. Each action page identifies the groups it supports.
+
+#### Caching
+
+| Parameter         | Definition                                            | Example               | Default |
+| ----------------- | ----------------------------------------------------- | --------------------- | ------- |
+| Use Cache         | Whether this event should use the cache               | `true`                | `false` |
+| Cache State       | Name of the state manager used for caching event data | `product_cache`       | -       |
+| Cache Key Pattern | JMESPath expression that produces the cache key       | `join([id, version])` | -       |
+
+#### State access
+
+| Parameter         | Definition                                                                       | Example | Default |
+| ----------------- | -------------------------------------------------------------------------------- | ------- | ------- |
+| Skip Access Query | Reads or writes directly, without falling back to the query defined on the state | `true`  | `false` |
+
+#### Write response form
+
+| Parameter | Definition                                                       | Example | Default |
+| --------- | ---------------------------------------------------------------- | ------- | ------- |
+| Form      | Form of response to produce. `full` includes custom data fields. | `full`  | `full`  |
+
+#### Secret key generation
+
+| Parameter            | Definition                                                               | Example | Default |
+| -------------------- | ------------------------------------------------------------------------ | ------- | ------- |
+| Generated Key Length | Length of the generated key when `keyId` does not exist in the key state | `32`    | `32`    |
+
 * **Common Parameters**
   * **Fire & Forget:** Allows submitting action without waiting for its result. In this scenario the step only returns a reference ID, and returns before any processing happens. Fire-forget steps never fail, and results of the step needs to be monitored from a separate state.
   * **Log Detail:** Defines whether payload details should be fully logged regardless of the current log level. Recommended on development environments only, since can result in logging sensitive data in some cases.

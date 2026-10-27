@@ -6,6 +6,8 @@ description: These actions provide ability to handle events using Python librari
 
 ## Run Python Procedure Actions
 
+`ProcessPython` supports [..](../ "mention").
+
 ### Process / ProcessPython
 
 Passes the requested event to a Python interface for processing. Event metadata fields applicable for this action are as follows:
@@ -52,12 +54,13 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter      | Definition                                 | Example         | Default |
-| -------------- | ------------------------------------------ | --------------- | ------- |
-| Input Pattern  | JMESPath pattern to apply on input element | {data:contents} | -       |
-| Python Package | Name of the Python package to use          | rierino\_runner | -       |
-| Python Module  | Name of the Python module to use           | CustomHandler   | -       |
-| Python Action  | Name of the Python function to call        | Calculate       | -       |
+| Parameter      | Definition                                                                     | Example         | Default |
+| -------------- | ------------------------------------------------------------------------------ | --------------- | ------- |
+| Input Pattern  | JMESPath pattern to apply on input element                                     | {data:contents} | -       |
+| Python Package | Name of the Python package to use                                              | rierino\_runner | -       |
+| Python Module  | Name of the Python module to use                                               | CustomHandler   | -       |
+| Python Action  | Name of the Python function to call                                            | Calculate       | -       |
+| Systems        | Comma-separated systems whose connection details are passed to the Python code | erp,crm         | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -95,6 +98,12 @@ With event metadata parameters as:
               "type": "string",
               "definition": "Name of the Python function to call",
               "example": "Calculate",
+              "default": null
+            },
+            "systems": {
+              "type": "string",
+              "definition": "Comma-separated systems whose connection details are passed to the Python code",
+              "example": "erp,crm",
               "default": null
             }
           }

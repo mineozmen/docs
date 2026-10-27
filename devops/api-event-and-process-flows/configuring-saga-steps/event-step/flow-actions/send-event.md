@@ -18,6 +18,7 @@ Sends the event received to another stream with the following event metadata par
 | Stream    | Stream to send event to | tracking       | -                      |
 | Key       | Key value to use        | 123            | -                      |
 | Partition | Partition to use        | 1              | \[Calculated from key] |
+| Format    | What data to send       | payload        | event                  |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -55,6 +56,12 @@ Sends the event received to another stream with the following event metadata par
               "definition": "Partition to use",
               "example": 1,
               "default": "[Calculated from key]"
+            },
+            "format": {
+              "type": "string",
+              "definition": "What data to send",
+              "default": "event",
+              "example": "payload"
             }
           }
         }

@@ -62,6 +62,7 @@ With event metadata parameters as:
 | Task User     | ID of user allowed to process task                                           | user123              | -       |
 | Timeout       | Milliseconds to timeout started process after                                | 60000                | -       |
 | Timeout On    | Epoch time in ms to timeout started process on                               | 1666765654           | -       |
+| Task ID       | Static ID for the task, used instead of Task ID Path                         | approval-123         | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -121,6 +122,11 @@ With event metadata parameters as:
               "type": "integer",
               "description": "Epoch time in ms to timeout started process on",
               "example": 1666765654
+            },
+            "taskId": {
+              "type": "string",
+              "description": "Static ID for the task, used instead of Task ID Path",
+              "example": "approval-123"
             }
           }
         }

@@ -9,6 +9,8 @@ description: >-
 
 ## Query Data Actions
 
+`GetQuery` supports [..](../ "mention").
+
 ### GetQuery
 
 Executes and returns results for a single query from a specific query manager. Event metadata fields applicable for this action are as follows:
@@ -20,8 +22,6 @@ Executes and returns results for a single query from a specific query manager. E
 | Domain         | Name of the query manager to read data from                  | product    | -       |
 | Input Element  | Json path for the input in event payload for query variables | parameters | -       |
 | Output Element | Json path for the output in response event payload           | $.list     | -       |
-
-
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -61,15 +61,16 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter      | Definition                                                          | Example                                               | Default |
-| -------------- | ------------------------------------------------------------------- | ----------------------------------------------------- | ------- |
-| Output Pattern | JMESPath pattern to apply on data output, before returning response | {id:id, name:data.name, description:data.description} | -       |
-| Query ID       | Id of the query to execute                                          | product\_search\_0001                                 | -       |
-| Query Name     | Name of the query to execute                                        | Product Search                                        | -       |
-| Query Json     | Full Json representation of query to execute                        | -                                                     | -       |
-| First          | Whether to return first record only from results                    | true                                                  | false   |
-| Sort Path      | Json path in query results to be used for sorting                   | product.id                                            | -       |
-| Sorter Path    | Json path in request event payload to be used for sorting           | productids                                            | -       |
+| Parameter           | Definition                                                          | Example                                               | Default |
+| ------------------- | ------------------------------------------------------------------- | ----------------------------------------------------- | ------- |
+| Output Pattern      | JMESPath pattern to apply on data output, before returning response | {id:id, name:data.name, description:data.description} | -       |
+| Output List Pattern | JMESPath pattern applied to the full result list before returning   | \[?data.status=='A']                                  | -       |
+| Query ID            | Id of the query to execute                                          | product\_search\_0001                                 | -       |
+| Query Name          | Name of the query to execute                                        | Product Search                                        | -       |
+| Query Json          | Full Json representation of query to execute                        | -                                                     | -       |
+| First               | Whether to return first record only from results                    | true                                                  | false   |
+| Sort Path           | Json path in query results to be used for sorting                   | product.id                                            | -       |
+| Sorter Path         | Json path in request event payload to be used for sorting           | productids                                            | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -89,6 +90,11 @@ With event metadata parameters as:
               "type": "string",
               "definition": "JMESPath pattern to apply on data output, before returning response",
               "example": "{id:id, name:data.name, description:data.description}"
+            },
+            "outputListPattern": {
+              "type": "string",
+              "definition": "JMESPath pattern applied to the full result list before returning",
+              "example": "[?data.status=='A']"
             },
             "queryId": {
               "type": "string",

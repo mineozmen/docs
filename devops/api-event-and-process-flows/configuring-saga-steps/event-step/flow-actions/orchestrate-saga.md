@@ -10,7 +10,7 @@ description: >-
 
 ### StartSaga
 
-Initiates execution of a new saga, using `sagaPath` or `sagaId` parameter of the requesting event, or the request metadata path if not defined. The request is accepted only if there is an active saga matching this path.
+Initiates execution of a new saga, using the `sagaPath` parameter of the requesting event, or the request metadata path if not defined. The request is accepted only if there is an active saga matching this path.
 
 When called from within another saga, following event metadata fields are applicable for this action:
 
@@ -55,14 +55,14 @@ With the following event metadata parameters:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter      | Definition                                                                                      | Example         | Default |
-| -------------- | ----------------------------------------------------------------------------------------------- | --------------- | ------- |
-| Saga           | ID of the saga to call                                                                          | list\_customers | -       |
-| Saga Path      | Path of the saga to call                                                                        | /ListCustomers  |         |
-| Saga Path Path | Json path of the input payload element that specifies saga path to call                         | data.saga       | -       |
-| Fire Forget    | Whether specific call to saga should work async (in case saga itself is not configured as such) | true            | false   |
-| Input Pattern  | JMESPath pattern to apply on data input                                                         | -               | -       |
-| Output Pattern | JMESPath pattern to apply on data output, before returning response                             | -               | -       |
+| Parameter      | Definition                                                                          | Example        | Default |
+| -------------- | ----------------------------------------------------------------------------------- | -------------- | ------- |
+| Saga Path      | Path of the saga to call                                                            | /ListCustomers |         |
+| Fire Forget    | Whether this call works asynchronously. This uses the common Fire & Forget setting. | true           | false   |
+| Input Pattern  | JMESPath pattern to apply on data input                                             | -              | -       |
+| Output Pattern | JMESPath pattern to apply on data output, before returning response                 | -              | -       |
+| Start Step     | ID of the step to start saga execution from                                         | validate       | -       |
+| Stop Step      | ID of the step to stop saga execution at                                            | respond        | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -77,22 +77,10 @@ With the following event metadata parameters:
         "parameters": {
           "type": "object",
           "properties": {
-            "sagaId": {
-              "type": "string",
-              "definition": "ID of the saga to call",
-              "example": "list_customers",
-              "default": null
-            },
             "sagaPath": {
               "type": "string",
               "definition": "Path of the saga to call",
               "example": "/ListCustomers",
-              "default": null
-            },
-            "sagaPathPath": {
-              "type": "string",
-              "definition": "Json path of the input payload element that specifies saga path to call",
-              "example": "data.saga",
               "default": null
             },
             "fireForget": {
@@ -111,6 +99,16 @@ With the following event metadata parameters:
               "definition": "JMESPath pattern to apply on data output, before returning response",
               "example": null,
               "default": null
+            },
+            "startStep": {
+              "type": "string",
+              "definition": "ID of the step to start saga execution from",
+              "example": "validate"
+            },
+            "stopStep": {
+              "type": "string",
+              "definition": "ID of the step to stop saga execution at",
+              "example": "respond"
             }
           }
         }

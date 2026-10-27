@@ -53,12 +53,13 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Parameters (table)" %}
-| Parameter     | Definition                                                                                        | Example                  | Default |
-| ------------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ------- |
-| Input Pattern | JMESpath pattern to apply on input element for getting text and metadata fields                   | {text: "", metadata: ""} | -       |
-| Extra Action  | Optional extra action after generating embedding, `add` to local index or `search` in local index | add                      | -       |
-| Max Results   | Maximum results to return if `search` extra action is used                                        | 5                        | -       |
-| Min Score     | Minimum similarity score required if `search` extra action is used                                | 0.5                      | -       |
+| Parameter            | Definition                                                                                        | Example                  | Default |
+| -------------------- | ------------------------------------------------------------------------------------------------- | ------------------------ | ------- |
+| Input Pattern        | JMESpath pattern to apply on input element for getting text and metadata fields                   | {text: "", metadata: ""} | -       |
+| Extra Action         | Optional extra action after generating embedding, `add` to local index or `search` in local index | add                      | -       |
+| Max Results          | Maximum results to return if `search` extra action is used                                        | 5                        | -       |
+| Min Score            | Minimum similarity score required if `search` extra action is used                                | 0.5                      | -       |
+| Sparse Output Format | Format of sparse embeddings for hybrid models                                                     | values                   | indices |
 {% endtab %}
 
 {% tab title="Parameters (JSON Schema)" %}
@@ -96,6 +97,12 @@ With event metadata parameters as:
               "description": "Minimum similarity score required if search extra action is used",
               "examples": [0.5],
               "default": null
+            },
+            "sparseOutputFormat": {
+              "type": "string",
+              "description": "Format of sparse embeddings for hybrid models",
+              "examples": ["values"],
+              "default": "indices"
             }
           }
         }

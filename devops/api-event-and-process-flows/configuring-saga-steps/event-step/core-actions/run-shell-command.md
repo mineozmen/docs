@@ -12,11 +12,12 @@ Executes given shell command. Event metadata parameters applicable for this acti
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter  | Definition                                                        | Example | Default |
-| ---------- | ----------------------------------------------------------------- | ------- | ------- |
-| Command    | Main command to execute                                           | ls      | -       |
-| Track      | Whether status updates should be recorded in process state or not | true    | false   |
-| Parameters | Arguments to add                                                  | -       | -       |
+| Parameter     | Definition                                                        | Example                       | Default |
+| ------------- | ----------------------------------------------------------------- | ----------------------------- | ------- |
+| Command       | Main command to execute                                           | ls                            | -       |
+| Track         | Whether status updates should be recorded in process state or not | true                          | false   |
+| Input Pattern | JMESPath pattern applied to the data input                        | {command: parameters.command} | -       |
+| Parameters    | Arguments to add                                                  | -                             | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -42,6 +43,11 @@ Executes given shell command. Event metadata parameters applicable for this acti
               "definition": "Whether status updates should be recorded in process state or not",
               "default": false,
               "example": true
+            },
+            "inputPattern": {
+              "type": "string",
+              "definition": "JMESPath pattern applied to the data input",
+              "example": "{command: parameters.command}"
             }
           },
           "patternProperties": {

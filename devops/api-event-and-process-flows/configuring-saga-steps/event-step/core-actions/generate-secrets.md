@@ -10,6 +10,8 @@ description: >-
 
 All actions of this handler share the following event metadata parameters for getting key inputs:
 
+All secret actions also support [..](../ "mention").
+
 {% tabs %}
 {% tab title="Table" %}
 | Parameter   | Definition                                | Example        | Default |
@@ -151,7 +153,7 @@ With event metadata parameters as:
 
 ### Decrypt
 
-Decryptes a previously encrypted value and returns as a json node or string value. This action uses the same fields as Encrypt action, with the addition of following event metadata parameter:
+Decrypts a previously encrypted value and returns as a json node or string value. This action uses the same fields as Encrypt action, with the addition of following event metadata parameter:
 
 {% tabs %}
 {% tab title="Table" %}
@@ -660,14 +662,15 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter                      | Definition                          | Example | Default         |
-| ------------------------------ | ----------------------------------- | ------- | --------------- |
-| Provider                       | Custom security provider to use     | -       | Handler default |
-| Certificate Algorithm          | Custom certificate algorithm        | -       | Handler default |
-| Certificate SignatureAlgorithm | Custom signature algorithm          | -       | Handler default |
-| Certificate Key Size           | Custom key size                     | -       | Handler default |
-| Certificate DN                 | Custom certificate DN               | -       | Handler default |
-| Certificate Life Time          | Custom certificate lifetime in days | -       | Handler default |
+| Parameter                      | Definition                                 | Example | Default         |
+| ------------------------------ | ------------------------------------------ | ------- | --------------- |
+| Provider                       | Custom security provider to use            | -       | Handler default |
+| Certificate Algorithm          | Custom certificate algorithm               | -       | Handler default |
+| Certificate SignatureAlgorithm | Custom signature algorithm                 | -       | Handler default |
+| Certificate Key Size           | Custom key size                            | -       | Handler default |
+| Certificate DN                 | Custom certificate DN                      | -       | Handler default |
+| Certificate Life Time          | Custom certificate lifetime in days        | -       | Handler default |
+| Input Pattern                  | JMESPath pattern applied to the data input | -       | -               |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -711,6 +714,10 @@ With event metadata parameters as:
               "type": ["integer", "string"],
               "description": "Custom certificate lifetime in days",
               "default": "Handler default"
+            },
+            "inputPattern": {
+              "type": "string",
+              "description": "JMESPath pattern applied to the data input"
             }
           }
         }

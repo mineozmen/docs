@@ -253,12 +253,13 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Parameters (table)" %}
-| Parameter       | Definition                                                                                                                                       | Example                                | Default |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- | ------- |
-| Message Pattern | Used for tool sagas, allowing merging data from original event to saga call, with `arguments` as agent-generated input and `payload` as original | merge(arguments, {user: payload.user}) | -       |
-| Source Pattern  | Used for storing additional data from request payload in chat memory                                                                             | {user: user}                           | -       |
-| Full Result     | Whether response should include full AI call details, such as token counts and tool executions                                                   | true                                   | false   |
-| Json Response   | Whether model response should be automatically parsed as a JSON object                                                                           | true                                   | false   |
+| Parameter           | Definition                                                                                                                                       | Example                                | Default |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- | ------- |
+| Message Pattern     | Used for tool sagas, allowing merging data from original event to saga call, with `arguments` as agent-generated input and `payload` as original | merge(arguments, {user: payload.user}) | -       |
+| Source Pattern      | Used for storing additional data from request payload in chat memory                                                                             | {user: user}                           | -       |
+| Full Result         | Whether response should include full AI call details, such as token counts and tool executions                                                   | true                                   | false   |
+| Json Response       | Whether model response should be automatically parsed as a JSON object                                                                           | true                                   | false   |
+| Log Provider Errors | Log provider error responses in detail                                                                                                           | true                                   | false   |
 {% endtab %}
 
 {% tab title="Parameters (JSON Schema)" %}
@@ -279,6 +280,12 @@ With event metadata parameters as:
               "examples": ["merge(arguments, {user: payload.user})"],
               "default": null
             },
+            "sourcePattern": {
+              "type": "string",
+              "description": "Adds event payload information to chat memory for reference",
+              "examples": ["{user: user}"],
+              "default": null
+            },
             "fullResult": {
               "type": "boolean",
               "description": "Whether response should include full AI call details",
@@ -288,6 +295,12 @@ With event metadata parameters as:
             "jsonResponse": {
               "type": "boolean",
               "description": "Whether model response should be automatically parsed as a json object",
+              "examples": [true],
+              "default": false
+            },
+            "logProviderErrorDetail": {
+              "type": "boolean",
+              "description": "Log provider error responses in detail",
               "examples": [true],
               "default": false
             }
@@ -465,9 +478,12 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Parameters (table)" %}
-| Parameter   | Definition                                           | Example | Default |
-| ----------- | ---------------------------------------------------- | ------- | ------- |
-| Full Result | Whether response should include full AI call details | true    | false   |
+| Parameter           | Definition                                                          | Example                                | Default |
+| ------------------- | ------------------------------------------------------------------- | -------------------------------------- | ------- |
+| Full Result         | Whether response should include full AI call details                | true                                   | false   |
+| Message Pattern     | Used for tool sagas, merging original event data into the saga call | merge(arguments, {user: payload.user}) | -       |
+| Json Response       | Parse the model response as a JSON object automatically             | true                                   | false   |
+| Log Provider Errors | Log provider error responses in detail                              | true                                   | false   |
 {% endtab %}
 
 {% tab title="Parameters (JSON Schema)" %}
@@ -487,6 +503,10 @@ With event metadata parameters as:
               "description": "Whether response should include full AI call details",
               "examples": [true],
               "default": false
+            },
+            "messagePattern": {"type": "string", "description": "Used for tool sagas, merging original event data into the saga call", "examples": ["merge(arguments, {user: payload.user})"], "default": null},
+            "jsonResponse": {"type": "boolean", "description": "Parse the model response as a JSON object automatically", "examples": [true], "default": false},
+            "logProviderErrorDetail": {"type": "boolean", "description": "Log provider error responses in detail", "examples": [true], "default": false}
             }
           }
         }
@@ -558,9 +578,11 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Parameters (table)" %}
-| Parameter   | Definition                                           | Example | Default |
-| ----------- | ---------------------------------------------------- | ------- | ------- |
-| Full Result | Whether response should include full AI call details | true    | false   |
+| Parameter       | Definition                                                          | Example                                | Default |
+| --------------- | ------------------------------------------------------------------- | -------------------------------------- | ------- |
+| Full Result     | Whether response should include full AI call details                | true                                   | false   |
+| Message Pattern | Used for tool sagas, merging original event data into the saga call | merge(arguments, {user: payload.user}) | -       |
+| Json Response   | Parse the model response as a JSON object automatically             | true                                   | false   |
 {% endtab %}
 
 {% tab title="Parameters (JSON Schema)" %}
@@ -580,6 +602,9 @@ With event metadata parameters as:
               "description": "Whether response should include full AI call details",
               "examples": [true],
               "default": false
+            },
+            "messagePattern": {"type": "string", "description": "Used for tool sagas, merging original event data into the saga call", "examples": ["merge(arguments, {user: payload.user})"], "default": null},
+            "jsonResponse": {"type": "boolean", "description": "Parse the model response as a JSON object automatically", "examples": [true], "default": false}
             }
           }
         }
@@ -662,9 +687,11 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Parameters (table)" %}
-| Parameter   | Definition                                           | Example | Default |
-| ----------- | ---------------------------------------------------- | ------- | ------- |
-| Full Result | Whether response should include full AI call details | true    | false   |
+| Parameter       | Definition                                                          | Example                                | Default |
+| --------------- | ------------------------------------------------------------------- | -------------------------------------- | ------- |
+| Full Result     | Whether response should include full AI call details                | true                                   | false   |
+| Message Pattern | Used for tool sagas, merging original event data into the saga call | merge(arguments, {user: payload.user}) | -       |
+| Json Response   | Parse the model response as a JSON object automatically             | true                                   | false   |
 {% endtab %}
 
 {% tab title="Parameters (JSON Schema)" %}
@@ -684,6 +711,9 @@ With event metadata parameters as:
               "description": "Whether response should include full AI call details",
               "examples": [true],
               "default": false
+            },
+            "messagePattern": {"type": "string", "description": "Used for tool sagas, merging original event data into the saga call", "examples": ["merge(arguments, {user: payload.user})"], "default": null},
+            "jsonResponse": {"type": "boolean", "description": "Parse the model response as a JSON object automatically", "examples": [true], "default": false}
             }
           }
         }

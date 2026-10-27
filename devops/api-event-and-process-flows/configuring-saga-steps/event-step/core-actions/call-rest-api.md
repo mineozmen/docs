@@ -8,6 +8,8 @@ description: >-
 
 ## Call Rest API Actions
 
+`CallRest` and `ProduceRest` support [..](../ "mention").
+
 ### CallRest
 
 Makes a REST call and returns the result. Event metadata fields applicable for this action are as follows:
@@ -57,17 +59,19 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter       | Definition                                                                                                                                                 | Example                   | Default          |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ---------------- |
-| Input Pattern   | JMESPath pattern to apply on data input                                                                                                                    | {id:parameters.productid} | -                |
-| Output Pattern  | JMESPath pattern to apply on data output, before returning response                                                                                        | {id:id, stock:totalUnits} | -                |
-| Url             | Url path on the target system for REST call                                                                                                                | GetInventory              | -                |
-| Append Url Path | Payload element to add to the end of REST call url path                                                                                                    | parameters.language       | -                |
-| Auth Path       | Payload element to use for auth.\* parameters of REST system                                                                                               | parameters.auth           | -                |
-| Method          | Call method to use                                                                                                                                         | POST                      | GET              |
-| Content Type    | Content type for REST calls (none, query, application/json, application/xml, text/xml, text/plain, multipart/form-data, application/x-www-form-urlencoded) | application/xml           | application/json |
-| Headers         | Json string defining list of headers to add to the request                                                                                                 | {"content-encoding":"br"} | -                |
-| Query.\*        | Query parameters to pass on the request URL                                                                                                                | language=en-US            | -                |
+| Parameter       | Definition                                                                                                                                                 | Example                           | Default          |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | ---------------- |
+| Input Pattern   | JMESPath pattern to apply on data input                                                                                                                    | {id:parameters.productid}         | -                |
+| Output Pattern  | JMESPath pattern to apply on data output, before returning response                                                                                        | {id:id, stock:totalUnits}         | -                |
+| Url             | Url path on the target system for REST call                                                                                                                | GetInventory                      | -                |
+| Append Url Path | Payload element to add to the end of REST call url path                                                                                                    | parameters.language               | -                |
+| Url Pattern     | JMESPath pattern on the payload that produces the URL path to append. Used when Append Url Path is empty.                                                  | join('/', \['', parameters.id])   | -                |
+| Auth Path       | Payload element to use for auth.\* parameters of REST system                                                                                               | parameters.auth                   | -                |
+| Method          | Call method to use                                                                                                                                         | POST                              | GET              |
+| Content Type    | Content type for REST calls (none, query, application/json, application/xml, text/xml, text/plain, multipart/form-data, application/x-www-form-urlencoded) | application/xml                   | application/json |
+| Headers         | Json string defining list of headers to add to the request                                                                                                 | {"content-encoding":"br"}         | -                |
+| Headers Pattern | JMESPath pattern on the payload that produces headers. Used when Headers is empty.                                                                         | {Authorization: parameters.token} | -                |
+| Query.\*        | Query parameters to pass on the request URL                                                                                                                | language=en-US                    | -                |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -102,6 +106,11 @@ With event metadata parameters as:
               "description": "Payload element to add to the end of REST call url path",
               "example": "parameters.language"
             },
+            "urlPattern": {
+              "type": "string",
+              "description": "JMESPath pattern on the payload that produces the URL path to append. Used when urlPath is empty.",
+              "example": "join('/', ['', parameters.id])"
+            },
             "authPath": {
               "type": "string",
               "description": "Payload element to use for auth.* parameters of REST system",
@@ -133,6 +142,11 @@ With event metadata parameters as:
               "type": "string",
               "description": "Json string defining list of headers to add to the request",
               "example": "{\"content-encoding\":\"br\"}"
+            },
+            "headersPattern": {
+              "type": "string",
+              "description": "JMESPath pattern on the payload that produces headers. Used when headers is empty.",
+              "example": "{Authorization: parameters.token}"
             }
           },
           "patternProperties": {

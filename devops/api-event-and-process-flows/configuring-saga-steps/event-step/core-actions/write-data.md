@@ -8,6 +8,8 @@ description: >-
 
 ## Write Data Actions
 
+`Create`, `Update`, `Set`, `Upsert`, `Delete`, `Undelete`, `Remove`, `SetElement`, and `RemoveElement` support [..](../ "mention") parameters.
+
 Most write actions utilize the following event metadata fields:
 
 {% tabs %}
@@ -17,8 +19,6 @@ Most write actions utilize the following event metadata fields:
 | Domain         | Name of the state manager to read data from        | product    | -       |
 | Input Element  | Json path for the input in request event payload   | parameters | -       |
 | Output Element | Json path for the output in response event payload | $.product  | -       |
-
-
 {% endtab %}
 
 {% tab title="JSON Schema" %}

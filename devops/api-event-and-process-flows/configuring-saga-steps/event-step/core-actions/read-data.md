@@ -8,6 +8,8 @@ description: >-
 
 ## Read Data Actions
 
+All read actions support [..](../ "mention"). `Get` also supports [..](../ "mention").
+
 ### Get
 
 Reads and returns aggregate for a single ID from a specific state manager. Event metadata fields applicable for this action are as follows:
@@ -63,6 +65,7 @@ With event metadata parameters as:
 | Output Pattern | JMESPath pattern to apply on data output, before returning response  | {id:id, name:data.name, description:data.description} | -       |
 | ID Path        | Json path for the id field in input element                          | product.id                                            | id      |
 | ID Value       | Static ID to read instead of idPath value                            | 1234                                                  | -       |
+| ID Parameter   | Name of the request field to read the ID from, instead of input      | id                                                    | -       |
 | Fields         | Comma separated list of fields to keep in response                   | data.name,data.description                            | -       |
 | Form           | Form of response to produce (i.e. full=including custom data fields) | full                                                  | -       |
 | Customize By   | Comma separated list of customizations to apply to data              | luxury,tech\_savvy                                    | -       |
@@ -97,6 +100,11 @@ With event metadata parameters as:
               "type": ["string", "integer"],
               "definition": "Static ID to read instead of idPath value",
               "example": 1234
+            },
+            "idParameter": {
+              "type": "string",
+              "definition": "Name of the request field to read the ID from, instead of input",
+              "example": "id"
             },
             "fields": {
               "type": "string",
@@ -206,6 +214,7 @@ With event metadata parameters as:
 | Parameter      | Definition                                                               | Example                                               | Default |
 | -------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- | ------- |
 | Output Pattern | JMESPath pattern to apply on each data output, before returning response | {id:id, name:data.name, description:data.description} | -       |
+| ID Path        | Json path of the ID field in each input entry                            | product.id                                            | id      |
 | Fields         | Comma separated list of fields to keep in response                       | data.name,data.description                            | -       |
 | Form           | Form of response to produce (i.e. full=including custom data fields)     | full                                                  | -       |
 | Customize By   | Comma separated list of customizations to apply to data                  | luxury,tech\_savvy                                    | -       |
@@ -231,6 +240,12 @@ With event metadata parameters as:
               "type": "string",
               "definition": "JMESPath pattern to apply on each data output, before returning response",
               "example": "{id:id, name:data.name, description:data.description}"
+            },
+            "idPath": {
+              "type": "string",
+              "definition": "Json path of the ID field in each input entry",
+              "default": "id",
+              "example": "product.id"
             },
             "fields": {
               "type": "string",
@@ -321,16 +336,18 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter      | Definition                                                               | Example                                               | Default |
-| -------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- | ------- |
-| Output Pattern | JMESPath pattern to apply on each data output, before returning response | {id:id, name:data.name, description:data.description} | -       |
-| Fields         | Comma separated list of fields to keep in response                       | data.name,data.description                            | -       |
-| Form           | Form of response to produce (i.e. full=including custom data fields)     | full                                                  | -       |
-| Customize By   | Comma separated list of customizations to apply to data                  | luxury,tech\_savvy                                    | -       |
-| Skip           | Number of rows to skip in results                                        | 20                                                    | -       |
-| Limit          | Maximum number of rows to return                                         | 10                                                    | -       |
-| Order By       | Order by field for results with direction                                | name desc                                             | -       |
-| Count As       | Json path to return total number of rows on event payload                | total                                                 | -       |
+| Parameter           | Definition                                                               | Example                                               | Default |
+| ------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- | ------- |
+| Output Pattern      | JMESPath pattern to apply on each data output, before returning response | {id:id, name:data.name, description:data.description} | -       |
+| First Only          | Return only the first record instead of a list                           | true                                                  | false   |
+| Output List Pattern | JMESPath pattern applied to the full result list before returning        | \[?data.status=='A']                                  | -       |
+| Fields              | Comma separated list of fields to keep in response                       | data.name,data.description                            | -       |
+| Form                | Form of response to produce (i.e. full=including custom data fields)     | full                                                  | -       |
+| Customize By        | Comma separated list of customizations to apply to data                  | luxury,tech\_savvy                                    | -       |
+| Skip                | Number of rows to skip in results                                        | 20                                                    | -       |
+| Limit               | Maximum number of rows to return                                         | 10                                                    | -       |
+| Order By            | Order by field for results with direction                                | name desc                                             | -       |
+| Count As            | Json path to return total number of rows on event payload                | total                                                 | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -350,6 +367,17 @@ With event metadata parameters as:
               "type": "string",
               "definition": "JMESPath pattern to apply on each data output, before returning response",
               "example": "{id:id, name:data.name, description:data.description}"
+            },
+            "first": {
+              "type": "boolean",
+              "definition": "Return only the first record instead of a list",
+              "default": false,
+              "example": true
+            },
+            "outputListPattern": {
+              "type": "string",
+              "definition": "JMESPath pattern applied to the full result list before returning",
+              "example": "[?data.status=='A']"
             },
             "fields": {
               "type": "string",

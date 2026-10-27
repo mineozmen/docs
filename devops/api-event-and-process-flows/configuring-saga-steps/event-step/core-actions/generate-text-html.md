@@ -8,6 +8,8 @@ description: >-
 
 ## Generate Text/Html Actions
 
+`ApplyTemplate` supports [..](../ "mention").
+
 ### ApplyTemplate
 
 Produces text (e.g. plain, html) from given input data and template id. Event metadata fields applicable for this action are as follows:
@@ -51,11 +53,12 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter        | Definition                                       | Example             | Default |
-| ---------------- | ------------------------------------------------ | ------------------- | ------- |
-| Template ID      | Id of the template to use from code.state        | landing\_page       | -       |
-| Template ID Path | Json path of the template in event payload       | parameters.template | -       |
-| Result Path      | Json path to add produced text on output element | output              | result  |
+| Parameter        | Definition                                       | Example                 | Default |
+| ---------------- | ------------------------------------------------ | ----------------------- | ------- |
+| Template ID      | Id of the template to use from code.state        | landing\_page           | -       |
+| Template ID Path | Json path of the template in event payload       | parameters.template     | -       |
+| Result Path      | Json path to add produced text on output element | output                  | result  |
+| Input Pattern    | JMESPath pattern applied to the data input       | {name: parameters.name} | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -85,6 +88,11 @@ With event metadata parameters as:
               "description": "Json path to add produced text on output element",
               "default": "result",
               "example": "output"
+            },
+            "inputPattern": {
+              "type": "string",
+              "description": "JMESPath pattern applied to the data input",
+              "example": "{name: parameters.name}"
             }
           }
         }
@@ -162,12 +170,13 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter        | Definition                                                    | Example | Default |
-| ---------------- | ------------------------------------------------------------- | ------- | ------- |
-| Output Structure | Structure of output to produce (map[^1], array[^2], text[^3]) | map     | -       |
-| Output Delimiter | Delimiter for concatenating results if structure is "text"    | \n      | -       |
-| Input Path       | Json path to get list of requests from                        | list    | input   |
-| Result Path      | Json path to add produced text on output element              | output  | result  |
+| Parameter        | Definition                                                    | Example                 | Default |
+| ---------------- | ------------------------------------------------------------- | ----------------------- | ------- |
+| Output Structure | Structure of output to produce (map[^1], array[^2], text[^3]) | map                     | -       |
+| Output Delimiter | Delimiter for concatenating results if structure is "text"    | \n                      | -       |
+| Input Path       | Json path to get list of requests from                        | list                    | input   |
+| Result Path      | Json path to add produced text on output element              | output                  | result  |
+| Input Pattern    | JMESPath pattern applied to the data input                    | {name: parameters.name} | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -204,6 +213,11 @@ With event metadata parameters as:
               "description": "Json path to add produced text on output element",
               "default": "result",
               "example": "output"
+            },
+            "inputPattern": {
+              "type": "string",
+              "description": "JMESPath pattern applied to the data input",
+              "example": "{name: parameters.name}"
             }
           }
         }

@@ -8,6 +8,8 @@ description: >-
 
 ## Perform File Operation Actions
 
+`ReadFile` supports [..](../ "mention"). It uses **Use Cache** and **Cache State**.
+
 ### MakeDir
 
 Creates a new directory in given file system. Event metadata fields applicable for this action are as follows:
@@ -130,8 +132,6 @@ With event metadata parameters as:
 | Parse Meta     | Whether to detect analyze file metadata (single file only) | true     | -       |
 | Produce Hash   | Whether to produce content hash (single file only)         | true     | -       |
 | Output Pattern | Jmespath for producing list results                        | -        | -       |
-
-
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -274,12 +274,6 @@ With event metadata parameters as:
               "definition": "Json path in payload for file/directory path to delete",
               "default": "path",
               "example": "filePath"
-            },
-            "recursive": {
-              "type": "boolean",
-              "definition": "Whether deletion should include sub-directories",
-              "default": false,
-              "example": true
             }
           }
         }
@@ -500,15 +494,16 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter | Definition                                                                                               | Example        | Default |
-| --------- | -------------------------------------------------------------------------------------------------------- | -------------- | ------- |
-| Path Path | Json path in payload for file path to write (from payload root)                                          | parameters.id  | path    |
-| Mode      | Type of file(s) to output (sequence[^1], single[^2])                                                     | sequence       | single  |
-| Prefix    | Prefix to add to each file's name (for sequence mode output)                                             | tracking/views | -       |
-| Suffix    | Suffix to add to each file's name (for sequence mode output)                                             | \_out.json     | -       |
-| Content   | Event contents to write to file (for sequence mode, event[^3], request[^4] or payload[^5])               | request        | payload |
-| Overwrite | Whether to overwrite or append contents to output (for single mode output)                               | true           | false   |
-| Base64    | Whether the input should be treated as base64 text and decoded for generating the file (e.g. image, PDF) | true           | false   |
+| Parameter     | Definition                                                                                               | Example                                              | Default |
+| ------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------- |
+| Path Path     | Json path in payload for file path to write (from payload root)                                          | parameters.id                                        | path    |
+| Mode          | Type of file(s) to output (sequence[^1], single[^2])                                                     | sequence                                             | single  |
+| Prefix        | Prefix to add to each file's name (for sequence mode output)                                             | tracking/views                                       | -       |
+| Suffix        | Suffix to add to each file's name (for sequence mode output)                                             | \_out.json                                           | -       |
+| Content       | Event contents to write to file (for sequence mode, event[^3], request[^4] or payload[^5])               | request                                              | payload |
+| Overwrite     | Whether to overwrite or append contents to output (for single mode output)                               | true                                                 | false   |
+| Base64        | Whether the input should be treated as base64 text and decoded for generating the file (e.g. image, PDF) | true                                                 | false   |
+| Input Pattern | JMESPath pattern applied to the data input                                                               | {path: parameters.path, content: parameters.content} | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -572,6 +567,11 @@ With event metadata parameters as:
               "definition": "Whether the input should be treated as base64 text and decoded for generating the file (e.g. image, PDF)",
               "default": false,
               "example": true
+            },
+            "inputPattern": {
+              "type": "string",
+              "definition": "JMESPath pattern applied to the data input",
+              "example": "{path: parameters.path, content: parameters.content}"
             }
           }
         }
@@ -603,7 +603,7 @@ Event Metadata
 
 </details>
 
-For sequence output mode, this handler uses a path writer, which is responsible for generating unique sequence file paths/names for wrting contents to. The writer can be configured by adding path.\* parameters to file system definition.
+For sequence output mode, this handler uses a path writer, which is responsible for generating unique sequence file paths/names for writing contents to. The writer can be configured by adding path.\* parameters to file system definition.
 
 {% hint style="info" %}
 Using "\[uuid]" in prefix or suffix allows generation of globally unique paths and file names, as this entry is replaced with a UUID value generated.
@@ -647,14 +647,12 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter      | Definition                                          | Example | Default |
-| -------------- | --------------------------------------------------- | ------- | ------- |
-| Path Path      | Json path in payload for file path to read          | id      | path    |
-| Format         | Format of the file contents to retrieve (json,text) | json    | text    |
-| Max Length     | Maximum file size to be allowed for reading         | 1000000 | -       |
-| Output Pattern | Jmespath pattern to apply to json format output     | -       | -       |
-
-
+| Parameter      | Definition                                          | Example  | Default |
+| -------------- | --------------------------------------------------- | -------- | ------- |
+| Path Path      | Json path in payload for file path to read          | id       | path    |
+| Format         | Format of the file contents to retrieve (json,text) | json     | text    |
+| Max Length     | Maximum file size in bytes allowed to read          | 10000000 | -       |
+| Output Pattern | JMESPath pattern applied to the data output         | -        | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -685,15 +683,16 @@ With event metadata parameters as:
               ],
               "default": "text",
               "example": "json"
+            },
+            "maxLength": {
+              "type": "integer",
+              "definition": "Maximum file size in bytes allowed to read",
+              "example": 10000000
+            },
+            "outputPattern": {
+              "type": "string",
+              "definition": "JMESPath pattern applied to the data output"
             }
-          },
-          "maxLength": {
-            "type": "string",
-            "definition": "Maximum file size to be allowed for reading"
-          },
-          "outputPattern": {
-            "type": "string",
-            "definition": "Jmespath pattern to apply to json format output"
           }
         }
       }

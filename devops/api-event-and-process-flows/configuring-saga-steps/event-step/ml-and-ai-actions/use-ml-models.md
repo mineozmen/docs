@@ -8,6 +8,8 @@ description: >-
 
 ## Use ML Models Actions
 
+`ScoreML` supports [..](../ "mention").
+
 ### Score / ScoreML
 
 Scores input data using a pretrained model managed by this handler. Event metadata fields applicable for this action are as follows:

@@ -67,6 +67,8 @@ With event metadata parameters as:
 | Dataflow       | Id of the dataflow from which data will be received                 | session\_dna                   | -       |
 | Id Field       | Name of the id field to query on Siddhi table                       | sessionid                      | id      |
 | Id Path        | Json path for the id field in input element                         | session.id                     | id      |
+| ID Value       | Static ID to read instead of ID Path value                          | 1234                           | -       |
+| ID Parameter   | Name of the request field to read the ID from                       | id                             | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -105,6 +107,18 @@ With event metadata parameters as:
               "definition": "Json path for the id field in input element",
               "example": "session.id",
               "default": "id"
+            },
+            "idValue": {
+              "type": ["string", "integer"],
+              "definition": "Static ID to read instead of idPath value",
+              "example": 1234,
+              "default": null
+            },
+            "idParameter": {
+              "type": "string",
+              "definition": "Name of the request field to read the ID from",
+              "example": "id",
+              "default": null
             }
           }
         }

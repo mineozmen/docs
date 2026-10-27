@@ -14,11 +14,12 @@ Logs contents of the event received with the following event metadata parameters
 
 {% tabs %}
 {% tab title="Table" %}
-| Parameter | Definition                                     | Example | Default           |
-| --------- | ---------------------------------------------- | ------- | ----------------- |
-| Level     | Logging level to use                           | ERROR   | DEBUG             |
-| Type      | Whether full event or payload should be logged | payload | event             |
-| Message   | Message format to use for logging              | Success | Event details: {} |
+| Parameter     | Definition                                     | Example             | Default           |
+| ------------- | ---------------------------------------------- | ------------------- | ----------------- |
+| Level         | Logging level to use                           | ERROR               | DEBUG             |
+| Type          | Whether full event or payload should be logged | payload             | event             |
+| Message       | Message format to use for logging              | Success             | Event details: {} |
+| Input Pattern | JMESPath pattern applied to the data input     | {id: parameters.id} | -                 |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -50,6 +51,11 @@ Logs contents of the event received with the following event metadata parameters
               "definition": "Message format to use for logging",
               "example": "Success",
               "default": "Event details: {}"
+            },
+            "inputPattern": {
+              "type": "string",
+              "definition": "JMESPath pattern applied to the data input",
+              "example": "{id: parameters.id}"
             }
           }
         }

@@ -6,6 +6,8 @@ description: These actions provide ability to execute business rules using Drool
 
 ## Apply Advanced Rules Actions
 
+`ProcessRules` supports [..](../ "mention"). Its `forEach` parameter uses the common Loop For Each Input setting.
+
 ### Process / ProcessRules
 
 Passes structured request data to Drools and returns rule evaluation results in the output. Event metadata fields applicable for this action are as follows:
@@ -58,6 +60,7 @@ With event metadata parameters as:
 | Output Pattern | JMESPath pattern to apply on data output, before returning response                        | {totalPrice:basket.totalPrice} | -       |
 | For Each       | Field for which a separate record should be passed on to Drools                            | items                          | -       |
 | For Each Map   | Json pattern for mapping each record passed to Drools, allowing replication of common data | -                              | -       |
+| Pass Type      | How the event is passed to the rules                                                       | shallow                        | shallow |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -95,6 +98,12 @@ With event metadata parameters as:
               "type": "string",
               "definition": "Json pattern for mapping each record that should be passed on to Drools, allowing replication of common data",
               "default": null
+            },
+            "pass": {
+              "type": "string",
+              "definition": "How the event is passed to the rules",
+              "default": "shallow",
+              "example": "shallow"
             }
           }
         }
