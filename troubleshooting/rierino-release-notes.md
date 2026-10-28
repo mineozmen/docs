@@ -5,6 +5,40 @@ icon: code-branch
 
 # Rierino Release Notes
 
+## 2.10.0 \[10/2026]
+
+### Rich Workflow & Schedule Editors
+
+Manage complex workflow and schedule settings more easily. New generic Flow, Cron and Duration editor widgets let you build flows, define schedules and set time intervals in the UI.
+
+### Real-Time Collaborative Editing
+
+Avoid conflicting changes when you work as a team. You can now see in real time when other users are editing the same record, which makes it easier to coordinate and collaborate in the UI.
+
+### Visual Agent Editor
+
+See your whole agent at a glance. A new visual agent diagram shows all of an agent’s features in one view, so you can spot gaps and review configurations quickly.
+
+### Partial Flow Execution
+
+Run only the part of a saga you need. Saga executions now accept start and stop step IDs, so you can execute a specific segment of a flow. This is mainly useful for auditing.
+
+### Google Drive & SharePoint File Systems
+
+Connect to your documents with less effort. Built-in file system connectors for Google Drive and SharePoint make these integrations simpler to set up.
+
+### Simplified Validations
+
+Validate data through simplified configurations. New event and saga validator configurations let you validate inputs and outputs with methods such as JSON Schema and JMESPath.
+
+### Hybrid Embedding Models
+
+Streamline your hybrid search pipelines. Hybrid embedding models are now supported. They produce dense and sparse embeddings together in a single step.
+
+### AI Agent Memory Context
+
+Keep critical information consistent throughout a conversation. Tool calls can now write context metadata to memory and read it back, separately from their responses. For example, they can save the last product a customer asked about. Agents can also use this metadata when they respond to later user prompts.
+
 ## 2.9.0 \[09/2026]
 
 ### Simplified Interactive Debugging
