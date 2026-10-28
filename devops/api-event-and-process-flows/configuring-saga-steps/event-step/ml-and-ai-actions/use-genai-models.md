@@ -253,13 +253,13 @@ With event metadata parameters as:
 
 {% tabs %}
 {% tab title="Parameters (table)" %}
-| Parameter           | Definition                                                                                                                                       | Example                                | Default |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- | ------- |
-| Message Pattern     | Used for tool sagas, allowing merging data from original event to saga call, with `arguments` as agent-generated input and `payload` as original | merge(arguments, {user: payload.user}) | -       |
-| Source Pattern      | Used for storing additional data from request payload in chat memory                                                                             | {user: user}                           | -       |
-| Full Result         | Whether response should include full AI call details, such as token counts and tool executions                                                   | true                                   | false   |
-| Json Response       | Whether model response should be automatically parsed as a JSON object                                                                           | true                                   | false   |
-| Log Provider Errors | Log provider error responses in detail                                                                                                           | true                                   | false   |
+| Parameter           | Definition                                                                                                                                                                                                    | Example                                | Default |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------- |
+| Message Pattern     | Used for tool sagas, allowing merging data from original event to saga call, with `arguments` as agent-generated input and `payload` as original, `chat.id`, `agent.id`, `memory.id` and `memory.meta` fields | merge(arguments, {user: payload.user}) | -       |
+| Source Pattern      | Used for storing additional data from request payload in chat memory                                                                                                                                          | {user: user}                           | -       |
+| Full Result         | Whether response should include full AI call details, such as token counts and tool executions                                                                                                                | true                                   | false   |
+| Json Response       | Whether model response should be automatically parsed as a JSON object                                                                                                                                        | true                                   | false   |
+| Log Provider Errors | Log provider error responses in detail                                                                                                                                                                        | true                                   | false   |
 {% endtab %}
 
 {% tab title="Parameters (JSON Schema)" %}

@@ -235,6 +235,11 @@ For custom decision providers:
 | `decision.class`   | Java class implementing the decision provider     | `io.rierino.rai.xxx.CustomDecisionModel` | -       |
 | `decision.methods` | Method configuration passed to the decision class | `{"apiKey":"xxx"}`                       | -       |
 
+Classes:
+
+* `io.rierino.rai.openai.OpenAiDecisionModel`
+* `io.rierino.rai.laya.LayaDecisionModel`
+
 Action details: [Make AI Decisions](../../../api-event-and-process-flows/configuring-saga-steps/event-step/ml-and-ai-actions/make-ai-decisions.md)
 
 ### Service MCP Requests

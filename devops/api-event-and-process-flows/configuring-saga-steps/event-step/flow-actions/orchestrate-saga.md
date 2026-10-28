@@ -61,8 +61,8 @@ With the following event metadata parameters:
 | Fire Forget    | Whether this call works asynchronously. This uses the common Fire & Forget setting. | true           | false   |
 | Input Pattern  | JMESPath pattern to apply on data input                                             | -              | -       |
 | Output Pattern | JMESPath pattern to apply on data output, before returning response                 | -              | -       |
-| Start Step     | ID of the step to start saga execution from                                         | validate       | -       |
-| Stop Step      | ID of the step to stop saga execution at                                            | respond        | -       |
+| Start Step     | ID of the step to start saga execution from                                         | 3              | -       |
+| Stop Step      | ID of the step to stop saga execution at                                            | 10             | -       |
 {% endtab %}
 
 {% tab title="JSON Schema" %}
@@ -103,12 +103,12 @@ With the following event metadata parameters:
             "startStep": {
               "type": "string",
               "definition": "ID of the step to start saga execution from",
-              "example": "validate"
+              "example": "3"
             },
             "stopStep": {
               "type": "string",
               "definition": "ID of the step to stop saga execution at",
-              "example": "respond"
+              "example": "10"
             }
           }
         }

@@ -471,6 +471,7 @@ HandlebarsDisplay provides ability to render read-only Handlebars templates usin
 | Template Id      | Static id for selecting template from the source                            | test-template                                                  | -       |
 | Template Id Path | Json path of dynamic id for selecting template from the source              | data.templateId                                                | -       |
 | Source Path      | Json path of template text in source records                                | data.content                                                   | -       |
+| Base Templates   | List of base template ids to inherit in source records                      | \["base\_dialog"]                                              | -       |
 | Data Lookups     | List of data sources to pass on to template as lookups                      | {"product-lkp": { source: "product", idPath: "data.product"\}} | -       |
 | As iframe        | Whether widget should be rendered as an iframe (or div)                     | true                                                           | false   |
 | Disable Print    | Whether widget should allow disable printing                                | true                                                           | false   |
@@ -511,6 +512,14 @@ HandlebarsDisplay provides ability to render read-only Handlebars templates usin
           "type": "string",
           "definition": "Json path of template text in source records",
           "example": "data.content"
+        },
+        "baseTemplates": {
+          "type": "array",
+          "definition": "List of base template ids to inherit in source records",
+          "items":{
+            "type": "string",
+            "example": "base_dialog"
+          }
         },
         "lookups": {
           "type": "object",

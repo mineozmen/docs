@@ -70,6 +70,8 @@ Some actions support the following optional parameter groups. Each action page i
   * **Ignore Errors:** Comma separated list of Rierino error codes to ignore (e.g. allowing STALE update errors on write actions).
   * **Delay Ms:** Milliseconds to wait between executing actions (e.g. for rate limiting on target systems).
   * **Delay ID:** Unique identifier of the actions which should wait each other with "Delay Ms".
+  * **Meta Path:** Json element path in payload for pulling full event metadata dynamically.
+  * **Parameters Path:** Json element path in payload for pulling parameters dynamically.
 * **Iteration Parameters**
   * **Loop For Each Input:** Whether the action will be repeated for each record in input element (should be an array)
   * **Loop In Parallel:** Whether the loop will be executed in parallel faster using more resources
