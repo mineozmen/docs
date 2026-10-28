@@ -17,7 +17,7 @@ These functions are available wherever JMESPath expressions are used by runners 
 
 ### Client Side
 
-These functions are available in [conditional display](https://claude.ai/design/user-interface/uis/extended-scope/conditional-display.md), eval value widget, [table editor](https://claude.ai/design/user-interface/uis/widgets/array-widgets.md#table-editor) pattern cells as well as name & icon field definitions of [listers](https://claude.ai/design/user-interface/uis/listers.md). They are not supported in other JMESPath use cases.
+These functions are available in [conditional display](../design/user-interface/uis/extended-scope/conditional-display.md), eval value widget, [table editor](../design/user-interface/uis/widgets/array-widgets.md#table-editor) pattern cells as well as name & icon field definitions of [listers](../design/user-interface/uis/listers.md). They are not supported in other JMESPath use cases.
 
 ### Batch
 
@@ -2324,7 +2324,7 @@ Joins `left` and `right` on field `key`.
 Matching entries are merged into one object (on conflicting fields, `right` wins). A `left` entry that matches several `right` entries produces one result per match. Unmatched `right` entries are never included.
 
 **Client-side source lookup** (\[C])\
-Looks up a record by `id` from a configured [source](https://claude.ai/design/api-mapping.md).
+Looks up a record by `id` from a configured [source](../design/api-mapping/).
 
 {% hint style="info" %}
 Client-side `lookup()` is only available in evaluation providers (not in Handlebars templates).

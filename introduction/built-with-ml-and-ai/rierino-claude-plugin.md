@@ -346,7 +346,7 @@ Use Rierino Claude Plugin when you want Claude to help with any of the following
 
 ### Where to go next
 
-* [Development](https://docs.rierino.com/quick-start/development) — understand how Rierino development apps fit together.
+* [Development](../../quick-start/development-with-rierino.md) — understand how Rierino development apps fit together.
 * [Built with ML & AI](https://docs.rierino.com/introduction/built-with-ml-and-ai) — learn how Rierino supports RAI, AI agents, MCP, A2A, and ML automation.
 * [MCP Servers](https://docs.rierino.com/data-science/mcp-servers) — learn how Rierino exposes sagas, prompts, resources, and templates over MCP.
 * [Rierino Claude Plugin on GitHub](https://github.com/rierino-open/rierino-claude-plugin) — view the plugin source, README, and latest installation instructions.

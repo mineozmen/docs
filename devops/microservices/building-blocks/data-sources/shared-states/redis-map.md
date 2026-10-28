@@ -8,12 +8,12 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter         | Definition                                                                                        | Example                        | Default          |
-| ----------------- | ------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------- |
-| system            | Name of the [system ](../../systems-integrations/#redis)which defines Redis service details (uri) | {uri:"redis://127.0.0.1:6379"} | master.redis.uri |
-| collection        | Name of the collection to store details, which is used as a prefix in Redis keys                  | product                        | -                |
-| journalCollection | Name of the collection to store state changes, which is used as a prefix in Redis keys            | product\_journal               | -                |
-| ttl               | Seconds after which records expire, if given                                                      | 3600                           | -                |
+| Parameter         | Definition                                                                                                       | Example                        | Default          |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------- |
+| system            | Name of the [system ](../../systems-integrations/data-systems.md#redis)which defines Redis service details (uri) | {uri:"redis://127.0.0.1:6379"} | master.redis.uri |
+| collection        | Name of the collection to store details, which is used as a prefix in Redis keys                                 | product                        | -                |
+| journalCollection | Name of the collection to store state changes, which is used as a prefix in Redis keys                           | product\_journal               | -                |
+| ttl               | Seconds after which records expire, if given                                                                     | 3600                           | -                |
 
 ### Redisson variant
 

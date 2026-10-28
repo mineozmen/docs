@@ -8,7 +8,7 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter | Definition                                                                                                      | Example                         | Default |
-| --------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------- |
-| system    | Name of the [system ](../../systems-integrations/#etcd)which defines etcd service details (url, user, password) | {url:"http://etcd.example.com"} | -       |
-| namespace | Namespace on the etcd service for storing state details                                                         | store\_infrastructure           | -       |
+| Parameter | Definition                                                                                                                     | Example                         | Default |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | ------- |
+| system    | Name of the [system ](../../systems-integrations/data-systems.md#etcd)which defines etcd service details (url, user, password) | {url:"http://etcd.example.com"} | -       |
+| namespace | Namespace on the etcd service for storing state details                                                                        | store\_infrastructure           | -       |

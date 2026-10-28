@@ -38,5 +38,5 @@ Handler packages are JAR packages of handler classes which are loaded dynamicall
 * **Status:** Whether package is currently active or not
 * **Description:** Detailed description of what the package does
 * **Domain:** Domain of the package which allows deploying multiple packages using a single package handler
-* **Files:** Jar files included in the package with Urls to download them (see [Custom Development](/broken/spaces/bkSulhvpxVy8S76n8DOO) for details)
+* **Files:** Jar files included in the package with Urls to download them (see [Custom Development](../devops/pro-code/custom-handlers.md) for details)
 * **Handlers:** Mapping of unique handler ids to fully qualified class names for handlers included in the package

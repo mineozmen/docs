@@ -142,7 +142,7 @@ While it is possible to define all settings for each event step inside a saga, e
 
 There are 3 alternative ways of achieving this, which can be also combined together based on the use case:
 
-1. Defining predefined "Action" records and using [Broken link](/broken/pages/vMEjRSndZzV2Kzyiepjy "mention") handler to call them.
+1. Defining predefined "Action" records and using [Execute Predefined Actions](flow-actions/execute-predefined-actions.md#execute-predefined-actions) handler to call them.
 2. Defining structural [actions.md](../../../microservices/building-blocks/additional-elements/actions.md "mention") runner elements with the default values and using them as event actions for requests to runners with these elements.
 3. Defining metadata overrides to streams through which these action requests are sent to the target event runners.
 

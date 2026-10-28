@@ -892,7 +892,7 @@ MediaMetadataArrayEditor displays a list of images or videos with metadata field
 
 ### Handlebars Preview Editor
 
-[HandlebarsPreviewArrayEditor ](#user-content-fn-1)[^1]is used for collecting list of records while rendering each record with a Handlebars template, providing form of a web page / section builder. This widget has the following special properties in addition to [sourced widget properties](./#filtered-widgets):
+[HandlebarsPreviewArrayEditor ](#user-content-fn-1)[^1]is used for collecting list of records while rendering each record with a Handlebars template, providing form of a web page / section builder. This widget has the following special properties in addition to [sourced widget properties](./#sourced-widgets):
 
 {% tabs %}
 {% tab title="Table" %}

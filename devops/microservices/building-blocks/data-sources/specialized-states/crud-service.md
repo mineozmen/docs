@@ -9,11 +9,11 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter         | Definition                                                                                                             | Example                        | Default |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------- |
-| system            | Name of the [system ](../../systems-integrations/#rest)which defines remote service details (uri, timeout, allowPatch) | {uri:"http://wms.example.com"} | -       |
-| resource          | Name/path of the resource on target system                                                                             | inventory                      | -       |
-| suffix            | Path added after the resource and id in REST calls                                                                     | details                        | -       |
-| pageSize          | Number of records requested per page                                                                                   | 100                            | -       |
-| pageParameter     | Query parameter name for page number                                                                                   | page                           | -       |
-| pageSizeParameter | Query parameter name for page size                                                                                     | size                           | -       |
+| Parameter         | Definition                                                                                                                                 | Example                        | Default |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ | ------- |
+| system            | Name of the [system ](../../systems-integrations/api-based-systems.md#rest)which defines remote service details (uri, timeout, allowPatch) | {uri:"http://wms.example.com"} | -       |
+| resource          | Name/path of the resource on target system                                                                                                 | inventory                      | -       |
+| suffix            | Path added after the resource and id in REST calls                                                                                         | details                        | -       |
+| pageSize          | Number of records requested per page                                                                                                       | 100                            | -       |
+| pageParameter     | Query parameter name for page number                                                                                                       | page                           | -       |
+| pageSizeParameter | Query parameter name for page size                                                                                                         | size                           | -       |

@@ -38,7 +38,7 @@ Tokens have the following main settings:
 * **Audience:** List of audience to include in produced tokens.
 
 {% hint style="info" %}
-API keys can be safely generated and resolved using [SecretEventHandler](/broken/pages/blTJECkmngVGRFGp25Ks) hash actions if a third party key management solution is not used.
+API keys can be safely generated and resolved using [SecretEventHandler](../../microservices/building-blocks/execution-handlers/core-handlers.md#generate-secrets) hash actions if a third party key management solution is not used.
 {% endhint %}
 
 ### Claims
@@ -55,7 +55,7 @@ Claims carried by tokens are also configured as a list, with the following param
 * **Remove:** Whether claim should be removed before returning to the requestor
 
 {% hint style="warning" %}
-Claims can be primitive data classes (e.g. string, number) or array of primitive data types. Other data classes (e.g. custom objects) can be translated into JSON strings and parsed in saga flows, or split into primitive claims. &#x20;
+Claims can be primitive data classes (e.g. string, number) or array of primitive data types. Other data classes (e.g. custom objects) can be translated into JSON strings and parsed in saga flows, or split into primitive claims.
 {% endhint %}
 
 {% hint style="info" %}
@@ -85,16 +85,16 @@ Tokens also define backend providers which are used for defining actual authenti
 When designing login saga for the gateway used by Admin UI (/AdminLogin saga in regular deployments), the following parameters can be returned to coordinate different types of login flows:
 
 * **stage:** Defines which stage the current login process is at, with the following values and meanings. If the runner does not send a next "stage" in response, it is expected to send the required tokens or return an error:
-  * &#x20;**start:** Means the login started with the user entering credentials, only sent from Admin UI to authentication runner
+  * **start:** Means the login started with the user entering credentials, only sent from Admin UI to authentication runner
   * **otp:** Means the the login is processing OTP message sent to user
-    * When sent from authentication runner to Admin UI, means the UI will request OTP entry next. Any transaction ID or user identifiers required for OTP validation should be sent with this stage.&#x20;
-    * When sent from Admin UI to authentication runner, user entered OTP is sent along with the request for validation&#x20;
+    * When sent from authentication runner to Admin UI, means the UI will request OTP entry next. Any transaction ID or user identifiers required for OTP validation should be sent with this stage.
+    * When sent from Admin UI to authentication runner, user entered OTP is sent along with the request for validation
   * **otp-repeat:** Means the user requested resending of the OTP message, which is always sent from Admin UI to the runner, which should be responded with "otp" stage
   * **wait:** Means the user is expected to perform an action outside the Admin UI (e.g. external authenticator app)
-    * When sent from authentication runner to Admin UI, means the UI will wait for a few seconds to ask for update on the login status from the runner. Any transaction ID or user identifiers required for checking status should be sent with this stage.&#x20;
+    * When sent from authentication runner to Admin UI, means the UI will wait for a few seconds to ask for update on the login status from the runner. Any transaction ID or user identifiers required for checking status should be sent with this stage.
     * When sent from Admin UI to authentication runner, runner is expected to check for the status and either return a "wait" status if the response is not received yet, or return a successful/failed login response.
 * **skipCaptcha:** Defines whether the Admin UI should skip using reCAPTCHA, if sent in response from the authentication runner to Admin UI. Otherwise, Admin UI requires captcha validation after receiving login error responses.
-* **skipToken:** If provided in response from the runner, admin API gateway skips generating the gateway token in final response. Typically used in initial steps for a multi-step login process, as token is valid only after final step.&#x20;
+* **skipToken:** If provided in response from the runner, admin API gateway skips generating the gateway token in final response. Typically used in initial steps for a multi-step login process, as token is valid only after final step.
 
 ### Session
 

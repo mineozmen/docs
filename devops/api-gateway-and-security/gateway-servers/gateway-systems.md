@@ -27,7 +27,7 @@ It is possible to define any number and type of new gateway systems with special
 
 ## RPC Based Gateway System
 
-With a specific executor (_com.rierino.api.gateway.executor.RPCExecutor_) this gateway system is used for communicating with [RPCEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#rpceventrunner) instances over http or https, with the following parameters:
+With a specific executor (_com.rierino.api.gateway.executor.RPCExecutor_) this gateway system is used for communicating with [RPCEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#rpc-event-runner) instances over http or https, with the following parameters:
 
 | Parameter                     | Definition                                                                                                                             | Example                          | Default |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------- |
@@ -79,7 +79,7 @@ http://runner-spring-[deploymentId]-service.admin-backend.svc.cluster.local:[por
 
 ## CRUD Based Gateway System
 
-With a specific executor (_com.rierino.api.gateway.executor.CRUDExecutor_) this gateway system is used for communicating with [CRUDEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#crudeventrunner) instances over http or https. Parameters used by RPCExecutor are also applicable for this executor.
+With a specific executor (_com.rierino.api.gateway.executor.CRUDExecutor_) this gateway system is used for communicating with [CRUDEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#crud-event-runner) instances over http or https. Parameters used by RPCExecutor are also applicable for this executor.
 
 ### CRUD API Flow
 
@@ -106,7 +106,7 @@ http://runner-spring-[deploymentId]-service.admin-backend.svc.cluster.local:[por
 
 ## Kafka Based Gateway System
 
-With a specific executor (_com.rierino.api.gateway.executor.KafkaExecutor_) this gateway system is used for communicating with runners such as [SyncSamzaEventRunner](../../microservices/service-runners/deploying-runners/samza-runners.md#syncsamzaeventrunner) and [AsyncSamzaEventRunner](../../microservices/service-runners/deploying-runners/samza-runners.md#asyncsamzaeventrunner) through Kafka streams, with the following parameters:
+With a specific executor (_com.rierino.api.gateway.executor.KafkaExecutor_) this gateway system is used for communicating with runners such as [SyncSamzaEventRunner](../../microservices/service-runners/deploying-runners/samza-runners.md#sync-samza-event-runner) and [AsyncSamzaEventRunner](../../microservices/service-runners/deploying-runners/samza-runners.md#async-samza-event-runner) through Kafka streams, with the following parameters:
 
 | Parameter          | Definition                                           | Example                  | Default |
 | ------------------ | ---------------------------------------------------- | ------------------------ | ------- |
@@ -125,7 +125,7 @@ Exposure of Samza event runner APIs through these systems have the following flo
 * Installing a new deployment initializes its list of runners which start listening to their configured Kafka topics.
   * Each runner listens to a \[request] topic (e.g. request\_product), which is typically configured as its dedicated stream for receiving requests from the gateways.
   * After completing its process, the runner returns its results on a \[response] topic (e.g. response\_store). Multiple runners can share the same \[response] topic.
-* Kafka topic which returns responses from target runners should be configured as "topic\_response" for the created gateway system.&#x20;
+* Kafka topic which returns responses from target runners should be configured as "topic\_response" for the created gateway system.
 * For each Samza runner in deployment, a new gateway channel should be created on the new gateway system with target set as the \[request] topic of the related runner. These channels are exposed as "/api/request/\[channelId]" URL paths on API gateway, where \[channelId] can be seen from the created gateway channel's screen.
 
 With these configurations, sending requests to:
@@ -142,7 +142,7 @@ routes these requests to:
 
 ## RSocket Based Gateway System
 
-With a specific executor (_com.rierino.api.gateway.executor.RSocketExecutor_) this gateway system is used for communicating with [RSocketEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#rsocketeventrunner) instances over different protocols.
+With a specific executor (_com.rierino.api.gateway.executor.RSocketExecutor_) this gateway system is used for communicating with [RSocketEventRunner](../../microservices/service-runners/deploying-runners/spring-runners.md#rsocket-event-runner) instances over different protocols.
 
 Different parameters are applicable for different connection types / protocols, with the following shared ones:
 

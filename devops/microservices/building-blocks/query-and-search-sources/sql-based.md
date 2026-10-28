@@ -8,6 +8,6 @@ description: >-
 
 ## Manager Parameters
 
-| Parameter | Definition                                                                                                            | Example                                  | Default |
-| --------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------- |
-| system    | Name of the [system ](../systems-integrations/#jdbc)which defines JDBC connection details (uri, connectionProperties) | {uri:"jdbc:mysql://localhost:3306/test"} | -       |
+| Parameter | Definition                                                                                                                           | Example                                  | Default |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------- | ------- |
+| system    | Name of the [system ](../systems-integrations/data-systems.md#jdbc)which defines JDBC connection details (uri, connectionProperties) | {uri:"jdbc:mysql://localhost:3306/test"} | -       |
