@@ -130,13 +130,17 @@ Example Saga Definition (Can be Imported on Saga Screen)
 
 ### Validation
 
-When **Validated** is enabled, requests are checked against Input Schema. Standard JSON Schema constraints are supported. Examples include `minimum`, `minLength`, and `pattern`.
+When **Validated** is enabled, requests are checked against Input Schema as well as any additional validators defined.&#x20;
+
+#### Input Schema Validation
+
+Standard JSON Schema constraints are supported. Examples include `minimum`, `minLength`, and `pattern`.
 
 {% embed url="https://json-schema.org/specification" %}
 JSON Schema Specification
 {% endembed %}
 
-For advanced validation, Rierino adds an `x-validation` extension keyword. It lets you attach custom validators to a schema. Use this structure (placeholders shown in ALL CAPS):
+For advanced validation within the JSON schema, Rierino adds an `x-validation` extension keyword. It lets you attach custom validators to a schema. Use this structure (placeholders shown in ALL CAPS):
 
 ```json
 "x-validation":{
@@ -155,7 +159,9 @@ For advanced validation, Rierino adds an `x-validation` extension keyword. It le
 ```
 
 * **VALIDATOR\_NAME:** Any logical name for this validator instance.
-* **VALIDATOR\_CLASS:** Fully qualified Java class extending `BaseJsonValidator`.
+* **VALIDATOR\_CLASS:** Fully qualified Java class extending `BaseJsonValidator:`
+  * `com.rierino.handler.util.jsonschema.JsoupValidator`
+  * `com.rierino.handler.util.jsonschema.JmesPathValidator`
 * **Scope (optional):** Apply the validator to nested fields.
   * **type:** Data type to match (for example `string`).
   * **fields:** JSON paths of nested fields to validate.
@@ -176,6 +182,10 @@ Example: `JsoupValidator` detects unsafe HTML content.
     }
 }
 ```
+
+#### Additional Validators
+
+In addition to validators configured inside JSON schema for fields, it is possible to add pre/post validators to saga flows, for more customized validation logic.
 
 ## AI
 

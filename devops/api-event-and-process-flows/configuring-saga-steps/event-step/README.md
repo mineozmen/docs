@@ -95,6 +95,10 @@ These settings work similar to a remote function call, where the handler and act
 An event step can be executed locally or sent out to other runners for async and more scalable execution, orchestrating multiple microservices.
 {% endhint %}
 
+### Event Validators
+
+Similar to sagas, event steps allow configuring custom pre/post validators for validating input and output payloads against custom logic.
+
 ## Event Step Data Schema
 
 {% code expandable="true" %}

@@ -22,6 +22,7 @@ Authentication requirements for a channel are defined with the following setting
 * **Auth Token:** Id of the gateway token to use for user authentication
 * **Anonymous Token:** Id of the gateway token to use for guest identification
 * **Can Audit All:** Whether all paths should allow auditing
+* **Can Stop All:** Whether all paths should allow stopping at any step during audit
 * **Paths:** Customized authentication settings for different paths on the channel:
   * **Path:** Path segment for customization (e.g. product). \* is used as a wildcard meaning all paths. \[path]/\* is used to allow all subpaths of a given path.
   * **Is Public:** Whether path can be accessed without authentication
@@ -43,13 +44,18 @@ Each alias has these fields:
 
 * **Alias**: The path to match. It can be an exact path (e.g. `/landing`) or a path pattern with variables and wildcards (e.g. `/products/{id}`, `/docs/**`).
 * **Target**: The path to forward to on this channel, starting with `/` (e.g. `/GenerateLandingPage`). The original query parameters are kept. For pattern aliases, each path variable is also added as a query parameter (e.g. `/products/123` → `/GetProduct?id=123`). Query parameters are used because every endpoint accepts them, while body formats vary.
-* **Header Map**: Pairs of header name and JMESPath expression. They transform incoming headers before the request is forwarded:
+* **Request Header Map**: Pairs of header name and JMESPath expression. They transform incoming headers and payload into new headers before the request is forwarded:
   * The expression is evaluated against `{"value": "<incoming header value>"}`. Only the first value of the header is used.
   * The original header is removed. Each field of the resulting object is added as a new header, so a single expression can produce several headers.
   * If the expression returns null, the header is just dropped. If the request doesn't have the header, nothing happens.
   * Example: `"API-key": "{ \"Authorization\": join(' ', ['API-key', value]) }"` turns `API-key: abc` into `Authorization: API-key abc`.
+* **Request Payload Map:** Similar to request header map, modifies incoming payload and header into new payload to be forwarded.
+* **Response Header Map**: Allows mapping of payload & headers in backend response into new headers.
+* **Response Payload Map**: Allows mapping of payload & headers in backend response into new payload elements.
 * **Static Content**: Text to return directly instead of forwarding (e.g. for constant `.well-known` endpoints). The response is `200 OK` with `Content-Length` set, and HEAD requests get only the headers. The Header Map is not applied to static responses.
 * **Static Content Type**: The content type for static content (e.g. `application/json`, `text/plain; charset=utf-8`). It defaults to `application/json`, and an invalid value also falls back to `application/json`. The charset in the content type is used to encode the content, with UTF-8 as the default.
+
+In addition to the path configurations, channels allow configuring method specific (e.g. GET, POST) override of all these parameters.
 
 ## Response Headers
 
@@ -57,3 +63,5 @@ Custom response headers can be configured for each channel as well as path & met
 
 * **Header Key:** Header to send
 * **Header Value:** Value to send for the header
+
+In addition to global configurations, it is possible to define path specific response headers and values.
