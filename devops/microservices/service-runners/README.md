@@ -4,9 +4,9 @@ description: >-
   the platform.
 ---
 
-# Runners
+# Service Runners
 
-![Runner UI](../../../.gitbook/assets/UI_Runner.png)
+<figure><img src="../../../.gitbook/assets/image (190).png" alt="Runner UI"><figcaption><p>Runner UI</p></figcaption></figure>
 
 A typical runner listens from various streams, uses action and handlers to respond to received data and sends its response to other streams.
 

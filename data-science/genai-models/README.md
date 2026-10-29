@@ -7,7 +7,7 @@ icon: robot
 
 # GenAI Models
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>GenAI Model UI</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (188).png" alt="GenAI Model UI"><figcaption><p>GenAI Model UI</p></figcaption></figure>
 
 {% embed url="https://rierino.com/platform/agent" %}
 
