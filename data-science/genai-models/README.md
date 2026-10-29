@@ -11,7 +11,7 @@ icon: robot
 
 {% embed url="https://rierino.com/platform/agent" %}
 
-GenAI model definitions allow configuration of AI agents and general purpose LangChain models using different providers such as Amazon Bedrock, Anthropic, Azure, Google Gemini, Mistral, OpenAI, as well as local LLM models.
+GenAI model definitions allow configuration of AI agents and general purpose LLM models using different providers such as Amazon Bedrock, Anthropic, Azure, Google Gemini, Mistral, OpenAI, as well as local models.
 
 {% hint style="success" %}
 To enable use of AI agents on a runner, you can simply add GenAI base runner to its configuration, set your API Keys for your preferred LLM provider in secrets and start allowing specific GenAI models to be executed on that runner.
