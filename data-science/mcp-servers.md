@@ -34,6 +34,8 @@ Definition of an MCP server includes:
 For RBAC to specific tools by different user roles, Tool Sagas provide the most flexibility (and can be used to implement all other types of tools). As a rule of thumb, it is recommended to use other tool types for resources which are accessible by all users of the agent, and switch to sagas for granular access control.
 {% endhint %}
 
+{% embed url="https://www.linkedin.com/pulse/your-openapi-spec-agent-berkin-ozmen-bz7mf/" %}
+
 ### Prompts
 
 List of prompts returned from prompts/list and prompts/get methods
